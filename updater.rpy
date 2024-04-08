@@ -29,6 +29,10 @@ label after_load:
         $ del sexe
         $ save_updated = True
 
+    if lesonly == "False":
+        $ lesonly = False
+        $ save_updated = True
+
     if save_updated:
         $ renpy.notify("Save updated")
         $ renpy.block_rollback()

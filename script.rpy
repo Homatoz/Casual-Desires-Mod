@@ -64,7 +64,7 @@ default lunaexh = 0 # Luna Exhibitionism
 default lunainn = 0 #Luna Innocent
 default lunalove = 0
 default harukalove = 0
-default lesonly = "False"
+default lesonly = False
 default lunanoclub = False
 default lunamaleclub = False
 default lunafemaleclub = False
@@ -417,7 +417,7 @@ label introstart:
 
 label prologue:
     stop music fadeout 1.0
-    if lesonly==True:
+    if lesonly:
         jump prologueles
     show intro vio 1
     with fadeholdverylong
@@ -609,7 +609,7 @@ label prologueroom:
         pov "Not in high school, at least."
         show intro room 4
         with dissolvelong
-        if lesonly==True:
+        if lesonly:
             pov "Heck, I've never even been in a relationship yet, and kissing is as far as I've gone."
             pov "During prom night, there was some drinking involved and, well..."
             pov "At some point, I ended up kissing one of the girls from my class."
@@ -794,7 +794,7 @@ label prologueroom:
     pov "{i}(We've been hanging out for over four years now, after all.){/i}"
     pov "{i}(And it's not like I haven't made dirty jokes with them before.){/i}"
     pov "{i}(We're close enough that they almost feel like brothers to me sometimes...){/i}"
-    if lesonly==True:
+    if lesonly:
         pov "{i}(Well, whatever the case, that's their own business.){/i}"
         pov "{i}(...... What other games should we play today?){/i}"
         jump prologueend
@@ -905,7 +905,7 @@ label prologueend:
             menu:
                 "She accepted.":
                     $c5viomff = True
-                    if lesonly==True:
+                    if lesonly:
                         scene a2skip8 with dissolvelong
                     else:
                         scene a2skip9 with dissolvelong
@@ -1361,7 +1361,7 @@ label chapter1:
     pov "{i}(Looks like I caught them by surprise again!){/i}"
     pov "{i}(They're looking at me everywhere except my face.){/i}"
     pov "{i}(Boys can be so predictable...){/i}"
-    if lesonly==True:
+    if lesonly:
         jump c1boysskip
     pov "{i}(Hmm...){/i}"
     menu:
@@ -1901,7 +1901,7 @@ label chapter2:
     pov "Well, that's that..."
     pov "It was nice talking to [fr] for the first time in so long."
     pov "It's always important to have friends you can talk to about serious stuff."
-    if lesonly==True:
+    if lesonly:
         scene c2 outside 2-2-les
         with dissolve
         pov "Of course, I can talk to {i}those{/i} two as well, but..."
@@ -2246,7 +2246,7 @@ label c2hottub:
     pov "He's not filming or anything."
     pov "And it's just me in my swimsuit."
     pov "...... Does that really excuse him peeping on me, though?"
-    if lesonly==True:
+    if lesonly:
         jump c2callpolice
     pov "Hmm..."
     menu:
@@ -2527,7 +2527,7 @@ label c2hottub:
     pov "...... Oh?"
     pov "There's a movie she's interested in."
     pov "Guess we can go see that, and maybe catch a bite to eat and shop afterwards?"
-    if lesonly==True:
+    if lesonly:
         pov "Either way, it should be fun!"
         "......"
         jump c2laundry
@@ -2692,7 +2692,7 @@ label c2laundry:
     pov "...... Anyway, that's why I decided to clean it for them."
     pov "Connor lives on campus, so there's no washing machine, except for here in the commons area."
     pov "On the bright side, at least it's not too busy here tonight."
-    if lesonly==True:
+    if lesonly:
         show c2 laundry 4-les
         with dissolve
         pov "Just me and this girl here right now."
@@ -2927,7 +2927,7 @@ label c2home:
     show white
     with dissolvelong
     "Due to recent events, [pov]'s mind races with thoughts and fantasies."
-    if lesonly==True:
+    if lesonly:
         jump c2girldream
     "2 hours after she heads to bed, [pov] dreams that she..."
     menu:
@@ -3250,7 +3250,7 @@ label c2home:
             pov "Nah... not yet."
             pov "I'm interested in finding someone, of course."
             pov "But there hasn't been anyone I've had feelings for."
-            if lesonly==True:
+            if lesonly:
                 pov "Most of my friends are guys, and I'm not into that..."
                 pov "Err... never mind..."
                 show c3 friend 11
@@ -3307,7 +3307,7 @@ label c2home:
             $inn +=1
     pov "Anyway..."
     pov "Now that you've asked me the dreaded question, what about {i}you{i}?"
-    if lesonly==True:
+    if lesonly:
         pov "I don't see anyone tagging along on your social media posts..."
     else:
         pov "I don't see any guys tagging along on your social media posts..."
@@ -3376,7 +3376,7 @@ label c2home:
         pov "I guess it's fine, since I do still get assigned to regular shoots every now and then."
     pov "Well, whatever..."
     pov "There's a few minutes to spare."
-    if lesonly==True:
+    if lesonly:
         jump c3notflash
     if inn >=2:
         show c3 outside 3
@@ -3672,7 +3672,7 @@ label c2home:
         pov "I enjoyed it quite a bit."
         ja "Good to know. Thanks for being so cooperative."
         "......"
-        if lesonly==True:
+        if lesonly:
             stop music fadeout 1
             jump c3boys
         show c3 photo 10a
@@ -3868,7 +3868,7 @@ label c2home:
     c "Oh, sweet. Thanks for the deal."
     j "Yeah. Thanks."
     "......"
-    if lesonly==True:
+    if lesonly:
         jump c3boysskip
     show white
     with dissolve
@@ -4455,7 +4455,7 @@ label c2home:
     ni "How about an action flick, then? That's your favourite genre, isn't it?"
     vio "OK. Sounds like a date to me, then."
     "......"
-    if lesonly==True:
+    if lesonly:
         jump c3credits
 
     play music "audio/blues.ogg" fadein 4.0 loop
@@ -4993,7 +4993,7 @@ label c3credits:
     with dissolve
     pov "Alright..."
     pov "It's roughly the same time as when I last called the pizza delivery."
-    if lesonly==True:
+    if lesonly:
         pov "I wonder who will show up?"
         jump c4pizzagirl
     pov "If I call now, I wonder if the same boy will show up with my order?"
@@ -5444,7 +5444,7 @@ label c3credits:
     vio "{i}(He's pretty drunk now, so it's obvious that his intentions are a bit different.){/i}"
     vio "{i}(And with these kinks of his...){/i}"
     vio "{i}(No doubt he's asking if I want to do something with him.){/i}"
-    if lesonly==True:
+    if lesonly:
         vio "{i}(... No thanks.){/i}"
         vio "Sorry, but I'm not interested in your weird proposition."
         vio "I'll wait right here."
@@ -5610,7 +5610,7 @@ label c3credits:
                 $c4viostranger = True
     ni "Imagine if you brought over one of your female friends."
     ni "You'd probably lose your mind from all that sensation! Haha."
-    if not lesonly==True:
+    if not lesonly:
         ni "Or if I had one of {i}my{/i} friends with us..."
         ni "Actually, you might really be able to handle two at once, considering how skilled you are with me. {i}*laughs*{/i}"
     show c4 vrave 12
@@ -5633,7 +5633,7 @@ label c3credits:
             with dissolve
             ni "Wow... I thought you'd get mad at me for sure..."
             ni "But, sweet. I'm happy you're interested in something like this."
-            if not lesonly==True:
+            if not lesonly:
                 ni "I guess having another couple with us could be a possibility, too... haha."
             vio "Look, I never said I'd do it, alright?"
             vio "I just said I've thought about it before."
@@ -6259,7 +6259,7 @@ label c4park:
     ja "I have no interest in seeing {i}her{/i}, but the kid has to see both parents, at least once in a while."
     pov "I see... I didn't know you were a dad."
     pov "What happe— actually, never mind... it's none of my business."
-    if lesonly==True:
+    if lesonly:
         ja "No, no worries. I understand that you're curious."
         ja "Maybe I'll tell you about it some other time."
         ja "Anyway, we should probably get started with the shoot now, before we start running late."
@@ -6339,7 +6339,7 @@ label c5photoshoot:
     ja "He's still a toddler, so he'll stay cute for a while yet."
     ja "I have no idea how I'll deal with a teenage child when that time comes, though."
     pov "Haha, that's true!"
-    if lesonly==True:
+    if lesonly:
         jump c5jasonskip
     if model_seduction>=2:
         pov "{i}(Hmm...){/i}"
@@ -6525,7 +6525,7 @@ label c5photoafter:
         man "Haha, no, not especially."
         man "I'm usually just stuck as the wingman for one of my buddies."
         pov "Ah, that's unfortunate..."
-        if lesonly==True:
+        if lesonly:
             jump c5outsideskip
         pov "{i}(Well, now that the conversation has taken this direction...){/i}"
         menu:
@@ -6807,7 +6807,7 @@ label c5photoafter:
         pov "If I {i}did{/i} order again tonight..."
         pov "After this, it'd probably be best to take a bit of a break from ordering, so they don't get any funny ideas about me."
         pov "Maybe in a few weeks I'll consider it again."
-        if lesonly==True:
+        if lesonly:
             jump c5pizzagirlskip
         pov "But for now... should I wait a little bit before I call first?"
         pov "Or should I call them now, seeing as it's around the time that boy is usually working..."
@@ -7962,7 +7962,7 @@ label c5photoafter:
             vio "Sure."
             ni "Alright, I'll go get us a few, then."
             "......"
-            if lesonly==True:
+            if lesonly:
                 jump c5end
             show c5 viosexalt 1
             with fadeholdlong
@@ -8113,7 +8113,7 @@ label c5photoafter:
     show c5 end 4
     with dissolvelong
     pov "There's nothing I really feel like watching on Netflix, though."
-    if lesonly==True:
+    if lesonly:
         jump c5boysskip
     pov "That little incident with Josh is still distracting me, for some reason."
     pov "Hmm..."
@@ -8907,7 +8907,7 @@ label c5photoafter:
     luna "Tuition is sure expensive, after all..."
     luna "I hope I can keep affording it."
     "......"
-    if lesonly==True:
+    if lesonly:
         jump c6mia
     show white
     with dissolvelong
@@ -9337,7 +9337,7 @@ label c5photoafter:
         pov "{i}(I don't understand why we have to sit here for ten or twenty minutes waiting, when we paid for the movie to start at this time.){/i}"
         pov "{i}*sighs*{/i}"
         pov "{i}(Well... at least there's nobody else here so far.){/i}"
-        if lesonly==True:
+        if lesonly:
             pov "{i}(More room for me to stretch my legs and enjoy the movie.){/i}"
             pov "{i}(Hopefully it doesn't disappoint me!){/i}"
             "......"
@@ -9536,7 +9536,7 @@ label c5photoafter:
     j "I wonder if you were as nerdy back then as you are now."
     pov "You're one to talk..."
     pov "......"
-    if lesonly==True:
+    if lesonly:
         pov "{i}(I'm not even sure why we're talking about perverted stuff like this, anyway.){/i}"
         pov "{i}(This is why boys can be so troublesome...){/i}"
         "......"
@@ -10071,7 +10071,7 @@ label c5photoafter:
     with dissolve
     pov "Actually..."
     c "Huh?"
-    if lesonly==True:
+    if lesonly:
         label c7homeend:
             pov "I'm parched, so I'm going to get some water from the kitchen."
             pov "Did you want me to grab a drink for you, too?"
@@ -10436,7 +10436,7 @@ label c5photoafter:
             jump c7homeend
 
 label c7choice:
-    if lesonly==True:
+    if lesonly:
         jump c7locker
     scene white
     with dissolvelong
@@ -12580,7 +12580,7 @@ label c7ending:
     pov "Now then..."
     pov "I don't really feel like sitting at home, so..."
     pov "What should I do?"
-    if lesonly==True:
+    if lesonly:
         jump c8walk
     menu:
         "Invite Josh over.":
@@ -13166,7 +13166,7 @@ label c7ending:
     pov "And, better yet..."
     pov "I don't even need to get changed before they come."
     pov "I can have a little bit of fun, just like this..."
-    if lesonly==True:
+    if lesonly:
         jump c8pizzagirl
     show c8 pizza 8
     with dissolve
@@ -14551,7 +14551,7 @@ label c7ending:
                 pov "Which of them do I want to give my virginity to?"
             else:
                 "Which of them do I want to have sex with?"
-            if lesonly==True:
+            if lesonly:
                 menu:
                     "Luna.":
                         jump c9lunastart
@@ -14859,7 +14859,7 @@ label c9office:
     with dissolve
     pov "{i}(I don't really have any interest in going anywhere with them.){/i}"
     pov "{i}(Could be dangerous, especially since I don't know anything about them.){/i}"
-    if lesonly==True:
+    if lesonly:
         jump c9menignore
     pov "{i}(But... before I leave...){/i}"
     pov "{i}(Do I want to tease them for a second?){/i}"
@@ -17286,7 +17286,7 @@ label act2start:
     pov "I have tomorrow off, too."
     pov "There isn't much longer until summer is over, so I should make the most of what's left."
     pov "What do I want to do tomorrow?"
-    if lesonly==True:
+    if lesonly:
         jump c10mia
     if c2pervertpolice:
         menu:
@@ -18152,7 +18152,7 @@ label c10waterpark:
     pov "Yeah. It's still only 11 AM, though."
     pov "You had other plans this afternoon?"
     luna "Yup. I'm meeting my friend from high school, Juliet, at the campus today."
-    if lesonly==True:
+    if lesonly:
         show c10 waterpark 7f
         with dissolvelong
         wom "......"
@@ -18408,7 +18408,7 @@ label c10lunauni:
     ja "I see."
     ja "Well, anyway... I guess I should let you go for today."
     ja "Thanks again for the hard work."
-    if lesonly==True:
+    if lesonly:
         show c10 photoshoot 9
         with dissolve
         stop music fadeout 2.0
@@ -18579,7 +18579,7 @@ label c10aftershoot:
     pov "It's been a while since I last went shopping, so I've been running low on shampoo and things like that."
     show c10 outside 3
     with dissolvelong
-    if lesonly==True:
+    if lesonly:
         stop music fadeout 2.5
         pov "Yeah... I think I'll drop by a couple stores and see what's there."
         pov "I should grab a burger or something on the way back, too."
@@ -19279,7 +19279,7 @@ label c10complete:
             with dissolve
             pov "Oh, I think I hear their car."
             pov "I wonder how they'll react?"
-            if lesonly==True:
+            if lesonly:
                 pov "...... Wait."
                 pov "I was expecting a girl to show up."
                 pov "And from the window here, it doesn't look like one..."
@@ -20378,7 +20378,7 @@ label c11lucas:
     luc "Anyway, I guess you've just finished your shift now."
     luc "I should head down then."
     luc "You need to get changed, after all."
-    if lesonly==True:
+    if lesonly:
         jump c11lucascancel
     show c11 office 10
     with dissolve
@@ -20906,7 +20906,7 @@ label c11end:
             show c12 jason 11
             with dissolve
             pov "......"
-            if lesonly==True:
+            if lesonly:
                 pov "{i}(Well, that explains why he wasn't around today.){/i}"
                 pov "{i}(Adults sure have it rough, huh...){/i}"
                 show c12 jason 15
@@ -21663,7 +21663,7 @@ label c12cj:
     pov "I see. Well, that's good to hear."
     pov "Just make sure not to skip all the time like you usually do."
     j "Yeah, yeah."
-    if lesonly==True:
+    if lesonly:
         show c12 cj 8
         with dissolve
         pov "Did you wanna play some Smash for a bit?"
@@ -22250,7 +22250,7 @@ label c12waterpark:
     pov "......?"
     voi "Are you free right now?"
     pov "Hmm?"
-    if lesonly==True:
+    if lesonly:
         show c12 waterpark girl 1
         with dissolvelong
         wom "I noticed you weren't with your friend from before."
@@ -22949,7 +22949,7 @@ label c13introporn:
     "An hour later."
     pov "Wow..."
     pov "So that's how you do it, huh..."
-    if lesonly==True:
+    if lesonly:
         show c13 porn 2f
         with dissolvelong
         pov "She's touching the girl's butt."
@@ -22961,7 +22961,7 @@ label c13introporn:
         pov "It's not like I have any experience with it myself."
         pov "While I wouldn't say I'm grossed out by the idea of it..."
         pov "It's just not something I've ever really considered trying."
-    if not lesonly==True:
+    else:
         show c13 porn 2
         with dissolvelong
         pov "He's putting it in her butt."
@@ -23373,7 +23373,7 @@ label c13beach:
     with dissolve
     pov "I just hope I don't get too much of a tan..."
     pov "That wouldn't get me in trouble with my modelling job... right?"
-    if lesonly==True:
+    if lesonly:
         show c13 beach 6f
         with dissolvelong
         voi "Hello. Excuse me."
@@ -23726,7 +23726,7 @@ label c13beach:
                 pov "There's probably more people on the other side."
                 show c13 beach 24f
                 with dissolvelong
-                if lesonly==True:
+                if lesonly:
                     wom "Oh, you were able to show up!"
                     wom "I was worried you weren't interested."
                     pov "......?"
@@ -23738,7 +23738,7 @@ label c13beach:
                     pov "{i}(It's hard to avoid looking down below...){/i}"
                     womr "Well, this is my friend I told you about earlier."
                     woml "Nice to meet you."
-                if not lesonly==True:
+                else:
                     wom "Hello! Nice to meet you."
                     wom "I haven't seen you around before. Is this your first time?"
                     pov "......?"
@@ -23786,7 +23786,7 @@ label c13beach:
                 pov "Hmm... well..."
                 pov "My ferry is scheduled soon, so I can't stay for long today."
                 womr "Oh... I'm sorry."
-                if lesonly==True:
+                if lesonly:
                     womr "I hope my invitation didn't make you late."
                     pov "No, it's okay."
                 show c13 beach 31f
@@ -23962,7 +23962,7 @@ label c13haruka:
     c "Yeah, yeah... I get it, mom."
     c "Anyway..."
     c "What show do you want to watch now?"
-    if lesonly==True:
+    if lesonly:
         stop music fadeout 2.5
         pov "Hmm..."
         pov "I'll leave it to you!"
@@ -24445,7 +24445,7 @@ label c13viotalk:
     show c13 lucas 8
     with dissolve
     luc "Ah, my bad."
-    if lesonly==True:
+    if lesonly:
         jump c13lucascancel
     pov "{i}(Hmm...){/i}"
     pov "{i}(Lucas is looking a little depressed, after all.){/i}"
@@ -25248,7 +25248,7 @@ label c13beforespa:
     pov "I'll also have a family of my own?"
     pov "It's hard to imagine getting married at this age, but somewhere down the road?"
     pov "At least, I think I'd like to."
-    if lesonly==True:
+    if lesonly:
         pov "Maybe it could even be with another girl...?"
         pov "It's legal in Canada, after all."
     show c13 beforespa 3
@@ -25271,7 +25271,7 @@ label c13beforespa:
     pov "{i}(Is that French?){/i}"
     voi "A male or female employee."
     pov "Oh, hmm..."
-    if lesonly==True:
+    if lesonly:
         $c13spafemale=True
         jump c13femalespa
     menu:
@@ -26116,7 +26116,7 @@ label c13ending:
     pov "But, well, their daughter had to become an adult eventually."
     show c14 intro 4
     with dissolve
-    if lesonly==True:
+    if lesonly:
         pov "Let's say, one day... maybe I get a girlfriend..."
     else:
         pov "Let's say, one day... maybe I get a boyfriend..."
@@ -26790,7 +26790,7 @@ label c14normalbeach:
     pov "I wouldn't be surprised if that same person was here."
     pov "It {i}is{/i} a very hot day, so if they were going to go, this would probably be the day."
     pov "Do I..."
-    if lesonly==True:
+    if lesonly:
         menu:
             "Go to the female nudist beach.":
                 stop music fadeout 2.5
@@ -28036,7 +28036,7 @@ label c14transition:
     with dissolve
     pov "Luna is busy today, I think, and my hangout with Sara isn't until next week."
     pov "That leaves a couple options..."
-    if lesonly==True:
+    if lesonly:
         menu:
             "Invite [vio].":
                 pov "Why not invite [vio]?"
@@ -28233,7 +28233,7 @@ label c14cjhome:
     j "Hey, it's not like I'm some anime protagonist."
     show c14 cj home 4
     with dissolve
-    if lesonly==True:
+    if lesonly:
         pov "{i}(Well, I'm glad they're impressed.){/i}"
         pov "{i}(If only they knew how much of a hassle it was to set up.){/i}"
         show c14 cj home 5
@@ -29393,7 +29393,7 @@ label c14ending:
     pov "...... Girls who just want to be seen."
     show c15 hotsprings 6
     with dissolve
-    if lesonly==True:
+    if lesonly:
         pov "And I don't mind being seen, but..."
         pov "That's assuming it's a girl who's doing the looking."
         pov "Having some creepy old guy in here would really kill the mood."
@@ -29410,7 +29410,7 @@ label c14ending:
     show c15 hotsprings 7
     with dissolve
     pov "...... I did enter the right area here, right?"
-    if lesonly==True:
+    if lesonly:
         jump c15hotspringsgirl
     menu:
         "Yeah, I did. {i}(Girls-Only){/i}":
@@ -29432,7 +29432,7 @@ label c14ending:
                 pov "{i}(Ah...){/i}"
                 pov "{i}(Another girl just showed up.){/i}"
                 pov "{i}(Thank goodness.){/i}"
-                if lesonly==True:
+                if lesonly:
                     pov "{i}(I'm glad I entered the right section. That could have been a very unpleasant situation.){/i}"
                 else:
                     pov "{i}(I'm glad I entered the right section. That could have been a very awkward situation.){/i}"
@@ -29654,7 +29654,7 @@ label c15model:
     ja "I need to talk to the electrician about a problem upstairs."
     ja "Perhaps you and me will be able to work together again soon."
     ja "Keep up the good work as usual, [pov]."
-    if lesonly==True:
+    if lesonly:
         jump c15afterworkend
     show c15 afterwork tease 1
     with dissolve
@@ -31002,10 +31002,10 @@ label c15girlsnight:
     fr "[pov], could you ever see yourself in a relationship like that...?"
     fr "Just out of curiosity..."
     pov "Oh, well..."
-    if lesonly==True:
+    if lesonly:
         pov "Sure. If anything, I feel much more comfortable being with another girl."
         pov "Seeing stuff like this on TV... I do think it'd be nice."
-    if not lesonly==True and les>=3:
+    if not lesonly and les>=3:
         pov "Sure. I don't see a reason to restrict myself to just male or female."
         pov "If I like someone, I like them."
     if les<=2:
@@ -31443,7 +31443,7 @@ label c15massage:
     with dissolve
     pov "Either way..."
     pov "At least they allow you to choose between male or female staff, if you're uncomfortable about stuff like this."
-    if lesonly==True:
+    if lesonly:
         pov "Personally, I chose female staff."
         pov "If someone is going to be touching me, I'd much rather it be a woman..."
         pov "Even if they're a professional, I still don't feel comfortable with a guy massaging me."
@@ -32016,7 +32016,7 @@ label c15delivery:
     with dissolvelong
     pov "Yeah, this is my kitchen area."
     pov "You can just put it on the counter here."
-    if lesonly==True:
+    if lesonly:
         show c15 delivery 10f
         with dissolvelong
         wom "Sure."
@@ -34051,7 +34051,7 @@ label c16cafe:
     pov "It'll be fun to see their reaction."
     pov "I wonder if this time will be a success?"
     "......"
-    if lesonly==True:
+    if lesonly:
         show c16 delivery female 1
         with fadeholdlong
         pov "Glad you're here."
@@ -34236,7 +34236,7 @@ label c16josh:
     pov "That teacher put everyone to sleep with that voice of his."
     show c16 cj 4
     with dissolve
-    if lesonly==True:
+    if lesonly:
         pov "Anyway, just thought I'd drop by for a second since I was in the area."
         pov "Don't game yourselves to death, OK?"
         show c16 cj 5
@@ -34415,7 +34415,7 @@ label c16ending:
             pov "Yeah, I think it'd be a lot of fun."
             pov "Next..."
             pov "I need to think about who to invite."
-            if lesonly==True:
+            if lesonly:
                 $c16pokergirls=True
                 pov "It'd have to be me and a few other girl friends."
                 pov "Definitely not inviting any guys. Ew."
@@ -34647,7 +34647,7 @@ label c16endchapter:
                 with dissolve
                 pov "Haha. I guess we'll see."
                 pov "If it were me, I doubt I'd be able to refuse a sight like this."
-                if not lesonly==True:
+                if not lesonly:
                     show c17 spa 6
                     with dissolve
                     pov "Oh, right... did I ask for male or female staff?"
@@ -34664,7 +34664,7 @@ label c16endchapter:
                 play sound "audio/effects/door1.mp3"
                 voi "Excuse me..."
                 pov "Come in. I'm ready."
-                if lesonly==True:
+                if lesonly:
                     jump c17spafemalescene
                 if c17spafemale:
                     jump c17spafemalescene
@@ -35189,7 +35189,7 @@ label c17kitchen:
     show c17 delivery 12
     with dissolve
     pov "Coming!"
-    if lesonly==True:
+    if lesonly:
         show c17 delivery 13f
         with dissolvelong
         pov "Thanks for the delivery!"
@@ -35269,7 +35269,7 @@ label c17kitchen:
         pov "I can't just act spontaneously all the time, expecting the same trick will work on everyone..."
         show c17 delivery 29
         with dissolve
-        if lesonly==True:
+        if lesonly:
             pov "Well, time to eat before it gets cold."
             pov "I only have a couple hours, before me and [vio] are meeting at the hot springs."
             jump c17hotsprings
@@ -35367,7 +35367,7 @@ label c17kitchen:
         pov "I can't just act spontaneously all the time, expecting the same trick will work on everyone..."
         show c17 delivery 29
         with dissolve
-        if lesonly==True:
+        if lesonly:
             pov "Well, time to eat before it gets cold."
             pov "I only have a couple hours, before me and [vio] are meeting at the hot springs."
             jump c17hotsprings
@@ -37429,7 +37429,7 @@ label c17endchapter:
     show c18 lucy garden 5
     with dissolve
     pov "... Speaking of Italy, though..."
-    if lesonly==True:
+    if lesonly:
         pov "Did you pick up a cute Italian girlfriend during your visits?"
         show c18 lucy garden 6
         with dissolve
@@ -37555,7 +37555,7 @@ label c17endchapter:
     pov "Not many people riding at this time of day, it seems..."
     pov "Is it busier later in the afternoon?"
     pov "Or is this just not a popular area?"
-    if lesonly==True:
+    if lesonly:
         show c18 bus 5f
         with dissolve
     else:
@@ -37563,7 +37563,7 @@ label c17endchapter:
         with dissolve
     pov "Hmm..."
     pov "It's only a couple bus stops away."
-    if lesonly==True:
+    if lesonly:
         show c18 bus 6f
         with dissolve
         wom "......"
@@ -37573,7 +37573,7 @@ label c17endchapter:
         man "......"
     pov "{i}(Huh...?){/i}"
     pov "{i}(Not sure why anyone is moving when the doors are closed...){/i}"
-    if lesonly==True:
+    if lesonly:
         show c18 bus 7f
         with dissolve
     else:
@@ -37581,7 +37581,7 @@ label c17endchapter:
         with dissolve
     pov "{i}(Am I just imagining it, or are they standing right behind me...?){/i}"
     pov "{i}(Nah... surely they won't...){/i}"
-    if lesonly==True:
+    if lesonly:
         show c18 bus 8f
         with dissolve
         pov "!!"
@@ -38583,7 +38583,7 @@ label c18cafe:
     show c18 stripclub 10
     with dissolve
     vio "So, anyway..."
-    if lesonly==True:
+    if lesonly:
         vio "You find yourself a cute girlfriend yet?"
     else:
         vio "You find yourself a boyfriend or girlfriend yet?"
@@ -38613,7 +38613,7 @@ label c18cafe:
     with dissolve
     pov "Err... are you saying..."
     voi "Excuse me."
-    if lesonly==True:
+    if lesonly:
         show c18 stripclub 15f
         with dissolvelong
         woml "Are you busy?"
@@ -39366,7 +39366,31 @@ label c18stripclubafter:
     with dissolvesemilong
     pov "A few months back, there wasn't anyone I could really see as a potential partner."
     pov "But now... there's quite a few options."
-    if not lesonly==True:
+    if lesonly:
+        show fb haruka 1
+        with dissolvesemilong
+        "[fr]."
+        show fb luna 1
+        with dissolvesemilong
+        "Luna."
+        show fb violet 1
+        with dissolvesemilong
+        "And [vio]."
+        scene c18 ending 4
+        with dissolvelong
+        pov "I can see all three of them as potential partners."
+        pov "And... while we're still not super close yet..."
+        pov "There's a few others that have caught my attention recently, too."
+        show fb mia 1
+        with dissolvesemilong
+        "Mia."
+        show fb sara 1
+        with dissolvesemilong
+        "Sara."
+        show fb lucy 1
+        with dissolvesemilong
+        "And Lucy."
+    else:
         show fb josh 1
         with dissolvesemilong
         "Josh."
@@ -39405,30 +39429,6 @@ label c18stripclubafter:
             show fb lucas 1
             with dissolvesemilong
             "And Lucas."
-    if lesonly==True:
-        show fb haruka 1
-        with dissolvesemilong
-        "[fr]."
-        show fb luna 1
-        with dissolvesemilong
-        "Luna."
-        show fb violet 1
-        with dissolvesemilong
-        "And [vio]."
-        scene c18 ending 4
-        with dissolvelong
-        pov "I can see all three of them as potential partners."
-        pov "And... while we're still not super close yet..."
-        pov "There's a few others that have caught my attention recently, too."
-        show fb mia 1
-        with dissolvesemilong
-        "Mia."
-        show fb sara 1
-        with dissolvesemilong
-        "Sara."
-        show fb lucy 1
-        with dissolvesemilong
-        "And Lucy."
     scene c18 ending 5
     with dissolvelong
     show oct 15 with dissolvelong
@@ -39525,7 +39525,7 @@ label act3start:
     with Pause(2.5)
     hide text with dissolvelong
     with Pause (1.0)
-    if not lesonly==True and les<=16:
+    if not lesonly and les<=16:
         play music "<from 20.5>audio/heartbit.mp3" fadein 1.5 loop
         scene c19 dream male 1
         with fadeholdlong
@@ -39587,7 +39587,7 @@ label act3start:
         pov "I can feel your warm cum inside both my holes..."
         pov "{i}(... Huh?){/i}"
         pov "{i}(Wait... what was I doing here again?){/i}"
-    if lesonly==True or les>=17:
+    if lesonly or les>=17:
         play music "<from 20.5>audio/heartbit.mp3" fadein 1.5 loop
         scene c19 dream female 1
         with fadeholdlong
@@ -39783,7 +39783,7 @@ label act3start:
             with dissolvesemilong
             pov "I'll be right there!"
             pov "Just one second!"
-            if lesonly==True:
+            if lesonly:
                 $c19deliveryles=True
                 show c19 delivery 4f
                 with dissolvelong
@@ -39934,7 +39934,7 @@ label act3start:
                 $sexexp+=1
                 $les+=1
                 jump c19lunauni
-            if not lesonly==True:
+            else:
                 $c19deliverymale=True
                 show c19 delivery 4m
                 with dissolvelong
@@ -40120,14 +40120,14 @@ label c19lunauni:
     if not c18lunasexfemale and not c18lunasexmale:
         luna "I could study in the library, but..."
         luna "Since I just finished this semester's midterms, I really don't want to touch another textbook for at least a few more days..."
-    if lesonly==True:
+    if lesonly:
         show c19 lunauni 3f
-    if not lesonly==True:
+    else:
         show c19 lunauni 3m
     with dissolvesemilong
     luna "University has been a lot more challenging than I thought it would be..."
     luna "I don't want to quit my job, either, since I love being with everyone!"
-    if lesonly==True:
+    if lesonly:
         wom "Luna...?"
         show c19 lunauni 4f
         with dissolvelong
@@ -40177,7 +40177,7 @@ label c19lunauni:
         with dissolvelong
         luna "......"
         luna "{i}(She's not as scary as I thought.){/i}"
-    if not lesonly==True:
+    else:
         man "Luna...?"
         show c19 lunauni 4m
         with dissolvelong
@@ -40230,9 +40230,9 @@ label c19lunauni:
     show c19 lunauni 14
     with dissolvesemilong
     luna "{i}(This is the first time one of my professors has been so friendly.){/i}"
-    if lesonly==True:
+    if lesonly:
         luna "{i}(There's a lot of students in our class, so I'm surprised she remembered who I am...){/i}"
-    if not lesonly==True:
+    else:
         luna "{i}(There's a lot of students in our class, so I'm surprised he remembered who I am...){/i}"
     luna "{i}(Maybe some time next week I can try asking for help?){/i}"
     show c19 lunauni 15
@@ -40269,7 +40269,7 @@ label c19lunauni:
         luna "I could try going to club again in a little while."
         luna "But..."
         luna "What if they ask to do even {i}more{/i} than last time...?"
-        if lesonly==True:
+        if lesonly:
             show c19 lunauniafter 7f
             with dissolvelong
             wom "......"
@@ -40315,7 +40315,7 @@ label c19lunauni:
                     luna "{i}(Next station is where I get off.){/i}"
                     "......"
                     jump c19ritaoutside
-        if not lesonly==True:
+        else:
             show c19 lunauniafter 7m
             with dissolvelong
             man "......"
@@ -40478,7 +40478,7 @@ label c19ritaoutside:
     with dissolvesemilong
     play sound "audio/effects/camera1.mp3"
     "And that'll do it!"
-    if lesonly==True:
+    if lesonly:
         show c19 photoshoot 7f
         with dissolvelong
         wom "Thank you for the hard work today, [pov]."
@@ -40510,7 +40510,7 @@ label c19ritaoutside:
         pov "It sounds exciting. I'll do my best!"
         "......"
         jump c19ritacomputer
-    if not lesonly==True:
+    else:
         show c19 photoshoot 7m
         with dissolvelong
         ja "Thank you for the hard work again today, [pov]."
@@ -41097,9 +41097,9 @@ label c19viodate:
     show c19 viohome 6
     with dissolvesemilong
     vio "So, [pov]..."
-    if lesonly==True:
+    if lesonly:
         vio "No girlfriend yet?"
-    if not lesonly==True:
+    else:
         vio "No boyfriend or girlfriend yet?"
     pov "That question again..."
     vio "I'm genuinely curious."
