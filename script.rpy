@@ -27,7 +27,7 @@ define dissolveverylong = Dissolve(5.0)
 default virgin = True
 default analvirgin = True
 default perv = 0
-default sexp = 0
+default sexpartners = 0
 default scount = 0
 default ascount = 0
 default bjcount = 0
@@ -35,7 +35,7 @@ default hjcount = 0
 default fjcount = 0
 default tjcount = 0
 default creampiecount = 0
-default sexe = 0
+default sexexp = 0
 default lesexp = 0
 default fp = "None"
 default chaptercount = "Prologue"
@@ -311,7 +311,7 @@ screen stat_box():
             if not virgin:
                 text "First partner(s): [fp]"
             if not virgin:
-                text "Sex partners: [sexp]"
+                text "Sex partners: [sexpartners]"
             if not virgin and scount>=1:
                 text "Times penetrated: [scount]"
             if creampiecount >=1:
@@ -328,7 +328,7 @@ screen stat_box():
                 text "Footjobs given: [fjcount]"
             if lesexp >=1:
                 text "Lesbian sex count: [lesexp]"
-            text "Sexual experiences: [sexe]"
+            text "Sexual experiences: [sexexp]"
 
 ######### GAME START #######################################################
 
@@ -386,25 +386,25 @@ label start:
                     "A pair of lovers."
                     $virgin=False
                     $fp="Boyfriend"
-                    $sexp+=1
+                    $sexpartners+=1
                     $scount+=3
-                    $sexe+=3
+                    $sexexp+=3
                     jump introstart
                 "Experimenting with a female classmate.":
                     "A thirst for adventure."
                     $virgin=False
                     $fp="Classmate"
-                    $sexp+=1
+                    $sexpartners+=1
                     $lesexp+=1
-                    $sexe+=1
+                    $sexexp+=1
                     jump introstart
                 "A stranger during prom night.":
                     "Oh my... [pov]..."
                     $virgin=False
                     $fp="Stranger"
-                    $sexp+=1
+                    $sexpartners+=1
                     $scount+=1
-                    $sexe+=1
+                    $sexexp+=1
                     jump introstart
                 "Actually, she's a virgin after all.":
                     "You scared me for a second!"
@@ -839,7 +839,7 @@ label prologueroom:
             pov "{i}(I see them pretty much every other day, after all.){/i}"
             pov "{i}(Just a little treat for their eyes will do for now!){/i}"
             $inn +=1
-    $sexe +=1
+    $sexexp +=1
     show intro boys 10
     with fadeholdshort
     pov "{i}(This is a little bit embarrassing, after all...){/i}"
@@ -912,7 +912,7 @@ label prologueend:
                     "[vio] agreed to try it, and found she enjoyed swinging more than expected."
                     "......"
                     "And so, time moves forward..."
-                    $sexe+=5
+                    $sexexp+=5
                     $exh+=5
                     $chaptercount = 10
                     jump act2start
@@ -922,7 +922,7 @@ label prologueend:
                     "However, she was still open-minded about being with another girl, and [pov] had recently caught her attention..."
                     "......"
                     "And so, time moves forward..."
-                    $sexe+=5
+                    $sexexp+=5
                     $exh+=5
                     $chaptercount = 10
                     jump act2start
@@ -1389,7 +1389,7 @@ label chapter1:
             pov "{i}(At least not with the scene before their eyes.){/i}"
             pov "Alright, good to know!"
             $ boys_horny +=1
-            $ sexe +=1
+            $ sexexp +=1
         "Nah. I'm not in the mood.":
             pov "{i}(I mean, I'm already standing in front of them in my underwear!){/i}"
             pov "{i}(Nah... no need to get carried away.){/i}"
@@ -1629,7 +1629,7 @@ label c1boysskip:
     "{size=+15}{i}*KAPOW*{/i}{/size}"
     st "Gah!"
     girl "Are you okay?!"
-    $ sexe +=1
+    $ sexexp +=1
     play music "audio/blues.ogg" fadein 2.0 loop
     hide white
     show c1 outside 3-7
@@ -1992,7 +1992,7 @@ label chapter2:
                         pov "{i}(Ummm... anyway...){/i}"
                         pov "{i}(I'm getting a bit hungry now.){/i}"
                         pov "{i}(Maybe I'll get some ice cream before I go home?){/i}"
-                        $ sexe +=1
+                        $ sexexp +=1
                         $ c2girl_sed +=2
                         jump c2ice
                     "No, that's enough.":
@@ -2110,7 +2110,7 @@ label chapter2:
                     pov "{i}(Ummm... anyway...){/i}"
                     pov "{i}(I'm getting a bit hungry now...){/i}"
                     pov "{i}(Maybe I'll get some ice cream before I go home?){/i}"
-                    $ sexe +=1
+                    $ sexexp +=1
                     $ c2boy_sed +=2
                     jump c2ice
                 "No, that's enough.":
@@ -2301,7 +2301,7 @@ label c2hottub:
             pov "And this guy might let it get to his head and try something funny if I tease him for too long."
             pov "Sorry, random peeper dude..."
             pov "......"
-            $ sexe +=1
+            $ sexexp +=1
             $ c2poolex +=1
             $ exh +=1
         "Ignore him.":
@@ -2750,7 +2750,7 @@ label c2laundry:
                 pov "I'll try to make sure those two don't notice my lack of underwear..."
                 pov "......"
                 $ exh +=1
-                $ sexe +=1
+                $ sexexp +=1
                 $ les+=1
                 jump c2home
             "Maybe some other time.":
@@ -2826,7 +2826,7 @@ label c2laundry:
             pov "I'll try to make sure those two don't notice my lack of underwear..."
             pov "......"
             $ exh +=1
-            $ sexe +=1
+            $ sexexp +=1
             jump c2home
         "Maybe some other time.":
             show c2 laundry 11
@@ -3425,7 +3425,7 @@ label c2home:
                 pov "Well, regardless..."
                 pov "I should hurry up before being 'early' turns into being 'late'."
                 $les+=1
-                $sexe+=1
+                $sexexp+=1
                 jump c3office
             "I don't feel any different.":
                 show c3 outside 7
@@ -3438,7 +3438,7 @@ label c2home:
                 stop music fadeout 2.0
                 pov "......"
                 pov "Alright. I should hurry up before being 'early' turns into being 'late'."
-                $sexe+=1
+                $sexexp+=1
                 jump c3office
     else:
         menu:
@@ -3507,7 +3507,7 @@ label c2home:
                 pov "Well, unfortunately for him, I have to get to work."
                 pov "He can entertain himself with the memory whenever he gets back home."
                 "......"
-                $sexe+=1
+                $sexexp+=1
                 $exh+=1
                 jump c3office
             "Now's not the time.":
@@ -3936,7 +3936,7 @@ label c2home:
             pov "{i}(......){/i}"
             $c3pizza = True
             $exh+=1
-            $sexe+=1
+            $sexexp+=1
         "Pay for the food, and not waste any time.":
             pov "{i}(Hmm...){/i}"
             pov "{i}(Even if I wanted to, I just don't have the time for that right now.){/i}"
@@ -4065,7 +4065,7 @@ label c2home:
         pov "{i}(At least then we can kinda move on from what just occured.){/i}"
         pov "{i}(Guess we can play a different game for now.){/i}"
         "......"
-        $sexe +=1
+        $sexexp +=1
         $c3boytease = True
         jump c3pool
     else:
@@ -5078,7 +5078,7 @@ label c3credits:
             boy "Thanks... and sure, I guess we might..."
             pov "{size=-5}{i}(I sure hope so.){/i}{/size}"
             "......"
-            $sexe +=1
+            $sexexp +=1
         "Wait a little while first.":
             pov "Nah... I'd rather have someone different come, if possible."
             pov "Not like waiting will guarantee anything, since I obviously don't know their shifts, but..."
@@ -5141,7 +5141,7 @@ label c3credits:
                     pov "{i}(Especially teasing them directly once more...){/i}"
                     "......"
                     $les+=1
-                    $sexe+=1
+                    $sexexp+=1
                     jump c4cafe2
                 else:
                     pov "{i}(Hmm...){/i}"
@@ -5149,7 +5149,7 @@ label c3credits:
                     pov "{i}(I guess it wasn't so bad.){/i}"
                     "......"
                     $les+=1
-                    $sexe+=1
+                    $sexexp+=1
                     jump c4cafe2
 
     label c4cafe2:
@@ -5771,7 +5771,7 @@ label c4park:
                 pov "Can't risk catching a cold."
                 pov "I already {i}did{/i} get to enjoy myself for a few minutes..."
                 "......"
-                $sexe+=1
+                $sexexp+=1
                 $exh+=1
                 jump c4hroom
             else:
@@ -5801,7 +5801,7 @@ label c4park:
                 stop music fadeout 2.0
                 pov "And I already {i}did{/i} get to enjoy myself for a few minutes..."
                 "......"
-                $sexe+=1
+                $sexexp+=1
                 $exh+=1
                 jump c4hroom
         "Masturbate.":
@@ -6124,7 +6124,7 @@ label c4park:
     stop music fadeout 2.0
     fr "Sure, sounds good to me."
     fr "...... Silly [pov]..."
-    $sexe+=1
+    $sexexp+=1
 
     scene c4 end 1
     with fadeholdlong
@@ -6598,7 +6598,7 @@ label c5photoafter:
                 stop music fadeout 2.0
                 pov "...... Anyway, that's enough fooling around for now, so I'll start heading home."
                 "......"
-                $sexe+=1
+                $sexexp+=1
                 $c5touch = True
                 jump c5pizza
             "Say goodbye here.":
@@ -6772,7 +6772,7 @@ label c5photoafter:
                 pov "{i}(Crap...){/i}"
                 "......"
                 $les+=1
-                $sexe+=1
+                $sexexp+=1
                 $c5leslocker = True
                 jump c5pizza
             "Maybe another time.":
@@ -6997,7 +6997,7 @@ label c5photoafter:
                         play music "<from 5.0>audio/obento.mp3" fadein 2.0 loop
                         $c5handjob = True
                         $hjcount+=1
-                        $sexe+=1
+                        $sexexp+=1
                     "I'm not ready to try something like that yet.":
                         show c5 pizza 11
                         with dissolve
@@ -9145,7 +9145,7 @@ label c5photoafter:
                     pov "{i}*sigh*{/i}"
                     $c6poolhj = True
                     $hjcount+=1
-                    $sexe +=1
+                    $sexexp +=1
                     jump c6theater
                 "Ignore him.":
                     pov "Nah..."
@@ -9435,7 +9435,7 @@ label c5photoafter:
                 "......"
                 $c6theaterhj = True
                 $hjcount+=1
-                $sexe +=1
+                $sexexp +=1
                 $boys_horny +=1
                 jump c6theaterend
             "Stop the thought.":
@@ -9657,7 +9657,7 @@ label c5photoafter:
             pov "Alright. Let's try watching something else for now, then."
             $c6joshfj = True
             $fjcount+=1
-            $sexe +=1
+            $sexexp +=1
             $boys_horny +=1
             jump c6end
         "Keep watching TV.":
@@ -10426,7 +10426,7 @@ label c5photoafter:
             pov "{i}(Plus... I can't really ignore Josh, either.){/i}"
             pov "{i}(He might need a turn one day, too...){/i}"
             "......"
-            $sexe+=1
+            $sexexp+=1
             $bjcount+=1
             $c7connorbj = True
         "Maybe another time.":
@@ -10802,7 +10802,7 @@ label c7choice:
                         eve "Nice to meet you, [pov]."
                         "......"
                         $les+=1
-                        $sexe+=1
+                        $sexexp+=1
                         $c7lockerles = True
                     "Hold back.":
                         pov "Hmm..."
@@ -11043,7 +11043,7 @@ label c7choice:
                     pov "......"
                     pov "{i}*giggles*{/i}"
                     $bjcount+=1
-                    $sexe+=1
+                    $sexexp+=1
                     $c7poolbj = True
                 "This is going too far.":
                     show c7 pool 1
@@ -12524,7 +12524,7 @@ label c7ending:
             "......"
             $c8viokiss=True
             $les+=1
-            $sexe+=1
+            $sexexp+=1
         "Brush her off.":
             show c8 vio 30
             with dissolvelong
@@ -12839,7 +12839,7 @@ label c7ending:
                             $bjcount+=1
                             $hjcount+=1
                             $tjcount+=1
-                            $sexe+=1
+                            $sexexp+=1
                         "Titty climax.":
                             show c8 josh tjclimax 1
                             with dissolvelong
@@ -12873,7 +12873,7 @@ label c7ending:
                             pov "I'm not used to doing this, after all..."
                             pov "Oh well."
                             $tjcount+=1
-                            $sexe+=1
+                            $sexexp+=1
                     show c8 josh end 1
                     with fadeholdlong
                     j "......"
@@ -13360,7 +13360,7 @@ label c7ending:
             pov "{i}(Horny, and super-horny...){/i}"
             "......"
             $bjcount+=1
-            $sexe+=1
+            $sexexp+=1
             $c8pizzaboy = True
         "Request a female delivery driver.":
             pov "I'll put in a special request for a female driver."
@@ -13453,7 +13453,7 @@ label c7ending:
                 wom "Thank you for that."
                 "......"
                 $les+=1
-                $sexe+=1
+                $sexexp+=1
                 $c8pizzagirl = True
         "On second thought, I'll pass.":
             pov "Actually..."
@@ -13784,7 +13784,7 @@ label c7ending:
             "......"
             $c8frkiss=True
             $les+=1
-            $sexe+=1
+            $sexexp+=1
         "Say goodnight.":
             pov "{i}(Nah... I don't want to go too far.){/i}"
             if les>=3:
@@ -13976,7 +13976,7 @@ label c7ending:
             luna "Sure. What did you have in mind?"
             "......"
             $les+=1
-            $sexe+=1
+            $sexexp+=1
             $c8lunaundress=True
         "Finish getting dressed.":
             show c8 cafe 20
@@ -14975,7 +14975,7 @@ label c9office:
                         pov "I haven't been a virgin, ever since..."
                         $virgin=False
                         $fp="Evelyn"
-                        $sexp+=1
+                        $sexpartners+=1
                         $lesexp+=1
                     "It didn't mean anything.":
                         pov "Nah..."
@@ -14993,7 +14993,7 @@ label c9office:
                         pov "It's hard to just write off what happened."
                         pov "I guess... maybe..."
                         pov "I've been a lot more active than I imagined."
-                        $sexp+=1
+                        $sexpartners+=1
                         $lesexp+=1
                     "It didn't mean anything.":
                         pov "Nah..."
@@ -15594,11 +15594,11 @@ label c9cjscene:
                 if virgin:
                     $virgin=False
                     $fp="CJ"
-                $sexp+=2
+                $sexpartners+=2
                 $scount+=2
                 $bjcount+=2
                 $hjcount+=2
-                $sexe+=1
+                $sexexp+=1
                 $cjhadsex=True
                 jump c9jason
             "Pick Josh.":
@@ -15851,18 +15851,18 @@ label c9cjscene:
                 if virgin:
                     $virgin=False
                     $fp="CJ"
-                $sexp+=2
+                $sexpartners+=2
                 $scount+=2
                 $bjcount+=2
                 $hjcount+=2
-                $sexe+=1
+                $sexexp+=1
                 $cjhadsex=True
                 jump c9jason
             "I'm going to stop here.":
                 $c9cjstop=True
                 $bjcount+=2
                 $hjcount+=2
-                $sexe+=1
+                $sexexp+=1
                 pov "{i}(On second thought...){/i}"
                 pov "{i}(I really don't know if I want to go all the way today.){/i}"
                 pov "{i}(I'm starting to get nervous, and that's never a good sign...){/i}"
@@ -16279,8 +16279,8 @@ label c9lunascene:
         if virgin:
             $virgin=False
             $fp="Luna"
-        $sexp+=1
-        $sexe+=1
+        $sexpartners+=1
+        $sexexp+=1
         $les+=1
         $lesexp+=1
 
@@ -16626,8 +16626,8 @@ label c9vioscene:
         if virgin:
             $virgin=False
             $fp="Violet"
-        $sexp+=1
-        $sexe+=1
+        $sexpartners+=1
+        $sexexp+=1
         $les+=1
         $lesexp+=1
 
@@ -16923,8 +16923,8 @@ label c9harukascene:
         if virgin:
             $virgin=False
             $fp="Haruka"
-        $sexp+=1
-        $sexe+=1
+        $sexpartners+=1
+        $sexexp+=1
         $les+=1
         $lesexp+=1
 
@@ -17567,8 +17567,8 @@ label act2start:
                                 $virgin=False
                                 if fp=="None":
                                     $fp="Pool Pervert"
-                                $sexp+=1
-                                $sexe+=1
+                                $sexpartners+=1
+                                $sexexp+=1
                                 $scount+=1
                                 $hjcount+=1
                                 $c10poolsex=True
@@ -17636,7 +17636,7 @@ label act2start:
                                 "......"
                                 scene c10 transition 1 with fadeholdlong
                                 show aug 26 with dissolve
-                                $sexe+=1
+                                $sexexp+=1
                                 $hjcount+=1
                                 play music "audio/city.mp3" fadein 2.0 loop
                                 pov "Okay..."
@@ -18759,7 +18759,7 @@ label c10aftershoot:
                         "......"
                         $bjcount+=1
                         $hjcount+=1
-                        $sexe+=1
+                        $sexexp+=1
                         $c10outsidebj=True
                         jump c10stream
                     else:
@@ -18771,7 +18771,7 @@ label c10aftershoot:
                         "......"
                         $bjcount+=1
                         $hjcount+=1
-                        $sexe+=1
+                        $sexexp+=1
                         $c10outsidebj=True
                         jump c10stream
                 "Leave now.":
@@ -19599,8 +19599,8 @@ label c10complete:
                             $virgin=False
                             if fp=="None":
                                 $fp="Pizza Boy"
-                            $sexp+=1
-                            $sexe+=1
+                            $sexpartners+=1
+                            $sexexp+=1
                             $bjcount+=1
                             $hjcount+=1
                             $scount+=1
@@ -19629,7 +19629,7 @@ label c10complete:
                             "......"
                             $bjcount+=1
                             $hjcount+=1
-                            $sexe+=1
+                            $sexexp+=1
                             $c11pizzacancel=True
                             if c5viomff or c5viommf:
                                 jump c11vio
@@ -19901,8 +19901,8 @@ label c10complete:
                                 $fp="Female Stranger"
                             $lesexp+=1
                             $les+=1
-                            $sexe+=1
-                            $sexp+=1
+                            $sexexp+=1
+                            $sexpartners+=1
                             if c5viomff or c5viommf:
                                 jump c11vio
                             if not c5viomff and not c5viommf:
@@ -20570,9 +20570,9 @@ label c11stream:
             else:
                 pov "I have had sex before."
                 pov "But I'm still pretty inexperienced."
-                if sexp>=2:
-                    pov "In fact, I've only done it with [sexp] people before."
-                if sexp==1:
+                if sexpartners>=2:
+                    pov "In fact, I've only done it with [sexpartners] people before."
+                if sexpartners==1:
                     pov "In fact, I've only done it with one person before."
             show c11 stream 13
             with dissolve
@@ -21558,10 +21558,10 @@ label c12mia:
             $virgin=False
             if fp=="None":
                 $fp="Mia"
-            $sexp+=1
+            $sexpartners+=1
             $lesexp+=1
             $les+=1
-            $sexe+=1
+            $sexexp+=1
             $c12miasex=True
             jump c12waterpark
         "Stop the thought.":
@@ -21784,7 +21784,7 @@ label c12cj:
             with dissolvelong
             $c12connorhj=True
             $hjcount+=1
-            $sexe+=1
+            $sexexp+=1
             pov "You let out so much."
             pov "Did I really turn you on that much?"
             c "Yeah... you did."
@@ -22095,8 +22095,8 @@ label c12cj:
                                 $virgin=False
                                 $fp="CJ"
                             if not c9connorfirst and not c9joshfirst:
-                                $sexp+=2
-                            $sexe+=1
+                                $sexpartners+=2
+                            $sexexp+=1
                             $scount+=2
                             $hjcount+=2
                             $bjcount+=1
@@ -22158,8 +22158,8 @@ label c12cj:
                                 $virgin=False
                                 $fp="CJ"
                             if not c9connorfirst and not c9joshfirst:
-                                $sexp+=2
-                            $sexe+=1
+                                $sexpartners+=2
+                            $sexexp+=1
                             $scount+=2
                             $hjcount+=2
                             $bjcount+=1
@@ -22393,10 +22393,10 @@ label c12waterpark:
                 $virgin=False
                 if fp=="None":
                     $fp="Female Stranger"
-                $sexp+=1
+                $sexpartners+=1
                 $lesexp+=1
                 $les+=1
-                $sexe+=1
+                $sexexp+=1
                 $c12waterparkfemale=True
                 jump c12end
             "Ignore her.":
@@ -22591,7 +22591,7 @@ label c12waterpark:
             pov "{i}(I enjoyed it a lot more than I expected.){/i}"
             "......"
             $bjcount+=1
-            $sexe+=1
+            $sexexp+=1
             $c12waterparkmale=True
         "Ignore him.":
             pov "{i}(Nah, not a chance...){/i}"
@@ -24228,7 +24228,7 @@ label c13haruka:
                     pov "{i}(Hmm...){/i}"
                     "......"
                     $fjcount+=1
-                    $sexe+=1
+                    $sexexp+=1
                     jump c13cafe
                 "Use my boobs.":
                     pov "{i}(He likes my boobs a lot, so...){/i}"
@@ -24310,7 +24310,7 @@ label c13haruka:
                     pov "{i}(Hmm...){/i}"
                     "......"
                     $tjcount+=1
-                    $sexe+=1
+                    $sexexp+=1
         "Watch anime.":
             pov "{i}(Nah...){/i}"
             pov "{i}(I'm not really getting that feeling right now.){/i}"
@@ -24629,7 +24629,7 @@ label c13viotalk:
             pov "{i}(I've become a really horny girl lately, haven't I...){/i}"
             "......"
             $c13lucashj=True
-            $sexe+=1
+            $sexexp+=1
             $hjcount+=1
             jump c13aftercafe
         "Get changed.":
@@ -25188,9 +25188,9 @@ label c13aftercafe:
                         $virgin=False
                         $fp="Luna"
                     if not c9lunasex:
-                        $sexp+=1
+                        $sexpartners+=1
                     $lesexp+=1
-                    $sexe+=1
+                    $sexexp+=1
                     $les+=1
                     jump c13beforespa
                 "I just want to kiss.":
@@ -26049,7 +26049,7 @@ label c13downtown:
                 pov "Yeah... I'll just lay here for a little while."
                 pov "Goodnight, everyone."
                 "......"
-                $sexe+=1
+                $sexexp+=1
                 if virgin:
                     $virgin=False
                     $fp="Dildo"
@@ -27140,7 +27140,7 @@ label c14mixedbeach:
             pov "{i}(Time to head back home, I guess.){/i}"
             pov "{i}(I've been a bad girl today...){/i}"
             "......"
-            $sexe+=1
+            $sexexp+=1
             $bjcount+=1
             $hjcount+=2
             $c14beachmalesex=True
@@ -27481,9 +27481,9 @@ label c14femalebeach:
             pov "{i}(Time to head back home, I guess.){/i}"
             if virgin:
                 pov "{i}(As a virgin no longer...){/i}"
-            $sexe+=1
+            $sexexp+=1
             $lesexp+=1
-            $sexp+=2
+            $sexpartners+=2
             if virgin:
                 $virgin=False
                 $fp="Beach Strangers"
@@ -27993,9 +27993,9 @@ label c14busafter:
                 $virgin=False
                 $fp="Haruka"
             if not c9harukasex:
-                $sexp+=1
+                $sexpartners+=1
             $lesexp+=1
-            $sexe+=1
+            $sexexp+=1
             jump c14transition
         "Play video games together.":
             pov "{i}(No... I don't think that's right.){/i}"
@@ -28642,7 +28642,7 @@ label c14cjhome:
                             "......."
                             $c14cjsex=True
                             $cjhadsex=True
-                            $sexe+=1
+                            $sexexp+=1
                             $bjcount+=2
                             $hjcount+=2
                             $scount+=2
@@ -28652,7 +28652,7 @@ label c14cjhome:
                                 $virgin=False
                                 $fp="CJ"
                             if not c12cjsex and not c9connorfirst and not c9joshfirst:
-                                $sexp+=2
+                                $sexpartners+=2
                             $creampiecount+=2
                             jump c14ending
                         "Cum outside.":
@@ -28709,7 +28709,7 @@ label c14cjhome:
                             "......."
                             $c14cjsex=True
                             $cjhadsex=True
-                            $sexe+=1
+                            $sexexp+=1
                             $bjcount+=2
                             $hjcount+=2
                             $scount+=2
@@ -28719,7 +28719,7 @@ label c14cjhome:
                                 $virgin=False
                                 $fp="CJ"
                             if not c12cjsex and not c9connorfirst and not c9joshfirst:
-                                $sexp+=2
+                                $sexpartners+=2
                             jump c14ending
                 "I only want to use my pussy.":
                     pov "No... sorry..."
@@ -28810,7 +28810,7 @@ label c14cjhome:
                             "......."
                             $c14cjsex=True
                             $cjhadsex=True
-                            $sexe+=1
+                            $sexexp+=1
                             $bjcount+=2
                             $hjcount+=2
                             $scount+=2
@@ -28818,7 +28818,7 @@ label c14cjhome:
                                 $virgin=False
                                 $fp="CJ"
                             if not c12cjsex and not c9connorfirst and not c9joshfirst:
-                                $sexp+=2
+                                $sexpartners+=2
                             $creampiecount+=1
                             jump c14ending
                         "Cum outside, please.":
@@ -28872,7 +28872,7 @@ label c14cjhome:
                             "......."
                             $c14cjsex=True
                             $cjhadsex=True
-                            $sexe+=1
+                            $sexexp+=1
                             $bjcount+=2
                             $hjcount+=2
                             $scount+=2
@@ -28880,7 +28880,7 @@ label c14cjhome:
                                 $virgin=False
                                 $fp="CJ"
                             if not c12cjsex and not c9connorfirst and not c9joshfirst:
-                                $sexp+=2
+                                $sexpartners+=2
                             jump c14ending
         "Watch TV together.":
             pov "{i}(No... I'm not sure why I thought of that.){/i}"
@@ -29175,9 +29175,9 @@ label c14vio:
                         $virgin=False
                         $fp="Violet"
                     if not c9viosex:
-                        $sexp+=1
+                        $sexpartners+=1
                     $lesexp+=1
-                    $sexe+=1
+                    $sexexp+=1
                     jump c14ending
                 "I want to try anal.":
                     pov "{i}(Yeah... I've been curious about anal lately.){/i}"
@@ -29332,7 +29332,7 @@ label c14vio:
                     $analvirgin=False
                     $ascount+=1
                     $lesexp+=1
-                    $sexe+=1
+                    $sexexp+=1
                     jump c14ending
 
         "Let's just watch another movie.":
@@ -31372,15 +31372,15 @@ label c15girlsnight:
                 pov "{i}(Either way, that's a topic for another day.){/i}"
                 pov "{i}(For now, I just want to spend the next few minutes relaxing with them in bed.){/i}"
                 pov "{i}(I'll be lonely when they have to go back after...){/i}"
-                $sexe+=1
+                $sexexp+=1
                 $lesexp+=1
                 if virgin:
                     $virgin=False
                     $fp="Luna & Haruka"
                 if not c9harukasex and not c14harukasex:
-                    $sexp+=1
+                    $sexpartners+=1
                 if not c9lunasex and not c13lunasex:
-                    $sexp+=1
+                    $sexpartners+=1
                 $c15girlsthreesome=True
                 "......"
                 jump c15massage
@@ -31553,7 +31553,7 @@ label c15massage:
             pov "{i}(Is this really something I want to do, though?){/i}"
             menu:
                 "Ask for a more 'hands-on' massage.":
-                    $sexe+=1
+                    $sexexp+=1
                     pov "Hey, umm..."
                     man "Yes?"
                     pov "If I gave you a tip, would you be willing to do something different for me?"
@@ -31807,7 +31807,7 @@ label c15massage:
                 pov "{i}(Is this really something I want to do, though?){/i}"
                 menu:
                     "Ask for a more 'hands-on' massage.":
-                        $sexe+=1
+                        $sexexp+=1
                         pov "Hey, umm..."
                         wom "Yes?"
                         pov "If I gave you a tip, would you be willing to do something different for me?"
@@ -33657,8 +33657,8 @@ label c16hotsprings:
                         if virgin:
                             $virgin=False
                             $fp="Hotsprings Man"
-                        $sexe+=1
-                        $sexp+=1
+                        $sexexp+=1
+                        $sexpartners+=1
                         $scount+=1
                         jump c16cafe
                     "Fuck him {b}(Anal){/b}":
@@ -33790,8 +33790,8 @@ label c16hotsprings:
                         pov "{i}(What's gotten into me lately...){/i}"
                         $analvirgin=False
                         $ascount+=1
-                        $sexe+=1
-                        $sexp+=1
+                        $sexexp+=1
+                        $sexpartners+=1
                         $scount+=1
                         jump c16cafe
                     "Stop here.":
@@ -33824,7 +33824,7 @@ label c16hotsprings:
                         pov "{i}(I should clean up and get going soon.){/i}"
                         pov "{i}(There's still some of his cum in the back of my throat...){/i}"
                         "......"
-                        $sexe+=1
+                        $sexexp+=1
                         $c16mixedbjonly
                         jump c16cafe
             "I'm just here to relax.":
@@ -34830,9 +34830,9 @@ label c17spafemalescene:
     $virgin=False
     if fp=="None":
         $fp="Masseuse"
-    $sexp+=1
+    $sexpartners+=1
     $lesexp+=1
-    $sexe+=1
+    $sexexp+=1
     show c17 spasexafter 1
     with fadeholdlong
     pov "{i}(That was quite an experience.){/i}"
@@ -35038,9 +35038,9 @@ label c17spamalescene:
             $virgin=False
             if fp=="None":
                 $fp="Masseur"
-            $sexp+=1
+            $sexpartners+=1
             $creampiecount+=1
-            $sexe+=1
+            $sexexp+=1
             $scount+=1
         "Cum outside.":
             pov "Outside, please..."
@@ -35057,8 +35057,8 @@ label c17spamalescene:
             $virgin=False
             if fp=="None":
                 $fp="Masseur"
-            $sexp+=1
-            $sexe+=1
+            $sexpartners+=1
+            $sexexp+=1
             $scount+=1
     show c17 spasexafter 1
     with fadeholdlong
@@ -35582,9 +35582,9 @@ label c17hotsprings:
             if fp=="None":
                 $fp="Hotsprings Girl"
             $les+=1
-            $sexp+=1
+            $sexpartners+=1
             $lesexp+=2
-            $sexe+=1
+            $sexexp+=1
             if c16pokermale:
                 jump c17pokermale
             if c16pokergirls:
@@ -35983,11 +35983,11 @@ label c17pokermale:
                     if fp=="None":
                         $fp="CJ & Cedrick"
                     if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
-                        $sexp+=1
+                        $sexpartners+=1
                     else:
-                        $sexp+=3
+                        $sexpartners+=3
                     $scount+=3
-                    $sexe+=3
+                    $sexexp+=3
                     $ascount+=2
                     $bjcount+=3
                     $hjcount+=3
@@ -36054,11 +36054,11 @@ label c17pokermale:
                     if fp=="None":
                         $fp="CJ & Cedrick"
                     if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
-                        $sexp+=1
+                        $sexpartners+=1
                     else:
-                        $sexp+=3
+                        $sexpartners+=3
                     $scount+=3
-                    $sexe+=3
+                    $sexexp+=3
                     $ascount+=2
                     $bjcount+=3
                     $hjcount+=3
@@ -36139,11 +36139,11 @@ label c17pokermale:
                     if fp=="None":
                         $fp="CJ & Cedrick"
                     if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
-                        $sexp+=1
+                        $sexpartners+=1
                     else:
-                        $sexp+=3
+                        $sexpartners+=3
                     $scount+=3
-                    $sexe+=3
+                    $sexexp+=3
                     $bjcount+=3
                     $hjcount+=3
                     $creampiecount+=2
@@ -36171,11 +36171,11 @@ label c17pokermale:
                     if fp=="None":
                         $fp="CJ & Cedrick"
                     if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
-                        $sexp+=1
+                        $sexpartners+=1
                     else:
-                        $sexp+=3
+                        $sexpartners+=3
                     $scount+=3
-                    $sexe+=3
+                    $sexexp+=3
                     $bjcount+=3
                     $hjcount+=3
             show c17 pokersex boys 30
@@ -36469,7 +36469,7 @@ label c17pokergirls:
     if fp=="None":
         $fp="Haruka"
     $lesexp+=2
-    $sexe+=2
+    $sexexp+=2
     show c17 pokersex girls 15
     with fadeholdlong
     pov "{i}(That... that was quite something.){/i}"
@@ -36840,9 +36840,9 @@ label c17pokervio:
     $virgin=False
     if fp=="None":
         $fp="Nick"
-    $sexp+=1
+    $sexpartners+=1
     $scount+=1
-    $sexe+=1
+    $sexexp+=1
     $bjcount+=1
     $hjcount+=1
     show c17 ending 1
@@ -37326,11 +37326,11 @@ label c17pokerharuka:
     if fp=="None":
         $fp="Josh"
     if not c12cjsex and not c9connorfirst and not c9joshfirst and not c14cjsex:
-        $sexp+=1
+        $sexpartners+=1
     $scount+=1
     $bjcount+=1
     $hjcount+=1
-    $sexe+=1
+    $sexexp+=1
     show c17 ending 1
     with fadeholdlong
     pov "Whew..."
@@ -37644,7 +37644,7 @@ label c17endchapter:
                 pov "{i}(There's always a chance this could happen again.){/i}"
                 pov "{i}(And I wouldn't want that to happen... right?){/i}"
                 "......"
-                $sexe+=1
+                $sexexp+=1
                 $c18busendure=True
                 if not c16lunamalemodel and not c16lunafemmodel:
                     jump c18cafe
@@ -37746,7 +37746,7 @@ label c17endchapter:
                 pov "{i}(There's always a chance this could happen again.){/i}"
                 pov "{i}(And I wouldn't want that to happen... right?){/i}"
                 "......"
-                $sexe+=1
+                $sexexp+=1
                 $c18busendure=True
                 if not c16lunamalemodel and not c16lunafemmodel:
                     jump c18cafe
@@ -38750,9 +38750,9 @@ label c18cafe:
                 if virgin:
                     $virgin=False
                     $fp="Stripclub Girl"
-                $sexp+=1
+                $sexpartners+=1
                 $lesexp+=1
-                $sexe+=1
+                $sexexp+=1
                 jump c18stripclubafter
             "No thanks.":
                 label c18striplescancel:
@@ -38890,9 +38890,9 @@ label c18cafe:
                     $virgin=False
                     $fp="Violet"
                 if not c9viosex and not c14viosexvag and not c14viosexanal and not c17pokermixedvio and not c17pokersexvio:
-                    $sexp+=1
+                    $sexpartners+=1
                 $lesexp+=1
-                $sexe+=1
+                $sexexp+=1
                 jump c18stripclubafter
     else:
         manl "Heya. You two busy?"
@@ -39066,10 +39066,10 @@ label c18cafe:
                 if virgin:
                     $virgin=False
                     $fp="Stripclub Strangers"
-                $sexp+=2
+                $sexpartners+=2
                 $bjcount+=1
                 $scount+=2
-                $sexe+=1
+                $sexexp+=1
                 jump c18stripclubafter
             "No thanks.":
                 label c18stripmalecancel:
@@ -39206,9 +39206,9 @@ label c18cafe:
                     $virgin=False
                     $fp="Violet"
                 if not c9viosex and not c14viosexvag and not c14viosexanal and not c17pokermixedvio and not c17pokersexvio:
-                    $sexp+=1
+                    $sexpartners+=1
                 $lesexp+=1
-                $sexe+=1
+                $sexexp+=1
                 jump c18stripclubafter
 
 label c18stripclubafter:
@@ -39931,7 +39931,7 @@ label act3start:
                 pov "The whole room has a woman's smell now."
                 pov "Gotta get cleaning."
                 "......"
-                $sexe+=1
+                $sexexp+=1
                 $les+=1
                 jump c19lunauni
             if not lesonly==True:
@@ -40088,7 +40088,7 @@ label act3start:
                 pov "... Gotta get cleaning. Can't eat like this..."
                 "......"
                 $hjcount+=1
-                $sexe+=1
+                $sexexp+=1
                 jump c19lunauni
         "I just want to eat.":
             $inn+=1
@@ -40721,7 +40721,7 @@ label c19ritaoutside:
                     pov "{i}(Well, I've realized... it really turns me on.){/i}"
                     "......"
                     $bjcount+=1
-                    $sexe+=1
+                    $sexexp+=1
                     jump c19ritacomputer
                 "No way! I could get fired!":
                     $inn+=1
@@ -41348,7 +41348,7 @@ label c19viodate:
                 $fp="Violet"
                 $virgin=False
             if not c9viosex and not c14viosexvag and not c14viosexanal and not c17pokermixedvio and not c17pokersexvio:
-                $sexp+=1
+                $sexpartners+=1
             $scount+=1
             $lesexp+=1
             jump c19end

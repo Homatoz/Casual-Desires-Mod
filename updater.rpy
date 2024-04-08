@@ -19,6 +19,16 @@ label after_load:
         $ del anvi
         $ save_updated = True
 
+    if hasattr(renpy.store, 'sexp'):
+        $ sexpartners = sexp
+        $ del sexp
+        $ save_updated = True
+
+    if hasattr(renpy.store, 'sexe'):
+        $ sexexp = sexe
+        $ del sexe
+        $ save_updated = True
+
     if save_updated:
         $ renpy.notify("Save updated")
         $ renpy.block_rollback()
