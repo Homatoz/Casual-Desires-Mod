@@ -24,8 +24,8 @@ define dissolvelong = Dissolve(2.0)
 define dissolveverylong = Dissolve(5.0)
 
 #VISIBLE STATS
-default vir = "Yes"
-default anvi = "Yes"
+default virgin = True
+default analvirgin = True
 default perv = 0
 default sexp = 0
 default scount = 0
@@ -304,19 +304,19 @@ screen stat_box():
                 text "Prologue"
             if chaptercount != "Prologue":
                 text "Chapter [chaptercount]"
-            if vir == "Yes":
+            if virgin:
                 text "Virgin"
-            if anvi == "Yes":
+            if analvirgin:
                 text "Anal virgin"
-            if vir == "No":
+            if not virgin:
                 text "First partner(s): [fp]"
-            if vir == "No":
+            if not virgin:
                 text "Sex partners: [sexp]"
-            if vir == "No" and scount>=1:
+            if not virgin and scount>=1:
                 text "Times penetrated: [scount]"
             if creampiecount >=1:
                 text "Times creampied: [creampiecount]"
-            if anvi == "No":
+            if not analvirgin:
                 text "Anal sex count: [ascount]"
             if hjcount >=1:
                 text "Handjobs given: [hjcount]"
@@ -384,7 +384,7 @@ label start:
             menu:
                 "A boyfriend in high school.":
                     "A pair of lovers."
-                    $vir="No"
+                    $virgin=False
                     $fp="Boyfriend"
                     $sexp+=1
                     $scount+=3
@@ -392,7 +392,7 @@ label start:
                     jump introstart
                 "Experimenting with a female classmate.":
                     "A thirst for adventure."
-                    $vir="No"
+                    $virgin=False
                     $fp="Classmate"
                     $sexp+=1
                     $lesexp+=1
@@ -400,7 +400,7 @@ label start:
                     jump introstart
                 "A stranger during prom night.":
                     "Oh my... [pov]..."
-                    $vir="No"
+                    $virgin=False
                     $fp="Stranger"
                     $sexp+=1
                     $scount+=1
@@ -605,7 +605,7 @@ label prologueroom:
     pov "There were rumours at first, I mean... a girl hanging out with two guys after school all the time..."
     pov "But I was never on bad terms with my other classmates, so that got cleared up pretty quick. {size=-5}(Thank god for that...){/size}"
     pov "I just never really became too close with anyone else."
-    if vir=="Yes":
+    if virgin:
         pov "Not in high school, at least."
         show intro room 4
         with dissolvelong
@@ -623,7 +623,7 @@ label prologueroom:
         pov "Personally, I just don't want to have sex simply because everyone else is doing it, or because I feel like I'll be judged if I don't."
         pov "I want to experience it when the time is right."
         pov "I don't want to regret anything."
-    if vir=="No":
+    else:
         pov "Well..."
         show intro room 4
         with fadeholdshort
@@ -1981,9 +1981,9 @@ label chapter2:
                         pov "{i}(Come to think of it...){/i}"
                         show c2 outside 2-11
                         with dissolve
-                        if vir=="Yes":
+                        if virgin:
                             pov "{i}(That was my first time having someone touch me there, huh...){/i}"
-                        if vir=="No":
+                        else:
                             pov "{i}(They really just touched me there, huh...){/i}"
                         pov "{i}(......){/i}"
                         stop music fadeout 2.0
@@ -2099,9 +2099,9 @@ label chapter2:
                     pov "{i}(Come to think of it...){/i}"
                     show c2 outside 2-11
                     with dissolve
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(That was my first time having a boy touch me there, huh...){/i}"
-                    if vir=="No":
+                    else:
                         pov "{i}(That boy really just touched me there, huh...){/i}"
                     pov "{i}(......){/i}"
                     stop music fadeout 2.0
@@ -2200,9 +2200,9 @@ label c2ice:
     if c2boy_sed >=2:
         pov "{i}(I can't get that boy out of my head...){/i}"
         pov "{i}(That feeling when he touched my boob...){/i}"
-        if vir=="Yes":
+        if virgin:
             pov "{i}(It was my first time being touched there, but my body reacted immediately.){/i}"
-        if vir=="No":
+        else:
             pov "{i}(My body reacted immediately.){/i}"
     stop music fadeout 2.0
     show c2 toilet 2
@@ -2288,7 +2288,7 @@ label c2hottub:
             with dissolve
             pov "I do have a nice body, after all. {i}*giggles*{/i}"
             pov "That's one area I definitely have confidence in."
-            if vir=="Yes":
+            if virgin:
                 pov "Actually..."
                 pov "Now that I think of it, this is the first time someone has seen me topless, huh..."
                 pov "It's kind of exciting..."
@@ -2608,17 +2608,17 @@ label c2hottub:
             with dissolve
             pov "{i}(......){/i}"
             pov "{i}(I can't believe what I'm seeing.){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(I mean, I've seen lots of porn, so it's not as though I don't know what a dick looks like.){/i}"
-            if vir=="No" and fp=="Boyfriend" or fp=="Stranger":
+            if fp=="Boyfriend" or fp=="Stranger":
                 pov "{i}(I mean, it's not like I haven't had sex before, so I know what a dick looks like.){/i}"
-            if vir=="No" and fp=="Classmate":
+            if fp=="Classmate":
                 pov "{i}(I mean, I've had sex before... with another girl.){/i}"
             pov "{i}(But...){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(This is the first time I've seen a dick in real life.)"
                 pov "{i}(Or people having sex, for that matter.){/i}"
-            if vir=="No":
+            else:
                 pov "{i}(It's my first time watching another couple doing it.){/i}"
             show c2 outside 3-19
             with dissolve
@@ -2648,7 +2648,7 @@ label c2hottub:
             pov "{i}(I should be thankful that she didn't see me...){/i}"
             pov "{i}(Hmm... I wonder, though...){/i}"
             pov "{i}(One day, will I get to do things like that, with someone I like?){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(I still have no idea what sex feels like.){/i}"
                 pov "{i}(Obviously, it's probably a lot different than my fingers...){/i}"
             stop music fadeout 2.0
@@ -3115,11 +3115,11 @@ label c2home:
         pov "......"
         show c3 intro 3
         with dissolve
-        if vir=="Yes":
+        if virgin:
             pov "Well, I can't deny I'd like for something like that to happen one day."
             pov "But I don't really feel ready for sex... yet."
             pov "If there was someone I was interested in, perhaps..."
-        if vir=="No":
+        else:
             pov "Well, I can't deny that I'd like to have sex again one day."
             pov "Right now, there just isn't anyone I'd be comfortable doing it with."
             pov "...... {i}Right{/i}?"
@@ -3136,7 +3136,7 @@ label c2home:
             pov "I mean... I {i}did{/i} fool around with that girl back in high school."
             pov "And I still haven't forgotten how exciting that experience was."
             pov "So, maybe... my mind was trying to tell me something through that dream?"
-        if vir=="Yes":
+        if virgin:
             pov "I mean, I {i}have{/i} seen porn of two girls playing with each other before."
             pov "But I only watched those videos out of... curiosity."
             pov "It's not like I'd want to try it myself or anything... right?"
@@ -3155,9 +3155,9 @@ label c2home:
         show c3 intro 3
         with dissolve
         pov "But there's no way I'd be comfortable doing something like that..."
-        if vir=="Yes":
+        if virgin:
             pov "I haven't even had sex yet in the first place!"
-        if vir=="No":
+        else:
             pov "I've still only had sex with one person."
         pov "Then again, I {i}have{/i} been having a lot of perverted thoughts lately."
         pov "So perhaps this isn't so surprising, after all..."
@@ -6891,13 +6891,13 @@ label c5photoafter:
                         play music "audio/blues.ogg" fadein 4.0 loop
                         pov "Wow..."
                         pov "{i}(.......){/i}"
-                        if vir=="No":
+                        if virgin:
+                            pov "{i}(This is my first time seeing one up close like this...){/i}"
+                            pov "{i}(I've also never touched a penis before...){/i}"
+                        else:
                             pov "{i}(It's so close to me.){/i}"
                             pov "{i}(Although I have had sex before, back in high school...){/i}"
                             pov "{i}(I still haven't touched a penis directly like this.){/i}"
-                        if vir=="Yes":
-                            pov "{i}(This is my first time seeing one up close like this...){/i}"
-                            pov "{i}(I've also never touched a penis before...){/i}"
                         pov "{i}(It feels kind of... weird... a lot harder and warmer than I imagined.){/i}"
                         pov "{i}(No wonder guys have so much trouble hiding it when they get excited.){/i}"
                         pov "{i}(Doesn't it hurt when they're hard and have clothes on?){/i}"
@@ -6987,7 +6987,7 @@ label c5photoafter:
                         pov "{i}(I still have to pay for the pizza, after all, and he's still working.){/i}"
                         pov "{i}(.......){/i}"
                         pov "{i}(That was sure something, huh...){/i}"
-                        if vir=="Yes":
+                        if virgin:
                             pov "{i}(My first time touching a penis, and first time seeing semen.){/i}"
                         pov "{i}(It was pretty fun, I'll admit...){/i}"
                         stop music fadeout 3.0
@@ -7004,7 +7004,7 @@ label c5photoafter:
                         pov "{i}(Nah... I'll have plenty of other chances to do something like that.){/i}"
                         pov "{i}(Maybe I'd feel more comfortable doing it with someone I'm closer with?){/i}"
                         pov "{i}(Josh, or Connor, maybe? I'm not sure...){/i}"
-                        if vir=="Yes":
+                        if virgin:
                             pov "{i}(It would be my first time touching a guy, so that might be the safer choice...){/i}"
                         pov "{i}(......){/i}"
                         pov "Anyway, I'd like to keep you hanging around longer, but I'm sure you have other work to attend to."
@@ -10408,11 +10408,11 @@ label c5photoafter:
             pov "Make sure to read up on how to touch a girl, since I'm pretty sure you don't know how to."
             pov "You're a little virgin boy, after all."
             c "H-Hey!"
-            if vir=="Yes":
+            if virgin:
                 c "Aren't you a virgin, too?!"
                 pov "{i}*giggles*{/i}"
                 pov "Yeah, you've caught me there."
-            if vir=="No":
+            else:
                 c "{i}*giggles*{/i}"
             pov "{i}(Overall...){/i}"
             pov "{i}(While this was all pretty sudden, and perverted...){/i}"
@@ -12385,18 +12385,18 @@ label c7ending:
     show c8 vio 14
     with dissolve
     pov "Hey now..."
-    if vir=="Yes":
+    if virgin:
         pov "You aren't exactly wrong, but still..."
         pov "It's not like I haven't done {i}anything{/i}."
         pov "And I never really felt like I needed to rush into it, either."
-    if vir=="No":
+    else:
         pov "I have had sex... just, well... only with one person..."
     show c8 vio 15
     with dissolve
-    if vir=="Yes":
+    if virgin:
         vio "No, of course you don't have to. I one hundred percent agree."
         vio "It's just, personally, I wouldn't have been able to wait."
-    if vir=="No":
+    else:
         vio "Oh? I guessed slightly wrong, then."
         vio "But one person and you may as well still be considered a virgin."
     vio "My first time was... I think when I was 15 or 16?"
@@ -12407,10 +12407,10 @@ label c7ending:
         pov "Hmm?"
     show c8 vio 16
     with dissolve
-    if vir=="Yes":
+    if virgin:
         vio "Anyway, I wouldn't worry about it."
         vio "There's plenty of girls around your age that are still waiting."
-    if vir=="No":
+    else:
         vio "Anyway, at your age, you still have plenty of time to experiment and have fun."
     pov "That's true... I'm still technically a teenager, after all."
     vio "You seem to have calmed down a bit, compared to before."
@@ -14375,13 +14375,13 @@ label c7ending:
     pov "Or would this just be rushing things?"
     show c8 end 7
     with dissolve
-    if vir=="Yes":
+    if virgin:
         pov "I'm already 19, and there aren't many girls that haven't done it already."
         pov "Maybe [fr] hasn't...?"
         pov "I know Luna hasn't, either."
         pov "But aside from them..."
         pov "I'm a bit of a rare case."
-    if vir=="No":
+    else:
         pov "It's already been over a year since I last did it."
         pov "And although it still counts as having {i}some{/i} experience..."
         pov "Now that I'm 19, I probably should start experimenting more."
@@ -14390,7 +14390,7 @@ label c7ending:
     with dissolve
     pov "I've held off from the idea for a while now, but..."
     pov "Obviously, I'm interested in the possibility of having sex."
-    if vir=="Yes":
+    if virgin:
         pov "And I'm very curious what it would feel like."
     pov "But I'm not in a relationship yet, so..."
     pov "Hmm..."
@@ -14491,19 +14491,19 @@ label c7ending:
     show c9 decision 2
     with dissolvelong
     pov "So..."
-    if vir=="Yes":
+    if virgin:
         pov "Is it time... to have sex for the first time?"
-    if vir=="No":
+    else:
         pov "Is it time... to finally have sex again?"
     pov "Not just touching or playing around, either, but the {i}whole{/i} thing."
     show c9 decision 3
     with dissolve
-    if vir=="Yes":
+    if virgin:
         pov "It isn't all that common for a 19-year-old girl to still be a virgin, after all."
         pov "Not that it's unheard of, or that it makes you a freak or anything, but..."
         pov "I knew I'd be having sex at some point."
         pov "And I feel like that point could be coming soon."
-    if vir=="No":
+    else:
         pov "Most girls my age probably have a lot more experience."
         pov "I've only done it with one person, after all."
         pov "And I figured eventually, I'd do it again with someone else."
@@ -14517,9 +14517,9 @@ label c7ending:
     with dissolvelong
     pov "That said..."
     pov "I'm not in a relationship right now."
-    if vir=="Yes":
+    if virgin:
         pov "And ideally, I'd want to spend my first time with someone I'm dating."
-    if vir=="No":
+    else:
         pov "And ideally, I'd want to do it with someone I'm dating."
     pov "So I could always hold off for now, and try having sex some other time instead."
     pov "It's not like this will be the only time I can possibly have sex."
@@ -14547,9 +14547,9 @@ label c7ending:
             with dissolve
             pov "Now..."
             pov "Out of all the people I'm close with..."
-            if vir=="Yes":
+            if virgin:
                 pov "Which of them do I want to give my virginity to?"
-            if vir=="No":
+            else:
                 "Which of them do I want to have sex with?"
             if lesonly==True:
                 menu:
@@ -14579,9 +14579,9 @@ label c7ending:
                         pov "It might be better to ask both of them."
                         pov "If I do it with both {i}at the same time{/i}, then there wouldn't be any secrets or friction. We'd be sharing the experience, after all."
                         pov "Yeah... that's probably the best way to handle it."
-                        if vir=="Yes":
+                        if virgin:
                             pov "It's quite a lot for a girl's first time, but..."
-                        if vir=="No":
+                        else:
                             pov "It's quite a lot for a girl with little experience, but..."
                         pov "In this case, since it's just Josh and Connor..."
                         pov "Maybe I {i}could{/i} handle something like a threesome, after all?"
@@ -14613,9 +14613,9 @@ label c7ending:
                             pov "If I had to pick someone..."
                             pov "It would have to be Luna."
                             pov "Not that I have any issues with the other girls... quite the opposite..."
-                            if vir=="Yes":
+                            if virgin:
                                 pov "But Luna makes the most sense for my first time."
-                            if vir=="No":
+                            else:
                                 pov "But Luna makes the most sense for something like this."
                             show c9 decision 8
                             with dissolve
@@ -14696,9 +14696,9 @@ label c7ending:
                             show c9 decision 9
                             with dissolvelong
                             pov "Yeah..."
-                            if vir=="Yes":
+                            if virgin:
                                 pov "If I really want to lose my virginity..."
-                            if vir=="No":
+                            else:
                                 pov "If I really want to do it with someone..."
                             pov "It's gotta be [fr]."
                             pov "I'm not sure how she'd react if I asked her beforehand, so..."
@@ -14710,9 +14710,9 @@ label c7ending:
                             stop music fadeout 2.5
                             pov "Tomorrow is work like usual, so I should probably relax and go to bed on time tonight."
                             pov "......"
-                            if vir=="Yes":
+                            if virgin:
                                 pov "My first time with my best friend, huh..."
-                            if vir=="No":
+                            else:
                                 pov "Doing it with my best friend, huh..."
                             "......"
         "No.":
@@ -14951,7 +14951,7 @@ label c9office:
         show c9 downtown 14
         with dissolve
         pov "I'm going to have sex tomorrow."
-        if vir=="Yes":
+        if virgin:
             pov "And with that, be a virgin no longer."
         if c7lockerles:
             show c9 downtown 13
@@ -14963,7 +14963,27 @@ label c9office:
             pov "Back then..."
             pov "What I did with that girl... Evelyn, I think..."
             pov "Was that sex?"
-            if vir=="No":
+            if virgin:
+                pov "If so... maybe I'm not actually a virgin..."
+                menu:
+                    "[pov] considers it her first time.":
+                        pov "Yeah..."
+                        pov "We went pretty much all the way, didn't we?"
+                        pov "And although we didn't really know each other..."
+                        pov "It's hard to just write off what happened."
+                        pov "I guess... maybe..."
+                        pov "I haven't been a virgin, ever since..."
+                        $virgin=False
+                        $fp="Evelyn"
+                        $sexp+=1
+                        $lesexp+=1
+                    "It didn't mean anything.":
+                        pov "Nah..."
+                        pov "It was pretty perverted, and I had fun, but..."
+                        pov "It's a little different from losing my virginity."
+                        pov "We just fooled around a little bit. That's all it was..."
+                        pov "...... Anyway."
+            else:
                 pov "If so... maybe I've already done it with more than one person..."
                 menu:
                     "[pov] considers it sex.":
@@ -14979,26 +14999,6 @@ label c9office:
                         pov "Nah..."
                         pov "It was pretty perverted, and I had fun, but..."
                         pov "It's a little different from actual sex."
-                        pov "We just fooled around a little bit. That's all it was..."
-                        pov "...... Anyway."
-            if vir=="Yes":
-                pov "If so... maybe I'm not actually a virgin..."
-                menu:
-                    "[pov] considers it her first time.":
-                        pov "Yeah..."
-                        pov "We went pretty much all the way, didn't we?"
-                        pov "And although we didn't really know each other..."
-                        pov "It's hard to just write off what happened."
-                        pov "I guess... maybe..."
-                        pov "I haven't been a virgin, ever since..."
-                        $vir="No"
-                        $fp="Evelyn"
-                        $sexp+=1
-                        $lesexp+=1
-                    "It didn't mean anything.":
-                        pov "Nah..."
-                        pov "It was pretty perverted, and I had fun, but..."
-                        pov "It's a little different from losing my virginity."
                         pov "We just fooled around a little bit. That's all it was..."
                         pov "...... Anyway."
         scene c9 downtown 13
@@ -15125,15 +15125,15 @@ label c9cjscene:
         show c9 threesome 11
         with dissolve
         pov "You're both still virgins, right?"
-        if vir=="Yes":
+        if virgin:
             pov "Well... so am I."
-        if vir=="No":
+        else:
             pov "Well... I'm not too experienced, either."
         pov "And it got me thinking..."
         stop music fadeout 3.5
-        if vir=="Yes":
+        if virgin:
             pov "I've wanted to try having sex for a while now."
-        if vir=="No":
+        else:
             pov "For a while now, I've wanted to try having sex again."
         pov "So, do you want to..."
         pov "...... Do you want to try doing it together?"
@@ -15262,9 +15262,9 @@ label c9cjscene:
         pov "If I leave one of you alone for even a second... jeez..."
         pov "You know, a girl has to be wet first before you can do it."
         pov "And especially for me..."
-        if vir=="Yes":
+        if virgin:
             pov "I'm still a virgin, so I don't want it to hurt."
-        if vir=="No":
+        else:
             pov "I'm not very experienced, so I don't want it too rough."
         show c9 threesome 30
         with dissolve
@@ -15357,9 +15357,9 @@ label c9cjscene:
                 with dissolve
                 pov "Connor... you can go first."
                 pov "Just don't get the wrong impression, okay?"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}Both{/i} of you are my firsts, not just one of you."
-                if vir=="No":
+                else:
                     pov "{i}Both{/i} of you are equal to me."
                 show c9 threesome 40
                 with dissolve
@@ -15389,9 +15389,9 @@ label c9cjscene:
                 pov "Yeah..."
                 pov "I want it."
                 pov "Put it in, Connor."
-                if vir=="Yes":
+                if virgin:
                     pov "Make me a woman already."
-                if vir=="No":
+                else:
                     pov "Teach me what it's like to feel good."
                 pov "{i}(Here it goes...){/i}"
                 pov "{i}(It's finally happening.){/i}"
@@ -15404,10 +15404,10 @@ label c9cjscene:
                 show c9 threesome 47
                 with pixellate
                 pov "Ahh——!!"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(It hurts a little bit!){/i}"
                     pov "{i}(Ow!){/i}"
-                if vir=="No":
+                else:
                     pov "{i}So this is what it felt like, huh...{/i}"
                     pov "{i}It's been a long time.{/i}"
                 show c9 threesome 48-c
@@ -15415,11 +15415,11 @@ label c9cjscene:
                 voice "audio/effects/lewd/femalebreath1.wav"
                 c "I'm inside, [pov]..."
                 c "A-Are you okay?"
-                if vir=="Yes":
+                if virgin:
                     c "Did it hurt?"
                     pov "......"
                     pov "Yeah, a little bit..."
-                if vir=="No":
+                else:
                     c "Did I put it in too fast?"
                     pov "......"
                     pov "Well, it was a little uncomfortable..."
@@ -15481,7 +15481,7 @@ label c9cjscene:
                 with dissolve
                 pov "Mmm... mmhhm—!"
                 pov "{i}(They've gotten a lot faster now, but...){/i}"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(It doesn't hurt anymore.){/i}"
                 pov "{i}(I guess my body has started getting used to it?){/i}"
                 show c9 threesome 55
@@ -15503,7 +15503,7 @@ label c9cjscene:
                 c "This isn't how I imagined today would end up."
                 pov "{i}(They sure like to talk...){/i}"
                 pov "{i}(Easy for them, but not so much for me, since I have to deal with both at once...){/i}"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(It's my first time, too!){/i}"
                 pov "{i}(I'm already starting to get tired...){/i}"
                 show c9 threesome 58
@@ -15555,16 +15555,16 @@ label c9cjscene:
                 pov "Well, whatever..."
                 pov "It felt good for me, too."
                 pov "I enjoyed it."
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(Although it did hurt a bit at first.){/i}"
-                if vir=="No":
+                else:
                     pov "{i}(Although it was uncomfortable at first.){/i}"
                 show c9 threesome 66
                 with dissolve
                 pov "So, how was it?"
-                if vir=="Yes":
+                if virgin:
                     pov "You just took your best friend [pov]'s virginity."
-                if vir=="No":
+                else:
                     pov "You just lost your virginity to your best friend, [pov]."
                 pov "Not many guys get to experience something like this."
                 pov "{i}(And not many girls, for that matter...){/i}"
@@ -15583,16 +15583,16 @@ label c9cjscene:
                 with dissolve
                 stop music fadeout 3.0
                 pov "{i}(Well, I finally did it.){/i}"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(I'm still having a hard time believing it.){/i}"
                     pov "{i}(I'm not a virgin anymore.){/i}"
-                if vir=="No":
+                else:
                     pov "{i}(I just had sex for the first time in over a year.){/i}"
                 pov "{i}(And not only that, I did it with my two best friends... at the same time...){/i}"
                 pov "......"
                 pov "{i}*giggles*{/i}"
-                if vir=="Yes":
-                    $vir="No"
+                if virgin:
+                    $virgin=False
                     $fp="CJ"
                 $sexp+=2
                 $scount+=2
@@ -15613,9 +15613,9 @@ label c9cjscene:
                 with dissolve
                 pov "Josh... you can go first."
                 pov "Just don't get the wrong impression, okay?"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}Both{/i} of you are my firsts, not just one of you."
-                if vir=="No":
+                else:
                     pov "{i}Both{/i} of you are equal to me."
                 show c9 threesome 40
                 with dissolve
@@ -15646,9 +15646,9 @@ label c9cjscene:
                 pov "Yeah..."
                 pov "I want it."
                 pov "Put it in, Josh."
-                if vir=="Yes":
+                if virgin:
                     pov "Make me a woman already."
-                if vir=="No":
+                else:
                     pov "Teach me what it's like to feel good."
                 pov "{i}(Here it goes...){/i}"
                 pov "{i}(It's finally happening.){/i}"
@@ -15661,10 +15661,10 @@ label c9cjscene:
                 show c9 threesome 47
                 with pixellate
                 pov "Ahh——!!"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(It hurts a little bit!){/i}"
                     pov "{i}(Ow!){/i}"
-                if vir=="No":
+                else:
                     pov "{i}So this is what it felt like, huh...{/i}"
                     pov "{i}It's been a long time.{/i}"
                 show c9 threesome 48-j
@@ -15672,11 +15672,11 @@ label c9cjscene:
                 voice "audio/effects/lewd/femalebreath1.wav"
                 j "I'm inside..."
                 j "Are you okay?"
-                if vir=="Yes":
+                if virgin:
                     c "Did it hurt?"
                     pov "......"
                     pov "Yeah, a little bit..."
-                if vir=="No":
+                else:
                     c "Did I put it in too fast?"
                     pov "......"
                     pov "Well, it was a little uncomfortable..."
@@ -15738,7 +15738,7 @@ label c9cjscene:
                 with dissolve
                 pov "Mmm... mmhhm—!"
                 pov "{i}(They've gotten a lot faster now, but...){/i}"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(It doesn't hurt anymore.){/i}"
                 pov "{i}(I guess my body has started getting used to it?){/i}"
                 show c9 threesome 55
@@ -15760,7 +15760,7 @@ label c9cjscene:
                 c "This isn't how I imagined today would end up."
                 pov "{i}(They sure like to talk...){/i}"
                 pov "{i}(Easy for them, but not so much for me, since I have to deal with both at once...){/i}"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(It's my first time, too!){/i}"
                 pov "{i}(I'm already starting to get tired...){/i}"
                 show c9 threesome 58
@@ -15812,16 +15812,16 @@ label c9cjscene:
                 pov "Well, whatever..."
                 pov "It felt good for me, too."
                 pov "I enjoyed it."
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(Although it did hurt a bit at first.){/i}"
-                if vir=="No":
+                else:
                     pov "{i}(Although it was uncomfortable at first.){/i}"
                 show c9 threesome 66
                 with dissolve
                 pov "So, how was it?"
-                if vir=="Yes":
+                if virgin:
                     pov "You just took your best friend [pov]'s virginity."
-                if vir=="No":
+                else:
                     pov "You just lost your virginity to your best friend, [pov]."
                 pov "Not many guys get to experience something like this."
                 pov "{i}(And not many girls, for that matter...){/i}"
@@ -15840,16 +15840,16 @@ label c9cjscene:
                 with dissolve
                 stop music fadeout 3.0
                 pov "{i}(Well, I finally did it.){/i}"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(I'm still having a hard time believing it.){/i}"
                     pov "{i}(I'm not a virgin anymore.){/i}"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(I just had sex for the first time in over a year.){/i}"
                 pov "{i}(And not only that, I did it with my two best friends... at the same time...){/i}"
                 pov "......"
                 pov "{i}*giggles*{/i}"
-                if vir=="Yes":
-                    $vir="No"
+                if virgin:
+                    $virgin=False
                     $fp="CJ"
                 $sexp+=2
                 $scount+=2
@@ -16159,7 +16159,7 @@ label c9lunascene:
         luna "Looking at me there is embarrassing..."
         pov "Haha. Well, that's natural for anyone during their first time."
         pov "I'm not experienced at doing this, either."
-        if vir=="Yes":
+        if virgin:
             pov "In fact... it's my first time doing this to another girl... so I'm not sure if I'll be able to do it well."
         show c9 luna 37
         with pixellate
@@ -16228,10 +16228,10 @@ label c9lunascene:
         show c9 luna 46
         with dissolve
         pov "Nah. Not with other people, at least."
-        if vir=="Yes":
+        if virgin:
             pov "I touch myself sometimes, but it's my first time doing it with another girl."
             pov "...... Or going this far, for that matter."
-        if vir=="No":
+        else:
             pov "I touch myself sometimes, but..."
             pov "It's very rare I go this far with someone else."
         show c9 luna 44
@@ -16276,8 +16276,8 @@ label c9lunascene:
         luna "That's okay."
         luna "Luna will be sleeping right together with you tonight."
         "......"
-        if vir=="Yes":
-            $vir="No"
+        if virgin:
+            $virgin=False
             $fp="Luna"
         $sexp+=1
         $sexe+=1
@@ -16345,9 +16345,9 @@ label c9vioscene:
         with dissolve
         pov "Oh, no, it's fine!"
         pov "I've thought about this for a while now."
-        if vir=="Yes":
+        if virgin:
             pov "And for my first time, I decided I wanted to try it with you, [vio]."
-        if vir=="No":
+        else:
             pov "And since I'm so inexperienced, I decided I wanted to try it with you, [vio]."
         show c9 vio 9
         with dissolve
@@ -16365,12 +16365,12 @@ label c9vioscene:
         with dissolve
         pov "Hmm... well..."
         pov "I figured it was about time."
-        if vir=="Yes":
+        if virgin:
             pov "I've always been interested in having sex, but never had a relationship or someone to do it with."
             pov "So, rather than waiting until then..."
             pov "I wanted to try it now, and see what it's like."
             pov "Maybe I'll like it, maybe I won't... but what's the harm in trying?"
-        if vir=="No":
+        else:
             pov "I've always wanted to try having sex again, but never had a relationship or someone to do it with."
             pov "So, rather than waiting until then..."
             pov "I wanted to do it now, and experience it once again."
@@ -16536,9 +16536,9 @@ label c9vioscene:
         voice "audio/effects/lewd/slosh1.wav"
         vio "How's this?"
         vio "Let me know if it hurts, or you want me to slow down."
-        if vir=="Yes":
+        if virgin:
             vio "It's your first time, so I don't want to risk going too far."
-        if vir=="No":
+        else:
             vio "You're new to this, so I don't want to risk going too far."
         pov "N-No, it's fine!"
         pov "Please... keep doing it... just like that."
@@ -16614,17 +16614,17 @@ label c9vioscene:
         show c9 vio 47
         with dissolvelong
         pov "{i}(That... was quite something.){/i}"
-        if vir=="Yes":
+        if virgin:
             pov "{i}(I wasn't sure how it would go, since it's my first time and all.){/i}"
-        if vir=="No":
+        else:
             pov "{i}(I wasn't sure how it would go, since it's been so long since the last time.){/i}"
         stop music fadeout 2.5
         pov "{i}(But I was right to trust [vio].){/i}"
         pov "{i}(She really knows how to make a girl feel good.){/i}"
         pov "{i}(I'd like to do something like this again...){/i}"
         "......"
-        if vir=="Yes":
-            $vir="No"
+        if virgin:
+            $virgin=False
             $fp="Violet"
         $sexp+=1
         $sexe+=1
@@ -16709,9 +16709,9 @@ label c9harukascene:
         show c9 haruka 12
         with dissolve
         pov "...... I like you as more than that."
-        if vir=="Yes":
+        if virgin:
             pov "And I'd like to try {i}it{/i} with you... for the first time."
-        if vir=="No":
+        else:
             pov "And I'd like to try doing {i}it{/i} with you..."
         show c9 haruka 13
         with dissolve
@@ -16901,9 +16901,9 @@ label c9harukascene:
         show c9 haruka 41
         with dissolve
         pov "Same here..."
-        if vir=="Yes":
+        if virgin:
             pov "I'm glad my first time could be with you."
-        if vir=="No":
+        else:
             pov "I'm glad I could do something like this with you."
         pov "I guess we really are best friends, huh? {i}*giggles*{/i}"
         show c9 haruka 40
@@ -16920,8 +16920,8 @@ label c9harukascene:
         fr "Yeah. Stay as long as you'd like."
         fr "I want to spend more time with you, too, [pov]."
         "......."
-        if vir=="Yes":
-            $vir="No"
+        if virgin:
+            $virgin=False
             $fp="Haruka"
         $sexp+=1
         $sexe+=1
@@ -17437,7 +17437,7 @@ label act2start:
                                 show c10 pool 18
                                 with dissolvelong
                                 pov "{i}(I am kind of curious...){/i}"
-                                if vir=="Yes":
+                                if virgin:
                                     pov "{i}(I've never had sex before.){/i}"
                                     pov "{i}(And I've always wanted to try it.){/i}"
                                     pov "{i}(Losing my virginity, huh...){/i}"
@@ -17449,7 +17449,7 @@ label act2start:
                                 pov "But if I tell you to stop, you have to listen."
                                 pov "And you better be thankful!"
                                 pov "There aren't many girls who would be willing to do this with someone like you."
-                                if vir=="Yes":
+                                if virgin:
                                     pov "{i}(There's no way I can tell him it's my first time.){/i}"
                                     pov "{i}(No doubt he'll act weird about it afterwards.){/i}"
                                     pov "{i}(I'll just... try and keep it secret.){/i}"
@@ -17460,7 +17460,7 @@ label act2start:
                                 man "I'm going to put it in, then!"
                                 pov "......"
                                 pov "{i}*gulp*{/i}"
-                                if vir=="Yes":
+                                if virgin:
                                     pov "{i}(I don't know what's gotten into me.){/i}"
                                     pov "{i}(Hopefully it doesn't hurt too much...){/i}"
                                 show c10 pool 21
@@ -17468,7 +17468,7 @@ label act2start:
                                 with vpunch
                                 man "Take that!"
                                 man "Pussy has been penetrated!"
-                                if vir=="Yes":
+                                if virgin:
                                     pov "{i}(Oww...){/i}"
                                     pov "{i}(It stings a little bit.){/i}"
                                     pov "{i}(It's not as bad as I was expecting, though.){/i}"
@@ -17478,7 +17478,7 @@ label act2start:
                                 pov "Ah..."
                                 man "Your pussy is wonderful!"
                                 man "It's already quite wet, so it was a smooth entry!"
-                                if vir=="Yes":
+                                if virgin:
                                     pov "{i}(So this is what sex feels like, huh...){/i}"
                                     pov "{i}(It's warm, and pulsating inside me...){/i}"
                                 show c10 pool 21
@@ -17539,7 +17539,7 @@ label act2start:
                                 man "I haven't had sex this great in many a year!"
                                 man "Thank you, miss."
                                 pov "Hah... hah..."
-                                if vir=="Yes":
+                                if virgin:
                                     pov "{i}(And just like that...){/i}"
                                     pov "{i}(I gave my virginity to a complete stranger.){/i}"
                                 "......"
@@ -17564,7 +17564,7 @@ label act2start:
                                 pov "{i}(I do feel a bit guilty about it, though.){/i}"
                                 pov "{i}(Did I always have this slutty side of myself...?){/i}"
                                 "......"
-                                $vir="No"
+                                $virgin=False
                                 if fp=="None":
                                     $fp="Pool Pervert"
                                 $sexp+=1
@@ -17580,7 +17580,7 @@ label act2start:
                                 pov "I can't believe I did it with that pervert..."
                                 pov "Surely something must be wrong with me."
                                 pov "I went all the way with him..."
-                                if vir=="Yes":
+                                if virgin:
                                     pov "{i}(And it was my first time, too!){/i}"
                                 show c10 transition 2
                                 with dissolve
@@ -17629,7 +17629,7 @@ label act2start:
                                 pov "Maybe another time?"
                                 man "Of course. Whenever you would like, I shall answer your call."
                                 pov "{i}(This was definitely the right call.){/i}"
-                                if vir=="Yes":
+                                if virgin:
                                     pov "{i}(It's my first time, after all, and he's a complete stranger!){/i}"
                                 pov "{i}(I might be perverted, but having sex with a pervert like this...){/i}"
                                 pov "{i}(Surely not...){/i}"
@@ -19458,7 +19458,7 @@ label c10complete:
                     pov "{i}(If I don't stop now, we're going to have sex.){/i}"
                     pov "{i}(Do I really want that to happen?){/i}"
                     pov "{i}(With a total stranger like him...?){/i}"
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(It would be my first time, too!){/i}"
                     show c11 pizzaboy 30
                     with dissolve
@@ -19471,11 +19471,11 @@ label c10complete:
                             show c11 pizzaboy 31
                             with dissolve
                             pov "Fine..."
-                            if vir=="Yes":
+                            if virgin:
                                 pov "But... you have to be gentle."
                                 pov "This is actually my first time, so..."
                                 boy "......"
-                            if vir=="No":
+                            else:
                                 pov "But... you can't cum inside."
                             pov "Understand?"
                             boy "Y-Yeah... I got it."
@@ -19484,7 +19484,7 @@ label c10complete:
                             boy "Well... I'm putting it in then."
                             pov "{i}(His dick is hitting the entrance.){/i}"
                             pov "{i}(It's about to slide in.){/i}"
-                            if vir=="Yes":
+                            if virgin:
                                 pov "{i}(I can't believe I'm giving my first time to a stranger...){/i}"
                             show c11 pizzaboy 33
                             with pixellate
@@ -19494,11 +19494,11 @@ label c10complete:
                             show c11 pizzaboy 34
                             with dissolve
                             boy "My dick is inside you now."
-                            if vir=="Yes":
+                            if virgin:
                                 boy "Does it hurt?"
                                 pov "Ow..."
                                 pov "Just a little..."
-                            if vir=="No":
+                            else:
                                 boy "Your pussy is so wet."
                                 boy "You're used to having sex like this, aren't you?"
                                 pov "No... that's not true..."
@@ -19587,16 +19587,16 @@ label c10complete:
                             pov "{i}(Guess we should clean up now.){/i}"
                             pov "{i}(I still have to pay for the bill, after all.){/i}"
                             pov "{i}(...... Hmm.){/i}"
-                            if vir=="Yes":
+                            if virgin:
                                 pov "{i}(I still can't believe I just gave my first time to him.){/i}"
                                 pov "{i}(The pizza delivery driver, of all people...){/i}"
                                 pov "{i}(But... it felt good.){/i}"
                                 pov "{i}(I guess it could have gone a lot worse...){/i}"
-                            if vir=="No":
+                            else:
                                 pov "{i}(Maybe I am... a bit more slutty than I thought.){/i}"
                             "......"
                             $c11pizzasex=True
-                            $vir="No"
+                            $virgin=False
                             if fp=="None":
                                 $fp="Pizza Boy"
                             $sexp+=1
@@ -19889,14 +19889,14 @@ label c10complete:
                             wom "Come and join me, cutie!"
                             wom "We can spend a bit more time together before we need to say goodbye."
                             pov "O-Okay."
-                            if vir=="Yes":
+                            if virgin:
                                 pov "{i}(That was my first time...){/i}"
                                 pov "{i}(Can't believe I did it with a stranger I met on the streets.){/i}"
                                 pov "{i}(But...){/i}"
                                 pov "{i}(She knew what she was doing, and it felt amazing...){/i}"
                             "......"
                             $c11les=True
-                            $vir="No"
+                            $virgin=False
                             if fp=="None":
                                 $fp="Female Stranger"
                             $lesexp+=1
@@ -19916,10 +19916,10 @@ label c10complete:
                             wom "Ah..."
                             show c11 les cancel 2
                             with dissolve
-                            if vir=="Yes":
+                            if virgin:
                                 pov "{i}(I've never even had sex before...){/i}"
                                 pov "{i}(This is just too much for me right now.){/i}"
-                            if vir=="No":
+                            else:
                                 pov "{i}(It's not like I don't have any experience, but...){/i}"
                                 pov "{i}(Not with a total stranger like this.){/i}"
                             pov "{i}(Sorry...){/i}"
@@ -20562,12 +20562,12 @@ label c11stream:
             co "{i}Are you still a virgin?{/i}"
             pov "Wow... you're really digging into the personal questions."
             pov "Well..."
-            if vir=="Yes":
+            if virgin:
                 pov "I am still a virgin, actually."
                 pov "Is that surprising?"
                 co "{i}I wish I could be your first!{/i}"
                 pov "Haha... okay, okay. Let's settle down."
-            if vir=="No":
+            else:
                 pov "I have had sex before."
                 pov "But I'm still pretty inexperienced."
                 if sexp>=2:
@@ -21338,7 +21338,7 @@ label c12mia:
     pov "{i}(It's just the two of us alone, sleeping together.){/i}"
     pov "{i}(And I get the feeling Mia might be interested in me, as more than just friends.){/i}"
     pov "{i}(Do I want to try going further with Mia?){/i}"
-    if vir=="Yes":
+    if virgin:
         pov "{i}(It would be my first time, too...){/i}"
     menu:
         "Make love to Mia.":
@@ -21424,7 +21424,7 @@ label c12mia:
             mia "[pov]..."
             pov "Mia, I'm going to start."
             mia "Please..."
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(Well, here goes...){/i}"
                 pov "{i}(It's my first time doing something like this.){/i}"
                 pov "{i}(I hope I don't mess up.){/i}"
@@ -21537,7 +21537,7 @@ label c12mia:
             with dissolve
             pov "{i}(We... we made love to each other last night, didn't we?){/i}"
             pov "{i}(I'm so glad Mia was interested, too.){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(And I'm even more glad my first time was with her.){/i}"
             pov "{i}(I hope we can do something like that again.){/i}"
             show c12 mia 40
@@ -21555,7 +21555,7 @@ label c12mia:
             pov "Maybe if there's a trail nearby, we could even have a little race!"
             mia "Yeah, right, as if you could beat me!"
             "......"
-            $vir="No"
+            $virgin=False
             if fp=="None":
                 $fp="Mia"
             $sexp+=1
@@ -21804,7 +21804,7 @@ label c12cj:
             pov "{i}(Maybe it wouldn't be such a bad thing, if Josh joined in.){/i}"
             pov "{i}(I am pretty horny after playing with Connor, after all.){/i}"
             pov "{i}(Do I really want to go that far, though?){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(I'm still a virgin...){/i}"
                 pov "{i}(But... if it's them...){/i}"
             if c9connorfirst or c9joshfirst:
@@ -21818,7 +21818,7 @@ label c12cj:
                     pov "{i}(Yeah...){/i}"
                     pov "{i}(I want to do more than just give a handjob.){/i}"
                     pov "{i}(I... I'm going to see if I can make this work.){/i}"
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(...... This will be my first time, huh.){/i}"
                     show c12 cj 28
                     with dissolve
@@ -21897,7 +21897,7 @@ label c12cj:
                     pov "{i}(They're already this hard.){/i}"
                     pov "{i}(And I'm pretty wet, too.){/i}"
                     pov "{i}(I guess it's time... for the next step.){/i}"
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(...... I hope it won't hurt too much.){/i}"
                     show c12 cj 37
                     with dissolvelong
@@ -21918,7 +21918,7 @@ label c12cj:
                     c "Oh... [pov]..."
                     pov "It feels good!"
                     pov "I've been waiting for this!"
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(Even though it's my first time...){/i}"
                         pov "{i}(It only hurt a little bit.){/i}"
                         pov "{i}(Maybe it hurts less when you're on top...?){/i}"
@@ -22091,8 +22091,8 @@ label c12cj:
                             with dissolvelong
                             "The pure and innocent girl her friends used to know, had seemed to change into someone much more lewd than they ever imagined."
                             "......"
-                            if vir=="Yes":
-                                $vir="No"
+                            if virgin:
+                                $virgin=False
                                 $fp="CJ"
                             if not c9connorfirst and not c9joshfirst:
                                 $sexp+=2
@@ -22154,8 +22154,8 @@ label c12cj:
                             with dissolvelong
                             "The pure and innocent girl her friends used to know, had seemed to change into someone much more lewd than they ever imagined."
                             "......"
-                            if vir=="Yes":
-                                $vir="No"
+                            if virgin:
+                                $virgin=False
                                 $fp="CJ"
                             if not c9connorfirst and not c9joshfirst:
                                 $sexp+=2
@@ -22167,7 +22167,7 @@ label c12cj:
                             jump c12waterpark
                 "Stop now.":
                     pov "{i}(No... that's a bit too much.){/i}"
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(I don't want to lose my virginity, in a spur of the moment like this...){/i}"
                     if c9connorfirst or c9joshfirst:
                         pov "{i}(If I have sex with them too often, we might devolve into just sex friends.){/i}"
@@ -22206,7 +22206,7 @@ label c12cj:
         "Wait until Josh gets back.":
             pov "{i}(No way...){/i}"
             pov "{i}(There's no telling when he'll finish, and I don't want to risk any awkwardness.){/i}"
-            if hjcount<=0 and vir=="Yes":
+            if hjcount<=0 and virgin:
                 pov "{i}(Besides, that's going way too far.){/i}"
                 pov "{i}(What's gotten into me, even considering something like that...){/i}"
             show c12 cj 9
@@ -22282,7 +22282,7 @@ label c12waterpark:
                 pov "{i}(Well...){/i}"
                 pov "{i}(The idea does turn me on.){/i}"
                 pov "{i}(I don't know what's gotten into me lately...){/i}"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(If we go all the way, it'd be my first time, too.){/i}"
                 show c12 waterpark girl 4
                 with dissolve
@@ -22320,7 +22320,7 @@ label c12waterpark:
                 wom "What a beautiful vagina."
                 wom "I'm going to have a taste, if you don't mind."
                 pov "...... Okay."
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(My first time...){/i}"
                 show c12 waterpark girl 10
                 with pixellate
@@ -22387,10 +22387,10 @@ label c12waterpark:
                 pov "Yeah."
                 pov "{i}(I did it with a complete stranger...){/i}"
                 pov "{i}(And in public, too.){/i}"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(It was my first time, but it was incredible.){/i}"
                 "......"
-                $vir="No"
+                $virgin=False
                 if fp=="None":
                     $fp="Female Stranger"
                 $sexp+=1
@@ -22994,14 +22994,14 @@ label c13introporn:
             pov "Anal isn't super uncommon these days, so maybe trying it at least once couldn't hurt."
             pov "More experience is always a positive, I suppose."
             pov "And if I don't enjoy it, I can always stop there."
-            if vir=="No":
-                pov "Plus..."
-                pov "I'm curious how it would compare... to vaginal sex, that is."
-            if vir=="Yes":
+            if virgin:
                 pov "Although..."
                 pov "I'm still a virgin."
                 pov "Are there any girls out there who had anal sex, but not normal sex?"
                 pov "Now {i}that{/i} has gotta be uncommon."
+            else:
+                pov "Plus..."
+                pov "I'm curious how it would compare... to vaginal sex, that is."
             show c13 porn 7
             with dissolve
             pov "That said..."
@@ -23981,10 +23981,10 @@ label c13haruka:
             $c13connorseduce=True
             pov "{i}(Yeah...){/i}"
             pov "{i}(I'm feeling a bit horny, after all.){/i}"
-            if vir=="No":
-                pov "{i}(And although I can't go all the way tonight...){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(And although there's some limits to how far I can go tonight...){/i}"
+            else:
+                pov "{i}(And although I can't go all the way tonight...){/i}"
             pov "{i}(There's still a lot of fun we can have.){/i}"
             show c13 connor 12
             with dissolvelong
@@ -24958,7 +24958,7 @@ label c13aftercafe:
             pov "{i}(I could take this a bit further, in a different direction.){/i}"
             pov "{i}(Or... we could just continue to kiss for a while longer.){/i}"
             pov "{i}(Do I want to have sex with Luna? Or do I just want this romantic moment to continue?){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(It would be my first time doing it, though...){/i}"
             menu:
                 "Make love to Luna.":
@@ -25007,11 +25007,11 @@ label c13aftercafe:
                     with dissolve
                     pov "Alright... here goes."
                     pov "Try to relax as much as possible."
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(Although I'm the one taking the lead...){/i}"
                         pov "{i}(The reality is, I've never done anything like this before.){/i}"
                         pov "{i}(I'm still a virgin, so... I hope I don't do this wrong.){/i}"
-                    if vir=="No":
+                    else:
                         pov "{i}(It's not the first time I've done something like this, but...){/i}"
                         pov "{i}(The reality is, I'm still very inexperienced.){/i}"
                         pov "{i}(I think I know what to do, but... I hope I do it right.){/i}"
@@ -25045,7 +25045,7 @@ label c13aftercafe:
                     if not c9lunasex:
                         pov "{i}(It sounds like she's a virgin.){/i}"
                         pov "{i}(I'm glad... I want to be her first.){/i}"
-                        if vir=="Yes":
+                        if virgin:
                             pov "{i}(Little does she know, it's also my first time...){/i}"
                     if c9lunasex:
                         pov "{i}(It sounds like she's still not used to her vagina being touched.){/i}"
@@ -25071,7 +25071,7 @@ label c13aftercafe:
                     pov "And you smell wonderful, too."
                     luna "T-Thank you."
                     pov "I'm going to make you feel even better now."
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(It's my first time...){/i}"
                         pov "{i}(I'm pretty nervous, after all.){/i}"
                         pov "{i}(But I'm equally excited.){/i}"
@@ -25086,7 +25086,7 @@ label c13aftercafe:
                     pov "Mmm?"
                     luna "Ah... ohh..."
                     luna "[pov]..."
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(This is what a vagina tastes like, huh...){/i}"
                         pov "{i}(I like it... I think I could get used to this.){/i}"
                     pov "{i}(I'll try speeding up a bit more now.){/i}"
@@ -25177,15 +25177,15 @@ label c13aftercafe:
                     pov "{i}(I'm glad. I want to do even more with Luna.){/i}"
                     pov "{i}(She's so adorable that it's hard to let go.){/i}"
                     stop music fadeout 2.5
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(So adorable, in fact, that I couldn't help but give her my first time, too...){/i}"
                     pov "{i}(Hmm... well...){/i}"
                     pov "{i}(Maybe there's still time to shower before her mom comes back?){/i}"
                     pov "{i}(I wonder if it'd be too risky to shower together...?){/i}"
                     "......"
                     $c13lunasex=True
-                    if vir=="Yes":
-                        $vir="No"
+                    if virgin:
+                        $virgin=False
                         $fp="Luna"
                     if not c9lunasex:
                         $sexp+=1
@@ -25928,7 +25928,7 @@ label c13downtown:
         pov "I've never tried an actual dildo."
         show c13 toys 3
         with dissolve
-        if vir=="No":
+        if not virgin:
             pov "I wonder how it will compare... to real sex?"
             pov "Only one way to find out, I suppose."
             label c13toysvag:
@@ -25948,15 +25948,15 @@ label c13downtown:
                 with dissolve
                 pov "At this rate... it should go in pretty easily."
                 pov "I could have bought a bigger dildo, but..."
-                if vir=="No":
-                    pov "Mmm... I don't need anything massive."
-                if vir=="Yes":
+                if virgin:
                     pov "Mmm... I don't want to hurt myself, since it's my first time."
+                else:
+                    pov "Mmm... I don't need anything massive."
                 show c13 toys vag 3
                 with dissolve
                 pov "Yeah.... ahh..."
                 pov "I'll try putting it in now."
-                if vir=="Yes":
+                if virgin:
                     pov "And with this... I probably won't have a hymen anymore..."
                 show c13 toys vag 5
                 with dissolvelong
@@ -25965,17 +25965,17 @@ label c13downtown:
                 pov "I'll just push a little further, and..."
                 show c13 toys vag 6
                 with pixellate
-                if vir=="No":
-                    pov "That feels good."
-                    pov "Oh wow..."
-                    pov "I can feel it massaging around me inside."
-                    pov "This definitely isn't something I can experience with just my fingers..."
-                if vir=="Yes":
+                if virgin:
                     pov "O-Ow..."
                     pov "It stings a little bit, after all."
                     pov "I've never put my fingers in this far before, since there was always a wall blocking me."
                     pov "But now that that's gone..."
                     pov "I can finally feel deep inside me..."
+                else:
+                    pov "That feels good."
+                    pov "Oh wow..."
+                    pov "I can feel it massaging around me inside."
+                    pov "This definitely isn't something I can experience with just my fingers..."
                 show c13 toys vag 5
                 with dissolve
                 pov "Ah... mmm..."
@@ -26026,13 +26026,7 @@ label c13downtown:
                 show c13 toys vag 11
                 with dissolvelong
                 pov "Wow... that was an experience, all right."
-                if vir=="No":
-                    pov "It's definitely a different feeling compared to when I have sex."
-                    pov "I kinda regret not trying a dildo earlier."
-                    pov "But, well, since I was a virgin until recently..."
-                    pov "I didn't want go all the way with a toy. I wanted to do it with a person first."
-                    pov "And I'm glad I did so."
-                if vir=="Yes":
+                if virgin:
                     pov "I'm not sure how this compares to real sex, since I haven't done it yet, but..."
                     pov "It's definitely a different feeling compared to when I touch my clit, or finger myself a little bit."
                     pov "It felt, well... I felt {i}full{/i}."
@@ -26040,6 +26034,12 @@ label c13downtown:
                     pov "Should I try again tomorrow? Or..."
                     pov "Maybe I should try having sex with someone soon?"
                     pov "Hmm..."
+                else:
+                    pov "It's definitely a different feeling compared to when I have sex."
+                    pov "I kinda regret not trying a dildo earlier."
+                    pov "But, well, since I was a virgin until recently..."
+                    pov "I didn't want go all the way with a toy. I wanted to do it with a person first."
+                    pov "And I'm glad I did so."
                 show c13 toys vag 12
                 with dissolve
                 stop music fadeout 2.5
@@ -26050,11 +26050,11 @@ label c13downtown:
                 pov "Goodnight, everyone."
                 "......"
                 $sexe+=1
-                if vir=="Yes":
-                    $vir="No"
+                if virgin:
+                    $virgin=False
                     $fp="Dildo"
                 jump c13ending
-        if vir=="Yes":
+        if virgin:
             pov "But... I'm still a virgin."
             pov "Should I save this for another time?"
             pov "Or... should I try it with a toy first... before I do it with someone for real?"
@@ -27040,7 +27040,7 @@ label c14mixedbeach:
             pov "{i}(At this rate, it might lead into full sex.){/i}"
             pov "{i}(And it'd be hard to stop them at that point.){/i}"
             pov "{i}(I just don't know if I prepared myself to go quite that far...){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(Especially when I'm still a virgin.){/i}"
             show c14 beachsex male 14
             with dissolve
@@ -27347,11 +27347,11 @@ label c14femalebeach:
             show c14 beachsex female 6
             with dissolve
             pov "{i}(It's... an intense sensation.){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(I've never done anything like this with a girl before, but...){/i}"
                 pov "{i}(Despite it being my first time, I'm doing it with two girls at once!){/i}"
                 pov "{i}(I'm such a pervert!){/i}"
-            if vir=="No":
+            else:
                 pov "{i}(This is far better than anything else I've experienced!){/i}"
                 pov "{i}(I can't even think straight!){/i}"
             show c14 beachsex female 7
@@ -27402,7 +27402,7 @@ label c14femalebeach:
             pov "That was... just..."
             pov "That was absolutely incredible."
             pov "I've never felt like that before."
-            if vir=="Yes":
+            if virgin:
                 "{i}(So this is what sex feels like, huh...){/i}"
                 "{i}(I could get addicted to this.){/i}"
             wom1 "Well, I'm just glad you enjoyed it!"
@@ -27479,13 +27479,13 @@ label c14femalebeach:
             pov "{i}(But would I really want to take part in something like that...?){/i}"
             pov "{i}(......){/i}"
             pov "{i}(Time to head back home, I guess.){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(As a virgin no longer...){/i}"
             $sexe+=1
             $lesexp+=1
             $sexp+=2
-            if vir=="Yes":
-                $vir="No"
+            if virgin:
+                $virgin=False
                 $fp="Beach Strangers"
             $c14beachfemalesex=True
             jump c14busafter
@@ -27989,8 +27989,8 @@ label c14busafter:
             pov "I'd like that. Which one's your favourite?"
             "......."
             $c14harukasex=True
-            if vir=="Yes":
-                $vir="No"
+            if virgin:
+                $virgin=False
                 $fp="Haruka"
             if not c9harukasex:
                 $sexp+=1
@@ -28263,10 +28263,10 @@ label c14cjhome:
     pov "{i}(Should I...?){/i}"
     menu:
         "Have sex with Josh and Connor.":
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(It'd be my first time, but...){/i}"
                 pov "{i}(If it's with them, I think it'd be fine...){/i}"
-            if vir=="No":
+            else:
                 pov "{i}(Yeah... I want to.){/i}"
                 pov "{i}(I'm feeling really horny right now...){/i}"
             show c14 cj home 5
@@ -28365,13 +28365,13 @@ label c14cjhome:
             pov "...... Okay."
             show c14 cj sex 11
             with dissolve
-            if vir=="Yes":
+            if virgin:
                 pov "Just... be careful, okay?"
                 pov "It's my first time, after all..."
                 c "W-Wait, you were a virgin?!"
                 j "[pov]..."
                 pov "Yeah..."
-            if vir=="No":
+            else:
                 c "Damn, [pov]..."
                 pov "Just... don't be too rough, alright?"
                 pov "I'm still not used to having sex."
@@ -28381,18 +28381,18 @@ label c14cjhome:
             with dissolve
             j "I'm putting it in now... okay?"
             pov "Yes... please..."
-            if vir=="Yes":
+            if virgin:
                 pov "Both of you, make me a woman..."
             show c14 cj sex 13
             with dissolve
             pov "Ah——!"
-            if vir=="Yes":
+            if virgin:
                 with vpunch
                 pov "Ow..."
                 pov "{i}(It hurts a little bit, but...){/i}"
                 pov "{i}(It's not as bad as I thought it'd be.){/i}"
                 pov "{i}(Now... I'm not a virgin anymore...){/i}"
-            if vir=="No":
+            else:
                 pov "Mmm..."
                 pov "I can feel you inside me, Josh..."
                 pov "You're so big!"
@@ -28508,7 +28508,7 @@ label c14cjhome:
                     pov "It hurt more at the start, when you tried pushing in..."
                     c "I'll try moving slowly."
                     pov "Ah... okay..."
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(I can't believe it...){/i}"
                         pov "{i}(Even though I was just a virgin a few minutes ago...){/i}"
                         pov "{i}(I have both of them inside me now, in my pussy and butt...){/i}"
@@ -28647,9 +28647,9 @@ label c14cjhome:
                             $hjcount+=2
                             $scount+=2
                             $ascount+=2
-                            $anvi="No"
-                            if vir=="Yes":
-                                $vir="No"
+                            $analvirgin=False
+                            if virgin:
+                                $virgin=False
                                 $fp="CJ"
                             if not c12cjsex and not c9connorfirst and not c9joshfirst:
                                 $sexp+=2
@@ -28714,9 +28714,9 @@ label c14cjhome:
                             $hjcount+=2
                             $scount+=2
                             $ascount+=2
-                            $anvi="No"
-                            if vir=="Yes":
-                                $vir="No"
+                            $analvirgin=False
+                            if virgin:
+                                $virgin=False
                                 $fp="CJ"
                             if not c12cjsex and not c9connorfirst and not c9joshfirst:
                                 $sexp+=2
@@ -28814,8 +28814,8 @@ label c14cjhome:
                             $bjcount+=2
                             $hjcount+=2
                             $scount+=2
-                            if vir=="Yes":
-                                $vir="No"
+                            if virgin:
+                                $virgin=False
                                 $fp="CJ"
                             if not c12cjsex and not c9connorfirst and not c9joshfirst:
                                 $sexp+=2
@@ -28876,8 +28876,8 @@ label c14cjhome:
                             $bjcount+=2
                             $hjcount+=2
                             $scount+=2
-                            if vir=="Yes":
-                                $vir="No"
+                            if virgin:
+                                $virgin=False
                                 $fp="CJ"
                             if not c12cjsex and not c9connorfirst and not c9joshfirst:
                                 $sexp+=2
@@ -29081,7 +29081,7 @@ label c14vio:
                     with dissolve
                     pov "I'm ready."
                     pov "Please, [vio]..."
-                    if vir=="Yes":
+                    if virgin:
                         pov "{i}(It's my first time being penetrated there...){/i}"
                         pov "{i}(I hope it doesn't hurt too much...){/i}"
                     show c14 vio vag 9
@@ -29089,7 +29089,7 @@ label c14vio:
                     pov "Ahh——!"
                     pov "Oh my god..."
                     vio "Does it hurt?"
-                    if vir=="Yes":
+                    if virgin:
                         pov "A-A little bit..."
                         vio "It's not your first time, is it?"
                         pov "...... It is."
@@ -29097,7 +29097,7 @@ label c14vio:
                         vio "I'll try to be extra gentle."
                         vio "Just let me know if you ever need a break."
                         pov "Okay..."
-                    if vir=="No":
+                    else:
                         pov "N-No, it's fine..."
                         pov "It just surprised me a bit at first is all."
                     show c14 vio vag 10
@@ -29171,8 +29171,8 @@ label c14vio:
                     pov "Sure. I'd like that!"
                     "......."
                     $c14viosexvag=True
-                    if vir=="Yes":
-                        $vir="No"
+                    if virgin:
+                        $virgin=False
                         $fp="Violet"
                     if not c9viosex:
                         $sexp+=1
@@ -29329,7 +29329,7 @@ label c14vio:
                     vio "Haha, okay, okay. I get it!"
                     "......."
                     $c14viosexanal=True
-                    $anvi="No"
+                    $analvirgin=False
                     $ascount+=1
                     $lesexp+=1
                     $sexe+=1
@@ -31027,7 +31027,7 @@ label c15girlsnight:
         "Invite them to my room.":
             $les+=1
             pov "{i}(Perhaps it's a bit much, with both of them at the same time...){/i}"
-            if vir=="Yes":
+            if virgin:
                 pov "{i}(Not only that, but I'm still a virgin...){/i}"
                 pov "{i}(But if it's [fr] and Luna... I don't think I could be happier.){/i}"
             pov "......"
@@ -31374,8 +31374,8 @@ label c15girlsnight:
                 pov "{i}(I'll be lonely when they have to go back after...){/i}"
                 $sexe+=1
                 $lesexp+=1
-                if vir=="Yes":
-                    $vir="No"
+                if virgin:
+                    $virgin=False
                     $fp="Luna & Haruka"
                 if not c9harukasex and not c14harukasex:
                     $sexp+=1
@@ -33527,11 +33527,11 @@ label c16hotsprings:
                 pov "......"
                 pov "{i}(Well, I'd like to feel good too, but...){/i}"
                 pov "{i}(Is this really okay?){/i}"
-                if vir=="Yes":
+                if virgin:
                     pov "{i}(I'm still a virgin, and doing it like this would be...){/i}"
                 menu:
                     "Fuck him {b}(Vaginal){/b}":
-                        if vir == "Yes":
+                        if virgin:
                             pov "{i}(I guess it wouldn't be so bad to lose my virginity here...){/i}"
                             pov "{i}(He's a stranger, so even if it went poorly... I wouldn't need to ever see him again.){/i}"
                             pov "{i}(And I've wanting to try sex for a while now, anyway.){/i}"
@@ -33550,11 +33550,11 @@ label c16hotsprings:
                         show c16 hotsprings male sex 2v
                         with dissolve
                         pov "Mmm... ahh..."
-                        if vir == "Yes":
+                        if virgin:
                             pov "{i}(It hurt a little bit at first, but...){/i}"
                             pov "{i}(It's fine now.){/i}"
                             pov "{i}(I think the water made it go in easier.){/i}"
-                        if vir == "No":
+                        else:
                             pov "{i}(It slid in pretty easily...){/i}"
                             pov "{i}(I think the water made it go in easier.){/i}"
                         man "Ah... damn..."
@@ -33649,23 +33649,23 @@ label c16hotsprings:
                         stop music fadeout 3.0
                         pov "Haha... you do that..."
                         pov "{i}(I can't believe I just had sex in public like this...){/i}"
-                        if vir == "Yes":
+                        if virgin:
                             pov "{i}(And for my first time, too...){/i}"
                         pov "......"
                         pov "{i}(Time to clean up, and get going.){/i}"
                         pov "{i}(What's gotten into me lately...){/i}"
-                        if vir=="Yes":
-                            $vir="No"
+                        if virgin:
+                            $virgin=False
                             $fp="Hotsprings Man"
                         $sexe+=1
                         $sexp+=1
                         $scount+=1
                         jump c16cafe
                     "Fuck him {b}(Anal){/b}":
-                        if anvi == "Yes":
+                        if analvirgin:
                             pov "{i}(I've never done anal, but...){/i}"
                             pov "{i}(Now might not be a bad opportunity.){/i}"
-                        if anvi == "No":
+                        else:
                             pov "{i}(I've had anal sex before, so...){/i}"
                             pov "{i}(I guess doing it here could be fun.){/i}"
                         pov "Okay..."
@@ -33684,11 +33684,11 @@ label c16hotsprings:
                         show c16 hotsprings male sex 2a
                         with dissolve
                         pov "Mmm... ahh..."
-                        if anvi == "Yes":
+                        if analvirgin:
                             pov "{i}(It hurt a little bit at first, but...){/i}"
                             pov "{i}(Somehow it managed to fit in.){/i}"
                             pov "{i}(The water must have been enough lubricant.){/i}"
-                        if anvi == "No":
+                        else:
                             pov "{i}(It went in without too much trouble...){/i}"
                             pov "{i}(I think the water was enough lubricant.){/i}"
                         man "Ah... damn..."
@@ -33781,15 +33781,14 @@ label c16hotsprings:
                         stop music fadeout 3.0
                         pov "Haha... you do that..."
                         pov "{i}(I can't believe I just had sex in public like this...){/i}"
-                        if anvi == "Yes":
+                        if analvirgin:
                             pov "{i}(That was my first time trying anal, too...){/i}"
                             pov "{i}(It didn't hurt as much as I expected.){/i}"
                             pov "{i}(Rather, it actually felt good...){/i}"
                         pov "......"
                         pov "{i}(Time to clean up, and get going.){/i}"
                         pov "{i}(What's gotten into me lately...){/i}"
-                        if anvi=="Yes":
-                            $anvi="No"
+                        $analvirgin=False
                         $ascount+=1
                         $sexe+=1
                         $sexp+=1
@@ -34828,7 +34827,7 @@ label c17spafemalescene:
     pov "Yes, very..."
     pov "You ever thought of starting your own business...?"
     "......"
-    $vir="No"
+    $virgin=False
     if fp=="None":
         $fp="Masseuse"
     $sexp+=1
@@ -34932,7 +34931,7 @@ label c17spamalescene:
     pov "{i}(He's really about to put it in?){/i}"
     pov "{i}(The lack of foreplay has me a bit worried, but...){/i}"
     pov "{i}(I'm guessing the lotion he's poured will help with that.){/i}"
-    if vir=="Yes":
+    if virgin:
         pov "By the way... umm..."
         pov "It's my first time doing this, actually, so..."
         man "R-Really?"
@@ -34946,7 +34945,7 @@ label c17spamalescene:
     show c17 spasex 10m
     with dissolve
     pov "Ahh..."
-    if vir=="Yes":
+    if virgin:
         pov "{i}(It's in already...?){/i}"
         pov "{i}(That wasn't nearly as painful as I'd have thought.){/i}"
         pov "{i}(Huh. Could it have been the lotion?){/i}"
@@ -35036,7 +35035,7 @@ label c17spamalescene:
             pov "Yes..."
             pov "Very much so..."
             pov "{i}(I can feel the warmth inside me...){/i}"
-            $vir="No"
+            $virgin=False
             if fp=="None":
                 $fp="Masseur"
             $sexp+=1
@@ -35055,7 +35054,7 @@ label c17spamalescene:
             pov "W-Woah..."
             pov "That's a lot, isn't it..."
             pov "It's all over my butt, and even on the blanket..."
-            $vir="No"
+            $virgin=False
             if fp=="None":
                 $fp="Masseur"
             $sexp+=1
@@ -35579,7 +35578,7 @@ label c17hotsprings:
             pov "{i}(But, well...){/i}"
             pov "{i}(That thrill is exactly what makes this so hot to me.){/i}"
             "......"
-            $vir="No"
+            $virgin=False
             if fp=="None":
                 $fp="Hotsprings Girl"
             $les+=1
@@ -35834,7 +35833,7 @@ label c17pokermale:
     with dissolve
     pov "Shh. You'll both get your turn, too."
     pov "...... Are you ready?"
-    if vir=="Yes":
+    if virgin:
         pov "It's my first time, so don't be too rough..."
         ced "W-Wait, really?"
         ced "You guys haven't already plowed her before? Pshh."
@@ -35844,7 +35843,7 @@ label c17pokermale:
     show c17 pokersex boys 10
     with dissolve
     pov "{i}(Here it comes...){/i}"
-    if vir=="Yes":
+    if virgin:
         pov "{i}(I hope it doesn't hurt too much.){/i}"
     show c17 pokersex boys 11
     with dissolve
@@ -35856,7 +35855,7 @@ label c17pokermale:
     with pixellate
     pov "Ah?!"
     pov "{i}(I-It's in...){/}"
-    if vir=="Yes":
+    if virgin:
         pov "{i}(I'm not a virgin anymore now, huh...){/i}"
     ced "W-Woah!"
     ced "Your pussy is sucking me in."
@@ -35918,9 +35917,9 @@ label c17pokermale:
             show c17 pokersex boys 21
             with dissolve
             pov "O-Okay."
-            if anvi=="Yes":
+            if analvirgin:
                 pov "It's my first time doing anal, so I'm trusting you..."
-            if anvi=="No":
+            else:
                 pov "It's not my first time, but I'm still not used to doing anal..."
             show c17 pokersex boys 22
             with dissolvelong
@@ -35980,7 +35979,7 @@ label c17pokermale:
                     pov "You came so much..."
                     pov "My pussy, my ass, even my mouth..."
                     pov "They all feel so warm."
-                    $vir="No"
+                    $virgin=False
                     if fp=="None":
                         $fp="CJ & Cedrick"
                     if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
@@ -35993,8 +35992,7 @@ label c17pokermale:
                     $bjcount+=3
                     $hjcount+=3
                     $creampiecount+=2
-                    if anvi=="Yes":
-                        $anvi="No"
+                    $analvirgin=False
                     $ascount+=1
                     show c17 pokersex boys 30
                     with fadeholdlong
@@ -36052,7 +36050,7 @@ label c17pokermale:
                     with vpunch
                     pov "Ohh——!"
                     "......"
-                    $vir="No"
+                    $virgin=False
                     if fp=="None":
                         $fp="CJ & Cedrick"
                     if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
@@ -36064,8 +36062,7 @@ label c17pokermale:
                     $ascount+=2
                     $bjcount+=3
                     $hjcount+=3
-                    if anvi=="Yes":
-                        $anvi="No"
+                    $analvirgin=False
                     show c17 pokersex boys 30
                     with fadeholdlong
                     pov "Hah..."
@@ -36138,7 +36135,7 @@ label c17pokermale:
                     with vpunch
                     pov "?!"
                     "......"
-                    $vir="No"
+                    $virgin=False
                     if fp=="None":
                         $fp="CJ & Cedrick"
                     if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
@@ -36170,7 +36167,7 @@ label c17pokermale:
                     with vpunch
                     pov "?!"
                     "......"
-                    $vir="No"
+                    $virgin=False
                     if fp=="None":
                         $fp="CJ & Cedrick"
                     if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
@@ -36468,7 +36465,7 @@ label c17pokergirls:
     pov "{i}(I've experienced many, many orgasms over the years, but what I felt in that moment...){/i}"
     pov "{i}(It surpassed anything I could have ever imagined.){/i}"
     "......"
-    $vir="No"
+    $virgin=False
     if fp=="None":
         $fp="Haruka"
     $lesexp+=2
@@ -36723,10 +36720,10 @@ label c17pokervio:
     ni "I'm gonna put it in now."
     ni "You fine with that?"
     pov "Y-Yeah..."
-    if vir=="Yes":
+    if virgin:
         pov "{i}(It's my first time, but I can't really back out at this point...){/i}"
         pov "{i}(Besides, I've always wanted to try having sex, so this as good an opportunity as any.){/i}"
-    if vir=="No":
+    else:
         pov "{i}(If I backed after all this, I'd be a fool.){/i}"
     show c17 pokersex violet 11
     with dissolve
@@ -36735,9 +36732,9 @@ label c17pokervio:
     show c17 pokersex violet 12
     with dissolve
     ni "It's sliding in."
-    if vir=="Yes":
+    if virgin:
         pov "O-Ow..."
-    if vir=="No":
+    else:
         pov "Ah..."
     show c17 pokersex violet 13
     with dissolve
@@ -36840,7 +36837,7 @@ label c17pokervio:
     pov "{i}(Well, the three of them have a lot of stamina, I'll give them that.){/i}"
     pov "{i}(More than me, as it's clear right now...){/i}"
     pov "{i}(Tonight was definitely a wild night...){/i}"
-    $vir="No"
+    $virgin=False
     if fp=="None":
         $fp="Nick"
     $sexp+=1
@@ -37175,7 +37172,7 @@ label c17pokerharuka:
     with dissolvelong
     pov "Ahh——!"
     j "You're squeezing me in, [pov]."
-    if vir=="Yes":
+    if virgin:
         pov "O-Ow..."
         pov "It's my first time, too."
         j "S-Sorry."
@@ -37325,7 +37322,7 @@ label c17pokerharuka:
     fr "I'm happy to hear that."
     pov "{i}(Tonight was definitely an... unusual experience...){/i}"
     "......"
-    $vir="No"
+    $virgin=False
     if fp=="None":
         $fp="Josh"
     if not c12cjsex and not c9connorfirst and not c9joshfirst and not c14cjsex:
@@ -38750,8 +38747,8 @@ label c18cafe:
                 "... 'Perhaps being a slut isn't so bad', she had thought."
                 "......"
                 $c18stripclubsexfemale=True
-                if vir=="Yes":
-                    $vir="No"
+                if virgin:
+                    $virgin=False
                     $fp="Stripclub Girl"
                 $sexp+=1
                 $lesexp+=1
@@ -38889,8 +38886,8 @@ label c18cafe:
                 "... 'Perhaps being a slut isn't so bad', she had thought."
                 "......"
                 $c18stripclubsexvio=True
-                if vir=="Yes":
-                    $vir="No"
+                if virgin:
+                    $virgin=False
                     $fp="Violet"
                 if not c9viosex and not c14viosexvag and not c14viosexanal and not c17pokermixedvio and not c17pokersexvio:
                     $sexp+=1
@@ -38981,12 +38978,12 @@ label c18cafe:
                 pov "Y-Yeah... you're so big..."
                 show c18 stripclubsex male 7
                 with dissolve
-                if vir=="No":
-                    "Although it was not by any means her first time having sex..."
-                    "Doing it in the middle of a public establishment was certainly a first for our dear [pov]."
-                if vir=="Yes":
+                if virgin:
                     "Although she had protected her virginity for so long..."
                     "Our dear [pov] had given her chastity to a stranger, in the middle of a public establishment..."
+                else:
+                    "Although it was not by any means her first time having sex..."
+                    "Doing it in the middle of a public establishment was certainly a first for our dear [pov]."
                 pov "Mmm... ah..."
                 voice "audio/effects/lewd/smack1.wav"
                 show c18 stripclubsex male 8
@@ -39006,7 +39003,7 @@ label c18cafe:
                 man "I'm just gonna walk away from here and pretend I never heard anything."
                 man "Fuckin' like rabbits down here..."
                 voice "audio/effects/lewd/smack1.wav"
-                if anvi == "Yes":
+                if analvirgin:
                     show c18 stripclubsex male 11v
                     with dissolveverylong
                     "After [vio] had requested a break, the other man would take it upon himself to join his friend in double-teaming [pov]."
@@ -39023,7 +39020,7 @@ label c18cafe:
                     manl "I'm gonna fuck you next, so I'll need my cock nice 'n wet."
                     pov "Mmm..."
                     voice "audio/effects/lewd/smack1.wav"
-                if anvi == "No":
+                else:
                     show c18 stripclubsex male 11
                     with dissolveverylong
                     "After [vio] had requested a break, the other man would take it upon himself to join his friend in double-teaming [pov]."
@@ -39066,8 +39063,8 @@ label c18cafe:
                 "... 'Perhaps being a slut isn't so bad', she had thought."
                 "......"
                 $c18stripclubsexmale=True
-                if vir=="Yes":
-                    $vir="No"
+                if virgin:
+                    $virgin=False
                     $fp="Stripclub Strangers"
                 $sexp+=2
                 $bjcount+=1
@@ -39205,8 +39202,8 @@ label c18cafe:
                 "... 'Perhaps being a slut isn't so bad', she had thought."
                 "......"
                 $c18stripclubsexvio=True
-                if vir=="Yes":
-                    $vir="No"
+                if virgin:
+                    $virgin=False
                     $fp="Violet"
                 if not c9viosex and not c14viosexvag and not c14viosexanal and not c17pokermixedvio and not c17pokersexvio:
                     $sexp+=1
@@ -40446,9 +40443,9 @@ label c19ritaoutside:
     pov "{i}(But doing porn myself, for a company?){/i}"
     pov "{i}(Sheesh...){/i}"
     stop music fadeout 3
-    if vir == "Yes":
+    if virgin:
         pov "{i}(I haven't even had sex before, so that'd be quite the leap forward.){/i}"
-    if vir == "No":
+    else:
         pov "{i}(I don't know...){/i}"
     show c19 outdoors 11
     with dissolve
@@ -40787,7 +40784,7 @@ label c19ritacomputer:
         with dissolve
         pov "Would I really be interested in something like this?"
         pov "If I decided to show up, there'd definitely be an expectation that I'd participate..."
-        if vir == "Yes":
+        if virgin:
             pov "And I'm still a virgin..."
         pov "Hmm..."
         menu:
@@ -40865,7 +40862,7 @@ label c19ritacomputer:
         with dissolve
         pov "Would I even be interested in something like that?"
         pov "If I decided to show up, there'd definitely be an expectation that I'd participate..."
-        if vir == "Yes":
+        if virgin:
             pov "And I'm still a virgin..."
         pov "Hmm..."
         menu:
@@ -41347,9 +41344,9 @@ label c19viodate:
             vio "... Wanna cuddle in bed?"
             pov "... Yeah."
             "......"
-            if vir == "Yes":
+            if virgin:
                 $fp="Violet"
-                $vir="No"
+                $virgin=False
             if not c9viosex and not c14viosexvag and not c14viosexanal and not c17pokermixedvio and not c17pokersexvio:
                 $sexp+=1
             $scount+=1
