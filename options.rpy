@@ -224,6 +224,6 @@ init python:
 # define build.itch_project = "renpytom/test-project"
 
 init python:
-     def save_playtime(d):
-         d["playtime"] = renpy.get_game_runtime()
-     config.save_json_callbacks = [save_playtime]
+    def save_playtime(d):
+        d["playtime"] = renpy.get_game_runtime()
+    config.save_json_callbacks = [save_playtime]

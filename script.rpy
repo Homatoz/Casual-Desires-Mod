@@ -20387,75 +20387,75 @@ label c11lucas:
     pov "{i}(Should I ask him to leave?){/i}"
     menu:
         "He can stay and watch.":
-             pov "You can stay."
-             show c11 office 11
-             with dissolve
-             luc "H-Huh? What do you mean?"
-             show c11 office 12
-             with dissolve
-             pov "I mean, you can stay here while I get changed."
-             pov "If you want... I don't even mind if you look."
-             show c11 office 11
-             with dissolve
-             luc "Are you just yanking me around again?"
-             luc "C'mon, [pov]."
-             show c11 office 13
-             with dissolve
-             pov "Am I?"
-             pov "I thought I was being pretty serious."
-             luc "......"
-             show c11 office 14
-             with dissolve
-             pov "{i}(I mean... this is technically our changing room.){/i}"
-             pov "{i}(So I'm not doing anything wrong as an employee here... right?){/i}"
-             luc "{i}*gulp*{/i}"
-             show c11 office 15
-             with dissolvelong
-             pov "That's the uniform off..."
-             luc "[pov]..."
-             luc "......"
-             show c11 office 16
-             with dissolve
-             pov "Are you staring, by any chance?"
-             pov "You pervert..."
-             luc "Err... no... not at all."
-             show c11 office 17
-             with dissolve
-             luc "...... I'm definitely not staring."
-             pov "{i}(You definitely are.){/i}"
-             luc "...... {i}*gulp*{/i}"
-             show c11 office 18
-             with dissolve
-             pov "Well, even if you {i}were{/i} staring..."
-             pov "I guess I couldn't blame you."
-             pov "I'd want to look, too, if I was a guy."
-             show c11 office 19
-             with dissolve
-             pov "But..."
-             pov "{i}(I can't exactly get naked in front of my boss.){/i}"
-             pov "{i}(Not without a good reason, anyway.){/i}"
-             pov "I need to start getting dressed now."
-             pov "...... You weren't hoping to see more, were you?"
-             luc "N-No... not at all..."
-             show c11 office 20
-             with dissolvelong
-             pov "{i}(How predictable.){/i}"
-             pov "{i}(Well, as long as he enjoyed it.){/i}"
-             pov "{i}(...... I did, too.){/i}"
-             show c11 office 21
-             with dissolve
-             stop music fadeout 2.5
-             pov "{i}(Now then...){/i}"
-             pov "{i}(I still have some energy, since today's shift wasn't super busy.){/i}"
-             pov "{i}(Should I play games when I get home?){/i}"
-             pov "{i}(Or...){/i}"
-             "......"
-             $c11lucastease=True
-             $exh+=1
-             if c10stream==False:
-                 jump c11end
-             if c10stream==True:
-                 jump c11stream
+            pov "You can stay."
+            show c11 office 11
+            with dissolve
+            luc "H-Huh? What do you mean?"
+            show c11 office 12
+            with dissolve
+            pov "I mean, you can stay here while I get changed."
+            pov "If you want... I don't even mind if you look."
+            show c11 office 11
+            with dissolve
+            luc "Are you just yanking me around again?"
+            luc "C'mon, [pov]."
+            show c11 office 13
+            with dissolve
+            pov "Am I?"
+            pov "I thought I was being pretty serious."
+            luc "......"
+            show c11 office 14
+            with dissolve
+            pov "{i}(I mean... this is technically our changing room.){/i}"
+            pov "{i}(So I'm not doing anything wrong as an employee here... right?){/i}"
+            luc "{i}*gulp*{/i}"
+            show c11 office 15
+            with dissolvelong
+            pov "That's the uniform off..."
+            luc "[pov]..."
+            luc "......"
+            show c11 office 16
+            with dissolve
+            pov "Are you staring, by any chance?"
+            pov "You pervert..."
+            luc "Err... no... not at all."
+            show c11 office 17
+            with dissolve
+            luc "...... I'm definitely not staring."
+            pov "{i}(You definitely are.){/i}"
+            luc "...... {i}*gulp*{/i}"
+            show c11 office 18
+            with dissolve
+            pov "Well, even if you {i}were{/i} staring..."
+            pov "I guess I couldn't blame you."
+            pov "I'd want to look, too, if I was a guy."
+            show c11 office 19
+            with dissolve
+            pov "But..."
+            pov "{i}(I can't exactly get naked in front of my boss.){/i}"
+            pov "{i}(Not without a good reason, anyway.){/i}"
+            pov "I need to start getting dressed now."
+            pov "...... You weren't hoping to see more, were you?"
+            luc "N-No... not at all..."
+            show c11 office 20
+            with dissolvelong
+            pov "{i}(How predictable.){/i}"
+            pov "{i}(Well, as long as he enjoyed it.){/i}"
+            pov "{i}(...... I did, too.){/i}"
+            show c11 office 21
+            with dissolve
+            stop music fadeout 2.5
+            pov "{i}(Now then...){/i}"
+            pov "{i}(I still have some energy, since today's shift wasn't super busy.){/i}"
+            pov "{i}(Should I play games when I get home?){/i}"
+            pov "{i}(Or...){/i}"
+            "......"
+            $c11lucastease=True
+            $exh+=1
+            if c10stream==False:
+                jump c11end
+            if c10stream==True:
+                jump c11stream
         "Get changed in privacy.":
             label c11lucascancel:
                 show c11 office cancel 1
