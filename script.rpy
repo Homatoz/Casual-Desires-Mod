@@ -26,7 +26,7 @@ define dissolveverylong = Dissolve(5.0)
 #VISIBLE STATS
 default virgin = True
 default analvirgin = True
-default sexpartners = 0
+default sexpartners = []
 default scount = 0
 default ascount = 0
 default bjcount = 0
@@ -114,6 +114,7 @@ default c9cjstop = False
 default c9lunasex = False
 default c9viosex = False
 default c9harukasex = False
+default c9evelyn_is_partner = False
 default c10pool = False
 default c10poolsex = False
 default c10mia = False
@@ -314,7 +315,8 @@ screen stat_box():
             if not virgin:
                 text "First partner(s): [fp]"
             if not virgin:
-                text "Sex partners: [sexpartners]"
+                $strlensp = str(len(sexpartners))
+                text "Sex partners: [strlensp]"
             if not virgin and scount>=1:
                 text "Times penetrated: [scount]"
             if creampiecount >=1:
@@ -388,24 +390,24 @@ label start:
                 "A boyfriend in high school.":
                     "A pair of lovers."
                     $virgin=False
-                    $fp="Boyfriend"
-                    $sexpartners+=1
+                    call first_partner("Boyfriend")
+                    call add_partner("Boyfriend")
                     $scount+=3
                     $sexexp+=3
                     jump introstart
                 "Experimenting with a female classmate.":
                     "A thirst for adventure."
                     $virgin=False
-                    $fp="Classmate"
-                    $sexpartners+=1
+                    call first_partner("Classmate")
+                    call add_partner("Classmate")
                     $lesexp+=1
                     $sexexp+=1
                     jump introstart
                 "A stranger during prom night.":
                     "Oh my... [pov]..."
                     $virgin=False
-                    $fp="Stranger"
-                    $sexpartners+=1
+                    call first_partner("Stranger")
+                    call add_partner("Stranger")
                     $scount+=1
                     $sexexp+=1
                     jump introstart
@@ -14979,8 +14981,9 @@ label c9office:
                         pov "I guess... maybe..."
                         pov "I haven't been a virgin, ever since..."
                         $virgin=False
-                        $fp="Evelyn"
-                        $sexpartners+=1
+                        call first_partner("Evelyn")
+                        call add_partner("Evelyn")
+                        $c9evelyn_is_partner = True
                         $lesexp+=1
                     "It didn't mean anything.":
                         pov "Nah..."
@@ -14998,7 +15001,8 @@ label c9office:
                         pov "It's hard to just write off what happened."
                         pov "I guess... maybe..."
                         pov "I've been a lot more active than I imagined."
-                        $sexpartners+=1
+                        call add_partner("Evelyn")
+                        $c9evelyn_is_partner = True
                         $lesexp+=1
                     "It didn't mean anything.":
                         pov "Nah..."
@@ -15596,10 +15600,10 @@ label c9cjscene:
                 pov "{i}(And not only that, I did it with my two best friends... at the same time...){/i}"
                 pov "......"
                 pov "{i}*giggles*{/i}"
-                if virgin:
-                    $virgin=False
-                    $fp="CJ"
-                $sexpartners+=2
+                $virgin=False
+                call first_partner("CJ")
+                call add_partner("Connor")
+                call add_partner("Josh")
                 $scount+=2
                 $bjcount+=2
                 $hjcount+=2
@@ -15853,10 +15857,10 @@ label c9cjscene:
                 pov "{i}(And not only that, I did it with my two best friends... at the same time...){/i}"
                 pov "......"
                 pov "{i}*giggles*{/i}"
-                if virgin:
-                    $virgin=False
-                    $fp="CJ"
-                $sexpartners+=2
+                $virgin=False
+                call first_partner("CJ")
+                call add_partner("Connor")
+                call add_partner("Josh")
                 $scount+=2
                 $bjcount+=2
                 $hjcount+=2
@@ -16281,10 +16285,9 @@ label c9lunascene:
         luna "That's okay."
         luna "Luna will be sleeping right together with you tonight."
         "......"
-        if virgin:
-            $virgin=False
-            $fp="Luna"
-        $sexpartners+=1
+        $virgin=False
+        call first_partner("Luna")
+        call add_partner("Luna")
         $sexexp+=1
         $les+=1
         $lesexp+=1
@@ -16628,10 +16631,9 @@ label c9vioscene:
         pov "{i}(She really knows how to make a girl feel good.){/i}"
         pov "{i}(I'd like to do something like this again...){/i}"
         "......"
-        if virgin:
-            $virgin=False
-            $fp="Violet"
-        $sexpartners+=1
+        $virgin=False
+        call first_partner("Violet")
+        call add_partner("Violet")
         $sexexp+=1
         $les+=1
         $lesexp+=1
@@ -16925,10 +16927,9 @@ label c9harukascene:
         fr "Yeah. Stay as long as you'd like."
         fr "I want to spend more time with you, too, [pov]."
         "......."
-        if virgin:
-            $virgin=False
-            $fp="Haruka"
-        $sexpartners+=1
+        $virgin=False
+        call first_partner("Haruka")
+        call add_partner("Haruka")
         $sexexp+=1
         $les+=1
         $lesexp+=1
@@ -17569,9 +17570,8 @@ label act2start:
                                 pov "{i}(Did I always have this slutty side of myself...?){/i}"
                                 "......"
                                 $virgin=False
-                                if fp=="None":
-                                    $fp="Pool Pervert"
-                                $sexpartners+=1
+                                call first_partner("Pool pervert")
+                                call add_partner("Pool pervert")
                                 $sexexp+=1
                                 $scount+=1
                                 $hjcount+=1
@@ -19603,9 +19603,8 @@ label c10complete:
                             "......"
                             $c11pizzasex=True
                             $virgin=False
-                            if fp=="None":
-                                $fp="Pizza Boy"
-                            $sexpartners+=1
+                            call first_partner("Pizza boy")
+                            call add_partner("Pizza boy")
                             $sexexp+=1
                             $bjcount+=1
                             $hjcount+=1
@@ -19903,12 +19902,11 @@ label c10complete:
                             "......"
                             $c11les=True
                             $virgin=False
-                            if fp=="None":
-                                $fp="Female Stranger"
+                            call first_partner("Female stranger")
                             $lesexp+=1
                             $les+=1
                             $sexexp+=1
-                            $sexpartners+=1
+                            call add_partner("Female stranger from the street")
                             if c5viomff or c5viommf:
                                 jump c11vio
                             else:
@@ -20576,9 +20574,10 @@ label c11stream:
             else:
                 pov "I have had sex before."
                 pov "But I'm still pretty inexperienced."
-                if sexpartners>=2:
-                    pov "In fact, I've only done it with [sexpartners] people before."
-                if sexpartners==1:
+                if len(sexpartners)>=2:
+                    $strlensp = str(len(sexpartners))
+                    pov "In fact, I've only done it with [strlensp] people before."
+                if len(sexpartners)==1:
                     pov "In fact, I've only done it with one person before."
             show c11 stream 13
             with dissolve
@@ -21563,9 +21562,8 @@ label c12mia:
             mia "Yeah, right, as if you could beat me!"
             "......"
             $virgin=False
-            if fp=="None":
-                $fp="Mia"
-            $sexpartners+=1
+            call first_partner("Mia")
+            call add_partner("Mia")
             $lesexp+=1
             $les+=1
             $sexexp+=1
@@ -22098,11 +22096,10 @@ label c12cj:
                             with dissolvelong
                             "The pure and innocent girl her friends used to know, had seemed to change into someone much more lewd than they ever imagined."
                             "......"
-                            if virgin:
-                                $virgin=False
-                                $fp="CJ"
-                            if not c9connorfirst and not c9joshfirst:
-                                $sexpartners+=2
+                            $virgin=False
+                            call first_partner("CJ")
+                            call add_partner("Connor")
+                            call add_partner("Josh")
                             $sexexp+=1
                             $scount+=2
                             $hjcount+=2
@@ -22161,11 +22158,10 @@ label c12cj:
                             with dissolvelong
                             "The pure and innocent girl her friends used to know, had seemed to change into someone much more lewd than they ever imagined."
                             "......"
-                            if virgin:
-                                $virgin=False
-                                $fp="CJ"
-                            if not c9connorfirst and not c9joshfirst:
-                                $sexpartners+=2
+                            $virgin=False
+                            call first_partner("CJ")
+                            call add_partner("Connor")
+                            call add_partner("Josh")
                             $sexexp+=1
                             $scount+=2
                             $hjcount+=2
@@ -22398,9 +22394,8 @@ label c12waterpark:
                     pov "{i}(It was my first time, but it was incredible.){/i}"
                 "......"
                 $virgin=False
-                if fp=="None":
-                    $fp="Female Stranger"
-                $sexpartners+=1
+                call first_partner("Female stranger")
+                call add_partner("Female stranger from the water park")
                 $lesexp+=1
                 $les+=1
                 $sexexp+=1
@@ -25191,11 +25186,9 @@ label c13aftercafe:
                     pov "{i}(I wonder if it'd be too risky to shower together...?){/i}"
                     "......"
                     $c13lunasex=True
-                    if virgin:
-                        $virgin=False
-                        $fp="Luna"
-                    if not c9lunasex:
-                        $sexpartners+=1
+                    $virgin=False
+                    call first_partner("Luna")
+                    call add_partner("Luna")
                     $lesexp+=1
                     $sexexp+=1
                     $les+=1
@@ -26057,9 +26050,8 @@ label c13downtown:
                 pov "Goodnight, everyone."
                 "......"
                 $sexexp+=1
-                if virgin:
-                    $virgin=False
-                    $fp="Dildo"
+                $virgin=False
+                call first_partner("Dildo")
                 jump c13ending
         if virgin:
             pov "But... I'm still a virgin."
@@ -27431,7 +27423,8 @@ label c14femalebeach:
             with dissolve
             pov "{i}(Well, I can't blame them...){/i}"
             pov "{i}(After how good that made me feel... it being my first threesome...){/i}"
-            if c12cjsex or c9connorfirst or c9joshfirst:
+            call check_partner("Connor")
+            if _return:
                 pov "{i}(Well, first threesome with two other girls, I mean...){/i}"
             pov "{i}(I'd need some time to recover and catch my breath, anyway, before I could return the favour.){/i}"
             wom1 "Ah, yes!!"
@@ -27490,10 +27483,10 @@ label c14femalebeach:
                 pov "{i}(As a virgin no longer...){/i}"
             $sexexp+=1
             $lesexp+=1
-            $sexpartners+=2
-            if virgin:
-                $virgin=False
-                $fp="Beach Strangers"
+            call add_partner("Female stranger 1 from the beach")
+            call add_partner("Female stranger 2 from the beach")
+            $virgin=False
+            call first_partner("Beach strangers")
             $c14beachfemalesex=True
             jump c14busafter
         "No. I don't even know them.":
@@ -27996,11 +27989,9 @@ label c14busafter:
             pov "I'd like that. Which one's your favourite?"
             "......."
             $c14harukasex=True
-            if virgin:
-                $virgin=False
-                $fp="Haruka"
-            if not c9harukasex:
-                $sexpartners+=1
+            $virgin=False
+            call first_partner("Haruka")
+            call add_partner("Haruka")
             $lesexp+=1
             $sexexp+=1
             jump c14transition
@@ -28317,7 +28308,8 @@ label c14cjhome:
             with dissolve
             j "Err... so..."
             j "How should we start?"
-            if c12cjsex or c9connorfirst or c9joshfirst:
+            call check_partner("Connor")
+            if _return:
                 pov "Oh, please... it's not like this is the first time we've done this."
                 pov "I already took your virginities!"
             show c14 cj sex 4
@@ -28343,7 +28335,8 @@ label c14cjhome:
             show c14 cj sex 7
             with dissolve
             pov "Ah..."
-            if c12cjsex or c9connorfirst or c9joshfirst:
+            call check_partner("Connor")
+            if _return:
                 j "Wow... your tits are even bigger than I remember."
             j "You really have one smoking body, [pov]..."
             pov "Mmm... really?"
@@ -28655,11 +28648,10 @@ label c14cjhome:
                             $scount+=2
                             $ascount+=2
                             $analvirgin=False
-                            if virgin:
-                                $virgin=False
-                                $fp="CJ"
-                            if not c12cjsex and not c9connorfirst and not c9joshfirst:
-                                $sexpartners+=2
+                            $virgin=False
+                            call first_partner("CJ")
+                            call add_partner("Connor")
+                            call add_partner("Josh")
                             $creampiecount+=2
                             jump c14ending
                         "Cum outside.":
@@ -28722,11 +28714,10 @@ label c14cjhome:
                             $scount+=2
                             $ascount+=2
                             $analvirgin=False
-                            if virgin:
-                                $virgin=False
-                                $fp="CJ"
-                            if not c12cjsex and not c9connorfirst and not c9joshfirst:
-                                $sexpartners+=2
+                            $virgin=False
+                            call first_partner("CJ")
+                            call add_partner("Connor")
+                            call add_partner("Josh")
                             jump c14ending
                 "I only want to use my pussy.":
                     pov "No... sorry..."
@@ -28821,11 +28812,10 @@ label c14cjhome:
                             $bjcount+=2
                             $hjcount+=2
                             $scount+=2
-                            if virgin:
-                                $virgin=False
-                                $fp="CJ"
-                            if not c12cjsex and not c9connorfirst and not c9joshfirst:
-                                $sexpartners+=2
+                            $virgin=False
+                            call first_partner("CJ")
+                            call add_partner("Connor")
+                            call add_partner("Josh")
                             $creampiecount+=1
                             jump c14ending
                         "Cum outside, please.":
@@ -28883,11 +28873,10 @@ label c14cjhome:
                             $bjcount+=2
                             $hjcount+=2
                             $scount+=2
-                            if virgin:
-                                $virgin=False
-                                $fp="CJ"
-                            if not c12cjsex and not c9connorfirst and not c9joshfirst:
-                                $sexpartners+=2
+                            $virgin=False
+                            call first_partner("CJ")
+                            call add_partner("Connor")
+                            call add_partner("Josh")
                             jump c14ending
         "Watch TV together.":
             pov "{i}(No... I'm not sure why I thought of that.){/i}"
@@ -29178,11 +29167,9 @@ label c14vio:
                     pov "Sure. I'd like that!"
                     "......."
                     $c14viosexvag=True
-                    if virgin:
-                        $virgin=False
-                        $fp="Violet"
-                    if not c9viosex:
-                        $sexpartners+=1
+                    $virgin=False
+                    call first_partner("Violet")
+                    call add_partner("Violet")
                     $lesexp+=1
                     $sexexp+=1
                     jump c14ending
@@ -31382,13 +31369,10 @@ label c15girlsnight:
                 pov "{i}(I'll be lonely when they have to go back after...){/i}"
                 $sexexp+=1
                 $lesexp+=1
-                if virgin:
-                    $virgin=False
-                    $fp="Luna & Haruka"
-                if not c9harukasex and not c14harukasex:
-                    $sexpartners+=1
-                if not c9lunasex and not c13lunasex:
-                    $sexpartners+=1
+                $virgin=False
+                call first_partner("Luna & Haruka")
+                call add_partner("Haruka")
+                call add_partner("Luna")
                 $c15girlsthreesome=True
                 "......"
                 jump c15massage
@@ -33662,12 +33646,12 @@ label c16hotsprings:
                         pov "......"
                         pov "{i}(Time to clean up, and get going.){/i}"
                         pov "{i}(What's gotten into me lately...){/i}"
-                        if virgin:
-                            $virgin=False
-                            $fp="Hotsprings Man"
+                        $virgin=False
+                        call first_partner("Hotsprings man")
                         $sexexp+=1
-                        $sexpartners+=1
+                        call add_partner("Hotsprings man")
                         $scount+=1
+                        $c16mixedvag = True
                         jump c16cafe
                     "Fuck him {b}(Anal){/b}":
                         if analvirgin:
@@ -33799,8 +33783,9 @@ label c16hotsprings:
                         $analvirgin=False
                         $ascount+=1
                         $sexexp+=1
-                        $sexpartners+=1
+                        call add_partner("Hotsprings man")
                         $scount+=1
+                        $c16mixedanal = True
                         jump c16cafe
                     "Stop here.":
                         pov "{i}(No way!){/i}"
@@ -33833,7 +33818,7 @@ label c16hotsprings:
                         pov "{i}(There's still some of his cum in the back of my throat...){/i}"
                         "......"
                         $sexexp+=1
-                        $c16mixedbjonly
+                        $c16mixedbjonly = True
                         jump c16cafe
             "I'm just here to relax.":
                 pov "{i}(No... this is way too sudden.){/i}"
@@ -34836,9 +34821,8 @@ label c17spafemalescene:
     pov "You ever thought of starting your own business...?"
     "......"
     $virgin=False
-    if fp=="None":
-        $fp="Masseuse"
-    $sexpartners+=1
+    call first_partner("Masseuse")
+    call add_partner("Masseuse")
     $lesexp+=1
     $sexexp+=1
     show c17 spasexafter 1
@@ -35044,9 +35028,8 @@ label c17spamalescene:
             pov "Very much so..."
             pov "{i}(I can feel the warmth inside me...){/i}"
             $virgin=False
-            if fp=="None":
-                $fp="Masseur"
-            $sexpartners+=1
+            call first_partner("Masseur")
+            call add_partner("Masseur")
             $creampiecount+=1
             $sexexp+=1
             $scount+=1
@@ -35063,9 +35046,8 @@ label c17spamalescene:
             pov "That's a lot, isn't it..."
             pov "It's all over my butt, and even on the blanket..."
             $virgin=False
-            if fp=="None":
-                $fp="Masseur"
-            $sexpartners+=1
+            call first_partner("Masseur")
+            call add_partner("Masseur")
             $sexexp+=1
             $scount+=1
     show c17 spasexafter 1
@@ -35587,10 +35569,9 @@ label c17hotsprings:
             pov "{i}(That thrill is exactly what makes this so hot to me.){/i}"
             "......"
             $virgin=False
-            if fp=="None":
-                $fp="Hotsprings Girl"
+            call first_partner("Hotsprings girl")
             $les+=1
-            $sexpartners+=1
+            call add_partner("Hotsprings girl")
             $lesexp+=2
             $sexexp+=1
             if c16pokermale:
@@ -35988,12 +35969,10 @@ label c17pokermale:
                     pov "My pussy, my ass, even my mouth..."
                     pov "They all feel so warm."
                     $virgin=False
-                    if fp=="None":
-                        $fp="CJ & Cedrick"
-                    if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
-                        $sexpartners+=1
-                    else:
-                        $sexpartners+=3
+                    call first_partner("CJ & Cedrick")
+                    call add_partner("Connor")
+                    call add_partner("Josh")
+                    call add_partner("Cedrick")
                     $scount+=3
                     $sexexp+=3
                     $ascount+=2
@@ -36059,12 +36038,10 @@ label c17pokermale:
                     pov "Ohh——!"
                     "......"
                     $virgin=False
-                    if fp=="None":
-                        $fp="CJ & Cedrick"
-                    if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
-                        $sexpartners+=1
-                    else:
-                        $sexpartners+=3
+                    call first_partner("CJ & Cedrick")
+                    call add_partner("Connor")
+                    call add_partner("Josh")
+                    call add_partner("Cedrick")
                     $scount+=3
                     $sexexp+=3
                     $ascount+=2
@@ -36144,12 +36121,10 @@ label c17pokermale:
                     pov "?!"
                     "......"
                     $virgin=False
-                    if fp=="None":
-                        $fp="CJ & Cedrick"
-                    if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
-                        $sexpartners+=1
-                    else:
-                        $sexpartners+=3
+                    call first_partner("CJ & Cedrick")
+                    call add_partner("Connor")
+                    call add_partner("Josh")
+                    call add_partner("Cedrick")
                     $scount+=3
                     $sexexp+=3
                     $bjcount+=3
@@ -36176,12 +36151,10 @@ label c17pokermale:
                     pov "?!"
                     "......"
                     $virgin=False
-                    if fp=="None":
-                        $fp="CJ & Cedrick"
-                    if c12cjsex or c9connorfirst or c9joshfirst or c14cjsex:
-                        $sexpartners+=1
-                    else:
-                        $sexpartners+=3
+                    call first_partner("CJ & Cedrick")
+                    call add_partner("Connor")
+                    call add_partner("Josh")
+                    call add_partner("Cedrick")
                     $scount+=3
                     $sexexp+=3
                     $bjcount+=3
@@ -36474,8 +36447,7 @@ label c17pokergirls:
     pov "{i}(It surpassed anything I could have ever imagined.){/i}"
     "......"
     $virgin=False
-    if fp=="None":
-        $fp="Haruka"
+    call first_partner("Haruka")
     $lesexp+=2
     $sexexp+=2
     show c17 pokersex girls 15
@@ -36846,9 +36818,8 @@ label c17pokervio:
     pov "{i}(More than me, as it's clear right now...){/i}"
     pov "{i}(Tonight was definitely a wild night...){/i}"
     $virgin=False
-    if fp=="None":
-        $fp="Nick"
-    $sexpartners+=1
+    call first_partner("Nick")
+    call add_partner("Nick")
     $scount+=1
     $sexexp+=1
     $bjcount+=1
@@ -37331,10 +37302,8 @@ label c17pokerharuka:
     pov "{i}(Tonight was definitely an... unusual experience...){/i}"
     "......"
     $virgin=False
-    if fp=="None":
-        $fp="Josh"
-    if not c12cjsex and not c9connorfirst and not c9joshfirst and not c14cjsex:
-        $sexpartners+=1
+    call first_partner("Josh")
+    call add_partner("Josh")
     $scount+=1
     $bjcount+=1
     $hjcount+=1
@@ -38755,10 +38724,9 @@ label c18cafe:
                 "... 'Perhaps being a slut isn't so bad', she had thought."
                 "......"
                 $c18stripclubsexfemale=True
-                if virgin:
-                    $virgin=False
-                    $fp="Stripclub Girl"
-                $sexpartners+=1
+                $virgin=False
+                call first_partner("Stripclub girl")
+                call add_partner("Stripclub girl")
                 $lesexp+=1
                 $sexexp+=1
                 jump c18stripclubafter
@@ -38894,11 +38862,9 @@ label c18cafe:
                 "... 'Perhaps being a slut isn't so bad', she had thought."
                 "......"
                 $c18stripclubsexvio=True
-                if virgin:
-                    $virgin=False
-                    $fp="Violet"
-                if not c9viosex and not c14viosexvag and not c14viosexanal and not c17pokermixedvio and not c17pokersexvio:
-                    $sexpartners+=1
+                $virgin=False
+                call first_partner("Violet")
+                call add_partner("Violet")
                 $lesexp+=1
                 $sexexp+=1
                 jump c18stripclubafter
@@ -39071,10 +39037,10 @@ label c18cafe:
                 "... 'Perhaps being a slut isn't so bad', she had thought."
                 "......"
                 $c18stripclubsexmale=True
-                if virgin:
-                    $virgin=False
-                    $fp="Stripclub Strangers"
-                $sexpartners+=2
+                $virgin=False
+                call first_partner("Stripclub strangers")
+                call add_partner("Male stranger 1 from the stripclub")
+                call add_partner("Male stranger 2 from the stripclub")
                 $bjcount+=1
                 $scount+=2
                 $sexexp+=1
@@ -39210,11 +39176,9 @@ label c18cafe:
                 "... 'Perhaps being a slut isn't so bad', she had thought."
                 "......"
                 $c18stripclubsexvio=True
-                if virgin:
-                    $virgin=False
-                    $fp="Violet"
-                if not c9viosex and not c14viosexvag and not c14viosexanal and not c17pokermixedvio and not c17pokersexvio:
-                    $sexpartners+=1
+                $virgin=False
+                call first_partner("Violet")
+                call add_partner("Violet")
                 $lesexp+=1
                 $sexexp+=1
                 jump c18stripclubafter
@@ -41352,11 +41316,9 @@ label c19viodate:
             vio "... Wanna cuddle in bed?"
             pov "... Yeah."
             "......"
-            if virgin:
-                $fp="Violet"
-                $virgin=False
-            if not c9viosex and not c14viosexvag and not c14viosexanal and not c17pokermixedvio and not c17pokersexvio:
-                $sexpartners+=1
+            call first_partner("Violet")
+            $virgin=False
+            call add_partner("Violet")
             $scount+=1
             $lesexp+=1
             jump c19end
