@@ -26,7 +26,6 @@ define dissolveverylong = Dissolve(5.0)
 #VISIBLE STATS
 default virgin = True
 default analvirgin = True
-default perv = 0
 default sexpartners = 0
 default scount = 0
 default ascount = 0
@@ -44,35 +43,31 @@ default chaptercount = "Prologue"
 default boys_horny = 0
 default model_motive = 0
 default model_seduction = 0
-default c2boy_sed = 0
-default c2girl_sed = 0
-default c2poolex = 0
-default c2pervertpolice = False
-default c2see = 0
-default c2_end1 = 0
-default c2_end2 = 0
-default c2_end3 = 0
 default les = 0 # Lesbian Points
 default het = 0 # Straight Points
 default inn = 0 # Innocent Points
 default exh = 0 # Exhibitionism Points
 default analinterest = 0
-default vioc = 0
-default viop = 0
 default lucas = 0
 default lunaexh = 0 # Luna Exhibitionism
 default lunainn = 0 #Luna Innocent
 default lunalove = 0
 default harukalove = 0
 default lesonly = False
-default lunanoclub = False
-default lunamaleclub = False
-default lunafemaleclub = False
 default cjhadsex = False
+default c2boy_sed = 0
+default c2girl_sed = 0
+default c2poolex = False
+default c2pervertpolice = False
+default c2see = False
+default c2_end1 = False
+default c2_end2 = False
+default c2_end3 = False
 default c3pizza = False
 default c3boytease = False
 default c3pool = False
 default c3nopool = False
+default c3vioopenminded = False
 default c4fansitetopless = False
 default c4viostranger = False
 default c4viosharing = False
@@ -146,6 +141,9 @@ default c13schooloutfit = False
 default c13maid = False
 default c13analyes = False
 default c13analno = False
+default c13lunanoclub = False
+default c13lunamaleclub = False
+default c13lunafemaleclub = False
 default c13mixedbeach = False
 default c13femalebeach = False
 default c13connorseduce = False
@@ -875,7 +873,6 @@ label prologueend:
     with wiperight
     "......"
     "{b}Prologue: Complete{/b}"
-    $ perv +=1
     ion "Congratulations on clearing the Prologue!"
     ion "From here, you can choose to continue to Act 1, or skip to Act 2."
     ion "Due to the slow-burn nature of Act 1, players with limited time may prefer starting at Act 2 instead."
@@ -1737,7 +1734,6 @@ label c1boysskip:
     pov "{i}(But some part of me felt like it had changed.){/i}"
     pov "{i}(Like a switch had just been flipped on.){/i}"
     "......"
-    $ perv +=1
 
     hide black
     show intro bg 1
@@ -2302,7 +2298,7 @@ label c2hottub:
             pov "Sorry, random peeper dude..."
             pov "......"
             $ sexexp +=1
-            $ c2poolex +=1
+            $ c2poolex = True
             $ exh +=1
         "Ignore him.":
             show c2 pool 6 -
@@ -2654,7 +2650,7 @@ label c2hottub:
             stop music fadeout 2.0
             pov "{i}(Hmm...){/i}"
             pov "{i}(It looked like it felt good...){/i}"
-            $ c2see +=1
+            $ c2see = True
         "Nah... that's her own business.":
             show c2 outside 3-12
             with dissolve
@@ -2899,7 +2895,7 @@ label c2home:
     pov "I suppose a second part-time job couldn't hurt."
     pov "Modelling only takes up one or two days a week, after all."
     pov "...... I guess I'll text her in a day or two after I've decided."
-    if c2see >=1:
+    if c2see:
         show c2 home 6
         with dissolve
         pov "It feels a bit weird talking to her after seeing all that, though..."
@@ -2956,7 +2952,7 @@ label c2home:
             "......"
             "And so, [pov]'s romantic dream continued throughout the night."
             "Only for her to wake up and realize it was but a dream, much to her dismay..."
-            $c2_end1+=1
+            $c2_end1 = True
             hide c2 dream 2
             with wiperight
             show intro bg 1
@@ -2980,7 +2976,7 @@ label c2home:
                 "......"
                 "And so, [pov]'s strange dream continued throughout the night."
                 "Much to her relief, she would eventually awake and realize it was but a dream..."
-                $c2_end2+=1
+                $c2_end2 = True
                 $les+=1
                 hide c2 dream 3
                 with wiperight
@@ -3014,7 +3010,7 @@ label c2home:
             "......"
             "And so, [pov]'s perverted dream continued throughout the night."
             "Only for her to wake up and realize it was but a dream, much to her dismay..."
-            $c2_end3+=1
+            $c2_end3 = True
             hide c2 dream 5
             with wiperight
             show intro bg 1
@@ -3022,7 +3018,6 @@ label c2home:
     stop music fadeout 2.0
     "......"
     "{b}Chapter 2: Complete{/b}"
-    $ perv +=1
 
     ####################### END OF CHAPTER 2 ###################################
 
@@ -3105,7 +3100,7 @@ label c2home:
     pov "...... I feel like I had a weird dream last night..."
     pov "What was it, again?"
     pov "Hmm..."
-    if c2_end1>=1:
+    if c2_end1:
         show c3 intro 2
         with dissolve
         pov "Oh, right..."
@@ -3123,7 +3118,7 @@ label c2home:
             pov "Well, I can't deny that I'd like to have sex again one day."
             pov "Right now, there just isn't anyone I'd be comfortable doing it with."
             pov "...... {i}Right{/i}?"
-    if c2_end2>=1:
+    if c2_end2:
         show c3 intro 2
         with dissolve
         pov "Oh my god..."
@@ -3142,7 +3137,7 @@ label c2home:
             pov "It's not like I'd want to try it myself or anything... right?"
         pov "......"
         pov "This is kind of embarrassing..."
-    if c2_end3>=1:
+    if c2_end3:
         show c3 intro 2
         with dissolve
         pov "Holy..."
@@ -4211,7 +4206,7 @@ label c2home:
     pov "Well... I guess this means we've introduced ourselves... sorta?"
     pov "I don't think that's how it works..."
     pov "Regardless..."
-    if c2poolex >=1:
+    if c2poolex:
         pov "He's lucky this time, since he has something else to look at."
         pov "Instead of just my boobs, he gets the whole picture."
     else:
@@ -4303,7 +4298,7 @@ label c2home:
     with dissolve
     pov "Maybe she's trying to communicate that she's interested?"
     pov "I mean, it's not like every girl is completely straight."
-    if c2_end2>=1:
+    if c2_end2:
         pov "I had that weird dream a few days ago, too."
     if les>=1:
         pov "And it's not like I haven't ever thought about a girl before."
@@ -4432,7 +4427,7 @@ label c2home:
             vio "As long as it's not harming anyone, and it's not {i}completely{/i} out there, I can at least consider it."
             vio "And since we're a couple, I think it's important to compromise and to try and make your partner happy."
             ni "I see. I'm happy you feel that way."
-            $vioc +=1
+            $c3vioopenminded = True
         "'I don't want to do anything out of the norm.'":
             show c3 viodate 5
             with dissolve
@@ -4441,7 +4436,6 @@ label c2home:
             vio "I just enjoy things the normal way, for the most part."
             vio "Sorry if that's disappointing... but I don't really want to force myself to do something I don't like."
             ni "No, no worries. I understand."
-            $viop =+1
     show c3 viodate 1
     with dissolve
     ni "Well, anyway..."
@@ -4517,7 +4511,7 @@ label c2home:
     with dissolve
     ni "Nothing much, really..."
     ni "I've just been thinking about all the stuff we've done recently, and it got me in the mood."
-    if vioc >=1:
+    if c3vioopenminded:
         ni "And hearing that you would be willing to keep trying new things with me got me kinda excited."
     ni "Plus, I figured we could do it without holding back this time. We have to limit ourselves when we do it outside, after all."
     ni "Vanilla sex has its own perks, you could say?"
@@ -5638,7 +5632,7 @@ label c3credits:
             vio "Look, I never said I'd do it, alright?"
             vio "I just said I've thought about it before."
             vio "A threesome isn't something couples {i}usually{/i} do."
-            if vioc >=1:
+            if c3vioopenminded:
                 show c4 vrave 12
                 with dissolve
                 vio "But... I told you before that I'm open-minded about these sorts of things, and I'd be willing to try something new if you asked."
@@ -6194,7 +6188,6 @@ label c4park:
     show intro bg 1
     "......"
     "{b}Chapter 4: Complete{/b}"
-    $ perv +=1
     ####################### END OF CHAPTER 4####################################
 
     ####################### CHAPTER 5 ##########################################
@@ -7551,7 +7544,7 @@ label c5photoafter:
     show c5 viobar 13
     with dissolve
     vio "Well......"
-    if vioc<=1 and not c4viosharing:
+    if not c4viosharing:
         jump c5viosexother
     menu:
         "[vio] accepts their proposal.":
@@ -9722,7 +9715,6 @@ label c5photoafter:
         pov "For a number of reasons..."
         "......"
 
-    $perv+=1
     scene intro bg 1
     with wiperight
     "......"
@@ -16997,7 +16989,6 @@ label c9jason:
 
     scene intro bg 1
     with wiperight
-    $perv+=1
     "......"
     "{b}Chapter 9: Complete{/b}"
 
@@ -23189,7 +23180,7 @@ label c13luna:
                     luna "Time to head home!"
                     luna "I wonder what mom's making for dinner tonight?"
                     "......"
-                    $lunamaleclub=True
+                    $c13lunamaleclub=True
                     jump c13beach
                 "I'm not interested in joining right now.":
                     show c13 luna 7
@@ -23211,7 +23202,7 @@ label c13luna:
                     luna "Time to head home!"
                     luna "I wonder what mom's making for dinner tonight?"
                     "......"
-                    $lunanoclub=True
+                    $c13lunanoclub=True
                     jump c13beach
         "Art Association {b}(Female){/b}":
             luna "Yeah, this one looks interesting!"
@@ -23320,7 +23311,7 @@ label c13luna:
                     luna "Time to head home!"
                     luna "I wonder what mom's making for dinner tonight?"
                     "......"
-                    $lunafemaleclub=True
+                    $c13lunafemaleclub=True
                     jump c13beach
                 "I'm not interested in joining right now.":
                     show c13 luna 7
@@ -23342,7 +23333,7 @@ label c13luna:
                     luna "Time to head home!"
                     luna "I wonder what mom's making for dinner tonight?"
                     "......"
-                    $lunanoclub=True
+                    $c13lunanoclub=True
                     jump c13beach
 
 label c13beach:
@@ -26157,7 +26148,7 @@ label c13ending:
     pov "Some toast and a side of salad should do."
     "......"
 
-    if lunamaleclub or lunafemaleclub:
+    if c13lunamaleclub or c13lunafemaleclub:
         show c14 luna 1
         with fadeholdlong
         play music "audio/fallenleaves.mp3" fadein 2.5 loop
@@ -26177,7 +26168,7 @@ label c13ending:
         luna "Ah, right, the room was just down the stairs here."
         luna "I got an email saying they accepted my application, so they should be expecting me."
         luna "Hopefully I'm not disturbing any projects of theirs..."
-        if lunamaleclub:
+        if c13lunamaleclub:
             show c14 luna male 1
             with fadeholdlong
             luna "Good afternoon!"
@@ -26399,7 +26390,7 @@ label c13ending:
                     $c14lunamodelcancelm=True
                     jump c14afterwork
 
-        if lunafemaleclub:
+        if c13lunafemaleclub:
             show c14 luna female 1
             with fadeholdlong
             luna "Good afternoon!"
