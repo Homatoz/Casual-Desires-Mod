@@ -222,6 +222,11 @@ default wantromance = False
 default wantopenrelationship = False
 default wantsingle = False
 
+#CONDITIONS SHORTENER
+default rita_met_mia = False
+default rita_teased_jason = False
+default rita_held_dick = False
+
 ############# CURSOR ######################################################
 define config.mouse = {"default":[ ("images/misc/cursor.png", 1, 1) ] }
 
@@ -6989,6 +6994,7 @@ label c5photoafter:
                         "......"
                         play music "<from 5.0>audio/obento.mp3" fadein 2.0 loop
                         $c5handjob = True
+                        $rita_held_dick = True
                         $hjcount+=1
                         $sexexp+=1
                     "I'm not ready to try something like that yet.":
@@ -8978,7 +8984,7 @@ label c5photoafter:
             menu:
                 "Invite him over, and 'help' him out.":
                     pov "Well... here goes nothing."
-                    if not c5handjob:
+                    if not rita_held_dick:
                         pov "There's always a first for everything."
                     "......"
                     show c6 pool 11
@@ -9029,7 +9035,7 @@ label c5photoafter:
                     man "Yes, this is great!"
                     pov "{i}(Well, at least he's honest...){/i}"
                     pov "{i}(Hmm...){/i}"
-                    if c5handjob:
+                    if rita_held_dick:
                         pov "{i}(This is the second time now that I've touched a man's... thing.){/i}"
                         pov "{i}(I'd like to think I have a bit better of an understanding this time around, but it's all still very new to me...){/i}"
                     else:
@@ -9058,7 +9064,7 @@ label c5photoafter:
                     man "You're sure good at this, miss..."
                     man "Have you practiced before with a boyfriend of yours?"
                     pov "Excuse me... ?"
-                    if c5handjob:
+                    if rita_held_dick:
                         pov "...... It's not my first time, but I have very little experience with these sorts of things."
                         pov "It's not like I sleep with random people or anything."
                         pov "So this is all you're getting!"
@@ -9090,7 +9096,7 @@ label c5photoafter:
                     pov "Ugh..."
                     pov "It's all over me, isn't it?"
                     pov "I feel something sticky on my face."
-                    if not c5handjob:
+                    if not rita_held_dick:
                         pov "{i}(This is what semen is, huh...){/i}"
                         pov "{i}(I'm not sure what to think, since I can't even see anything...){/i}"
                         pov "{i}(I definitely didn't expect it to be this warm, though.){/i}"
@@ -9137,6 +9143,7 @@ label c5photoafter:
                     pov "...... I should head back inside now."
                     pov "{i}*sigh*{/i}"
                     $c6poolhj = True
+                    $rita_held_dick = True
                     $hjcount+=1
                     $sexexp +=1
                     jump c6theater
@@ -9267,6 +9274,7 @@ label c5photoafter:
                     pov "{i}(I wonder, if...){/i}"
                 "......"
                 $c6parkgirl = True
+                $rita_met_mia = True
                 jump c6theater
     label c6theater:
         show c6 theater 1
@@ -9391,7 +9399,7 @@ label c5photoafter:
                 pov "I'm just giving you a bit of release."
                 pov "I thought you two might be sexually frustrated and holding back."
                 c "I-I..."
-                if not c5handjob and not c6poolhj:
+                if not rita_held_dick:
                     pov "{i}(I've never touched a penis before, but...){/i}"
                     pov "{i}(It was worth waiting until now, and trying things with one of them first.){/i}"
                     pov "{i}(Though it's hard to tell what's going on, since it's so dark, and I can't hear a thing.){/i}"
@@ -9427,6 +9435,7 @@ label c5photoafter:
                 pov "{i}(Ah, how predictable...){/i}"
                 "......"
                 $c6theaterhj = True
+                $rita_held_dick = True
                 $hjcount+=1
                 $sexexp +=1
                 $boys_horny +=1
@@ -9627,7 +9636,7 @@ label c5photoafter:
             pov "You enjoyed my feet that much, huh?"
             pov "Well, I guess we've just discovered a new fetish of yours..."
             pov "Give me a second. I'll go get some tissues and clean up."
-            if not c5handjob and not c6poolhj:
+            if not rita_held_dick:
                 pov "{i}(This is the first time I've felt semen...){/i}"
                 pov "{i}(It's really warm, for some reason.){/i}"
                 pov "{i}(And there's a bit of a smell to it?){/i}"
@@ -9649,6 +9658,7 @@ label c5photoafter:
             j "Sure... I guess I don't need to head back for another hour or so."
             pov "Alright. Let's try watching something else for now, then."
             $c6joshfj = True
+            $rita_held_dick = True
             $fjcount+=1
             $sexexp +=1
             $boys_horny +=1
@@ -10187,7 +10197,7 @@ label c5photoafter:
             show c7 home 16
             with dissolve
             pov "{i}(Hmm...){/i}"
-            if not c6joshfj and not c6poolhj and not c6theaterhj:
+            if not rita_held_dick:
                 pov "{i}(It was a long time coming, but at last...){/i}"
                 pov "{i}(I'm touching a penis for the first time.){/i}"
                 pov "{i}(I guess it's more... warm than I expected?){/i}"
@@ -10341,7 +10351,7 @@ label c5photoafter:
             c "Wow..."
             c "This is hot as hell."
             pov "{i}(It's my first time tasting semen.){/i}"
-            if not c6joshfj and not c6poolhj and not c6theaterhj:
+            if not rita_held_dick:
                 pov "{i}(Or even experiencing it all, for that matter...){/i}"
             pov "{i}(There's a weird taste to it.){/i}"
             pov "{i}(Almost a... fishy sort of taste?){/i}"
@@ -10421,6 +10431,7 @@ label c5photoafter:
             $sexexp+=1
             $bjcount+=1
             $c7connorbj = True
+            $rita_held_dick = True
         "Maybe another time.":
             pov "{i}(Nah...){/i}"
             pov "{i}(I'm not really feeling it right now.){/i}"
@@ -10901,7 +10912,7 @@ label c7choice:
                     if c6poolhj:
                         pov "{i}(Just as hard as the last time I touched it...){/i}"
                         pov "{i}(......){/i}"
-                    if not c6joshfj and not c6poolhj and not c6theaterhj and not c7connorbj:
+                    if not rita_held_dick:
                         pov "{i}(I've never touched a dick before, but it's a bit different than I imagined...){/i}"
                         pov "{i}(Is something this big really supposed to go inside of a girl...?){/i}"
                         pov "{i}(......){/i}"
@@ -10918,7 +10929,7 @@ label c7choice:
                         pov "{i}(It's only my second time doing this, though, so I can't really expect perfection.){/i}"
                         pov "{i}(Eventually I should get the hang of it.){/i}"
                         pov "{i}(Especially when I'm doing it as frequently as this...){/i}"
-                    if not c7connorbj:
+                    else:
                         pov "{i}(I'll just try to emulate what I see in porn.){/i}"
                         pov "{i}(I've never done this before, so I'm a bit nervous...){/i}"
                         pov "{i}(A blowjob, huh...){/i}"
@@ -10933,7 +10944,7 @@ label c7choice:
                         pov "{i}(I thought Connor's was already really big, but...){/i}"
                         pov "{i}(This is even bigger than that.){/i}"
                         pov "{i}(It's almost too much...){/i}"
-                    if not c7connorbj:
+                    else:
                         pov "{i}(This is what a dick tastes like, huh...){/i}"
                         pov "{i}(It's not that bad, but I wouldn't call it great, either.){/i}"
                         pov "{i}(I wonder if everyone else has a similar taste...?){/i}"
@@ -11037,6 +11048,7 @@ label c7choice:
                     $bjcount+=1
                     $sexexp+=1
                     $c7poolbj = True
+                    $rita_held_dick = True
                 "This is going too far.":
                     show c7 pool 1
                     with dissolve
@@ -12943,7 +12955,7 @@ label c7ending:
                 pov "Hmm...?"
                 show c8 mia 5
                 with dissolve
-                if c6parkgirl:
+                if rita_met_mia:
                     mia "It's Mia. I'm not sure if you remember me."
                     mia "We met at another park around here, a couple weeks ago."
                     pov "Oh, Mia!"
@@ -13118,6 +13130,7 @@ label c7ending:
                 pov "Yup. Take care on the way back."
                 "......"
                 $c8mia = True
+                $rita_met_mia = True
                 $les+=1
 
     show c8 pizza 1
@@ -16489,11 +16502,11 @@ label c9vioscene:
         vio "{i}*lick*{/i}"
         pov "Oh... wow..."
         pov "{i}(She's right...){/i}"
-        if not c5leslocker:
-            pov "{i}(This sensation is unlike anything I've experienced before.){/i}"
         if c5leslocker:
             pov "{i}(Although it's not the first time I've experienced this...){/i}"
             pov "{i}(It's unlike anything I could ever feel by myself.){/i}"
+        else:
+            pov "{i}(This sensation is unlike anything I've experienced before.){/i}"
         vio "Mmm?"
         voice "audio/effects/lewd/femalebreath1.wav"
         pov "Ah..."
@@ -17702,6 +17715,7 @@ label act2start:
         "Go for a walk to the park.":
             label c10mia:
                 $c10mia = True
+                $rita_met_mia = True
                 show c10 vioafter 4
                 with dissolve
                 stop music fadeout 2.5
@@ -17718,7 +17732,7 @@ label act2start:
                 show c10 mia 2
                 with dissolve
                 pov "I wonder..."
-                if c6parkgirl or c8mia:
+                if rita_met_mia:
                     pov "Will Mia be around here again?"
                     pov "I came here once since we last met, but couldn't find her."
                     pov "She's outdoors a lot in our neighbourhood, though, so I wouldn't be surprised if we bumped into each other again."
@@ -18025,7 +18039,7 @@ label act2start:
                                 "......"
                                 $les+=1
                                 jump c10waterpark
-                if not c6parkgirl and not c8mia:
+                if not rita_met_mia:
                     pov "Are there any other single girls like me around here?"
                     pov "There's a lot of families, and grandpas and grandmas, but..."
                     show c10 mia 3
@@ -18413,6 +18427,7 @@ label c10lunauni:
     menu:
         "Give Jason a surprise.":
             $c10jasontease=True
+            $rita_teased_jason = True
             show c10 photoshoot 10
             with dissolvelong
             pov "That makes me curious..."
@@ -19597,7 +19612,7 @@ label c10complete:
                             $scount+=1
                             if c5viomff or c5viommf:
                                 jump c11vio
-                            if not c5viomff and not c5viommf:
+                            else:
                                 jump c11cafe
                         "Stop now.":
                             pov "No... you can't..."
@@ -19624,7 +19639,7 @@ label c10complete:
                             $c11pizzacancel=True
                             if c5viomff or c5viommf:
                                 jump c11vio
-                            if not c5viomff and not c5viommf:
+                            else:
                                 jump c11cafe
                 "Say goodbye.":
                     "{i}(Yeah... I don't want to go too far.){/i}"
@@ -19641,7 +19656,7 @@ label c10complete:
                     $inn+=1
                     if c5viomff or c5viommf:
                         jump c11vio
-                    if not c5viomff and not c5viommf:
+                    else:
                         jump c11cafe
         "Go for a walk downtown.":
             show c11 transition 2-3
@@ -19896,7 +19911,7 @@ label c10complete:
                             $sexpartners+=1
                             if c5viomff or c5viommf:
                                 jump c11vio
-                            if not c5viomff and not c5viommf:
+                            else:
                                 jump c11cafe
                         "Make an excuse to leave.":
                             show c11 les cancel 1
@@ -19919,7 +19934,7 @@ label c10complete:
                             $inn+=1
                             if c5viomff or c5viommf:
                                 jump c11vio
-                            if not c5viomff and not c5viommf:
+                            else:
                                 jump c11cafe
                 "Say I'm busy.":
                     pov "{i}(Nah...){/i}"
@@ -19941,7 +19956,7 @@ label c10complete:
                     "......"
                     if c5viomff or c5viommf:
                         jump c11vio
-                    if not c5viomff and not c5viommf:
+                    else:
                         jump c11cafe
         "Play games at home.":
             show c11 transition 2-3
@@ -19954,7 +19969,7 @@ label c10complete:
             "......"
             if c5viomff or c5viommf:
                 jump c11vio
-            if not c5viomff and not c5viommf:
+            else:
                 jump c11cafe
 
 label c11vio:
@@ -20920,6 +20935,7 @@ label c11end:
             menu:
                 "Flirt with Jason.":
                     $c12jasonflirt=True
+                    $rita_teased_jason = True
                     show c12 jason 12
                     with dissolvelong
                     pov "Maybe another time we can do more than just 'confiding', though."
@@ -24123,7 +24139,7 @@ label c13haruka:
                         pov "I-I mean... second time after practicing at home..."
                         pov "{i}(I probably shouldn't tell him I did this with Josh once before...){/i}"
                         pov "{i}(At least... not yet.){/i}"
-                    if not c6joshfj:
+                    else:
                         pov "This is actually my first time doing something like this."
                         pov "I've seen some videos online, and... well..."
                         pov "I know that some guys like this."
@@ -24249,7 +24265,7 @@ label c13haruka:
                         pov "I-I mean... second time after practicing at home..."
                         pov "{i}(I probably shouldn't tell him I did this with Josh once before...){/i}"
                         pov "{i}(At least... not yet.){/i}"
-                    if not c8josh:
+                    else:
                         pov "Actually, this is my first time doing something like this."
                         c "R-Really?"
                         c "You're incredible at it, though."
@@ -26884,15 +26900,15 @@ label c14mixedbeach:
     with dissolvelong
     man1 "Oh? It's the pretty girl from before.."
     man1 "Last week, was it?"
-    if not c13mixedbeach:
-        man2 "And this is...?"
-        man1 "Ah, just a cute face I invited here."
-        man1 "I'm glad you showed up this time."
-        pov "Sure. Nice to meet you."
     if c13mixedbeach:
         man2 "Happy to see you came again."
         man1 "Yeah, was wondering if we'd see you."
         pov "Haha. I figured it was too hot to be dressed today!"
+    else:
+        man2 "And this is...?"
+        man1 "Ah, just a cute face I invited here."
+        man1 "I'm glad you showed up this time."
+        pov "Sure. Nice to meet you."
     show c14 beachnude 9m
     with dissolve
     pov "So... what were you two planning today?"
@@ -27247,15 +27263,15 @@ label c14femalebeach:
     with dissolvelong
     wom1 "Oh? It's the lovely lady from before."
     wom1 "Last week, I think?"
-    if not c13femalebeach:
-        wom2 "And this is...?"
-        wom1 "Ah, just a cute face I invited here before."
-        wom1 "I'm glad you showed up this time."
-        pov "Sure. Nice to meet you."
     if c13femalebeach:
         wom2 "Happy to see you came again."
         wom1 "Yes. We were wondering if we'd see you again."
         pov "Haha. I figured it was too hot to be dressed today!"
+    else:
+        wom2 "And this is...?"
+        wom1 "Ah, just a cute face I invited here before."
+        wom1 "I'm glad you showed up this time."
+        pov "Sure. Nice to meet you."
     show c14 beachnude 9f
     with dissolve
     pov "So... what were you two planning today?"
@@ -29701,6 +29717,7 @@ label c15model:
             pov "{i}(I should cool my head with something tasty to eat.){/i}"
             "......"
             $c15jasontease=True
+            $rita_teased_jason = True
             jump c15walkhomenight
         "Say goodbye.":
             pov "{i}(Nah...){/i}"
@@ -35270,11 +35287,11 @@ label c17kitchen:
             pov "Maybe they'll feel less guilty."
             if c16pokermale:
                 jump c17pokermale
-            if c16pokergirls:
+            elif c16pokergirls:
                 jump c17pokergirls
-            if c17pokermixedvio:
+            elif c17pokermixedvio:
                 jump c17pokervio
-            if c17pokermixedharuka:
+            elif c17pokermixedharuka:
                 jump c17pokerharuka
             else:
                 jump c17endingnopoker
@@ -35372,11 +35389,11 @@ label c17kitchen:
             pov "Maybe they'll feel less guilty."
             if c16pokermale:
                 jump c17pokermale
-            if c16pokergirls:
+            elif c16pokergirls:
                 jump c17pokergirls
-            if c17pokermixedvio:
+            elif c17pokermixedvio:
                 jump c17pokervio
-            if c17pokermixedharuka:
+            elif c17pokermixedharuka:
                 jump c17pokerharuka
             else:
                 jump c17endingnopoker
@@ -35578,13 +35595,13 @@ label c17hotsprings:
             $sexexp+=1
             if c16pokermale:
                 jump c17pokermale
-            if c16pokergirls:
+            elif c16pokergirls:
                 jump c17pokergirls
-            if c17pokermixedvio:
+            elif c17pokermixedvio:
                 jump c17pokervio
-            if c17pokermixedharuka:
+            elif c17pokermixedharuka:
                 jump c17pokerharuka
-            if not c16pokermale and not c16pokergirls and not c17pokermixedvio and not c17pokermixedharuka:
+            else:
                 jump c17endingnopoker
         "I just want to hang out with [vio].":
             $inn+=1
@@ -35608,13 +35625,13 @@ label c17hotsprings:
             "......"
             if c16pokermale:
                 jump c17pokermale
-            if c16pokergirls:
+            elif c16pokergirls:
                 jump c17pokergirls
-            if c17pokermixedvio:
+            elif c17pokermixedvio:
                 jump c17pokervio
-            if c17pokermixedharuka:
+            elif c17pokermixedharuka:
                 jump c17pokerharuka
-            if not c16pokermale and not c16pokergirls and not c17pokermixedvio and not c17pokermixedharuka:
+            else:
                 jump c17endingnopoker
 
 label c17pokermale:
@@ -37637,10 +37654,10 @@ label c17endchapter:
                 "......"
                 $sexexp+=1
                 $c18busendure=True
-                if not c16lunamalemodel and not c16lunafemmodel:
-                    jump c18cafe
                 if c16lunamalemodel or c16lunafemmodel:
                     jump c18lunascene
+                else:
+                    jump c18cafe
             "Make them stop.":
                 pov "{i}(No... I won't let her.){/i}"
                 pov "{i}([vio] taught me to fight back against perverts like this.){/i}"
@@ -37671,10 +37688,10 @@ label c17endchapter:
                 pov "{i}(Gonna be a lot more careful from now on.){/i}"
                 "......"
                 $inn+=1
-                if not c16lunamalemodel and not c16lunafemmodel:
-                    jump c18cafe
                 if c16lunamalemodel or c16lunafemmodel:
                     jump c18lunascene
+                else:
+                    jump c18cafe
     else:
         show c18 bus 8m
         with dissolve
@@ -37739,10 +37756,10 @@ label c17endchapter:
                 "......"
                 $sexexp+=1
                 $c18busendure=True
-                if not c16lunamalemodel and not c16lunafemmodel:
-                    jump c18cafe
                 if c16lunamalemodel or c16lunafemmodel:
                     jump c18lunascene
+                else:
+                    jump c18cafe
             "Make them stop.":
                 pov "{i}(No... I won't let him.){/i}"
                 pov "{i}([vio] taught me to fight back against perverts like this.){/i}"
@@ -37773,10 +37790,10 @@ label c17endchapter:
                 pov "{i}(Gonna be a lot more careful from now on.){/i}"
                 "......"
                 $inn+=1
-                if not c16lunamalemodel and not c16lunafemmodel:
-                    jump c18cafe
                 if c16lunamalemodel or c16lunafemmodel:
                     jump c18lunascene
+                else:
+                    jump c18cafe
 
 label c18lunascene:
     if c16lunamalemodel or c16lunafemmodel:
@@ -39402,7 +39419,7 @@ label c18stripclubafter:
         pov "I can see them all as potential partners."
         pov "And... while we're still not super close yet..."
         pov "There's a few others that have caught my attention recently, too."
-        if c6parkgirl or c8mia or c10mia:
+        if rita_met_mia:
             show fb mia 1
             with dissolvesemilong
             "Mia."
@@ -39412,7 +39429,7 @@ label c18stripclubafter:
         show fb lucy 1
         with dissolvesemilong
         "Lucy."
-        if c10jasontease or c12jasonflirt or c15jasontease:
+        if rita_teased_jason:
             show fb jason 1
             with dissolvesemilong
             "Jason."
@@ -40538,7 +40555,7 @@ label c19ritaoutside:
         show c19 photoshoot 12m
         with dissolve
         ja "Hah. Indeed, indeed..."
-        if c10jasontease or c12jasonflirt or c15jasontease:
+        if rita_teased_jason:
             show c19 photoshoot 14
             with dissolve
             pov "Hmm..."

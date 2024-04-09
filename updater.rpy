@@ -62,6 +62,15 @@ label after_load:
         $ del viop
         $ save_updated = True
 
+    if c6parkgirl or c8mia or c10mia:
+        $ rita_met_mia = True
+
+    if c10jasontease or c12jasonflirt or c15jasontease:
+        $ rita_teased_jason = True
+
+    if c5handjob or c6poolhj or c6theaterhj or c6joshfj or c7connorbj or c7poolbj:
+        $ rita_held_dick = True
+
     if save_updated:
         $ renpy.notify("Save updated")
         $ renpy.block_rollback()
