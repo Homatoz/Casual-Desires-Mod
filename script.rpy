@@ -16632,8 +16632,8 @@ label c9vioscene:
         pov "{i}(I'd like to do something like this again...){/i}"
         "......"
         $virgin=False
-        call first_partner("Violet")
-        call add_partner("Violet")
+        call first_partner(vioname)
+        call add_partner(vioname)
         $sexexp+=1
         $les+=1
         $lesexp+=1
@@ -16928,8 +16928,8 @@ label c9harukascene:
         fr "I want to spend more time with you, too, [pov]."
         "......."
         $virgin=False
-        call first_partner("Haruka")
-        call add_partner("Haruka")
+        call first_partner(frname)
+        call add_partner(frname)
         $sexexp+=1
         $les+=1
         $lesexp+=1
@@ -27990,8 +27990,8 @@ label c14busafter:
             "......."
             $c14harukasex=True
             $virgin=False
-            call first_partner("Haruka")
-            call add_partner("Haruka")
+            call first_partner(frname)
+            call add_partner(frname)
             $lesexp+=1
             $sexexp+=1
             jump c14transition
@@ -29168,8 +29168,8 @@ label c14vio:
                     "......."
                     $c14viosexvag=True
                     $virgin=False
-                    call first_partner("Violet")
-                    call add_partner("Violet")
+                    call first_partner(vioname)
+                    call add_partner(vioname)
                     $lesexp+=1
                     $sexexp+=1
                     jump c14ending
@@ -31371,7 +31371,7 @@ label c15girlsnight:
                 $lesexp+=1
                 $virgin=False
                 call first_partner("Luna & Haruka")
-                call add_partner("Haruka")
+                call add_partner(frname)
                 call add_partner("Luna")
                 $c15girlsthreesome=True
                 "......"
@@ -36447,7 +36447,7 @@ label c17pokergirls:
     pov "{i}(It surpassed anything I could have ever imagined.){/i}"
     "......"
     $virgin=False
-    call first_partner("Haruka")
+    call first_partner(frname)
     $lesexp+=2
     $sexexp+=2
     show c17 pokersex girls 15
@@ -38863,8 +38863,8 @@ label c18cafe:
                 "......"
                 $c18stripclubsexvio=True
                 $virgin=False
-                call first_partner("Violet")
-                call add_partner("Violet")
+                call first_partner(vioname)
+                call add_partner(vioname)
                 $lesexp+=1
                 $sexexp+=1
                 jump c18stripclubafter
@@ -39177,8 +39177,8 @@ label c18cafe:
                 "......"
                 $c18stripclubsexvio=True
                 $virgin=False
-                call first_partner("Violet")
-                call add_partner("Violet")
+                call first_partner(vioname)
+                call add_partner(vioname)
                 $lesexp+=1
                 $sexexp+=1
                 jump c18stripclubafter
@@ -41316,9 +41316,9 @@ label c19viodate:
             vio "... Wanna cuddle in bed?"
             pov "... Yeah."
             "......"
-            call first_partner("Violet")
+            call first_partner(vioname)
             $virgin=False
-            call add_partner("Violet")
+            call add_partner(vioname)
             $scount+=1
             $lesexp+=1
             jump c19end

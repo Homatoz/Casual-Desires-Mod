@@ -30,9 +30,9 @@ label after_load:
         if c9lunasex and c9hadsex or c13lunasex or c15girlsthreesome:
             call add_partner("Luna")
         if c9viosex and c9hadsex or c14viosexvag or c18stripclubsexvio or ritaviorelationship or ritavioopenrelationship:
-            call add_partner("Violet")
+            call add_partner(vioname)
         if c9harukasex and c9hadsex or c14harukasex or c15girlsthreesome:
-            call add_partner("Haruka")
+            call add_partner(frname)
         if c10poolsex:
             call add_partner("Pool Pervert")
         if c11pizzasex:
