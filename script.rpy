@@ -166,7 +166,7 @@ default c14cjsex = False
 default c14viosexvag = False
 default c14viosexanal = False
 default c15hotspringsles = False
-default c15hotspringsmale = False
+default c15hotspringsmixed = False
 default c15jasontease = False
 default c15parkgarter = False
 default c15parkpasties = False
@@ -632,7 +632,7 @@ label prologueroom:
         pov "Well..."
         show intro room 4
         with fadeholdshort
-        if fp=="Ex-boyfriend":
+        if fp=="Boyfriend":
             pov "I did have a boyfriend for a couple of months, back in senior year."
             pov "Although we weren't in the same class, I met him by chance in the library one day."
             pov "And we got along... and eventually, towards the end of the school year, we were a couple."
@@ -1366,6 +1366,7 @@ label chapter1:
     pov "{i}(They're looking at me everywhere except my face.){/i}"
     pov "{i}(Boys can be so predictable...){/i}"
     if lesonly:
+        pov "Hmm... maybe I should go clothes shopping soon."
         jump c1boysskip
     pov "{i}(Hmm...){/i}"
     menu:
@@ -3961,12 +3962,13 @@ label c2home:
                 pov "I can't wait to eat it."
                 boy "Great. The total comes to $21.99. Please enter your card whenever you're ready."
                 pov "Okay."
-                pov "{i}(I feel kind of bad for him since I'm in such a rush...){/i}"
-                if exh >=2:
-                    pov "{i}(And I didn't give him any sort of 'service' of my own, so to speak...){/i}"
-                    pov "{i}(There's always a next time for teasing, though.){/i}"
-                pov "{i}(I guess I'll give him a nice, big tip to make up for it.){/i}"
-                $inn+=1
+                if not lesonly==True:
+                    pov "{i}(I feel kind of bad for him since I'm in such a rush...){/i}"
+                    if exh >=2:
+                        pov "{i}(And I didn't give him any sort of 'service' of my own, so to speak...){/i}"
+                        pov "{i}(There's always a next time for teasing, though.){/i}"
+                    pov "{i}(I guess I'll give him a nice, big tip to make up for it.){/i}"
+                    $inn+=1
     show c3 boys 9
     with fadeholdlong
     pov "Alright, that's all the pizza, paid for and everything."
@@ -6143,7 +6145,8 @@ label c4park:
     pov "I do feel pretty embarrassed, though."
     pov "We promised not to let it get awkward, so both of us are fine with happened, but still..."
     pov "Even if it was due to the alcohol..."
-    pov "I've never kissed a girl before, and [fr] is one of my closest friends."
+    if not fp=="Classmate":
+        pov "I've never kissed a girl before, and [fr] is one of my closest friends."
     show c4 end 3
     with dissolve
     pov "Hmmm..."
@@ -6743,7 +6746,8 @@ label c5photoafter:
                 pov "Wow..."
                 pov "Well, it does feel good, I'll give you that..."
                 pov "I've touched myself a little bit, of course, but nothing like this."
-                pov "I haven't had another girl touch my boobs before..."
+                if not fp=="Classmate":
+                    pov "I haven't had another girl touch my boobs before..."
                 wom "Well, there's a first for everything."
                 "{i}*door noise*{/i}"
                 wom "{i}*whispers* Uh-oh... our time might be up.{/i}"
@@ -7718,104 +7722,107 @@ label c5photoafter:
             ni "It's up to you, [vio]."
             ni "I'm okay with anything you're willing to do."
             vio "......"
+            if lesonly:
+                jump c5viosophia
             menu:
                 "[vio] asks Sophia to join them.":
-                    vio "Hmm..."
-                    vio "I don't know if I'm comfortable doing that to another man."
-                    vio "It's kind of... well..."
-                    vio "Nick would also be getting a blowjob from another girl, too, so..."
-                    vio "Maybe Sophia can join us?"
-                    vio "I guess I'd be fine with that..."
-                    "......"
-                    show c5 viosex mff 1
-                    with fadeholdlong
-                    vio "Mmmm..."
-                    ni "Damn, you're as amazing as always, [vio]."
-                    sop "Nice job... just like that, keep it up."
-                    sop "You enjoy your boyfriend's big dick, don't you?"
-                    vio "Mmm... I do..."
-                    sop "Make sure to show him you mean it, then."
-                    show c5 viosex mff 2
-                    with dissolve
-                    sop "Try using your tongue a little bit more."
-                    sop "Yes, just like that."
-                    sop "This way you can stimulate him without making him cum right away."
-                    sop "It's a form of teasing... or even edging, I guess you could say."
-                    vio "I-I see..."
-                    sop "Anyway..."
-                    sop "Your boyfriend seems ready, but you still need a bit of work before you can move on."
-                    sop "Why don't I try lubricating you a little bit?"
-                    sop "Come with me."
-                    vio "H-Huh?"
-                    "......"
-                    show c5 viosex mff 3
-                    with fadehold
-                    vio "A-Ahhh——!!"
-                    vio "Mmghh...!"
-                    ni "Wow..."
-                    ni "Never took you for the type to enjoy getting licked by another girl, [vio]."
-                    ni "This is pretty damn hot, especially from my perspective."
-                    show c5 viosex mff 4
-                    with dissolve
-                    sop "How is this, [vio]?"
-                    sop "I'm not too experienced with other girls, personally, since I'm more into men, but..."
-                    sop "When it's required, I know how to do the basics."
-                    sop "I'm a woman, too, so I know just the right spots to lick."
-                    sop "Like your clitoris right here..."
-                    show c5 viosex mff 5
-                    with dissolvelong
-                    vio "Ahhh?!"
-                    vio "{i}*slurping*{/i}"
-                    ni "Shit... she's really getting into it now."
-                    ni "This happens whenever we do some sixty-nine, but something about her movements is a little different."
-                    ni "You're enjoying it, aren't you, [vio]?"
-                    ni "You're a little slut, you know..."
-                    vio "!!"
-                    sop "...... Oh?"
-                    show c5 viosex mff 6
-                    with pixellate
-                    vio "Ohhh————!!!"
-                    vio "Something's coming out!"
-                    vio "Ah... o-oh my god..."
-                    sop "Well, it looks like your girlfriend is cumming, Nick."
-                    sop "Does she usually squirt like this?"
-                    ni "No... not at all..."
-                    ni "I've made her cum before, but nothing like this."
-                    ni "Damn... now that I've seen this..."
-                    show c5 viosex mff 7
-                    with dissolvelong
-                    ni "It's my turn to give you some pleasure."
-                    ni "You've been wanting my dick inside of you, haven't you?"
-                    ni "Well, you're in for a treat now."
-                    ni "I'm not going to be gentle after that little show you just gave me."
-                    vio "Hah... hah..."
-                    show c5 viosex mff 8
-                    with dissolve
-                    vio "Ahh—!! Nick!"
-                    vio "Yes!"
-                    vio "Please... please... pound me more."
-                    vio "Harder, rougher... I don't mind."
-                    sop "Hmm... you've already just came, but you're responding to me touching your clit all the same."
-                    sop "I guess your sexual desire hasn't gone anywhere yet."
-                    vio "Hah... hah..."
-                    sop "Well, now, mister boyfriend... why not give her to something a bit extra?"
-                    sop "Give her a nice little creampie."
-                    ni "......"
-                    ni "You've got it."
-                    "......"
-                    show c5 viosex mff 9
-                    with dissolvelong
-                    vio "Ah......"
-                    vio "Nick..."
-                    vio "It's so warm... and so deep inside of me."
-                    vio "You let out so much, that it feels like I'm bursting."
-                    ni "Shit..."
-                    ni "That felt amazing."
-                    ni "It's not often I cum that hard, either."
-                    sop "Nice job, [vio]. It sounds like your boyfriend had a great time."
-                    "......"
-                    $c5viomff = True
-                    jump c5hotelaf
+                    label c5viosophia:
+                        vio "Hmm..."
+                        vio "I don't know if I'm comfortable doing that to another man."
+                        vio "It's kind of... well..."
+                        vio "Nick would also be getting a blowjob from another girl, too, so..."
+                        vio "Maybe Sophia can join us?"
+                        vio "I guess I'd be fine with that..."
+                        "......"
+                        show c5 viosex mff 1
+                        with fadeholdlong
+                        vio "Mmmm..."
+                        ni "Damn, you're as amazing as always, [vio]."
+                        sop "Nice job... just like that, keep it up."
+                        sop "You enjoy your boyfriend's big dick, don't you?"
+                        vio "Mmm... I do..."
+                        sop "Make sure to show him you mean it, then."
+                        show c5 viosex mff 2
+                        with dissolve
+                        sop "Try using your tongue a little bit more."
+                        sop "Yes, just like that."
+                        sop "This way you can stimulate him without making him cum right away."
+                        sop "It's a form of teasing... or even edging, I guess you could say."
+                        vio "I-I see..."
+                        sop "Anyway..."
+                        sop "Your boyfriend seems ready, but you still need a bit of work before you can move on."
+                        sop "Why don't I try lubricating you a little bit?"
+                        sop "Come with me."
+                        vio "H-Huh?"
+                        "......"
+                        show c5 viosex mff 3
+                        with fadehold
+                        vio "A-Ahhh——!!"
+                        vio "Mmghh...!"
+                        ni "Wow..."
+                        ni "Never took you for the type to enjoy getting licked by another girl, [vio]."
+                        ni "This is pretty damn hot, especially from my perspective."
+                        show c5 viosex mff 4
+                        with dissolve
+                        sop "How is this, [vio]?"
+                        sop "I'm not too experienced with other girls, personally, since I'm more into men, but..."
+                        sop "When it's required, I know how to do the basics."
+                        sop "I'm a woman, too, so I know just the right spots to lick."
+                        sop "Like your clitoris right here..."
+                        show c5 viosex mff 5
+                        with dissolvelong
+                        vio "Ahhh?!"
+                        vio "{i}*slurping*{/i}"
+                        ni "Shit... she's really getting into it now."
+                        ni "This happens whenever we do some sixty-nine, but something about her movements is a little different."
+                        ni "You're enjoying it, aren't you, [vio]?"
+                        ni "You're a little slut, you know..."
+                        vio "!!"
+                        sop "...... Oh?"
+                        show c5 viosex mff 6
+                        with pixellate
+                        vio "Ohhh————!!!"
+                        vio "Something's coming out!"
+                        vio "Ah... o-oh my god..."
+                        sop "Well, it looks like your girlfriend is cumming, Nick."
+                        sop "Does she usually squirt like this?"
+                        ni "No... not at all..."
+                        ni "I've made her cum before, but nothing like this."
+                        ni "Damn... now that I've seen this..."
+                        show c5 viosex mff 7
+                        with dissolvelong
+                        ni "It's my turn to give you some pleasure."
+                        ni "You've been wanting my dick inside of you, haven't you?"
+                        ni "Well, you're in for a treat now."
+                        ni "I'm not going to be gentle after that little show you just gave me."
+                        vio "Hah... hah..."
+                        show c5 viosex mff 8
+                        with dissolve
+                        vio "Ahh—!! Nick!"
+                        vio "Yes!"
+                        vio "Please... please... pound me more."
+                        vio "Harder, rougher... I don't mind."
+                        sop "Hmm... you've already just came, but you're responding to me touching your clit all the same."
+                        sop "I guess your sexual desire hasn't gone anywhere yet."
+                        vio "Hah... hah..."
+                        sop "Well, now, mister boyfriend... why not give her to something a bit extra?"
+                        sop "Give her a nice little creampie."
+                        ni "......"
+                        ni "You've got it."
+                        "......"
+                        show c5 viosex mff 9
+                        with dissolvelong
+                        vio "Ah......"
+                        vio "Nick..."
+                        vio "It's so warm... and so deep inside of me."
+                        vio "You let out so much, that it feels like I'm bursting."
+                        ni "Shit..."
+                        ni "That felt amazing."
+                        ni "It's not often I cum that hard, either."
+                        sop "Nice job, [vio]. It sounds like your boyfriend had a great time."
+                        "......"
+                        $c5viomff = True
+                        jump c5hotelaf
                 "[vio] chooses to swap partners.":
                     vio "I mean..."
                     vio "If it's just a blowjob..."
@@ -8210,6 +8217,7 @@ label c5photoafter:
                 pov "Plus, she might have someone looking over her shoulder, and I don't want to embarrass her."
                 pov "Nah..."
             "......"
+            $inn+=1
             label c5boysskip:
                 show c5 end 9
                 with dissolvelong
@@ -8226,8 +8234,9 @@ label c5photoafter:
                 pov "I don't know if I'm quite {i}that{/i} sexy, though..."
                 show c5 end 11
                 with dissolve
-                pov "Honestly... since I was considering sending perverted pictures earlier..."
-                pov "It makes me wonder..."
+                if not lesonly==True:
+                    pov "Honestly... since I was considering sending perverted pictures earlier..."
+                    pov "It makes me wonder..."
                 pov "I've heard livestreaming is pretty popular, and that girls can get some good donations from fans."
                 pov "...... Hmm... streaming, huh..."
                 pov "Maybe I'll try that out at some point?"
@@ -8235,7 +8244,6 @@ label c5photoafter:
                 stop music fadeout 2.0
                 pov "...... Well, that's a thought for another day..."
                 pov "I should go to the bathroom and see how this outfit looks first."
-                $inn+=1
                 "......"
     show intro bg 1
     with wiperight
@@ -8937,8 +8945,11 @@ label c5photoafter:
             pov "That said, it's the middle of the afternoon now, so there's always a chance someone will see me."
             pov "Hmm..."
             pov "Speaking of someone seeing me..."
-            pov "I wonder if {i}he{/i} will show up again?"
-            pov "It's been a while since the last time, so I wonder if he's gotten bored and moved on already."
+            if c2pervertpolice:
+                pov "Is he still afraid that the police will arrest him?"
+            else:
+                pov "I wonder if {i}he{/i} will show up again?"
+                pov "It's been a while since the last time, so I wonder if he's gotten bored and moved on already."
             pov "Or if not... I'm sure he'll be even more excited than usual, if he happens to be around."
             show c6 pool 4
             with dissolve
@@ -8948,7 +8959,8 @@ label c5photoafter:
             pov "I won't be able to use the pool as much in a couple months."
             pov "Anyway..."
             pov "If our unexpected visitor shows up again, so be it."
-            pov "I'm already used to him at this point."
+            if c2pervertpolice:
+                pov "I'm already used to him at this point."
             show c6 pool 5
             with dissolve
             pov "Hopefully the water is warm enough."
@@ -9154,7 +9166,8 @@ label c5photoafter:
                     pov "I don't feel like going that far with some random pervert."
                     pov "I'm already giving him enough of a present by ignoring him, and not screaming or reporting him..."
                     stop music fadeout 2.5
-                    pov "A lot of girls would just call the police and be done with it."
+                    if not c2pervertpolice:
+                        pov "A lot of girls would just call the police and be done with it."
                     pov "I'll just keeping relaxing here for a while, until I get bored."
                     "......"
                     jump c6theater
@@ -11548,6 +11561,8 @@ label c7night:
         with dissolve
         vio "......"
         vio "Hmm..."
+        if lesonly:
+            jump c7viosophia
         menu:
             "[vio] decides to swap partners.":
                 $c7viommf = True
@@ -11866,199 +11881,200 @@ label c7night:
                 "And so began the final round of their perverted, and lustful day."
                 "......"
             "[vio] decides to play with Sophia.":
-                $c7violes = True
-                vio "Well..."
-                vio "I guess... I'm interested in trying something with another woman."
-                vio "I've experimented when I was a bit younger, but it's been a while..."
-                vio "Do you mind if I try taking the lead first?"
-                if c5viomff:
-                    vio "Especially since it was so one-sided the last time..."
-                sop "Sure. Not a problem."
-                sop "Take your time."
-                show c7 vio les 1
-                with fadeholdlong
-                sop "Oh?"
-                sop "You seem more experienced with this than I initially thought."
-                sop "By 'experimenting'... how much did you mean, exactly?"
-                vio "Well..."
-                vio "I had a girlfriend back in high school."
-                vio "I thought for sure I was only interested in girls, but by senior year, I realized I was into guys, too."
-                sop "I see... lucky for your boyfriend, then."
-                show c7 vio les 2
-                with dissolve
-                vio "Yeah... but..."
-                vio "For now, we don't need to pay him any attention."
-                vio "I just want to have some fun with you, since we have the chance."
-                vio "I'll help him out later on."
-                show c7 vio les 3
-                with dissolve
-                with Pause(1.0)
-                sop "Mmmm..."
-                vio "Mmm... mmm..."
-                sop "Ah..."
-                show c7 vio les 4
-                with dissolvelong
-                sop "Not bad, [vio]..."
-                sop "I'm impressed."
-                ni "Fuck... that's hot."
-                ni "I never imagined I'd get to see her kiss another girl."
-                nol "Haha... y'know, sometimes I wonder why Sophia even needs me."
-                "....."
-                show c7 vio les 5
-                with dissolvelong
-                sop "Oh... my..."
-                sop "I'm getting turned on already."
-                vio "How's this?"
-                vio "Does your clit feel good?"
-                sop "Yes... it feels wonderful, [vio]."
-                show c7 vio les 6
-                with dissolve
-                vio "Then... next step, if I remember correctly..."
-                vio "I'll try putting my finger in."
-                sop "Ahh—!"
-                vio "It doesn't hurt, does it?"
-                vio "I'm not sure if it was too early."
-                vio "Sorry... it's been a while."
-                show c7 vio les 7
-                with dissolve
-                sop "No... no, it's fine."
-                sop "I'm already dripping wet, so it didn't hurt me at all."
-                sop "Plus, I'm already quite used to having things inside of there."
-                sop "{i}*laughs*{/i}"
-                vio "Haha... okay. That's good."
-                show c7 vio les 8
-                with dissolve
-                sop "Oh my god..."
-                vio "I'll try moving a bit faster now."
-                vio "How is this?"
-                sop "Ah..."
-                sop "Perfect... you're doing perfect, [vio]."
-                sop "I-I think..."
-                sop "I'm going to..."
-                show c7 vio les 9
-                with pixellate
-                sop "Ahh—!!"
-                with vpunch
-                sop "I'm... I'm cumming!"
-                with vpunch
-                sop "Ah... ahh..."
-                vio "Wow..."
-                vio "You let out so much."
-                vio "But we aren't done just yet."
-                "......"
-                show c7 vio les 10
-                with dissolvelong
-                sop "[vio], you're quite the monster, aren't you?"
-                sop "You might even be better at this than I am..."
-                vio "{i}*lick*{/i}"
-                vio "Haha. Really?"
-                vio "Well, it's good to know that my skills haven't completely disappeared."
-                vio "I used to take the lead back then, too, so..."
-                show c7 vio les 11
-                with dissolve
-                vio "{i}*lick*{/i}"
-                vio "I know you just came, so I'm sorry if it's still too sensitive for this..."
-                sop "No, no. It's okay."
-                sop "Ah..."
-                sop "I'm used to cumming multiple times in a night."
-                vio "I see... that's good."
-                show c7 vio les 12
-                with dissolve
-                vio "Mmm..."
-                sop "Ahh—!"
-                sop "Oh... oh my god!"
-                sop "I-I..."
-                sop "I need a break, after all, before I go crazy."
-                sop "[vio], do you mind if I take over for a bit?"
-                vio "Hmm? Sure."
-                sop "Actually, I brought some toys... just in case."
-                sop "This might be a bit different for you, though..."
-                show c7 vio les 13
-                with fadeholdlong
-                vio "Ah..."
-                vio "My... my butt..."
-                vio "It's stretching."
-                sop "Let me know if it hurts, and we'll stop, all right?"
-                sop "I figured since you were so experienced with the pussy, that this might be newer for you."
-                sop "Have you ever done this before?"
-                vio "N-No... well..."
-                vio "Nick has teased me a bit before, but he hasn't put it inside or anything..."
-                sop "Okay, okay. Good to know."
-                sop "Let me try another toy now."
-                show c7 vio les 14
-                with dissolvelong
-                sop "How's this one?"
-                sop "It's a bit smaller, but you should be able to feel it more now."
-                sop "Especially since it's loosened up somewhat now."
-                show c7 vio les 15
-                with dissolve
-                sop "Now to move it in and out..."
-                vio "Ahh—?!"
-                vio "It-It's..."
-                vio "It feels strange."
-                sop "Oh, I know."
-                sop "It took a while for me to get used to my ass at first, too."
-                sop "But eventually, it can feel just as good as your pussy."
-                show c7 vio les 16
-                with dissolve
-                vio "Oh, oh god..."
-                vio "It's stretching..."
-                sop "My..."
-                sop "Just the vibration alone is enough to stimulate you?"
-                sop "Maybe you have a stronger affinity for this than either of us thought."
-                show c7 vio les 17
-                with dissolve
-                vio "I..."
-                vio "I don't know..."
-                vio "I'm still not used to it, b-but... it feels good."
-                vio "Ah..."
-                show c7 vio les 18
-                with dissolve
-                sop "Then, perhaps you might want to try this another time as well?"
-                sop "Whether it's with your boyfriend, or with another girl... I think you're suited for anal play as well, [vio]."
-                vio "R-Really?"
-                vio "Ahh—!!"
-                vio "I think... I..."
-                vio "I think I'm going to cum!"
-                show c7 vio les 19
-                with pixellate
-                vio "Ohh——!!"
-                with vpunch
-                vio "I'm cumming!"
-                with vpunch
-                vio "Ahh—!"
-                vio "W-What is this..."
-                sop "My..."
-                sop "This is quite the surprise."
-                sop "You're a perverted girl, [vio]..."
-                "......"
-                show c7 vio les 20
-                with dissolvelong
-                vio "That... that was incredible."
-                vio "I didn't know you could cum like that."
-                vio "I mean... I wasn't even touching my pussy, but I still..."
-                sop "Oh. You can cum from anal stimulation, too."
-                sop "That said, I had no idea it would happen during your first try."
-                sop "Interesting..."
-                sop "You also made me feel quite good, too, [vio]."
-                sop "I enjoyed myself a lot."
-                vio "Me too..."
-                show c7 vio 9
-                with fadeholdlong
-                "A little while later."
-                vio "I'm beat..."
-                sop "Me as well."
-                sop "I didn't expect we'd go at it a second time like that."
-                sop "...... Just how many times have we came today?"
-                show c7 vio 10
-                with dissolve
-                vio "I'm not sure, but it's too many for me to remember..."
-                vio "I don't think I've ever felt that good in my life."
-                vio "Maybe Nick was right... maybe I am a slut."
-                vio "Maybe I am a naughty girl, after all..."
-                stop music fadeout 2.5
-                "And so ended [vio]'s long-awaited reunion with another woman."
-                "With this, a forgotten aspect of her sexuality was re-awakened, once more..."
+                label c7viosophia:
+                    $c7violes = True
+                    vio "Well..."
+                    vio "I guess... I'm interested in trying something with another woman."
+                    vio "I've experimented when I was a bit younger, but it's been a while..."
+                    vio "Do you mind if I try taking the lead first?"
+                    if c5viomff:
+                        vio "Especially since it was so one-sided the last time..."
+                    sop "Sure. Not a problem."
+                    sop "Take your time."
+                    show c7 vio les 1
+                    with fadeholdlong
+                    sop "Oh?"
+                    sop "You seem more experienced with this than I initially thought."
+                    sop "By 'experimenting'... how much did you mean, exactly?"
+                    vio "Well..."
+                    vio "I had a girlfriend back in high school."
+                    vio "I thought for sure I was only interested in girls, but by senior year, I realized I was into guys, too."
+                    sop "I see... lucky for your boyfriend, then."
+                    show c7 vio les 2
+                    with dissolve
+                    vio "Yeah... but..."
+                    vio "For now, we don't need to pay him any attention."
+                    vio "I just want to have some fun with you, since we have the chance."
+                    vio "I'll help him out later on."
+                    show c7 vio les 3
+                    with dissolve
+                    with Pause(1.0)
+                    sop "Mmmm..."
+                    vio "Mmm... mmm..."
+                    sop "Ah..."
+                    show c7 vio les 4
+                    with dissolvelong
+                    sop "Not bad, [vio]..."
+                    sop "I'm impressed."
+                    ni "Fuck... that's hot."
+                    ni "I never imagined I'd get to see her kiss another girl."
+                    nol "Haha... y'know, sometimes I wonder why Sophia even needs me."
+                    "....."
+                    show c7 vio les 5
+                    with dissolvelong
+                    sop "Oh... my..."
+                    sop "I'm getting turned on already."
+                    vio "How's this?"
+                    vio "Does your clit feel good?"
+                    sop "Yes... it feels wonderful, [vio]."
+                    show c7 vio les 6
+                    with dissolve
+                    vio "Then... next step, if I remember correctly..."
+                    vio "I'll try putting my finger in."
+                    sop "Ahh—!"
+                    vio "It doesn't hurt, does it?"
+                    vio "I'm not sure if it was too early."
+                    vio "Sorry... it's been a while."
+                    show c7 vio les 7
+                    with dissolve
+                    sop "No... no, it's fine."
+                    sop "I'm already dripping wet, so it didn't hurt me at all."
+                    sop "Plus, I'm already quite used to having things inside of there."
+                    sop "{i}*laughs*{/i}"
+                    vio "Haha... okay. That's good."
+                    show c7 vio les 8
+                    with dissolve
+                    sop "Oh my god..."
+                    vio "I'll try moving a bit faster now."
+                    vio "How is this?"
+                    sop "Ah..."
+                    sop "Perfect... you're doing perfect, [vio]."
+                    sop "I-I think..."
+                    sop "I'm going to..."
+                    show c7 vio les 9
+                    with pixellate
+                    sop "Ahh—!!"
+                    with vpunch
+                    sop "I'm... I'm cumming!"
+                    with vpunch
+                    sop "Ah... ahh..."
+                    vio "Wow..."
+                    vio "You let out so much."
+                    vio "But we aren't done just yet."
+                    "......"
+                    show c7 vio les 10
+                    with dissolvelong
+                    sop "[vio], you're quite the monster, aren't you?"
+                    sop "You might even be better at this than I am..."
+                    vio "{i}*lick*{/i}"
+                    vio "Haha. Really?"
+                    vio "Well, it's good to know that my skills haven't completely disappeared."
+                    vio "I used to take the lead back then, too, so..."
+                    show c7 vio les 11
+                    with dissolve
+                    vio "{i}*lick*{/i}"
+                    vio "I know you just came, so I'm sorry if it's still too sensitive for this..."
+                    sop "No, no. It's okay."
+                    sop "Ah..."
+                    sop "I'm used to cumming multiple times in a night."
+                    vio "I see... that's good."
+                    show c7 vio les 12
+                    with dissolve
+                    vio "Mmm..."
+                    sop "Ahh—!"
+                    sop "Oh... oh my god!"
+                    sop "I-I..."
+                    sop "I need a break, after all, before I go crazy."
+                    sop "[vio], do you mind if I take over for a bit?"
+                    vio "Hmm? Sure."
+                    sop "Actually, I brought some toys... just in case."
+                    sop "This might be a bit different for you, though..."
+                    show c7 vio les 13
+                    with fadeholdlong
+                    vio "Ah..."
+                    vio "My... my butt..."
+                    vio "It's stretching."
+                    sop "Let me know if it hurts, and we'll stop, all right?"
+                    sop "I figured since you were so experienced with the pussy, that this might be newer for you."
+                    sop "Have you ever done this before?"
+                    vio "N-No... well..."
+                    vio "Nick has teased me a bit before, but he hasn't put it inside or anything..."
+                    sop "Okay, okay. Good to know."
+                    sop "Let me try another toy now."
+                    show c7 vio les 14
+                    with dissolvelong
+                    sop "How's this one?"
+                    sop "It's a bit smaller, but you should be able to feel it more now."
+                    sop "Especially since it's loosened up somewhat now."
+                    show c7 vio les 15
+                    with dissolve
+                    sop "Now to move it in and out..."
+                    vio "Ahh—?!"
+                    vio "It-It's..."
+                    vio "It feels strange."
+                    sop "Oh, I know."
+                    sop "It took a while for me to get used to my ass at first, too."
+                    sop "But eventually, it can feel just as good as your pussy."
+                    show c7 vio les 16
+                    with dissolve
+                    vio "Oh, oh god..."
+                    vio "It's stretching..."
+                    sop "My..."
+                    sop "Just the vibration alone is enough to stimulate you?"
+                    sop "Maybe you have a stronger affinity for this than either of us thought."
+                    show c7 vio les 17
+                    with dissolve
+                    vio "I..."
+                    vio "I don't know..."
+                    vio "I'm still not used to it, b-but... it feels good."
+                    vio "Ah..."
+                    show c7 vio les 18
+                    with dissolve
+                    sop "Then, perhaps you might want to try this another time as well?"
+                    sop "Whether it's with your boyfriend, or with another girl... I think you're suited for anal play as well, [vio]."
+                    vio "R-Really?"
+                    vio "Ahh—!!"
+                    vio "I think... I..."
+                    vio "I think I'm going to cum!"
+                    show c7 vio les 19
+                    with pixellate
+                    vio "Ohh——!!"
+                    with vpunch
+                    vio "I'm cumming!"
+                    with vpunch
+                    vio "Ahh—!"
+                    vio "W-What is this..."
+                    sop "My..."
+                    sop "This is quite the surprise."
+                    sop "You're a perverted girl, [vio]..."
+                    "......"
+                    show c7 vio les 20
+                    with dissolvelong
+                    vio "That... that was incredible."
+                    vio "I didn't know you could cum like that."
+                    vio "I mean... I wasn't even touching my pussy, but I still..."
+                    sop "Oh. You can cum from anal stimulation, too."
+                    sop "That said, I had no idea it would happen during your first try."
+                    sop "Interesting..."
+                    sop "You also made me feel quite good, too, [vio]."
+                    sop "I enjoyed myself a lot."
+                    vio "Me too..."
+                    show c7 vio 9
+                    with fadeholdlong
+                    "A little while later."
+                    vio "I'm beat..."
+                    sop "Me as well."
+                    sop "I didn't expect we'd go at it a second time like that."
+                    sop "...... Just how many times have we came today?"
+                    show c7 vio 10
+                    with dissolve
+                    vio "I'm not sure, but it's too many for me to remember..."
+                    vio "I don't think I've ever felt that good in my life."
+                    vio "Maybe Nick was right... maybe I am a slut."
+                    vio "Maybe I am a naughty girl, after all..."
+                    stop music fadeout 2.5
+                    "And so ended [vio]'s long-awaited reunion with another woman."
+                    "With this, a forgotten aspect of her sexuality was re-awakened, once more..."
 
     show c7 stream 1
     with fadeholdlong
@@ -13173,11 +13189,15 @@ label c7ending:
     pov "And, better yet..."
     pov "I don't even need to get changed before they come."
     pov "I can have a little bit of fun, just like this..."
-    if lesonly:
-        jump c8pizzagirl
     show c8 pizza 8
     with dissolve
     pov "Now then..."
+    if lesonly:
+        menu:
+            "Request a female delivery driver.":
+                jump c8pizzagirl
+            "On second thought, I'll pass.":
+                jump c8pizzacancel
     pov "How should I order the pizza?"
     menu:
         "Request a male delivery driver.":
@@ -13370,10 +13390,10 @@ label c7ending:
             $sexexp+=1
             $c8pizzaboy = True
         "Request a female delivery driver.":
-            pov "I'll put in a special request for a female driver."
-            pov "This should be fun."
-            pov "{i}*giggles*{/i}"
             label c8pizzagirl:
+                pov "I'll put in a special request for a female driver."
+                pov "This should be fun."
+                pov "{i}*giggles*{/i}"
                 show c8 pizzagirl 1
                 with fadeholdlong
                 wom "Hello."
@@ -13463,13 +13483,14 @@ label c7ending:
                 $sexexp+=1
                 $c8pizzagirl = True
         "On second thought, I'll pass.":
-            pov "Actually..."
-            pov "It's already this late, so I'll hold off until breakfast."
-            stop music fadeout 2.0
-            pov "I'll just have a glass of milk, and then try falling asleep once more."
-            pov "Maybe I'll order pizza some other day instead."
-            "......"
-            $inn+=1
+            label c8pizzacancel:
+                pov "Actually..."
+                pov "It's already this late, so I'll hold off until breakfast."
+                stop music fadeout 2.0
+                pov "I'll just have a glass of milk, and then try falling asleep once more."
+                pov "Maybe I'll order pizza some other day instead."
+                "......"
+                $inn+=1
 
     show c8 subway 1
     with fadeholdlong
@@ -13598,8 +13619,6 @@ label c7ending:
     pov "Sure. Sounds like a plan to me."
     pov "Maybe we can watch something on Netflix or YouTube?"
     pov "I'm curious what you've been following lately."
-    show c8 harukafood 13
-    with dissolve
     fr "Oh, that reminds me, actually."
     fr "There was this funny compilation I wanted to show you."
     "......"
@@ -13626,7 +13645,7 @@ label c7ending:
     show c8 harukawalk 4
     with dissolve
     pov "C'mon, let's get going!"
-    pov "I'm curious to see what your room looks like."
+    pov "I'm curious to see what your room looks like now."
     fr "W-Woah!"
     fr "Okay, okay, settle down."
     show c8 harukawalk 5
@@ -14288,7 +14307,7 @@ label c7ending:
     pov "Should I?"
     if c4fansitetopless:
         pov "I could go topless again, or..."
-    if not c4fansitetopless:
+    else:
         pov "Since it's only a picture..."
         pov "I could go pretty far, if I wanted."
     menu:
@@ -15852,7 +15871,7 @@ label c9cjscene:
                 if virgin:
                     pov "{i}(I'm still having a hard time believing it.){/i}"
                     pov "{i}(I'm not a virgin anymore.){/i}"
-                if virgin:
+                else:
                     pov "{i}(I just had sex for the first time in over a year.){/i}"
                 pov "{i}(And not only that, I did it with my two best friends... at the same time...){/i}"
                 pov "......"
@@ -17169,7 +17188,7 @@ label act2start:
     with dissolve
     vio "How 'bout you?"
     vio "Found a guy or girl yet?"
-    if fp=="Violet":
+    if fp==vioname:
         vio "Well, maybe it's a bit soon to ask that, considering the two of us just had sex."
         pov "......"
         pov "{i}(She's definitely not shy about what happened, huh.){/i}"
@@ -17187,7 +17206,7 @@ label act2start:
     pov "Yeah... you could be right."
     pov "Lately... I mean, I've always had this perverted side to myself, but..."
     pov "Until now, I never really acted on it."
-    if fp=="Violet":
+    if fp==vioname:
         show c10 viotalk 6
         with dissolve
         vio "Until you decided to have sex with me, right?"
@@ -17293,12 +17312,6 @@ label act2start:
     pov "What do I want to do tomorrow?"
     if lesonly:
         jump c10mia
-    if c2pervertpolice:
-        menu:
-            "Go for a walk to the park.":
-                jump c10mia
-            "Stay home.":
-                jump c10home
     menu:
         "Spend some time in my pool.":
             label c10pool:
@@ -18672,7 +18685,7 @@ label c10aftershoot:
                         pov "I'm not that experienced with this sort of thing, so..."
                     if bjcount<=0:
                         pov "It's actually my first time doing something like this, so..."
-                        man "Your fist time?!"
+                        man "Your first time?!"
                     pov "Just let me know if I'm doing it wrong."
                     show c10 outside 17
                     with pixellate
@@ -18963,7 +18976,7 @@ label c10end:
         "......"
         "..."
         jump c10complete
-    if fp=="Violet":
+    if fp==vioname:
         show black with fadeholdlong
         "That night..."
         "[pov], as her body succumbed to sleep, began to see images form."
@@ -18974,7 +18987,7 @@ label c10end:
         "......"
         "..."
         jump c10complete
-    if fp=="Haruka":
+    if fp==frname:
         show black with fadeholdlong
         "That night..."
         "[pov], as her body succumbed to sleep, began to see images form."
@@ -19302,7 +19315,7 @@ label c10complete:
                 "......"
                 if c5viomff or c5viommf:
                     jump c11vio
-                if not c5viomff and not c5viommf:
+                else:
                     jump c11cafe
             pov "Maybe... maybe they were actually expecting something like this?"
             pov "{i}*giggles*{/i}"
@@ -19994,103 +20007,106 @@ label c11vio:
     vio "What did we have planned today, anyway...?"
     vio "I forget."
     vio "...... Oh yeah."
+    if lesonly:
+        jump c11viogirls
     menu:
         "2 girls.":
-            vio "That's right."
-            vio "You wanted me to have fun with two other girls, didn't you?"
-            vio "Are you sure you're fine with that? Not coming, I mean?"
-            ni "Yeah... I want to hear all about it instead."
-            vio "You pervert."
-            show c11 viotalk 5
-            with dissolve
-            vio "Well, I guess they'll be here soon."
-            vio "Are you just going to hang around here until I'm done?"
-            ni "Yeah."
-            vio "Okay... suit yourself."
-            "......"
-            show c11 vio les 1
-            with fadeholdlong
-            "A little while later..."
-            vio "Ah..."
-            wom1 "This should help you relax."
-            voice "audio/effects/lewd/suck1.mp3"
-            wom2 "{i}*lick*{/i}"
-            show c11 vio les 2
-            with dissolve
-            wom2 "Mmm..."
-            wom1 "Is this your first time with two other girls?"
-            vio "At the same time? Yes..."
-            vio "Oh..."
-            show c11 vio les 3
-            with dissolve
-            voice "audio/effects/lewd/suck1.mp3"
-            wom1 "{i}*lick*{/i}"
-            vio "That feels great."
-            vio "Both my nipples and pussy... amazing."
-            show c11 vio les 4
-            with dissolvelong
-            wom2 "You have a boyfriend, right?"
-            wom2 "Such a shame..."
-            wom2 "A cute lady like yourself should be with her own kind."
-            vio "Ah..."
-            show c11 vio les 5
-            with dissolve
-            wom1 "Exactly."
-            wom1 "I doubt he can make you feel good like we can."
-            wom1 "Most men are too simple-minded to truly please women."
-            vio "Ahh... that's..."
-            vio "Can I... touch you two now?"
-            show c11 vio les 6
-            with dissolvelong
-            voice "audio/effects/lewd/suck1.mp3"
-            vio "{i}*lick*{/i}"
-            vio "Mmm..."
-            wom1 "Oh, that feels good."
-            wom1 "I didn't know you were experienced with this."
-            wom1 "You've been with other girls before?"
-            show c11 vio les 7
-            with dissolve
-            vio "Mmm... ahh..."
-            vio "Yeah... a few times."
-            wom2 "Interesting."
-            wom2 "I'd like to have a taste, too."
-            wom2 "Could you lay down for me?"
-            show c11 vio les 8
-            with dissolve
-            wom2 "Mmm... mmmm..."
-            vio "Oh..."
-            vio "You're so good."
-            wom1 "{i}*giggles*{/i}"
-            wom1 "With a bit more experience, you can be just as good as her."
-            show c11 vio les 9
-            with dissolve
-            vio "I think I'm..."
-            wom2 "Oh?"
-            vio "I'm cumming!"
-            show c11 vio les 10
-            with pixellate
-            with vpunch
-            vio "A-Ahh!"
-            with vpunch
-            vio "Ah..."
-            wom1 "Wow..."
-            wom1 "She came all over you."
-            show c11 vio les 11
-            with dissolvelong
-            wom2 "Did we overdo it?"
-            wom2 "We were told to give her a good time, so..."
-            vio "Hah... hah..."
-            vio "No... I loved it."
-            show c11 vio les 12
-            with dissolve
-            stop music fadeout 2.0
-            vio "If you want..."
-            vio "We could do it one more time."
-            vio "There's still some time, and..."
-            vio "I want to try making one of you cum, too."
-            "......"
-            $c11violes=True
-            jump c11cafe
+            label c11viogirls:
+                vio "That's right."
+                vio "You wanted me to have fun with two other girls, didn't you?"
+                vio "Are you sure you're fine with that? Not coming, I mean?"
+                ni "Yeah... I want to hear all about it instead."
+                vio "You pervert."
+                show c11 viotalk 5
+                with dissolve
+                vio "Well, I guess they'll be here soon."
+                vio "Are you just going to hang around here until I'm done?"
+                ni "Yeah."
+                vio "Okay... suit yourself."
+                "......"
+                show c11 vio les 1
+                with fadeholdlong
+                "A little while later..."
+                vio "Ah..."
+                wom1 "This should help you relax."
+                voice "audio/effects/lewd/suck1.mp3"
+                wom2 "{i}*lick*{/i}"
+                show c11 vio les 2
+                with dissolve
+                wom2 "Mmm..."
+                wom1 "Is this your first time with two other girls?"
+                vio "At the same time? Yes..."
+                vio "Oh..."
+                show c11 vio les 3
+                with dissolve
+                voice "audio/effects/lewd/suck1.mp3"
+                wom1 "{i}*lick*{/i}"
+                vio "That feels great."
+                vio "Both my nipples and pussy... amazing."
+                show c11 vio les 4
+                with dissolvelong
+                wom2 "You have a boyfriend, right?"
+                wom2 "Such a shame..."
+                wom2 "A cute lady like yourself should be with her own kind."
+                vio "Ah..."
+                show c11 vio les 5
+                with dissolve
+                wom1 "Exactly."
+                wom1 "I doubt he can make you feel good like we can."
+                wom1 "Most men are too simple-minded to truly please women."
+                vio "Ahh... that's..."
+                vio "Can I... touch you two now?"
+                show c11 vio les 6
+                with dissolvelong
+                voice "audio/effects/lewd/suck1.mp3"
+                vio "{i}*lick*{/i}"
+                vio "Mmm..."
+                wom1 "Oh, that feels good."
+                wom1 "I didn't know you were experienced with this."
+                wom1 "You've been with other girls before?"
+                show c11 vio les 7
+                with dissolve
+                vio "Mmm... ahh..."
+                vio "Yeah... a few times."
+                wom2 "Interesting."
+                wom2 "I'd like to have a taste, too."
+                wom2 "Could you lay down for me?"
+                show c11 vio les 8
+                with dissolve
+                wom2 "Mmm... mmmm..."
+                vio "Oh..."
+                vio "You're so good."
+                wom1 "{i}*giggles*{/i}"
+                wom1 "With a bit more experience, you can be just as good as her."
+                show c11 vio les 9
+                with dissolve
+                vio "I think I'm..."
+                wom2 "Oh?"
+                vio "I'm cumming!"
+                show c11 vio les 10
+                with pixellate
+                with vpunch
+                vio "A-Ahh!"
+                with vpunch
+                vio "Ah..."
+                wom1 "Wow..."
+                wom1 "She came all over you."
+                show c11 vio les 11
+                with dissolvelong
+                wom2 "Did we overdo it?"
+                wom2 "We were told to give her a good time, so..."
+                vio "Hah... hah..."
+                vio "No... I loved it."
+                show c11 vio les 12
+                with dissolve
+                stop music fadeout 2.0
+                vio "If you want..."
+                vio "We could do it one more time."
+                vio "There's still some time, and..."
+                vio "I want to try making one of you cum, too."
+                "......"
+                $c11violes=True
+                jump c11cafe
         "3 guys.":
             vio "That's right."
             vio "You invited 2 other guys to join us, huh."
@@ -22130,8 +22146,11 @@ label c12cj:
                             show c12 cj outside 2
                             with fadeholdlong
                             pov "You guys..."
-                            pov "You should have told me your dicks were this good."
-                            pov "If so... I just might have had sex with you two long ago."
+                            if c9connorfirst or c9joshfirst:
+                                pov "Your dicks are so good."
+                            else:
+                                pov "You should have told me your dicks were this good."
+                                pov "If so... I just might have had sex with you two long ago."
                             j "Haha, really?"
                             c "What are you blushing over, idiot."
                             show c12 cj outside 3
@@ -23475,7 +23494,6 @@ label c13beach:
                 pov "Can't stay too much longer, anyway, since my ferry ticket back is for three o'clock."
                 pov "What time is it now, anyway...?"
                 "......"
-                $inn+=1
                 jump c13haruka
     show c13 beach 6
     with dissolvelong
@@ -23847,7 +23865,7 @@ label c13haruka:
     with dissolve
     pov "[fr]?"
     pov "Maybe she wants to hang out again soon?"
-    if fp=="Haruka":
+    if fp==frname:
         pov "We haven't met since... well, since that time we slept together."
         pov "I'd really like to ask her feelings about it, the next time we meet."
         pov "Because, to be honest..."
@@ -24005,8 +24023,8 @@ label c13haruka:
                 pov "Heck, just last week, we even had sex!"
                 c "H-Hey..."
                 c "No need to make things awkward by bringing that up..."
-            if not c12cjsex:
-                pov "W-Well... I guess I understand."
+            else:
+                c "W-Well... I guess I understand."
             show c13 connor 15
             with dissolve
             pov "Besides, it's not often it's just the two of us."
@@ -24476,7 +24494,7 @@ label c13viotalk:
             luc "I'm sure it's against one or two rules for the manager to be here."
             if c11lucastease:
                 luc "Although... you're right that I've already done it before..."
-            if not c11lucastease:
+            else:
                 luc "Haha... you really were joking after all, right?"
             show c13 lucas 11
             with dissolvelong
@@ -26836,7 +26854,7 @@ label c14beachcancel:
     with dissolve
     pov "I'll just stick to my plan of swimming and relaxing."
     pov "Better to be safe than sorry, after all."
-    show c14 beachnorm 5
+    show c14 beachnorm 6
     with dissolvelong
     stop music fadeout 2.5
     pov "Ah... that feels good..."
@@ -27251,7 +27269,8 @@ label c14femalebeach:
         pov "Yeah, that looks just like them."
         pov "I should go and say hello!"
     else:
-        pov "I think I recognize one of them, but the other..."
+        if lesonly:
+            pov "I think I recognize one of them, but the other..."
         pov "I should go and introduce myself."
     show c14 beachnude 7f
     with dissolve
@@ -27259,17 +27278,23 @@ label c14femalebeach:
     pov "Sorry if I'm bothering you two."
     show c14 beachnude 8f
     with dissolvelong
-    wom1 "Oh? It's the lovely lady from before."
-    wom1 "Last week, I think?"
+    if lesonly:
+        wom1 "Oh? It's the lovely lady from before."
+        wom1 "Last week, I think?"
     if c13femalebeach:
         wom2 "Happy to see you came again."
         wom1 "Yes. We were wondering if we'd see you again."
         pov "Haha. I figured it was too hot to be dressed today!"
     else:
-        wom2 "And this is...?"
-        wom1 "Ah, just a cute face I invited here before."
-        wom1 "I'm glad you showed up this time."
-        pov "Sure. Nice to meet you."
+        if lesonly:
+            wom2 "And this is...?"
+            wom1 "Ah, just a cute face I invited here before."
+            wom1 "I'm glad you showed up this time."
+            pov "Sure. Nice to meet you."
+        else:
+            wom1 "Hello! Nice to meet you."
+            wom1 "I haven't seen you around before. Is this your first time?"
+            pov "Yeah. I guess you could say I was curious..."
     show c14 beachnude 9f
     with dissolve
     pov "So... what were you two planning today?"
@@ -29699,7 +29724,7 @@ label c15model:
             pov "It's fine. You made me laugh, and that's what matters most right now."
             pov "Thank you for the chat. I'll see you later."
             pov "Bye!"
-            show c15 afterwork 7
+            show c15 afterwork tease 7
             with dissolvelong
             stop music fadeout 4.0
             pov "{i}(He never rejects my advances, does he?){/i}"
@@ -30440,6 +30465,12 @@ label c15saradate:
         vio "{i}(What should I do?){/i}"
         vio "{i}(Turn him down? Or take him up on the offer?){/i}"
         vio "{i}(I doubt he's the only person who will approach me here.){/i}"
+        if lesonly:
+            menu:
+                "Wait for someone else.":
+                    jump c15viogirl
+                "Go home early.":
+                    jump c15viogohome
         menu:
             "Go with him.":
                 show c15 vioclub 10m
@@ -30570,228 +30601,231 @@ label c15saradate:
                 "Until there was only one left, to cover her body white."
                 "......"
                 $c15viomale=True
-            "Wait for someone else.":
-                show c15 vioclub 10m
-                with dissolvelong
-                vio "Sorry, but I'm good."
-                vio "You can go ahead without me."
-                man "Aww, man..."
-                man "Alright."
-                show c15 vio cancel 1
-                with dissolvelong
-                vio "{i}(Some people just assume because you're at a club and by yourself, it means they have an easy ticket inside your pants.){/i}"
-                vio "{i}(Not everyone is my type... whether they be male or female){/i}"
-                vio "{i}(I'm not entirely against having some fun, but him?){/i}"
-                vio "{i}(Please... just about anyone can do better.){/i}"
-                show c15 vioclub 5
-                with fadeholdlong
-                "A few minutes later."
-                show c15 vioclub 6f
-                with dissolve
-                wom "Hi, excuse me..."
-                wom "Are you alone, by any chance?"
-                show c15 vioclub 7f
-                with dissolve
-                vio "{i}(A woman this time?){/i}"
-                vio "Yeah. How come?"
-                show c15 vioclub 8f
-                with dissolve
-                wom "Well, I'm here by myself, too."
-                wom "A bit lonely, you could even say."
-                wom "I noticed you from across the room and felt I had to introduce myself."
-                wom "It's not often a girl as beautiful as you is around here."
-                wom "Want to get some drinks?"
-                wom "I'd be happy to pay, of course."
-                show c15 vioclub 9
-                with dissolve
-                vio "Hmm..."
-                vio "{i}(She has a bit more tact than the doofus from before.){/i}"
-                vio "{i}(I wouldn't mind talking with her over some drinks.){/i}"
-                vio "{i}(But it's obvious she's expecting more than just talking.){/i}"
-                vio "{i}(How should I handle this?){/i}"
-                menu:
-                    "Go with her.":
-                        show c15 vioclub 10f
-                        with dissolvelong
-                        vio "Alright, sure."
-                        vio "I'm always ready for drinks."
-                        show c15 vioclub 11f
-                        with dissolvelong
-                        wom "Wonderful! I'm so happy you said yes."
-                        wom "Let's go to the bar over there."
-                        show c15 vioclub 12f
-                        with dissolve
-                        vio "{i}(She's awfully close.){/i}"
-                        vio "{i}(That excited already?){/i}"
-                        vio "{i}(Then again, I don't imagine it's easy to pick up another woman at a place like this.){/i}"
-                        vio "{i}(Not everyone swings that way, after all.){/i}"
-                        show c15 vioclub 13f
-                        with dissolve
-                        vio "What do you like to drink?"
-                        vio "I enjoy the harder stuff, personally, but there isn't anything I necessarily dislike."
-                        wom "Haha. Glad you asked."
-                        wom "Let's see... maybe some rum and coke to start?"
-                        "......"
-                        show c15 viosex girl 1
-                        with fadeholdlong
-                        "A few hours later..."
-                        "While initially reluctant, [vio] would soon find herself in bed with her latest companion."
-                        vio "Ah..."
-                        show c15 viosex girl 2
-                        with dissolve
-                        wom "Mmm... {i}*lick*{/i}"
-                        wom "What a beautiful pussy you have."
-                        wom "If I knew beforehand, I'd have come to you immediately..."
-                        show c15 viosex girl 3
-                        with dissolvelong
-                        vio "Oh my god..."
-                        vio "Keep licking there."
-                        wom "Mmm..."
-                        vio "How are you so good at this...?"
-                        show c15 viosex girl 4
-                        with dissolve
-                        wom "Mmm... well..."
-                        wom "Tonight wasn't my first time at the club."
-                        wom "I've had more than my fair share of snacks over these past couple years."
-                        wom "And you just might be my favourite so far..."
-                        show c15 viosex girl 5
-                        with dissolve
-                        vio "R-Really...?"
-                        vio "I'm not sure if that's just flattery, but..."
-                        vio "I'm enjoying this a lot, too."
-                        vio "Mmm..."
-                        vio "Can we switch places? I want to make you feel good, too."
-                        show c15 viosex girl 6
-                        with dissolvelong
-                        wom "Wow..."
-                        wom "I thought you were an innocent, inexperienced girl at first, but..."
-                        show c15 viosex girl 7
-                        with dissolve
-                        wom "You're more bold than I thought."
-                        wom "Have you been with many girls before?"
-                        vio "No... just a few."
-                        show c15 viosex girl 6
-                        with dissolve
-                        vio "But I'm not opposed to having fun every once in a while."
-                        vio "Why hold yourself back, anyway...?"
-                        wom "Very true..."
-                        show c15 viosex girl 8
-                        with dissolvelong
-                        wom "I take it you've done it this way before, too?"
-                        vio "Yeah."
-                        vio "I've done this quite a few times, actually."
-                        vio "Back in high school, especially... with this one other girl..."
-                        show c15 viosex girl 9
-                        with dissolve
-                        vio "What about you?"
-                        vio "What was your first time like?"
-                        wom "Me? Let's see..."
-                        wom "I was pretty late. First year of university."
-                        wom "Me and a few girl friends got drunk at my apartment, and one thing led to another..."
-                        wom "A couple of them regretted it."
-                        wom "But I didn't. I just wanted to taste more and more after that."
-                        vio "Group sex for your first time, huh?"
-                        show c15 viosex girl 10
-                        with dissolve
-                        voice "audio/effects/lewd/femalebreath3.wav"
-                        vio "Mmm..."
-                        wom "Oh... oh my..."
-                        vio "Mmm... mmm... {i}*lick*{/i}"
-                        show c15 viosex girl 11
-                        with dissolve
-                        wom "You're even better than I imagined..."
-                        wom "Ah..."
-                        show c15 viosex girl 10
-                        with dissolve
-                        vio "Mmm... good...?"
-                        wom "Very..."
-                        show c15 viosex girl 12
-                        with dissolvelong
-                        vio "Is this position easier for you?"
-                        wom "Yes. For climaxing, at least."
-                        wom "I cum much more quickly when I can put pressure into my legs."
-                        vio "Well, you can cum any time."
-                        vio "I'll try my best."
-                        show c15 viosex girl 13
-                        with dissolve
-                        wom "Oh... my..."
-                        wom "Keep licking that spot..."
-                        wom "I think I'm already getting close."
-                        wom "Yes, I'm..."
-                        vio "{i}*lick*{/i}"
-                        show c15 viosex girl 14
-                        with pixellate
-                        with vpunch
-                        voice "audio/effects/lewd/femalebreath3.wav"
-                        wom "Ah——!"
-                        with vpunch
-                        wom "Oh my god!"
-                        wom "Mmm—!"
-                        show c15 viosex girl 15
-                        with dissolvelong
-                        stop music fadeout 5.0
-                        wom "Wow, I'm falling even more in love with you by the second..."
-                        wom "Thank you."
-                        vio "And thank you, too. I learned a lot from this."
-                        vio "But..."
-                        vio "We aren't done yet, are we?"
-                        vio "There's still a little while until morning."
-                        wom "I'm happy we're on the same page."
-                        wom "No way I'd let you go after just one time."
-                        "And so, the two would continue a while longer, until the first break of dawn..."
-                        "......"
-                        $c15violes=True
-                    "Pass.":
-                        show c15 vioclub 10f
-                        with dissolvelong
-                        vio "Sorry... but I'm gonna have to pass."
-                        vio "I think I'm actually about to head back for the night."
-                        wom "Oh... I see."
-                        wom "No problem. Maybe some other time."
-                        show c15 vio cancel 2
-                        with fadeholdlong
-                        vio "{i}(She's a little... desperate, maybe, but she doesn't seem like a bad person.){/i}"
-                        vio "{i}(A nightclub is the sort of place you generally hook-up.){/i}"
-                        vio "{i}(But I don't think that's what I'm interested in right now.){/i}"
-                        vio "{i}(And the more I stay, the more people I'll have to turn down.){/i}"
-                        show c15 vio cancel 3
-                        with dissolve
-                        stop music fadeout 2.5
-                        vio "{i}(I'll just finish this glass and call a cab.){/i}"
-                        vio "{i}(The trains are still running at this time, but...){/i}"
-                        vio "{i}(It's nearly midnight, and I don't want to deal with any creeps.){/i}"
-                        vio "{i}(Way too tired for that.){/i}"
-                        "......"
-                        jump c15girlsnight
-            "Go home early.":
-                show c15 vioclub 10m
-                with dissolvelong
-                vio "Sorry, but I'm good."
-                vio "You can go ahead without me."
-                man "Aww, man..."
-                man "Alright."
-                show c15 vio cancel 1
-                with dissolvelong
-                vio "{i}(Some people just assume because you're at a club and by yourself, it means they have an easy ticket inside your pants.){/i}"
-                vio "{i}(Not everyone is my type... whether they be male or female){/i}"
-                vio "{i}(I'm not entirely against having some fun, but him?){/i}"
-                vio "{i}(Please... just about anyone can do better.){/i}"
-                show c15 vio cancel 2
-                with dissolvelong
-                vio "{i}(Still...){/i}"
-                vio "{i}(A nightclub is the sort of place you generally hook-up.){/i}"
-                vio "{i}(I just don't think that's what I'm interested in right now.){/i}"
-                vio "{i}(And the more I stay, the more people I'll have to turn down.){/i}"
-                show c15 vio cancel 3
-                with dissolve
-                stop music fadeout 2.5
-                vio "{i}(I'll just finish this glass and call a cab.){/i}"
-                vio "{i}(The trains are still running at this time, but...){/i}"
-                vio "{i}(It's nearly midnight, and I don't want to deal with any creeps.){/i}"
-                vio "{i}(Way too tired for that.){/i}"
-                "......"
                 jump c15girlsnight
-
+            "Wait for someone else.":
+                label c15viogirl:
+                    show c15 vioclub 10m
+                    with dissolvelong
+                    vio "Sorry, but I'm good."
+                    vio "You can go ahead without me."
+                    man "Aww, man..."
+                    man "Alright."
+                    show c15 vio cancel 1
+                    with dissolvelong
+                    vio "{i}(Some people just assume because you're at a club and by yourself, it means they have an easy ticket inside your pants.){/i}"
+                    vio "{i}(Not everyone is my type... whether they be male or female){/i}"
+                    vio "{i}(I'm not entirely against having some fun, but him?){/i}"
+                    vio "{i}(Please... just about anyone can do better.){/i}"
+                    show c15 vioclub 5
+                    with fadeholdlong
+                    "A few minutes later."
+                    show c15 vioclub 6f
+                    with dissolve
+                    wom "Hi, excuse me..."
+                    wom "Are you alone, by any chance?"
+                    show c15 vioclub 7f
+                    with dissolve
+                    vio "{i}(A woman this time?){/i}"
+                    vio "Yeah. How come?"
+                    show c15 vioclub 8f
+                    with dissolve
+                    wom "Well, I'm here by myself, too."
+                    wom "A bit lonely, you could even say."
+                    wom "I noticed you from across the room and felt I had to introduce myself."
+                    wom "It's not often a girl as beautiful as you is around here."
+                    wom "Want to get some drinks?"
+                    wom "I'd be happy to pay, of course."
+                    show c15 vioclub 9
+                    with dissolve
+                    vio "Hmm..."
+                    vio "{i}(She has a bit more tact than the doofus from before.){/i}"
+                    vio "{i}(I wouldn't mind talking with her over some drinks.){/i}"
+                    vio "{i}(But it's obvious she's expecting more than just talking.){/i}"
+                    vio "{i}(How should I handle this?){/i}"
+                    menu:
+                        "Go with her.":
+                            show c15 vioclub 10f
+                            with dissolvelong
+                            vio "Alright, sure."
+                            vio "I'm always ready for drinks."
+                            show c15 vioclub 11f
+                            with dissolvelong
+                            wom "Wonderful! I'm so happy you said yes."
+                            wom "Let's go to the bar over there."
+                            show c15 vioclub 12f
+                            with dissolve
+                            vio "{i}(She's awfully close.){/i}"
+                            vio "{i}(That excited already?){/i}"
+                            vio "{i}(Then again, I don't imagine it's easy to pick up another woman at a place like this.){/i}"
+                            vio "{i}(Not everyone swings that way, after all.){/i}"
+                            show c15 vioclub 13f
+                            with dissolve
+                            vio "What do you like to drink?"
+                            vio "I enjoy the harder stuff, personally, but there isn't anything I necessarily dislike."
+                            wom "Haha. Glad you asked."
+                            wom "Let's see... maybe some rum and coke to start?"
+                            "......"
+                            show c15 viosex girl 1
+                            with fadeholdlong
+                            "A few hours later..."
+                            "While initially reluctant, [vio] would soon find herself in bed with her latest companion."
+                            vio "Ah..."
+                            show c15 viosex girl 2
+                            with dissolve
+                            wom "Mmm... {i}*lick*{/i}"
+                            wom "What a beautiful pussy you have."
+                            wom "If I knew beforehand, I'd have come to you immediately..."
+                            show c15 viosex girl 3
+                            with dissolvelong
+                            vio "Oh my god..."
+                            vio "Keep licking there."
+                            wom "Mmm..."
+                            vio "How are you so good at this...?"
+                            show c15 viosex girl 4
+                            with dissolve
+                            wom "Mmm... well..."
+                            wom "Tonight wasn't my first time at the club."
+                            wom "I've had more than my fair share of snacks over these past couple years."
+                            wom "And you just might be my favourite so far..."
+                            show c15 viosex girl 5
+                            with dissolve
+                            vio "R-Really...?"
+                            vio "I'm not sure if that's just flattery, but..."
+                            vio "I'm enjoying this a lot, too."
+                            vio "Mmm..."
+                            vio "Can we switch places? I want to make you feel good, too."
+                            show c15 viosex girl 6
+                            with dissolvelong
+                            wom "Wow..."
+                            wom "I thought you were an innocent, inexperienced girl at first, but..."
+                            show c15 viosex girl 7
+                            with dissolve
+                            wom "You're more bold than I thought."
+                            wom "Have you been with many girls before?"
+                            vio "No... just a few."
+                            show c15 viosex girl 6
+                            with dissolve
+                            vio "But I'm not opposed to having fun every once in a while."
+                            vio "Why hold yourself back, anyway...?"
+                            wom "Very true..."
+                            show c15 viosex girl 8
+                            with dissolvelong
+                            wom "I take it you've done it this way before, too?"
+                            vio "Yeah."
+                            vio "I've done this quite a few times, actually."
+                            vio "Back in high school, especially... with this one other girl..."
+                            show c15 viosex girl 9
+                            with dissolve
+                            vio "What about you?"
+                            vio "What was your first time like?"
+                            wom "Me? Let's see..."
+                            wom "I was pretty late. First year of university."
+                            wom "Me and a few girl friends got drunk at my apartment, and one thing led to another..."
+                            wom "A couple of them regretted it."
+                            wom "But I didn't. I just wanted to taste more and more after that."
+                            vio "Group sex for your first time, huh?"
+                            show c15 viosex girl 10
+                            with dissolve
+                            voice "audio/effects/lewd/femalebreath3.wav"
+                            vio "Mmm..."
+                            wom "Oh... oh my..."
+                            vio "Mmm... mmm... {i}*lick*{/i}"
+                            show c15 viosex girl 11
+                            with dissolve
+                            wom "You're even better than I imagined..."
+                            wom "Ah..."
+                            show c15 viosex girl 10
+                            with dissolve
+                            vio "Mmm... good...?"
+                            wom "Very..."
+                            show c15 viosex girl 12
+                            with dissolvelong
+                            vio "Is this position easier for you?"
+                            wom "Yes. For climaxing, at least."
+                            wom "I cum much more quickly when I can put pressure into my legs."
+                            vio "Well, you can cum any time."
+                            vio "I'll try my best."
+                            show c15 viosex girl 13
+                            with dissolve
+                            wom "Oh... my..."
+                            wom "Keep licking that spot..."
+                            wom "I think I'm already getting close."
+                            wom "Yes, I'm..."
+                            vio "{i}*lick*{/i}"
+                            show c15 viosex girl 14
+                            with pixellate
+                            with vpunch
+                            voice "audio/effects/lewd/femalebreath3.wav"
+                            wom "Ah——!"
+                            with vpunch
+                            wom "Oh my god!"
+                            wom "Mmm—!"
+                            show c15 viosex girl 15
+                            with dissolvelong
+                            stop music fadeout 5.0
+                            wom "Wow, I'm falling even more in love with you by the second..."
+                            wom "Thank you."
+                            vio "And thank you, too. I learned a lot from this."
+                            vio "But..."
+                            vio "We aren't done yet, are we?"
+                            vio "There's still a little while until morning."
+                            wom "I'm happy we're on the same page."
+                            wom "No way I'd let you go after just one time."
+                            "And so, the two would continue a while longer, until the first break of dawn..."
+                            "......"
+                            $c15violes=True
+                            jump c15girlsnight
+                        "Pass.":
+                            show c15 vioclub 10f
+                            with dissolvelong
+                            vio "Sorry... but I'm gonna have to pass."
+                            vio "I think I'm actually about to head back for the night."
+                            wom "Oh... I see."
+                            wom "No problem. Maybe some other time."
+                            show c15 vio cancel 2
+                            with fadeholdlong
+                            vio "{i}(She's a little... desperate, maybe, but she doesn't seem like a bad person.){/i}"
+                            vio "{i}(A nightclub is the sort of place you generally hook-up.){/i}"
+                            vio "{i}(But I don't think that's what I'm interested in right now.){/i}"
+                            vio "{i}(And the more I stay, the more people I'll have to turn down.){/i}"
+                            show c15 vio cancel 3
+                            with dissolve
+                            stop music fadeout 2.5
+                            vio "{i}(I'll just finish this glass and call a cab.){/i}"
+                            vio "{i}(The trains are still running at this time, but...){/i}"
+                            vio "{i}(It's nearly midnight, and I don't want to deal with any creeps.){/i}"
+                            vio "{i}(Way too tired for that.){/i}"
+                            "......"
+                            jump c15girlsnight
+            "Go home early.":
+                label c15viogohome:
+                    show c15 vioclub 10m
+                    with dissolvelong
+                    vio "Sorry, but I'm good."
+                    vio "You can go ahead without me."
+                    man "Aww, man..."
+                    man "Alright."
+                    show c15 vio cancel 1
+                    with dissolvelong
+                    vio "{i}(Some people just assume because you're at a club and by yourself, it means they have an easy ticket inside your pants.){/i}"
+                    vio "{i}(Not everyone is my type... whether they be male or female){/i}"
+                    vio "{i}(I'm not entirely against having some fun, but him?){/i}"
+                    vio "{i}(Please... just about anyone can do better.){/i}"
+                    show c15 vio cancel 2
+                    with dissolvelong
+                    vio "{i}(Still...){/i}"
+                    vio "{i}(A nightclub is the sort of place you generally hook-up.){/i}"
+                    vio "{i}(I just don't think that's what I'm interested in right now.){/i}"
+                    vio "{i}(And the more I stay, the more people I'll have to turn down.){/i}"
+                    show c15 vio cancel 3
+                    with dissolve
+                    stop music fadeout 2.5
+                    vio "{i}(I'll just finish this glass and call a cab.){/i}"
+                    vio "{i}(The trains are still running at this time, but...){/i}"
+                    vio "{i}(It's nearly midnight, and I don't want to deal with any creeps.){/i}"
+                    vio "{i}(Way too tired for that.){/i}"
+                    "......"
+                    jump c15girlsnight
     else:
         jump c15girlsnight
 
@@ -31012,7 +31046,7 @@ label c15girlsnight:
     if not lesonly and les>=3:
         pov "Sure. I don't see a reason to restrict myself to just male or female."
         pov "If I like someone, I like them."
-    if les<=2:
+    if not lesonly and les<=2:
         pov "I'm not sure. I guess I haven't thought about it too much."
     fr "I-I see..."
     show c15 girlsapartment 14
@@ -31379,7 +31413,7 @@ label c15girlsnight:
                 $sexexp+=1
                 $lesexp+=1
                 $virgin=False
-                call first_partner("Luna & Haruka")
+                call first_partner("Luna & " + frname)
                 call add_partner(frname)
                 call add_partner("Luna")
                 $c15girlsthreesome=True
@@ -33426,7 +33460,7 @@ label c16hotsprings:
         with dissolve
         pov "W-Woah..."
         pov "{i}(He suddenly stood up... talk about timing!){/i}"
-        show c16 hotsprings 9f
+        show c16 hotsprings 9m
         with dissolve
         pov "H-Hello...?"
         pov "{i}(It's hard not to look... especially when it's so big.){/i}"
@@ -34627,6 +34661,17 @@ label c16endchapter:
         pov "No matter how outrageous, I wonder if they'd still follow the request?"
         pov "Like, 'hey, here's a few hundred bucks, please screw me'."
         pov "Mmm..."
+        if inn>=5:
+            stop music fadeout 5.0
+            pov "Haha... that's a funny thought."
+            pov "Thankfully, I'm not crazy enough to {i}actually{/i} consider doing something like that."
+            show c17 spa 4
+            with dissolve
+            pov "Shouldn't keep the staff waiting much longer."
+            pov "Time to get changed."
+            pov "With this, I should be able to rest well tonight..."
+            "......"
+            jump c17day2start
         menu:
             "Let's try it.":
                 pov "Hey, why not?"
@@ -34683,17 +34728,6 @@ label c16endchapter:
                 pov "With this, I should be able to rest well tonight..."
                 "......"
                 jump c17day2start
-        if inn>=5:
-            stop music fadeout 5.0
-            pov "Haha... that's a funny thought."
-            pov "Thankfully, I'm not crazy enough to {i}actually{/i} consider doing something like that."
-            show c17 spa 4
-            with dissolve
-            pov "Shouldn't keep the staff waiting much longer."
-            pov "Time to get changed."
-            pov "With this, I should be able to rest well tonight..."
-            "......"
-            jump c17day2start
 
 label c17spafemalescene:
     show c17 spa 9f
@@ -36457,6 +36491,8 @@ label c17pokergirls:
     "......"
     $virgin=False
     call first_partner(frname)
+    call add_partner(frname)
+    call add_partner(vioname)
     $lesexp+=2
     $sexexp+=2
     show c17 pokersex girls 15
@@ -36560,7 +36596,7 @@ label c17pokervio:
     with dissolve
     luc "So, umm... Nick..."
     luc "How long have you and [vio] been together?"
-    show c17 poker violet 13
+    show c17 poker violet 14
     with dissolve
     ni "How long, huh."
     ni "I guess it's been a couple years now."
@@ -38884,6 +38920,7 @@ label c18cafe:
                 $sexexp+=1
                 jump c18stripclubafter
     else:
+        show c18 stripclub 15m
         manl "Heya. You two busy?"
         manr "We couldn't help but notice you two sexy ladies."
         show c18 stripclub 16m
@@ -39087,6 +39124,7 @@ label c18cafe:
                     pov "{i}(I get the feeling that wasn't just a joke.){/i}"
                     pov "{i}(Maybe... just maybe... [vio] could be {b}girlfriend{/b} material, if I truly wanted it.){/i}"
                     "......"
+                    $inn+=1
                     jump c18stripclubafter
             "Fool around with [vioname] instead.":
                 stop music fadeout 5
@@ -40104,7 +40142,7 @@ label c19lunauni:
         luna "I could go to club, but..."
         luna "I'm still really embarrassed about what happened last time..."
         luna "... I never knew I could be so perverted!"
-    if not c18lunasexfemale and not c18lunasexmale:
+    else:
         luna "I could study in the library, but..."
         luna "Since I just finished this semester's midterms, I really don't want to touch another textbook for at least a few more days..."
     if lesonly:
@@ -41122,6 +41160,7 @@ label c19viodate:
     pov "[vioname]..."
     pov "I'm really happy you feel that way."
     if wantsingle:
+        $c19viorefuse = True
         pov "But... I'm just not looking for a relationship right now."
         pov "I just want to live life and have fun."
         pov "Sorry..."
@@ -41338,7 +41377,7 @@ label c19viodate:
             $lesexp+=1
             jump c19end
         "I can't.":
-            $c19viorefuse
+            $c19viorefuse = True
             pov "I really appreciate your feelings, [vioname]."
             pov "But... I can't."
             pov "I'm really sorry..."
