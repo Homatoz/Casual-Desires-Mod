@@ -24362,7 +24362,8 @@ label c13cafe:
     with dissolve
     pov "Yeah, that'd be fun."
     pov "It's been a few weeks, hasn't it?"
-    if c9viosex and c9hadsex:
+    call check_partner(vioname)
+    if _return:
         pov "Since... well..."
         show c13 cafe 8
         with dissolve
@@ -24900,7 +24901,8 @@ label c13aftercafe:
             pov "{i}(Something inside me... I just feel like I want her all to myself.){/i}"
             show c13 lunahome 18
             with dissolve
-            if c9lunasex:
+            call check_partner("Luna")
+            if _return:
                 luna "It's been a while since we were so close to each other..."
                 luna "Since, umm... well..."
                 pov "That was a special night, huh?"
@@ -24908,7 +24910,7 @@ label c13aftercafe:
                 pov "I've actually thought about it a lot since."
                 luna "R-Really?"
                 luna "Well, me too...."
-            if not c9lunasex:
+            else:
                 luna "I'm not used to being so close to someone..."
                 luna "...... Even with my friends from school."
                 pov "Really? Well... I'm not too experienced with these sorts of things, either."
@@ -24979,16 +24981,18 @@ label c13aftercafe:
                     luna "Umm... yes..."
                     luna "It's just... I'm a bit nervous."
                     pov "No problem."
-                    if c9lunasex:
+                    call check_partner("Luna")
+                    if _return:
                         pov "We've done it once before, but this is all still new to me as well."
-                    if not c9lunasex:
+                    else:
                         pov "We haven't done this with each other before, so I'm a bit nervous, too."
                     pov "Whenever you're ready. We can take this at your pace."
                     show c13 lunahome 26
                     with dissolvelong
-                    if c9lunasex:
+                    call check_partner("Luna")
+                    if _return:
                         pov "{i}(Wow... Luna is even more beautiful than the last time.){/i}"
-                    if not c9lunasex:
+                    else:
                         pov "{i}(Wow... Luna is even more beautiful than I expected.){/i}"
                     luna "U-Umm... is this fine?"
                     luna "I'm a little embarrassed, since... well..."
@@ -25044,15 +25048,16 @@ label c13aftercafe:
                     pov "Just let me know if I'm being too rough."
                     luna "N-No... it's fine..."
                     luna "It just... it feels a bit strange."
-                    if not c9lunasex:
+                    call check_partner("Luna")
+                    if _return:
+                        pov "{i}(It sounds like she's still not used to her vagina being touched.){/i}"
+                        pov "{i}(Judging by the last time we had sex...){/i}"
+                        pov "{i}(It didn't seem like she masturbates at all, so I guess that's to be expected.){/i}"
+                    else:
                         pov "{i}(It sounds like she's a virgin.){/i}"
                         pov "{i}(I'm glad... I want to be her first.){/i}"
                         if virgin:
                             pov "{i}(Little does she know, it's also my first time...){/i}"
-                    if c9lunasex:
-                        pov "{i}(It sounds like she's still not used to her vagina being touched.){/i}"
-                        pov "{i}(Judging by the last time we had sex...){/i}"
-                        pov "{i}(It didn't seem like she masturbates at all, so I guess that's to be expected.){/i}"
                     show c13 lunahome 32
                     with dissolvelong
                     voice "audio/effects/lewd/slosh1.wav"
@@ -25077,7 +25082,8 @@ label c13aftercafe:
                         pov "{i}(It's my first time...){/i}"
                         pov "{i}(I'm pretty nervous, after all.){/i}"
                         pov "{i}(But I'm equally excited.){/i}"
-                    if c9lunasex:
+                    call check_partner("Luna")
+                    if _return:
                         pov "{i}(Ever since the last time we did this...){/i}"
                         pov "{i}(I couldn't stop thinking about doing it again with Luna.){/i}"
                         pov "{i}(And now... I finally can.){/i}"
@@ -27560,7 +27566,8 @@ label c14busafter:
     pov "{i}(Hmm...){/i}"
     pov "{i}([fr] wanted to hang out around noon tomorrow, I think?){/i}"
     pov "{i}(It's been a while since we last saw each other in person.){/i}"
-    if c9harukasex:
+    call check_partner(frname)
+    if _return:
         pov "{i}(Not since, well...){/i}"
         pov "{i}(Not since that day at her dorm, when we had sex with each other for the first time...){/i}"
     show c14 busafter 2
@@ -28984,7 +28991,8 @@ label c14vio:
             pov "{i}(I'm feeling horny for some reason.){/i}"
             pov "{i}(Was it the movie's sex scenes that got me feeling like this?){/i}"
             pov "{i}(Either way... if it's [vio], it shouldn't be too awkward asking, right?){/i}"
-            if c9viosex:
+            call check_partner(vioname)
+            if _return:
                 pov "{i}(Plus, we've already done it before, anyway...){/i}"
             show c14 vio 12
             with dissolvelong
@@ -30385,7 +30393,8 @@ label c15saradate:
         vio "{i}(I just don't understand what's up with that idiot.){/i}"
         vio "{i}(He says he's busy with work, but is he really?){/i}"
         vio "{i}(When you can't even have sex with your girlfriend for multiple weeks straight, something is obviously wrong.){/i}"
-        if c9viosex or c14viosexvag or c14viosexanal:
+        call check_partner(vioname)
+        if _return:
             vio "{i}(So he can't blame me if I decide to have fun with [pov] again.){/i}"
             vio "{i}(Besides, after the stuff he's asked me to do... telling me to stop now would be straight-up selfish.){/i}"
         show c15 vioclub 3
@@ -30990,7 +30999,7 @@ label c15girlsnight:
     pov "Hmm..."
     pov "{i}(Luna and [fr] both seem pretty open-minded.){/i}"
     pov "{i}(That's good to know.){/i}"
-    if c9harukasex or c14harukasex or c9lunasex or c13lunasex:
+    if c9harukasex and c9hadsex or c14harukasex or c9lunasex and c9hadsex or c13lunasex:
         pov "{i}(Although it's not much of a surprise, considering we've had some girl-on-girl experiences of our own...){/i}"
     show c15 girlsapartment 13
     with dissolve
@@ -38209,7 +38218,8 @@ label c18lunafemale:
     show c18 luna female 16
     with dissolve
     lily "Luna, did anyone ever tell you that you have a beautiful body?"
-    if c9lunasex or c13lunasex or c15girlsthreesome or c16pokergirls:
+    call check_partner("Luna")
+    if _return:
         luna "U-Umm... one girl did..."
         luna "{i}([pov]...){/i}"
     else:
@@ -38244,7 +38254,8 @@ label c18lunafemale:
     lily "You have a nice butt... or, I should say..."
     luna "R-Really?"
     luna "There's a lot of girls who are so much bigger than me, though..."
-    if c9lunasex or c13lunasex or c15girlsthreesome or c16pokergirls:
+    call check_partner("Luna")
+    if _return:
         luna "... Like my friend, [pov]..."
     show c18 luna female 21
     with dissolve
@@ -38321,7 +38332,8 @@ label c18lunafemale:
             lily "Shh, Luna. You'll find out soon enough."
             lily "It'll feel good for you. I promise."
             lily "But if it doesn't... just let me know. I'll stop right away."
-            if c9lunasex or c13lunasex or c15girlsthreesome or c16pokergirls:
+            call check_partner("Luna")
+            if _return:
                 luna "Okay... I understand."
             else:
                 luna "O-Okay...?"
@@ -38329,7 +38341,8 @@ label c18lunafemale:
             with dissolvesemilong
             lily "Mmm... {i}*lick*{/i}"
             luna "Ahh——?!"
-            if c9lunasex or c13lunasex or c15girlsthreesome or c16pokergirls:
+            call check_partner("Luna")
+            if _return:
                 luna "Ah, that's my..."
             else:
                 luna "Wait, Lily, that's my..."
@@ -38340,7 +38353,8 @@ label c18lunafemale:
             luna "{i}(Another girl is licking my most private spot...){/i}"
             luna "{i}(But...){/i}"
             luna "{i}(It feels so good.){/i}"
-            if c9lunasex or c13lunasex or c15girlsthreesome or c16pokergirls:
+            call check_partner("Luna")
+            if _return:
                 luna "{i}(... Not as good as when I was with [pov], but it's close...){/i}"
             else:
                 luna "{i}(I wonder if it's normal to be this sensitive...?){/i}"
@@ -38352,7 +38366,8 @@ label c18lunafemale:
             luna "C-Close...? Well..."
             show c18 luna female 38
             with dissolvesemilong
-            if c9lunasex or c13lunasex or c15girlsthreesome or c16pokergirls:
+            call check_partner("Luna")
+            if _return:
                 luna "I-I think I might be getting there..."
                 luna "I-Is that okay?"
                 lily "Of course."
