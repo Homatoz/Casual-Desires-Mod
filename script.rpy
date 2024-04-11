@@ -27269,7 +27269,8 @@ label c14femalebeach:
         pov "Yeah, that looks just like them."
         pov "I should go and say hello!"
     else:
-        pov "I think I recognize one of them, but the other..."
+        if lesonly:
+            pov "I think I recognize one of them, but the other..."
         pov "I should go and introduce myself."
     show c14 beachnude 7f
     with dissolve
@@ -27277,17 +27278,23 @@ label c14femalebeach:
     pov "Sorry if I'm bothering you two."
     show c14 beachnude 8f
     with dissolvelong
-    wom1 "Oh? It's the lovely lady from before."
-    wom1 "Last week, I think?"
+    if lesonly:
+        wom1 "Oh? It's the lovely lady from before."
+        wom1 "Last week, I think?"
     if c13femalebeach:
         wom2 "Happy to see you came again."
         wom1 "Yes. We were wondering if we'd see you again."
         pov "Haha. I figured it was too hot to be dressed today!"
     else:
-        wom2 "And this is...?"
-        wom1 "Ah, just a cute face I invited here before."
-        wom1 "I'm glad you showed up this time."
-        pov "Sure. Nice to meet you."
+        if lesonly:
+            wom2 "And this is...?"
+            wom1 "Ah, just a cute face I invited here before."
+            wom1 "I'm glad you showed up this time."
+            pov "Sure. Nice to meet you."
+        else:
+            wom1 "Hello! Nice to meet you."
+            wom1 "I haven't seen you around before. Is this your first time?"
+            pov "Yeah. I guess you could say I was curious..."
     show c14 beachnude 9f
     with dissolve
     pov "So... what were you two planning today?"
