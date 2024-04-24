@@ -19,21 +19,19 @@ screen gallery(current_page=1):
                 if current_page < gallery_pages or last_num_scenes == 0:
                     for i in range(first_scene,first_scene+6):
                         button:
-                            if galleries[first_scene][2]:
-                                action Replay(galleries[first_scene][1])
-                            add galleries[first_scene][0]:
-                                if not galleries[first_scene][2]:
+                            if galleries[i][2]:
+                                action Replay(galleries[i][1])
+                            add galleries[i][0]:
+                                if not galleries[i][2]:
                                     blur 20.0
-                            $ first_scene += 1
                 else:
                     for i in range(first_scene,first_scene+last_num_scenes):
                         button:
-                            if galleries[first_scene][2]:
-                                action Replay(galleries[first_scene][1])
-                            add galleries[first_scene][0]:
-                                if not galleries[first_scene][2]:
+                            if galleries[i][2]:
+                                action Replay(galleries[i][1])
+                            add galleries[i][0]:
+                                if not galleries[i][2]:
                                     blur 20.0
-                            $ first_scene += 1
                     for i in range(6-last_num_scenes):
                         button:
                             null
@@ -49,5 +47,25 @@ screen gallery(current_page=1):
 
 # image, label, unlocked
 define galleries = [
-    ["galch0sc1.jpg","prologue",True]
+    ["gal_prologueviosex.jpg","gal_prologueviosex",True],
+    ["gal_c2viopublicsex.jpg","gal_c2viopublicsex",True],
+    ["gal_c2ritadream1.jpg","gal_c2ritadream1",True],
+    ["gal_c2ritadream2.jpg","gal_c2ritadream2",True],
+    ["gal_c2ritadream3.jpg","gal_c2ritadream3",True],
+    ["gal_c3viosex.jpg","gal_c3viosex",True],
+    ["gal_c4viosex.jpg","gal_c4viosex",True],
+    ["gal_c5ritalocker.jpg","gal_c5ritalocker",True],
+    ["gal_c5ritapizza.jpg","gal_c5ritapizza",True],
+    ["gal_c5viogroup1.jpg","gal_c5viogroup1",True],
+    ["gal_c5viogroup2.jpg","gal_c5viogroup2",True],
+    ["gal_c5viogroup3.jpg","gal_c5viogroup3",True],
+    ["gal_c5viosex.jpg","gal_c5viosex",True],
+    ["gal_c6ritapool.jpg","gal_c6ritapool",True],
+    ["gal_c6ritatheater.jpg","gal_c6ritatheater",True],
+    ["gal_c6ritafj.jpg","gal_c6ritafj",True],
+    ["gal_c7ritabjconnor.jpg","gal_c7ritabjconnor",True],
+    ["gal_c7ritalocker.jpg","gal_c7ritalocker",True],
+    ["gal_c7ritabjpool.jpg","gal_c7ritabjpool",True],
+    ["gal_c7viogroup1.jpg","gal_c7viogroup1",True],
+    ["gal_c7viogroup2.jpg","gal_c7viogroup2",True]
     ]
