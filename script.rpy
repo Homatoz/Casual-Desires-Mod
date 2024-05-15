@@ -431,7 +431,6 @@ label prologue:
         scene black with dissolvelong
         with Pause (1.0)
         jump prologueroom
-    $ persistent.gal_prologueviosex = True
     label gal_prologueviosex:
     show intro vio 1
     if _in_replay:
@@ -2572,7 +2571,6 @@ label c2hottub:
             stop music fadeout 2.0
             pov "Guess I can try following them, to make sure she's not getting in any trouble."
             "......"
-            $ persistent.gal_c2viopublicsex = True
             label gal_c2viopublicsex:
             show c2 outside 3-13
             if _in_replay:
@@ -2956,7 +2954,6 @@ label c2home:
     menu:
         "...... Spends a loving night with her future boyfriend.":
             hide white
-            $ persistent.gal_c2ritadream1 = True
             label gal_c2ritadream1:
             show c2 dream 1
             if _in_replay:
@@ -2995,7 +2992,6 @@ label c2home:
         "...... Experiments with another girl.":
             label c2girldream:
                 hide white
-                $ persistent.gal_c2ritadream2 = True
                 label gal_c2ritadream2:
                 show c2 dream 3
                 if _in_replay:
@@ -3028,7 +3024,6 @@ label c2home:
                 show intro bg 1
         "...... Seduces two boys for fun.":
             hide white
-            $ persistent.gal_c2ritadream3 = True
             label gal_c2ritadream3:
             show c2 dream 4
             if _in_replay:
@@ -4508,7 +4503,6 @@ label c2home:
         jump c3credits
 
     play music "audio/blues.ogg" fadein 4.0 loop
-    $ persistent.gal_c3viosex = True
     label gal_c3viosex:
     show c3 viosex 1
     if _in_replay:
@@ -5516,7 +5510,6 @@ label c3credits:
             vio "And you've been nice to me today, so I guess I can give you a treat in return."
             ni "Sweet! Come on, then."
             "......"
-            $ persistent.gal_c4viosex = True
             label gal_c4viosex:
             show c4 vtoi 1
             if _in_replay:
@@ -6750,7 +6743,6 @@ label c5photoafter:
             "Talk to her.":
                 pov "{i}(It's not like there's any harm in simply striking up a conversation.){/i}"
                 pov "{i}(Plus, well... I don't mind getting attention from other girls.){/i}"
-                $ persistent.gal_c5ritalocker = True
                 label gal_c5ritalocker:
                 show c5 locker 10
                 if _in_replay:
@@ -6952,7 +6944,6 @@ label c5photoafter:
                 pov "{i}(.......){/i}"
                 menu:
                     "Give him a 'tug'.":
-                        $ persistent.gal_c5ritapizza = True
                         label gal_c5ritapizza:
                         show c5 pizza 11
                         if _in_replay:
@@ -7727,7 +7718,6 @@ label c5photoafter:
             sop "We don't bite, after all. {i}*laughs*{/i}"
             ni "Haha... well, we'll give it some thought, then."
             "......"
-            $ persistent.gal_c5viogroup1 = True
             label gal_c5viogroup1:
             show c5 viosex 1
             if _in_replay:
@@ -7825,7 +7815,6 @@ label c5photoafter:
                         vio "Maybe Sophia can join us?"
                         vio "I guess I'd be fine with that..."
                         "......"
-                        $ persistent.gal_c5viogroup2 = True
                         label gal_c5viogroup2:
                         show c5 viosex mff 1
                         if _in_replay:
@@ -7932,7 +7921,6 @@ label c5photoafter:
                     ni "Nah... if anything, it would turn me on and make me want you even more than usual."
                     ni "It's cool with me."
                     vio "......"
-                    $ persistent.gal_c5viogroup3 = True
                     label gal_c5viogroup3:
                     show c5 viosex mmf 1
                     if _in_replay:
@@ -8081,7 +8069,6 @@ label c5photoafter:
             "......"
             if lesonly:
                 jump c5end
-            $ persistent.gal_c5viosex = True
             label gal_c5viosex:
             show c5 viosexalt 1
             if _in_replay:
@@ -9120,7 +9107,6 @@ label c5photoafter:
                     if not rita_held_dick:
                         pov "There's always a first for everything."
                     "......"
-                    $ persistent.gal_c6ritapool = True
                     label gal_c6ritapool:
                     show c6 pool 11
                     if _in_replay:
@@ -9509,7 +9495,6 @@ label c5photoafter:
                 pov "{i}(It turns me on a lot more with them than with strangers.){/i}"
                 pov "{i}(Since I know them so well, I can easily lead them around and take the lead.){/i}"
                 pov "{i}(Sort of like this...){/i}"
-                $ persistent.gal_c6ritatheater = True
                 label gal_c6ritatheater:
                 show c6 theater 9
                 if _in_replay:
@@ -9713,7 +9698,6 @@ label c5photoafter:
             pov "{i}(And while showing my body off is fun, too...){/i}"
             pov "{i}(Doing something more... 'physical', is really tempting and exciting to me right now.){/i}"
             pov "{i}(Alright, I've decided.){/i}"
-            $ persistent.gal_c6ritafj = True
             label gal_c6ritafj:
             show c6 boys 7
             if _in_replay:
@@ -10276,7 +10260,6 @@ label c5photoafter:
             c "Sure. Do whatever you feel like."
             pov "{i}(Hehe...){/i}"
             pov "{i}(Back in a minute with a surprise, Connor.){/i}"
-            $ persistent.gal_c7ritabjconnor = True
             label gal_c7ritabjconnor:
             show c7 home 6
             if _in_replay:
@@ -10804,7 +10787,6 @@ label c7choice:
                 pov "......"
                 menu:
                     "Have fun with her.":
-                        $ persistent.gal_c7ritalocker = True
                         label gal_c7ritalocker:
                         if _in_replay:
                             show c7 locker 16
@@ -11059,7 +11041,6 @@ label c7choice:
                     if c6poolhj:
                         pov "Then again, I've already touched him before, so this isn't too much of a difference... I think."
                         pov "{i}*gulp*{/i}"
-                    $ persistent.gal_c7ritabjpool = True
                     label gal_c7ritabjpool:
                     show c7 pool 4
                     if _in_replay:
@@ -11770,7 +11751,6 @@ label c7night:
                 sop "Since [vio] is still new to this..."
                 sop "Why don't you two men help get her started first?"
                 "......"
-                $ persistent.gal_c7viogroup1 = True
                 label gal_c7viogroup1:
                 show c7 vio mmf 1
                 if _in_replay:
@@ -12094,7 +12074,6 @@ label c7night:
                         vio "Especially since it was so one-sided the last time..."
                     sop "Sure. Not a problem."
                     sop "Take your time."
-                    $ persistent.gal_c7viogroup2 = True
                     label gal_c7viogroup2:
                     show c7 vio les 1
                     if _in_replay:
