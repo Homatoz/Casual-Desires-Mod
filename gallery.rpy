@@ -45,7 +45,6 @@ screen gallery(current_page=1):
                 for show_page in range(1, gallery_pages+1):
                     textbutton "[show_page]" action ShowMenu("gallery", current_page=show_page, _transition=Dissolve(0.0))
 
-# image, label, unlocked
 define galleries = [
     "gal_prologueviosex",    "gal_c2viopublicsex",    "gal_c2ritadream1",
     "gal_c2ritadream2",      "gal_c2ritadream3",      "gal_c3viosex",
@@ -53,5 +52,8 @@ define galleries = [
     "gal_c5viogroup1",       "gal_c5viogroup2",       "gal_c5viogroup3",
     "gal_c5viosex",          "gal_c6ritapool",        "gal_c6ritatheater",
     "gal_c6ritafj",          "gal_c7ritabjconnor",    "gal_c7ritalocker",
-    "gal_c7ritabjpool",      "gal_c7viogroup1",       "gal_c7viogroup2"
+    "gal_c7ritabjpool",      "gal_c7viogroup1",       "gal_c7viogroup2",
+    "gal_c8ritajosh",        "gal_c8ritapizza",       "gal_c9ritacj",
+    "gal_c9ritaluna",        "gal_c9ritavio",         "gal_c9ritaharuka",
+    "gal_c10ritapool",       "gal_c10ritaoutside"
     ]
