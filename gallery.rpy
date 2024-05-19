@@ -63,11 +63,11 @@ define galleries = [
     "gal_c14ritagirls",      "gal_c14ritaharuka",     "gal_c14ritacj",
     "gal_c14ritavio",        "gal_c15ritacj",         "gal_c15vioguys",
     "gal_c15viogirl",        "gal_c15ritagirls",      "gal_c15ritaspaguy",
-    "gal_c15ritaspagirl",    "gal_c16hotsprings"#,     "gal_c17ritaspaguy",
-    #"gal_c17ritaspagirl",    "gal_c17hotsprings",     "gal_c17pokerguys",
-    #"gal_c17pokergirls",     "gal_c17pokervio",       "gal_c17pokerharuka",
-    #"gal_c18lunaguy",        "gal_c18lunagirl",       "gal_c18stripgirls",
-    #"gal_c18stripguys",      "gal_c18stripvio",       "gal_c19ritadreamguys",
-    #"gal_c19ritadreamgirls", "gal_c19ritaguy",        "gal_c19ritagirl",
-    #"gal_c19ritajason",      "gal_c19ritavio"
+    "gal_c15ritaspagirl",    "gal_c16hotsprings",     "gal_c17ritaspaguy",
+    "gal_c17ritaspagirl",    "gal_c17hotsprings",     "gal_c17pokerguys",
+    "gal_c17pokergirls",     "gal_c17pokervio",       "gal_c17pokerharuka",
+    "gal_c18lunaguy",        "gal_c18lunagirl",       "gal_c18stripgirls",
+    "gal_c18stripguys",      "gal_c18stripvio",       "gal_c19ritadreamguys",
+    "gal_c19ritadreamgirls", "gal_c19ritaguy",        "gal_c19ritagirl",
+    "gal_c19ritajason",      "gal_c19ritavio"
     ]
