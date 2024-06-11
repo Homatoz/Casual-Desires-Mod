@@ -318,6 +318,8 @@ screen navigation():
 
         textbutton _("Settings") action ShowMenu("preferences")
 
+        textbutton _("Gallery") action ShowMenu("gallery")
+
         if _in_replay:
 
             textbutton _("End Replay") action EndReplay(confirm=True)

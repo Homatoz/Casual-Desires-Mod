@@ -22,6 +22,9 @@ define flash = Fade(0.1, 0.0, 0.5, color="#fff")
 define dissolvesemilong = Dissolve(1.5)
 define dissolvelong = Dissolve(2.0)
 define dissolveverylong = Dissolve(5.0)
+define fadegalstart = Fade(1.0, 0.0, 2.0)
+define fadegalend = Fade(2.0, 0.0, 0.0)
+
 
 #VISIBLE STATS
 default virgin = True
@@ -423,9 +426,17 @@ label introstart:
 label prologue:
     stop music fadeout 1.0
     if lesonly:
-        jump prologueles
+        scene titleshow with fadeholdlong
+        with Pause(2.5)
+        scene black with dissolvelong
+        with Pause (1.0)
+        jump prologueroom
+    label gal_prologueviosex:
     show intro vio 1
-    with fadeholdverylong
+    if _in_replay:
+        with fadegalstart
+    else:
+        with fadeholdverylong
     "A few minutes past, in another part of town..."
     "......"
     play music "audio/chill2.mp3" fadein 2.5 loop
@@ -527,6 +538,10 @@ label prologue:
     stop music fadeout 3.0
     vio "I think I'll just fall asleep like this, and take a shower in the morning instead."
     vio "You sure know how to take the energy out of me..."
+    if _in_replay:
+        show black
+        with fadegalend
+    $ renpy.end_replay()
     "......"
 
     scene titleshow with fadeholdlong
@@ -535,13 +550,6 @@ label prologue:
     with Pause (1.0)
     "And now..."
     "Back to the present, with an introduction from our protagonist."
-    jump prologueroom
-label prologueles:
-        scene titleshow with fadeholdlong
-        with Pause(2.5)
-        scene black with dissolvelong
-        with Pause (1.0)
-        jump prologueroom
 
 label prologueroom:
     scene prologue title
@@ -2563,8 +2571,12 @@ label c2hottub:
             stop music fadeout 2.0
             pov "Guess I can try following them, to make sure she's not getting in any trouble."
             "......"
+            label gal_c2viopublicsex:
             show c2 outside 3-13
-            with fadeholdlong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with fadeholdlong
             play music "audio/blues.ogg" fadein 2.0 loop
             pov "Hmm..."
             pov "I don't hear them anymore."
@@ -2612,18 +2624,19 @@ label c2hottub:
             with dissolve
             pov "{i}(......){/i}"
             pov "{i}(I can't believe what I'm seeing.){/i}"
-            if virgin:
-                pov "{i}(I mean, I've seen lots of porn, so it's not as though I don't know what a dick looks like.){/i}"
-            if fp=="Boyfriend" or fp=="Stranger":
-                pov "{i}(I mean, it's not like I haven't had sex before, so I know what a dick looks like.){/i}"
-            if fp=="Classmate":
-                pov "{i}(I mean, I've had sex before... with another girl.){/i}"
-            pov "{i}(But...){/i}"
-            if virgin:
-                pov "{i}(This is the first time I've seen a dick in real life.)"
-                pov "{i}(Or people having sex, for that matter.){/i}"
-            else:
-                pov "{i}(It's my first time watching another couple doing it.){/i}"
+            if not _in_replay:
+                if virgin:
+                    pov "{i}(I mean, I've seen lots of porn, so it's not as though I don't know what a dick looks like.){/i}"
+                if fp=="Boyfriend" or fp=="Stranger":
+                    pov "{i}(I mean, it's not like I haven't had sex before, so I know what a dick looks like.){/i}"
+                if fp=="Classmate":
+                    pov "{i}(I mean, I've had sex before... with another girl.){/i}"
+                pov "{i}(But...){/i}"
+                if virgin:
+                    pov "{i}(This is the first time I've seen a dick in real life.)"
+                    pov "{i}(Or people having sex, for that matter.){/i}"
+                else:
+                    pov "{i}(It's my first time watching another couple doing it.){/i}"
             show c2 outside 3-19
             with dissolve
             pov "{i}(And... and in public like this?!){/i}"
@@ -2641,6 +2654,10 @@ label c2hottub:
             pov "{i}(Anyway...!!){/i}"
             pov "{i}(I shouldn't stay here any longer!){/i}"
             pov "{i}(If she catches me, I'll be in big, big trouble.){/i}"
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             pov "{i}(And if a stranger walking by sees me peeping, that'll end up being twice as awkward.){/i}"
             pov "{i}(Best to just let couples do their own weird thing...){/i}"
             pov "{i}(......){/i}"
@@ -2940,8 +2957,12 @@ label c2home:
     menu:
         "...... Spends a loving night with her future boyfriend.":
             hide white
+            label gal_c2ritadream1:
             show c2 dream 1
-            with dissolveverylong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolveverylong
             pov "......?"
             pov "...... Huh?"
             pov "What was I doing here with this guy?"
@@ -2959,6 +2980,10 @@ label c2home:
             pov "Please, give it to me more."
             pov "Fill me up..."
             pov "If it's with you, I don't care if I get pregnant."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "..."
             "......"
             "And so, [pov]'s romantic dream continued throughout the night."
@@ -2970,8 +2995,12 @@ label c2home:
         "...... Experiments with another girl.":
             label c2girldream:
                 hide white
+                label gal_c2ritadream2:
                 show c2 dream 3
-                with dissolveverylong
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with dissolveverylong
                 pov "......?"
                 pov "...... Huh?"
                 pov "What's going on?"
@@ -2983,6 +3012,10 @@ label c2home:
                 pov "It feels kind of funny..."
                 pov "I guess it's not too bad being licked there, even if it's a girl."
                 pov "Ah..."
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 "..."
                 "......"
                 "And so, [pov]'s strange dream continued throughout the night."
@@ -2994,8 +3027,12 @@ label c2home:
                 show intro bg 1
         "...... Seduces two boys for fun.":
             hide white
+            label gal_c2ritadream3:
             show c2 dream 4
-            with dissolveverylong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolveverylong
             pov "......?"
             pov "...... Huh?"
             pov "Why am I surrounded by two guys?"
@@ -3009,7 +3046,7 @@ label c2home:
             with dissolvelong
             pov "Ahh!"
             pov "It feels so good!"
-            if boys_horny >=2:
+            if boys_horny >=2 or _in_replay:
                 pov "That's you two, right? Connor and Josh?"
             else:
                 pov "I can't remember who you two are, but it doesn't matter anymore!"
@@ -3017,6 +3054,10 @@ label c2home:
             pov "I've always wanted something like this."
             pov "Please, don't stop!"
             pov "I want you to fill me up."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "..."
             "......"
             "And so, [pov]'s perverted dream continued throughout the night."
@@ -4465,10 +4506,14 @@ label c2home:
         jump c3credits
 
     play music "audio/blues.ogg" fadein 4.0 loop
+    label gal_c3viosex:
     show c3 viosex 1
-    with fadeholdlong
-    "And so, [vio]'s and Nick's promise of keeping it to the bedroom was fulfilled that night..."
-    "......"
+    if _in_replay:
+        with fadegalstart
+    else:
+        with fadeholdlong
+        "And so, [vio]'s and Nick's promise of keeping it to the bedroom was fulfilled that night..."
+        "......"
     vio "Ah..."
     vio "It's so much better like this, Nick..."
     vio "Nobody except us is looking..."
@@ -4511,6 +4556,10 @@ label c2home:
     ni "Holy shit..."
     ni "Haven't came this hard in a while..."
     ni "Fuck..."
+    if _in_replay:
+        show black
+        with fadegalend
+    $ renpy.end_replay()
     "......"
 
     show c3 viosexafter 1
@@ -5464,9 +5513,13 @@ label c3credits:
             vio "And you've been nice to me today, so I guess I can give you a treat in return."
             ni "Sweet! Come on, then."
             "......"
+            label gal_c4viosex:
             show c4 vtoi 1
-            with fadeholdlong
-            "A few minutes later."
+            if _in_replay:
+                with fadegalstart
+            else:
+                with fadeholdlong
+                "A few minutes later."
             "{i}*slurp*{/i}"
             voi "Do you like that?"
             voi "Yes... fuck, yes. Keep going."
@@ -5543,6 +5596,10 @@ label c3credits:
             ni "Shit... yeah, that was amazing."
             ni "And you swallowing it like that, with no complaints..."
             ni "It was hot as hell."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             show c4 vrave 9
             with fadeholdlong
             ni "Wow..."
@@ -6689,8 +6746,12 @@ label c5photoafter:
             "Talk to her.":
                 pov "{i}(It's not like there's any harm in simply striking up a conversation.){/i}"
                 pov "{i}(Plus, well... I don't mind getting attention from other girls.){/i}"
+                label gal_c5ritalocker:
                 show c5 locker 10
-                with dissolvelong
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with dissolvelong
                 pov "Hello..."
                 wom "Oh...?"
                 pov "We've seen each other before, haven't we?"
@@ -6754,6 +6815,10 @@ label c5photoafter:
                 wom "Well, there's a first for everything."
                 "{i}*door noise*{/i}"
                 wom "{i}*whispers* Uh-oh... our time might be up.{/i}"
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 show c5 locker 17
                 with dissolve
                 wom "Well, it took longer for someone to show up than I expected..."
@@ -6882,8 +6947,12 @@ label c5photoafter:
                 pov "{i}(.......){/i}"
                 menu:
                     "Give him a 'tug'.":
+                        label gal_c5ritapizza:
                         show c5 pizza 11
-                        with dissolve
+                        if _in_replay:
+                            with fadegalstart
+                        else:
+                            with dissolve
                         pov "Tell you what..."
                         boy "Hmm?"
                         pov "Since we're both after something similar..."
@@ -6898,7 +6967,7 @@ label c5photoafter:
                         play music "audio/blues.ogg" fadein 4.0 loop
                         pov "Wow..."
                         pov "{i}(.......){/i}"
-                        if virgin:
+                        if virgin or _in_replay:
                             pov "{i}(This is my first time seeing one up close like this...){/i}"
                             pov "{i}(I've also never touched a penis before...){/i}"
                         else:
@@ -6977,6 +7046,10 @@ label c5photoafter:
                         pov "{i}(It'll take some time for me to get used to.){/i}"
                         pov "{i}(Especially the smell...){/i}"
                         pov "{i}(.......){/i}"
+                        if _in_replay:
+                            show black
+                            with fadegalend
+                        $ renpy.end_replay()
                         show c5 hj 9
                         with fadehold
                         pov "Okay, I think I'm all washed off now."
@@ -7648,8 +7721,12 @@ label c5photoafter:
             sop "We don't bite, after all. {i}*laughs*{/i}"
             ni "Haha... well, we'll give it some thought, then."
             "......"
+            label gal_c5viogroup1:
             show c5 viosex 1
-            with fadeholdlong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with fadeholdlong
             play music "audio/blues.ogg" fadein 2.0 loop
             vio "Okay, I think I'm ready now, Nick..."
             vio "It doesn't take very long, since you're {i}apparently{/i} so skilled at pleasing me."
@@ -7711,6 +7788,10 @@ label c5photoafter:
             show c5 viosex 7
             with dissolve
             vio "......"
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             nol "Hey, if you're okay with it..."
             nol "Why don't we spice things up a little bit?"
             nol "Maybe Sophia could help the two of you out, or..."
@@ -7737,8 +7818,12 @@ label c5photoafter:
                         vio "Maybe Sophia can join us?"
                         vio "I guess I'd be fine with that..."
                         "......"
+                        label gal_c5viogroup2:
                         show c5 viosex mff 1
-                        with fadeholdlong
+                        if _in_replay:
+                            with fadegalstart
+                        else:
+                            with fadeholdlong
                         vio "Mmmm..."
                         ni "Damn, you're as amazing as always, [vio]."
                         sop "Nice job... just like that, keep it up."
@@ -7823,6 +7908,10 @@ label c5photoafter:
                         ni "That felt amazing."
                         ni "It's not often I cum that hard, either."
                         sop "Nice job, [vio]. It sounds like your boyfriend had a great time."
+                        if _in_replay:
+                            show black
+                            with fadegalend
+                        $ renpy.end_replay()
                         "......"
                         $c5viomff = True
                         jump c5hotelaf
@@ -7835,8 +7924,12 @@ label c5photoafter:
                     ni "Nah... if anything, it would turn me on and make me want you even more than usual."
                     ni "It's cool with me."
                     vio "......"
+                    label gal_c5viogroup3:
                     show c5 viosex mmf 1
-                    with fadeholdlong
+                    if _in_replay:
+                        with fadegalstart
+                    else:
+                        with fadeholdlong
                     vio "Umm..."
                     vio "Are we really doing this?"
                     nol "That's up to you, [vio]."
@@ -7951,6 +8044,10 @@ label c5photoafter:
                     nol "Is she fine with finishing in her mouth?"
                     ni "Yeah, that's how we always do it. She's even capable of swallowing, too."
                     vio "Ahh... there's so much..."
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     $c5viommf = True
                     "......"
                     jump c5hotelaf
@@ -7975,10 +8072,15 @@ label c5photoafter:
             "......"
             if lesonly:
                 jump c5end
+            label gal_c5viosex:
             show c5 viosexalt 1
-            with fadeholdlong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with fadeholdlong
             play music "audio/blues.ogg" fadein 2.0 loop
-            "A couple hours later, back at home..."
+            if not _in_replay:
+                "A couple hours later, back at home..."
             vio "Ahh..."
             ni "Mmmm..."
             ni "God, your blowjobs are always amazing, [vio]."
@@ -8027,6 +8129,10 @@ label c5photoafter:
             ni "Well, I'll let you off with fingering for now, but eventually..."
             ni "Eventually, your other virginity is mine."
             vio "Ah——!"
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
             jump c5end
     label c5hotelaf:
@@ -9004,8 +9110,12 @@ label c5photoafter:
                     if not rita_held_dick:
                         pov "There's always a first for everything."
                     "......"
+                    label gal_c6ritapool:
                     show c6 pool 11
-                    with fadehold
+                    if _in_replay:
+                        with fadegalstart
+                    else:
+                        with fadehold
                     pov "You came..."
                     pov "You know, it's not good to peep on girls like this."
                     pov "If it wasn't me, you could be in serious trouble right now."
@@ -9052,15 +9162,16 @@ label c5photoafter:
                     man "Yes, this is great!"
                     pov "{i}(Well, at least he's honest...){/i}"
                     pov "{i}(Hmm...){/i}"
-                    if rita_held_dick:
-                        pov "{i}(This is the second time now that I've touched a man's... thing.){/i}"
-                        pov "{i}(I'd like to think I have a bit better of an understanding this time around, but it's all still very new to me...){/i}"
-                    else:
-                        pov "{i}(This is the first time I've touched a man's... thing.){/i}"
-                        pov "{i}(I'm not really sure what to think yet.){/i}"
-                        pov "{i}(It's a lot harder, and warmer than I imagined in my head.){/i}"
-                        pov "{i}(Hopefully I won't do anything that will hurt him...){/i}"
-                        pov "{i}(I have no idea how to please a guy, so I guess I'll just imitate what they do in porn.){/i}"
+                    if not _in_replay:
+                        if rita_held_dick:
+                            pov "{i}(This is the second time now that I've touched a man's... thing.){/i}"
+                            pov "{i}(I'd like to think I have a bit better of an understanding this time around, but it's all still very new to me...){/i}"
+                        else:
+                            pov "{i}(This is the first time I've touched a man's... thing.){/i}"
+                            pov "{i}(I'm not really sure what to think yet.){/i}"
+                            pov "{i}(It's a lot harder, and warmer than I imagined in my head.){/i}"
+                            pov "{i}(Hopefully I won't do anything that will hurt him...){/i}"
+                            pov "{i}(I have no idea how to please a guy, so I guess I'll just imitate what they do in porn.){/i}"
                     show c6 pool 16
                     with dissolve
                     pov "Is the speed and everything fine?"
@@ -9081,13 +9192,18 @@ label c5photoafter:
                     man "You're sure good at this, miss..."
                     man "Have you practiced before with a boyfriend of yours?"
                     pov "Excuse me... ?"
-                    if rita_held_dick:
-                        pov "...... It's not my first time, but I have very little experience with these sorts of things."
+                    if not _in_replay:
+                        if rita_held_dick:
+                            pov "...... It's not my first time, but I have very little experience with these sorts of things."
+                            pov "It's not like I sleep with random people or anything."
+                            pov "So this is all you're getting!"
+                        else:
+                            pov "I haven't actually done anything like this before, just so you know."
+                            pov "So you better not do anything to make me regret this."
+                    else:
+                        pov "I have very little experience with these sorts of things."
                         pov "It's not like I sleep with random people or anything."
                         pov "So this is all you're getting!"
-                    else:
-                        pov "I haven't actually done anything like this before, just so you know."
-                        pov "So you better not do anything to make me regret this."
                     man "Oh... does that mean you're a virgin, by any chance?"
                     pov "None of your business!"
                     pov "Now hurry up and cum."
@@ -9113,7 +9229,7 @@ label c5photoafter:
                     pov "Ugh..."
                     pov "It's all over me, isn't it?"
                     pov "I feel something sticky on my face."
-                    if not rita_held_dick:
+                    if not rita_held_dick or _in_replay:
                         pov "{i}(This is what semen is, huh...){/i}"
                         pov "{i}(I'm not sure what to think, since I can't even see anything...){/i}"
                         pov "{i}(I definitely didn't expect it to be this warm, though.){/i}"
@@ -9128,6 +9244,10 @@ label c5photoafter:
                     man "But?"
                     pov "Oh, just be quiet and get dressed!"
                     pov "I'll go get tissues."
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     show c6 pool 22
                     with dissolvelong
                     pov "Okay, I think that's clean enough... probably."
@@ -9378,9 +9498,13 @@ label c5photoafter:
                 pov "{i}(It turns me on a lot more with them than with strangers.){/i}"
                 pov "{i}(Since I know them so well, I can easily lead them around and take the lead.){/i}"
                 pov "{i}(Sort of like this...){/i}"
+                label gal_c6ritatheater:
                 show c6 theater 9
-                with pixellate
-                with Pause (1.0)
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with pixellate
+                    with Pause (1.0)
                 play music "audio/chill2.mp3" fadein 0.5 loop
                 c "......?!"
                 c "{i}*coughs*{/i}"
@@ -9417,7 +9541,7 @@ label c5photoafter:
                 pov "I'm just giving you a bit of release."
                 pov "I thought you two might be sexually frustrated and holding back."
                 c "I-I..."
-                if not rita_held_dick:
+                if not rita_held_dick and not _in_replay:
                     pov "{i}(I've never touched a penis before, but...){/i}"
                     pov "{i}(It was worth waiting until now, and trying things with one of them first.){/i}"
                     pov "{i}(Though it's hard to tell what's going on, since it's so dark, and I can't hear a thing.){/i}"
@@ -9451,6 +9575,10 @@ label c5photoafter:
                 j "Oh, okay."
                 c "I-I'll be back in a minute!"
                 pov "{i}(Ah, how predictable...){/i}"
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 "......"
                 $c6theaterhj = True
                 $rita_held_dick = True
@@ -9573,8 +9701,12 @@ label c5photoafter:
             pov "{i}(And while showing my body off is fun, too...){/i}"
             pov "{i}(Doing something more... 'physical', is really tempting and exciting to me right now.){/i}"
             pov "{i}(Alright, I've decided.){/i}"
+            label gal_c6ritafj:
             show c6 boys 7
-            with pixellate
+            if _in_replay:
+                with fadegalstart
+            else:
+                with pixellate
             play music "audio/chill2.mp3" fadein 0.5 loop
             pov "Say..."
             j "?!"
@@ -9654,6 +9786,10 @@ label c5photoafter:
             pov "You enjoyed my feet that much, huh?"
             pov "Well, I guess we've just discovered a new fetish of yours..."
             pov "Give me a second. I'll go get some tissues and clean up."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             if not rita_held_dick:
                 pov "{i}(This is the first time I've felt semen...){/i}"
                 pov "{i}(It's really warm, for some reason.){/i}"
@@ -10127,11 +10263,15 @@ label c5photoafter:
             c "Sure. Do whatever you feel like."
             pov "{i}(Hehe...){/i}"
             pov "{i}(Back in a minute with a surprise, Connor.){/i}"
+            label gal_c7ritabjconnor:
             show c7 home 6
-            with fadehold
-            pov "{i}(He should enjoy this.){/i}"
-            pov "{i}(I stripped down to my underwear, and just threw a cardigan on top.){/i}"
-            pov "{i}(I don't mind wearing only my underwear, but it's a bit colder than usual today.){/i}"
+            if _in_replay:
+                with fadegalstart
+            else:
+                with fadehold
+                pov "{i}(He should enjoy this.){/i}"
+                pov "{i}(I stripped down to my underwear, and just threw a cardigan on top.){/i}"
+                pov "{i}(I don't mind wearing only my underwear, but it's a bit colder than usual today.){/i}"
             pov "Alright. I'm back."
             c "Okay."
             show c7 home 7
@@ -10194,7 +10334,7 @@ label c5photoafter:
             c "T-Things...?"
             pov "Yeah."
             pov "I think you understand what I mean by that."
-            if c6theaterhj:
+            if c6theaterhj and not _in_replay:
                 pov "Especially after what happened in the theater a couple weeks ago..."
                 pov "I know what {i}it{/i} looks like, so you don't have to be nervous about it."
             stop music fadeout 2.0
@@ -10215,15 +10355,19 @@ label c5photoafter:
             show c7 home 16
             with dissolve
             pov "{i}(Hmm...){/i}"
-            if not rita_held_dick:
-                pov "{i}(It was a long time coming, but at last...){/i}"
-                pov "{i}(I'm touching a penis for the first time.){/i}"
-                pov "{i}(I guess it's more... warm than I expected?){/i}"
-                pov "{i}(And it's so hard. Don't guys get sore from having this in their pants all day?){/i}"
-            else:
-                pov "{i}(It's not my first time touching a dick, but...){/i}"
+            if _in_replay:
                 pov "{i}(I still haven't gotten used to it just yet.){/i}"
                 pov "{i}(I guess it takes a while. Most girls my age have done this dozens or even hundreds of times, after all.){/i}"
+            else:
+                if not rita_held_dick:
+                    pov "{i}(It was a long time coming, but at last...){/i}"
+                    pov "{i}(I'm touching a penis for the first time.){/i}"
+                    pov "{i}(I guess it's more... warm than I expected?){/i}"
+                    pov "{i}(And it's so hard. Don't guys get sore from having this in their pants all day?){/i}"
+                else:
+                    pov "{i}(It's not my first time touching a dick, but...){/i}"
+                    pov "{i}(I still haven't gotten used to it just yet.){/i}"
+                    pov "{i}(I guess it takes a while. Most girls my age have done this dozens or even hundreds of times, after all.){/i}"
             pov "{i}(......){/i}"
             pov "{i}(Now...){/i}"
             pov "{i}(I'm going to go a step further.){/i}"
@@ -10386,6 +10530,10 @@ label c5photoafter:
             pov "{i}(It's a bit difficult to swallow...){/i}"
             pov "{i}(Then again, it's not exactly food, so that's to be expected.){/i}"
             pov "{i}(It'll take a while to get used to this.){/i}"
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
             show c7 home 34
             with dissolvelong
@@ -10642,10 +10790,17 @@ label c7choice:
                 pov "......"
                 menu:
                     "Have fun with her.":
-                        if les>=4:
+                        label gal_c7ritalocker:
+                        if _in_replay:
+                            show c7 locker 16
+                            with fadegalstart
+                            wom "Did you want to do something a bit more extreme?"
                             pov "Sure. I'd love to have some fun together."
                         else:
-                            pov "Sure... I'm open to trying something new."
+                            if les>=4:
+                                pov "Sure. I'd love to have some fun together."
+                            else:
+                                pov "Sure... I'm open to trying something new."
                         wom "Great. That's good to hear."
                         wom "Let's see..."
                         stop music fadeout 2.0
@@ -10782,6 +10937,10 @@ label c7choice:
                         wom "But more importantly, cunnilingus can bring most girls to the point of climax."
                         wom "Hopefully this was a good first experience for you?"
                         pov "Y-Yeah... it truly was..."
+                        if _in_replay:
+                            show black
+                            with fadegalend
+                        $ renpy.end_replay()
                         "......"
                         show c7 locker 33
                         with fadehold
@@ -10885,8 +11044,12 @@ label c7choice:
                     if c6poolhj:
                         pov "Then again, I've already touched him before, so this isn't too much of a difference... I think."
                         pov "{i}*gulp*{/i}"
+                    label gal_c7ritabjpool:
                     show c7 pool 4
-                    with dissolve
+                    if _in_replay:
+                        with fadegalstart
+                    else:
+                        with dissolve
                     pov "Hey, you over there!"
                     pov "You aren't here just to look, are you?"
                     pov "It's pretty clear you're expecting something..."
@@ -10927,13 +11090,14 @@ label c7choice:
                     show c7 pool 9
                     with dissolvelong
                     pov "{i}(It's hard...){/i}"
-                    if c6poolhj:
-                        pov "{i}(Just as hard as the last time I touched it...){/i}"
-                        pov "{i}(......){/i}"
-                    if not rita_held_dick:
-                        pov "{i}(I've never touched a dick before, but it's a bit different than I imagined...){/i}"
-                        pov "{i}(Is something this big really supposed to go inside of a girl...?){/i}"
-                        pov "{i}(......){/i}"
+                    if not _in_replay:
+                        if c6poolhj:
+                            pov "{i}(Just as hard as the last time I touched it...){/i}"
+                            pov "{i}(......){/i}"
+                        if not rita_held_dick:
+                            pov "{i}(I've never touched a dick before, but it's a bit different than I imagined...){/i}"
+                            pov "{i}(Is something this big really supposed to go inside of a girl...?){/i}"
+                            pov "{i}(......){/i}"
                     pov "{i}(I guess, at this point, I should do more than just touching him.){/i}"
                     pov "{i}(He's most likely looking for something more intense, too.){/i}"
                     pov "{i}(I could just stroke it quickly, and be done with it as soon as possible, but I'd like to try something else.){/i}"
@@ -10941,32 +11105,39 @@ label c7choice:
                     show c7 pool 10
                     with dissolve
                     pov "{i}(Well, I don't know how this will go, but...){/i}"
-                    if c7connorbj:
-                        pov "{i}(It's only been a couple days since the last time, so it's still pretty fresh in my mind.){/i}"
-                        pov "{i}(I can also try the same thing I did with Connor, since that seemed to work well enough.){/i}"
-                        pov "{i}(It's only my second time doing this, though, so I can't really expect perfection.){/i}"
-                        pov "{i}(Eventually I should get the hang of it.){/i}"
-                        pov "{i}(Especially when I'm doing it as frequently as this...){/i}"
-                    else:
-                        pov "{i}(I'll just try to emulate what I see in porn.){/i}"
-                        pov "{i}(I've never done this before, so I'm a bit nervous...){/i}"
+                    if _in_replay:
+                        pov "{i}(I'm a bit nervous...){/i}"
                         pov "{i}(A blowjob, huh...){/i}"
                         pov "{i}(I hope it doesn't taste too bad.){/i}"
                         pov "{i}(Here goes...){/i}"
+                    else:
+                        if c7connorbj:
+                            pov "{i}(It's only been a couple days since the last time, so it's still pretty fresh in my mind.){/i}"
+                            pov "{i}(I can also try the same thing I did with Connor, since that seemed to work well enough.){/i}"
+                            pov "{i}(It's only my second time doing this, though, so I can't really expect perfection.){/i}"
+                            pov "{i}(Eventually I should get the hang of it.){/i}"
+                            pov "{i}(Especially when I'm doing it as frequently as this...){/i}"
+                        else:
+                            pov "{i}(I'll just try to emulate what I see in porn.){/i}"
+                            pov "{i}(I've never done this before, so I'm a bit nervous...){/i}"
+                            pov "{i}(A blowjob, huh...){/i}"
+                            pov "{i}(I hope it doesn't taste too bad.){/i}"
+                            pov "{i}(Here goes...){/i}"
                     show c7 pool 11
                     with dissolve
                     pov "Mmm...!"
                     pov "{i}(It's big...){/i}"
                     pov "{i}(I can only fit part of it in.){/i}"
-                    if c7connorbj:
-                        pov "{i}(I thought Connor's was already really big, but...){/i}"
-                        pov "{i}(This is even bigger than that.){/i}"
-                        pov "{i}(It's almost too much...){/i}"
-                    else:
-                        pov "{i}(This is what a dick tastes like, huh...){/i}"
-                        pov "{i}(It's not that bad, but I wouldn't call it great, either.){/i}"
-                        pov "{i}(I wonder if everyone else has a similar taste...?){/i}"
-                        pov "{i}(Hard to tell since this is my first time.){/i}"
+                    if not _in_replay:
+                        if c7connorbj:
+                            pov "{i}(I thought Connor's was already really big, but...){/i}"
+                            pov "{i}(This is even bigger than that.){/i}"
+                            pov "{i}(It's almost too much...){/i}"
+                        else:
+                            pov "{i}(This is what a dick tastes like, huh...){/i}"
+                            pov "{i}(It's not that bad, but I wouldn't call it great, either.){/i}"
+                            pov "{i}(I wonder if everyone else has a similar taste...?){/i}"
+                            pov "{i}(Hard to tell since this is my first time.){/i}"
                     man "Hey, can I move under you for a sec?"
                     pov "Mmm...?"
                     show c7 pool 12
@@ -11018,7 +11189,7 @@ label c7choice:
                     man "Wow... not bad."
                     man "Good girl, taking it all like that!"
                     pov "{i}(It's so warm...){/i}"
-                    if not c7connorbj:
+                    if not c7connorbj or _in_replay:
                         pov "{i}(And it tastes so... weird.){/i}"
                         pov "{i}(It almost has this fishy sort of taste to it...){/i}"
                         pov "{i}(This is the taste of cum, huh...){/i}"
@@ -11038,6 +11209,10 @@ label c7choice:
                     pov "{i}(The stickiness makes it hard to swallow, but...){/i}"
                     pov "{i}(That wasn't as gross as I thought it would be.){/i}"
                     pov "{i}(Plus, I'd rather not have to clean the floor afterwards, if I spat it out...){/i}"
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     if not c7connorbj:
                         pov "{i}(I just swallowed semen for the first time, huh...){/i}"
                     "......"
@@ -11579,8 +11754,12 @@ label c7night:
                 sop "Since [vio] is still new to this..."
                 sop "Why don't you two men help get her started first?"
                 "......"
+                label gal_c7viogroup1:
                 show c7 vio mmf 1
-                with fadeholdlong
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with fadeholdlong
                 vio "Ahh..."
                 vio "Both my nipples and pussy are getting so sensitive..."
                 nol "I've barely even touched you, but you're already getting quite wet."
@@ -11882,6 +12061,10 @@ label c7night:
                 stop music fadeout 2.0
                 vio "Oh my god... oh my god..."
                 "And so began the final round of their perverted, and lustful day."
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 "......"
             "[vio] decides to play with Sophia.":
                 label c7viosophia:
@@ -11894,8 +12077,12 @@ label c7night:
                         vio "Especially since it was so one-sided the last time..."
                     sop "Sure. Not a problem."
                     sop "Take your time."
+                    label gal_c7viogroup2:
                     show c7 vio les 1
-                    with fadeholdlong
+                    if _in_replay:
+                        with fadegalstart
+                    else:
+                        with fadeholdlong
                     sop "Oh?"
                     sop "You seem more experienced with this than I initially thought."
                     sop "By 'experimenting'... how much did you mean, exactly?"
@@ -12075,6 +12262,10 @@ label c7night:
                     vio "I don't think I've ever felt that good in my life."
                     vio "Maybe Nick was right... maybe I am a slut."
                     vio "Maybe I am a naughty girl, after all..."
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     stop music fadeout 2.5
                     "And so ended [vio]'s long-awaited reunion with another woman."
                     "With this, a forgotten aspect of her sexuality was re-awakened, once more..."
@@ -12684,8 +12875,12 @@ label c7ending:
             menu:
                 "Have some 'fun' with Josh.":
                     pov "{i}(How could I pass up an opportunity like this?){/i}"
+                    label gal_c8ritajosh:
                     show c8 josh 11
-                    with dissolve
+                    if _in_replay:
+                        with fadegalstart
+                    else:
+                        with dissolve
                     pov "So, Josh..."
                     pov "Is there any reason you were staring at me?"
                     j "I-I wasn't!"
@@ -12860,6 +13055,10 @@ label c7ending:
                             pov "{i}*nods*{/i}"
                             j "I didn't ask you to go that far..."
                             j "But I'm sure as hell not gonna complain."
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             "......"
                             $bjcount+=1
                             $hjcount+=1
@@ -12897,6 +13096,10 @@ label c7ending:
                             pov "It's my own inexperience that's to blame."
                             pov "I'm not used to doing this, after all..."
                             pov "Oh well."
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             $tjcount+=1
                             $sexexp+=1
                     show c8 josh end 1
@@ -13207,8 +13410,12 @@ label c7ending:
             pov "I'll put in a special request for a male driver."
             pov "This should be fun."
             pov "{i}*giggles*{/i}"
+            label gal_c8ritapizza:
             show c8 pizzaboy 1
-            with fadeholdlong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with fadeholdlong
             boy "Hello there."
             boy "It's been a while, hasn't it?"
             pov "Yeah, haha..."
@@ -13382,6 +13589,10 @@ label c7ending:
             show c8 pizzaboy 25
             with dissolve
             pov "You're going to help me clean... right?"
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             boy "Y-Yeah, of course!"
             pov "Okay. I'll get some tissues, and you clean that up."
             stop music fadeout 2.5
@@ -15220,10 +15431,14 @@ label c9cjscene:
         with dissolve
         j "Yeah, I guess you're right..."
         c "Alright..."
+        label gal_c9ritacj:
         show c9 threesome 19
-        with fadeholdlong
-        c "......"
-        j "......"
+        if _in_replay:
+            with fadegalstart
+        else:
+            with fadeholdlong
+            c "......"
+            j "......"
         pov "Okay, that's much better."
         pov "Now we can actually get started."
         pov "Come over here."
@@ -15292,11 +15507,12 @@ label c9cjscene:
         with dissolve
         pov "If I leave one of you alone for even a second... jeez..."
         pov "You know, a girl has to be wet first before you can do it."
-        pov "And especially for me..."
-        if virgin:
-            pov "I'm still a virgin, so I don't want it to hurt."
-        else:
-            pov "I'm not very experienced, so I don't want it too rough."
+        if not _in_replay:
+            pov "And especially for me..."
+            if virgin:
+                pov "I'm still a virgin, so I don't want it to hurt."
+            else:
+                pov "I'm not very experienced, so I don't want it too rough."
         show c9 threesome 30
         with dissolve
         pov "Just how clueless are you guys?"
@@ -15359,6 +15575,8 @@ label c9cjscene:
         with fadeholdlong
         pov "Well..."
         pov "I said we were going to do it, but..."
+        if _in_replay and not persistent.c9joshfirst and not persistent.c9connorfirst:
+            jump c9cjstop
         pov "There's only one of me, and two of you."
         pov "That means one of you guys will have to go first."
         show c9 threesome 37
@@ -15375,9 +15593,16 @@ label c9cjscene:
         show c9 threesome 37
         with dissolve
         pov "{i}(Hmm...){/i}"
+        if _in_replay and persistent.c9joshfirst and not persistent.c9connorfirst:
+            jump c9joshfirst
+        if _in_replay and not persistent.c9joshfirst and persistent.c9connorfirst:
+            jump c9connorfirst
         menu:
             "Pick Connor.":
-                $c9connorfirst=True
+                if not _in_replay:
+                    $c9connorfirst=True
+                    $persistent.c9connorfirst=True
+                label c9connorfirst:
                 show c9 threesome 38
                 with dissolve
                 pov "{i}(Yeah... I'm gonna go with Connor first.){/i}"
@@ -15388,7 +15613,7 @@ label c9cjscene:
                 with dissolve
                 pov "Connor... you can go first."
                 pov "Just don't get the wrong impression, okay?"
-                if virgin:
+                if virgin and not _in_replay:
                     pov "{i}Both{/i} of you are my firsts, not just one of you."
                 else:
                     pov "{i}Both{/i} of you are equal to me."
@@ -15420,7 +15645,7 @@ label c9cjscene:
                 pov "Yeah..."
                 pov "I want it."
                 pov "Put it in, Connor."
-                if virgin:
+                if virgin and not _in_replay:
                     pov "Make me a woman already."
                 else:
                     pov "Teach me what it's like to feel good."
@@ -15435,18 +15660,19 @@ label c9cjscene:
                 show c9 threesome 47
                 with pixellate
                 pov "Ahh——!!"
-                if virgin:
-                    pov "{i}(It hurts a little bit!){/i}"
-                    pov "{i}(Ow!){/i}"
-                else:
-                    pov "{i}So this is what it felt like, huh...{/i}"
-                    pov "{i}It's been a long time.{/i}"
+                if not _in_replay:
+                    if virgin:
+                        pov "{i}(It hurts a little bit!){/i}"
+                        pov "{i}(Ow!){/i}"
+                    else:
+                        pov "{i}So this is what it felt like, huh...{/i}"
+                        pov "{i}It's been a long time.{/i}"
                 show c9 threesome 48-c
                 with dissolvelong
                 voice "audio/effects/lewd/femalebreath1.wav"
                 c "I'm inside, [pov]..."
                 c "A-Are you okay?"
-                if virgin:
+                if virgin and not _in_replay:
                     c "Did it hurt?"
                     pov "......"
                     pov "Yeah, a little bit..."
@@ -15512,7 +15738,7 @@ label c9cjscene:
                 with dissolve
                 pov "Mmm... mmhhm—!"
                 pov "{i}(They've gotten a lot faster now, but...){/i}"
-                if virgin:
+                if virgin and not _in_replay:
                     pov "{i}(It doesn't hurt anymore.){/i}"
                 pov "{i}(I guess my body has started getting used to it?){/i}"
                 show c9 threesome 55
@@ -15534,7 +15760,7 @@ label c9cjscene:
                 c "This isn't how I imagined today would end up."
                 pov "{i}(They sure like to talk...){/i}"
                 pov "{i}(Easy for them, but not so much for me, since I have to deal with both at once...){/i}"
-                if virgin:
+                if virgin and not _in_replay:
                     pov "{i}(It's my first time, too!){/i}"
                 pov "{i}(I'm already starting to get tired...){/i}"
                 show c9 threesome 58
@@ -15586,6 +15812,10 @@ label c9cjscene:
                 pov "Well, whatever..."
                 pov "It felt good for me, too."
                 pov "I enjoyed it."
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 if virgin:
                     pov "{i}(Although it did hurt a bit at first.){/i}"
                 else:
@@ -15633,7 +15863,10 @@ label c9cjscene:
                 $cjhadsex=True
                 jump c9jason
             "Pick Josh.":
-                $c9joshfirst=True
+                if not _in_replay:
+                    $c9joshfirst=True
+                    $persistent.c9joshfirst=True
+                label c9joshfirst:
                 show c9 threesome 39
                 with dissolve
                 pov "{i}(Yeah... I'm gonna go with Josh first.){/i}"
@@ -15644,7 +15877,7 @@ label c9cjscene:
                 with dissolve
                 pov "Josh... you can go first."
                 pov "Just don't get the wrong impression, okay?"
-                if virgin:
+                if virgin and not _in_replay:
                     pov "{i}Both{/i} of you are my firsts, not just one of you."
                 else:
                     pov "{i}Both{/i} of you are equal to me."
@@ -15677,7 +15910,7 @@ label c9cjscene:
                 pov "Yeah..."
                 pov "I want it."
                 pov "Put it in, Josh."
-                if virgin:
+                if virgin and not _in_replay:
                     pov "Make me a woman already."
                 else:
                     pov "Teach me what it's like to feel good."
@@ -15692,18 +15925,19 @@ label c9cjscene:
                 show c9 threesome 47
                 with pixellate
                 pov "Ahh——!!"
-                if virgin:
-                    pov "{i}(It hurts a little bit!){/i}"
-                    pov "{i}(Ow!){/i}"
-                else:
-                    pov "{i}So this is what it felt like, huh...{/i}"
-                    pov "{i}It's been a long time.{/i}"
+                if not _in_replay:
+                    if virgin:
+                        pov "{i}(It hurts a little bit!){/i}"
+                        pov "{i}(Ow!){/i}"
+                    else:
+                        pov "{i}So this is what it felt like, huh...{/i}"
+                        pov "{i}It's been a long time.{/i}"
                 show c9 threesome 48-j
                 with dissolvelong
                 voice "audio/effects/lewd/femalebreath1.wav"
                 j "I'm inside..."
                 j "Are you okay?"
-                if virgin:
+                if virgin and not _in_replay:
                     c "Did it hurt?"
                     pov "......"
                     pov "Yeah, a little bit..."
@@ -15769,7 +16003,7 @@ label c9cjscene:
                 with dissolve
                 pov "Mmm... mmhhm—!"
                 pov "{i}(They've gotten a lot faster now, but...){/i}"
-                if virgin:
+                if virgin and not _in_replay:
                     pov "{i}(It doesn't hurt anymore.){/i}"
                 pov "{i}(I guess my body has started getting used to it?){/i}"
                 show c9 threesome 55
@@ -15791,7 +16025,7 @@ label c9cjscene:
                 c "This isn't how I imagined today would end up."
                 pov "{i}(They sure like to talk...){/i}"
                 pov "{i}(Easy for them, but not so much for me, since I have to deal with both at once...){/i}"
-                if virgin:
+                if virgin and not _in_replay:
                     pov "{i}(It's my first time, too!){/i}"
                 pov "{i}(I'm already starting to get tired...){/i}"
                 show c9 threesome 58
@@ -15843,6 +16077,10 @@ label c9cjscene:
                 pov "Well, whatever..."
                 pov "It felt good for me, too."
                 pov "I enjoyed it."
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 if virgin:
                     pov "{i}(Although it did hurt a bit at first.){/i}"
                 else:
@@ -15889,7 +16127,7 @@ label c9cjscene:
                 $sexexp+=1
                 $cjhadsex=True
                 jump c9jason
-            "I'm going to stop here.":
+            "I'm going to stop here." if not _in_replay:
                 $c9cjstop=True
                 $bjcount+=2
                 $hjcount+=2
@@ -15897,6 +16135,7 @@ label c9cjscene:
                 pov "{i}(On second thought...){/i}"
                 pov "{i}(I really don't know if I want to go all the way today.){/i}"
                 pov "{i}(I'm starting to get nervous, and that's never a good sign...){/i}"
+                label c9cjstop:
                 show c9 threesomestop 1
                 with dissolvelong
                 pov "Actually..."
@@ -15904,6 +16143,10 @@ label c9cjscene:
                 c "Hmm...?"
                 j "What's wrong?"
                 pov "I don't think I actually want to have sex tonight."
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 pov "It's too soon, after all."
                 show c9 threesomestop 2
                 with dissolve
@@ -15999,12 +16242,16 @@ label c9lunascene:
         luna "Or... what show are they from?"
         luna "That one over there looks cute!"
         pov "Haha...."
+        label gal_c9ritaluna:
         show c9 luna 10
-        with dissolve
-        pov "Well, I'll recommend you some shows later on."
-        pov "For now, though..."
-        pov "Regarding what I wanted to talk about..."
-        luna "Hmm...?"
+        if _in_replay:
+            with fadegalstart
+        else:
+            with dissolve
+            pov "Well, I'll recommend you some shows later on."
+            pov "For now, though..."
+            pov "Regarding what I wanted to talk about..."
+            luna "Hmm...?"
         pov "Do you... like me, Luna?"
         show c9 luna 11
         with dissolve
@@ -16190,7 +16437,7 @@ label c9lunascene:
         luna "Looking at me there is embarrassing..."
         pov "Haha. Well, that's natural for anyone during their first time."
         pov "I'm not experienced at doing this, either."
-        if virgin:
+        if virgin and not _in_replay:
             pov "In fact... it's my first time doing this to another girl... so I'm not sure if I'll be able to do it well."
         show c9 luna 37
         with pixellate
@@ -16259,7 +16506,7 @@ label c9lunascene:
         show c9 luna 46
         with dissolve
         pov "Nah. Not with other people, at least."
-        if virgin:
+        if virgin and not _in_replay:
             pov "I touch myself sometimes, but it's my first time doing it with another girl."
             pov "...... Or going this far, for that matter."
         else:
@@ -16282,6 +16529,10 @@ label c9lunascene:
         pov "Do you wanna watch some movies tonight, after we relax some more?"
         luna "Sure... I'd love to."
         luna "I'm happy doing whatever you want, [pov]."
+        if _in_replay:
+            show black
+            with fadegalend
+        $ renpy.end_replay()
         "......"
         pov "{i}(Luna... she's so adorable, it could truly kill.){/i}"
         show c9 luna 47
@@ -16435,8 +16686,12 @@ label c9vioscene:
         pov "I clean often, but I can't get it quite {i}this{/i} clean."
         vio "Yeah, I can't stand it when things are dirty."
         pov "That explains your behaviour at work... {i}*giggles*{/i}"
+        label gal_c9ritavio:
         show c9 vio 18
-        with dissolve
+        if _in_replay:
+            with fadegalstart
+        else:
+            with dissolve
         pov "So, umm..."
         pov "How should we..."
         vio "Hmm...?"
@@ -16527,7 +16782,7 @@ label c9vioscene:
         vio "{i}*lick*{/i}"
         pov "Oh... wow..."
         pov "{i}(She's right...){/i}"
-        if c5leslocker:
+        if c5leslocker and not _in_replay:
             pov "{i}(Although it's not the first time I've experienced this...){/i}"
             pov "{i}(It's unlike anything I could ever feel by myself.){/i}"
         else:
@@ -16566,7 +16821,7 @@ label c9vioscene:
         voice "audio/effects/lewd/slosh1.wav"
         vio "How's this?"
         vio "Let me know if it hurts, or you want me to slow down."
-        if virgin:
+        if virgin and not _in_replay:
             vio "It's your first time, so I don't want to risk going too far."
         else:
             vio "You're new to this, so I don't want to risk going too far."
@@ -16617,6 +16872,10 @@ label c9vioscene:
         pov "Yeah... it was incredible."
         pov "I want to try things like this more often."
         vio "That's great!"
+        if _in_replay:
+            show black
+            with fadegalend
+        $ renpy.end_replay()
         show c9 vio 43
         with dissolve
         pov "I'm kinda surprised, though..."
@@ -16718,8 +16977,12 @@ label c9harukascene:
         fr "Different..."
         fr "How so?"
         pov "Well..."
+        label gal_c9ritaharuka:
         show c9 haruka 9
-        with dissolve
+        if _in_replay:
+            with fadegalstart
+        else:
+            with dissolve
         pov "I really like you, [fr]."
         pov "And I was wondering if, maybe..."
         pov "You'd like to try something new with me?"
@@ -16738,7 +17001,7 @@ label c9harukascene:
         show c9 haruka 12
         with dissolve
         pov "...... I like you as more than that."
-        if virgin:
+        if virgin and not _in_replay:
             pov "And I'd like to try {i}it{/i} with you... for the first time."
         else:
             pov "And I'd like to try doing {i}it{/i} with you..."
@@ -16930,7 +17193,7 @@ label c9harukascene:
         show c9 haruka 41
         with dissolve
         pov "Same here..."
-        if virgin:
+        if virgin and not _in_replay:
             pov "I'm glad my first time could be with you."
         else:
             pov "I'm glad I could do something like this with you."
@@ -16938,6 +17201,10 @@ label c9harukascene:
         show c9 haruka 40
         with dissolve
         fr "Friends..."
+        if _in_replay:
+            show black
+            with fadegalend
+        $ renpy.end_replay()
         fr "......"
         show c9 haruka 42
         with dissolve
@@ -17373,11 +17640,15 @@ label act2start:
                         pov "Okay.... okay... I get it."
                         pov "You're just so horny, you can't help yourself."
                         pov "Come over here, then."
+                        label gal_c10ritapool:
                         show c10 pool 9
-                        with dissolvelong
-                        man "Thank you, maddam!"
-                        pov "I'm not your maddam!"
-                        pov "Anyway..."
+                        if _in_replay:
+                            with fadegalstart
+                        else:
+                            with dissolvelong
+                            man "Thank you, maddam!"
+                            pov "I'm not your maddam!"
+                            pov "Anyway..."
                         pov "I guess... I can help you out."
                         pov "Just as long as you promise not to do anything crazy, OK?"
                         play sound "audio/effects/zip.mp3"
@@ -17453,12 +17724,18 @@ label act2start:
                         man "Are you sure you don't want to feel this throbbing cock?"
                         man "I am almost certain you would enjoy it!"
                         pov "I..."
+                        if _in_replay:
+                            if persistent.c10poolsex:
+                                jump c10poolsex
+                            else:
+                                jump c10poolnosex
                         menu:
                             "Allow him to continue.":
+                                label c10poolsex:
                                 show c10 pool 18
                                 with dissolvelong
                                 pov "{i}(I am kind of curious...){/i}"
-                                if virgin:
+                                if virgin and not _in_replay:
                                     pov "{i}(I've never had sex before.){/i}"
                                     pov "{i}(And I've always wanted to try it.){/i}"
                                     pov "{i}(Losing my virginity, huh...){/i}"
@@ -17470,7 +17747,7 @@ label act2start:
                                 pov "But if I tell you to stop, you have to listen."
                                 pov "And you better be thankful!"
                                 pov "There aren't many girls who would be willing to do this with someone like you."
-                                if virgin:
+                                if virgin and not _in_replay:
                                     pov "{i}(There's no way I can tell him it's my first time.){/i}"
                                     pov "{i}(No doubt he'll act weird about it afterwards.){/i}"
                                     pov "{i}(I'll just... try and keep it secret.){/i}"
@@ -17481,7 +17758,7 @@ label act2start:
                                 man "I'm going to put it in, then!"
                                 pov "......"
                                 pov "{i}*gulp*{/i}"
-                                if virgin:
+                                if virgin and not _in_replay:
                                     pov "{i}(I don't know what's gotten into me.){/i}"
                                     pov "{i}(Hopefully it doesn't hurt too much...){/i}"
                                 show c10 pool 21
@@ -17489,7 +17766,7 @@ label act2start:
                                 with vpunch
                                 man "Take that!"
                                 man "Pussy has been penetrated!"
-                                if virgin:
+                                if virgin and not _in_replay:
                                     pov "{i}(Oww...){/i}"
                                     pov "{i}(It stings a little bit.){/i}"
                                     pov "{i}(It's not as bad as I was expecting, though.){/i}"
@@ -17499,7 +17776,7 @@ label act2start:
                                 pov "Ah..."
                                 man "Your pussy is wonderful!"
                                 man "It's already quite wet, so it was a smooth entry!"
-                                if virgin:
+                                if virgin and not _in_replay:
                                     pov "{i}(So this is what sex feels like, huh...){/i}"
                                     pov "{i}(It's warm, and pulsating inside me...){/i}"
                                 show c10 pool 21
@@ -17560,7 +17837,7 @@ label act2start:
                                 man "I haven't had sex this great in many a year!"
                                 man "Thank you, miss."
                                 pov "Hah... hah..."
-                                if virgin:
+                                if virgin and not _in_replay:
                                     pov "{i}(And just like that...){/i}"
                                     pov "{i}(I gave my virginity to a complete stranger.){/i}"
                                 "......"
@@ -17584,6 +17861,10 @@ label act2start:
                                 pov "{i}(Hmm...){/i}"
                                 pov "{i}(I do feel a bit guilty about it, though.){/i}"
                                 pov "{i}(Did I always have this slutty side of myself...?){/i}"
+                                if _in_replay:
+                                    show black
+                                    with fadegalend
+                                $ renpy.end_replay()
                                 "......"
                                 $virgin=False
                                 call first_partner("Pool pervert")
@@ -17592,6 +17873,7 @@ label act2start:
                                 $scount+=1
                                 $hjcount+=1
                                 $c10poolsex=True
+                                $persistent.c10poolsex=True
                                 scene c10 transition 1 with fadeholdlong
                                 show aug 26 with dissolve
                                 play music "audio/city.mp3" fadein 2.0 loop
@@ -17625,6 +17907,7 @@ label act2start:
                                 "......"
                                 jump c10waterpark
                             "Make him stop.":
+                                label c10poolnosex:
                                 show c10 pool 18
                                 with dissolve
                                 pov "{i}(No way...){/i}"
@@ -17648,6 +17931,10 @@ label act2start:
                                 stop music fadeout 2.5
                                 pov "Maybe another time?"
                                 man "Of course. Whenever you would like, I shall answer your call."
+                                if _in_replay:
+                                    show black
+                                    with fadegalend
+                                $ renpy.end_replay()
                                 pov "{i}(This was definitely the right call.){/i}"
                                 if virgin:
                                     pov "{i}(It's my first time, after all, and he's a complete stranger!){/i}"
@@ -18659,8 +18946,12 @@ label c10aftershoot:
                     pov "{i}(Yeah.){/i}"
                     pov "{i}(It's not like there's any harm in playing around for a bit.){/i}"
                     pov "{i}(He isn't the friendliest... but he's also around my age, and doesn't seem dangerous.){/i}"
+                    label gal_c10ritaoutside:
                     show c10 outside 10
-                    with dissolve
+                    if _in_replay:
+                        with fadegalstart
+                    else:
+                        with dissolve
                     man "Was there anything else you wanted?"
                     pov "Oh, well..."
                     pov "I suppose you could say that."
@@ -18684,11 +18975,12 @@ label c10aftershoot:
                     show c10 outside 16
                     with pixellate
                     pov "Really?"
-                    if bjcount>=1:
-                        pov "I'm not that experienced with this sort of thing, so..."
-                    if bjcount<=0:
-                        pov "It's actually my first time doing something like this, so..."
-                        man "Your first time?!"
+                    if not _in_replay:
+                        if bjcount>=1:
+                            pov "I'm not that experienced with this sort of thing, so..."
+                        if bjcount<=0:
+                            pov "It's actually my first time doing something like this, so..."
+                            man "Your first time?!"
                     pov "Just let me know if I'm doing it wrong."
                     show c10 outside 17
                     with pixellate
@@ -18770,6 +19062,10 @@ label c10aftershoot:
                     pov "{i}(I'm kinda surprised I went that far...){/i}"
                     pov "{i}(It's unusual for me to want to do something like this with a complete stranger.){/i}"
                     pov "{i}(Or, well... really anyone at all.){/i}"
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     show c10 outside 27
                     with dissolvelong
                     if bjcount<=0:
@@ -19345,8 +19641,12 @@ label c10complete:
             pov "{i}(Should I stop here? Or...){/i}"
             menu:
                 "Invite him.":
+                    label gal_c11ritapizza:
                     show c11 pizzaboy 8
-                    with dissolve
+                    if _in_replay:
+                        with fadegalstart
+                    else:
+                        with dissolve
                     pov "Hey, do you have two minutes?"
                     boy "Hmm...?"
                     pov "If you want, you can stay inside."
@@ -19384,7 +19684,7 @@ label c10complete:
                     with dissolve
                     voice "audio/effects/lewd/slosh1.wav"
                     pov "I'm also touching {i}you{/i}, after all."
-                    if hjcount==0 and bjcount==0:
+                    if hjcount==0 and bjcount==0 and not _in_replay:
                         pov "{i}(It's my first time feeling a penis.){/i}"
                         pov "{i}(It's... warm.){/i}"
                         pov "......"
@@ -19408,7 +19708,7 @@ label c10complete:
                     with dissolve
                     boy "Oh wow..."
                     pov "Mmm..."
-                    if bjcount==0:
+                    if bjcount==0 and not _in_replay:
                         pov "{i}(This is what a penis tastes like, huh...){/i}"
                         pov "{i}(It tastes strange. Almost... salty?){/i}"
                     boy "Yeah, keep going like that."
@@ -19480,20 +19780,26 @@ label c10complete:
                     pov "{i}(If I don't stop now, we're going to have sex.){/i}"
                     pov "{i}(Do I really want that to happen?){/i}"
                     pov "{i}(With a total stranger like him...?){/i}"
-                    if virgin:
+                    if virgin and not _in_replay:
                         pov "{i}(It would be my first time, too!){/i}"
                     show c11 pizzaboy 30
                     with dissolve
                     pov "......"
+                    if _in_replay:
+                        if persistent.c11pizzasex:
+                            jump c11pizzasex
+                        else:
+                            jump c11pizzanosex
                     menu:
                         "Let him put it in.":
+                            label c11pizzasex:
                             pov "{i}(Why...){/i}"
                             pov "{i}(Even though this is wrong...){/i}"
                             pov "{i}(Why do I want it so much?!){/i}"
                             show c11 pizzaboy 31
                             with dissolve
                             pov "Fine..."
-                            if virgin:
+                            if virgin and not _in_replay:
                                 pov "But... you have to be gentle."
                                 pov "This is actually my first time, so..."
                                 boy "......"
@@ -19506,7 +19812,7 @@ label c10complete:
                             boy "Well... I'm putting it in then."
                             pov "{i}(His dick is hitting the entrance.){/i}"
                             pov "{i}(It's about to slide in.){/i}"
-                            if virgin:
+                            if virgin and not _in_replay:
                                 pov "{i}(I can't believe I'm giving my first time to a stranger...){/i}"
                             show c11 pizzaboy 33
                             with pixellate
@@ -19516,7 +19822,7 @@ label c10complete:
                             show c11 pizzaboy 34
                             with dissolve
                             boy "My dick is inside you now."
-                            if virgin:
+                            if virgin and not _in_replay:
                                 boy "Does it hurt?"
                                 pov "Ow..."
                                 pov "Just a little..."
@@ -19603,6 +19909,10 @@ label c10complete:
                             pov "Just don't expect me to this every time, OK?"
                             pov "Today was special."
                             boy "Y-Yeah... thank you..."
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             show c11 pizzaboy 47
                             with dissolve
                             stop music fadeout 2.5
@@ -19618,6 +19928,7 @@ label c10complete:
                                 pov "{i}(Maybe I am... a bit more slutty than I thought.){/i}"
                             "......"
                             $c11pizzasex=True
+                            $persistent.c11pizzasex=True
                             $virgin=False
                             call first_partner("Pizza boy")
                             call add_partner("Pizza boy")
@@ -19630,6 +19941,7 @@ label c10complete:
                             else:
                                 jump c11cafe
                         "Stop now.":
+                            label c11pizzanosex:
                             pov "No... you can't..."
                             pov "That's going way too far."
                             pov "I know I invited you, but... I'm sorry."
@@ -19637,6 +19949,10 @@ label c10complete:
                             with dissolvelong
                             boy "Oh..."
                             boy "No... I understand. Sorry."
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             pov "It's fine... I guess I should have expected something like this."
                             pov "Should we... pay for the pizza now?"
                             show c11 pizzaboy cancel 2
@@ -19769,8 +20085,12 @@ label c10complete:
                             pov "{i}(I can't refuse...){/i}"
                             pov "{i}(What's gotten into me...){/i}"
                             "......"
+                            label gal_c11ritawoman:
                             show c11 les 17
-                            with fadeholdlong
+                            if _in_replay:
+                                with fadegalstart
+                            else:
+                                with fadeholdlong
                             play music "audio/city.mp3" fadein 2.0 loop
                             wom "Well, this bed should do the trick."
                             wom "The bath is all ready for after, too."
@@ -19902,6 +20222,10 @@ label c10complete:
                             wom "Yeah. It takes some training for most people to get that good."
                             wom "...... Hmm."
                             wom "It hasn't been that long, so the bath should still be warm."
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             "......"
                             show c11 les 38
                             with dissolvelong
@@ -20027,9 +20351,13 @@ label c11vio:
                 ni "Yeah."
                 vio "Okay... suit yourself."
                 "......"
+                label gal_c11viogirls:
                 show c11 vio les 1
-                with fadeholdlong
-                "A little while later..."
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with fadeholdlong
+                    "A little while later..."
                 vio "Ah..."
                 wom1 "This should help you relax."
                 voice "audio/effects/lewd/suck1.mp3"
@@ -20107,6 +20435,10 @@ label c11vio:
                 vio "We could do it one more time."
                 vio "There's still some time, and..."
                 vio "I want to try making one of you cum, too."
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 "......"
                 $c11violes=True
                 jump c11cafe
@@ -20124,9 +20456,13 @@ label c11vio:
             vio "Let me know when you get a text."
             vio "At least they didn't seem to be creepy or anything."
             "......"
+            label gal_c11vioguys:
             show c11 vio mmf 1
-            with fadeholdlong
-            "A little while later..."
+            if _in_replay:
+                with fadegalstart
+            else:
+                with fadeholdlong
+                "A little while later..."
             vio "Ah..."
             ni "Damn... you're so hot, [vio]."
             man1 "What a sexy girl you have."
@@ -20250,6 +20586,10 @@ label c11vio:
             vio "I suppose it's natural for there to be a lot."
             vio "I just did it with three of you, after all."
             vio "...... I enjoyed it."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
             $c11viommf=True
             jump c11cafe
@@ -21370,8 +21710,12 @@ label c12mia:
             pov "{i}(Yeah, that's what I want.){/i}"
             pov "{i}(Assuming Mia wants the same, of course...){/i}"
             pov "{i}(I want to feel her tonight.){/i}"
+            label gal_c12ritamia:
             show c12 mia 16
-            with dissolvelong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolvelong
             pov "Mia."
             mia "Hmm?"
             pov "There's something I'm curious about right now."
@@ -21449,7 +21793,7 @@ label c12mia:
             mia "[pov]..."
             pov "Mia, I'm going to start."
             mia "Please..."
-            if virgin:
+            if virgin and not _in_replay:
                 pov "{i}(Well, here goes...){/i}"
                 pov "{i}(It's my first time doing something like this.){/i}"
                 pov "{i}(I hope I don't mess up.){/i}"
@@ -21551,6 +21895,10 @@ label c12mia:
             with fadeholdlong
             "And so..."
             "After a romantic night, the two fell asleep together, in each other's arms."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
             show c12 mia 38
             with fadeholdlong
@@ -21712,8 +22060,12 @@ label c12cj:
             pov "{i}(Just a little touching couldn't hurt, right?){/i}"
             if c9connorfirst or c9joshfirst:
                 pov "{i}(We've already gone much further than that, anyway...){/i}"
+            label gal_c12ritaconnor:
             show c12 cj 9
-            with dissolve
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolve
             pov "So, umm..."
             c "Huh?"
             pov "There's only a little while until Josh comes back."
@@ -21806,14 +22158,18 @@ label c12cj:
             c "Hah..."
             show c12 cj 24
             with dissolvelong
-            $c12connorhj=True
-            $hjcount+=1
-            $sexexp+=1
             pov "You let out so much."
             pov "Did I really turn you on that much?"
             c "Yeah... you did."
             pov "I'm happy to hear that."
             pov "...... It turned me on, too."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
+            $c12connorhj=True
+            $hjcount+=1
+            $sexexp+=1
             show c12 cj 25
             with dissolvelong
             c "Oh, fuck!"
@@ -21882,8 +22238,12 @@ label c12cj:
                     j "If you are..."
                     j "Then there's no way I could say no."
                     play sound "audio/effects/zip.mp3"
+                    label gal_c12ritacj:
                     show c12 cj 33
-                    with fadeholdlong
+                    if _in_replay:
+                        with fadegalstart
+                    else:
+                        with fadeholdlong
                     pov "You two..."
                     voice "audio/effects/lewd/slosh1.wav"
                     pov "You really can't say no to me, can you?"
@@ -21921,7 +22281,7 @@ label c12cj:
                     pov "{i}(They're already this hard.){/i}"
                     pov "{i}(And I'm pretty wet, too.){/i}"
                     pov "{i}(I guess it's time... for the next step.){/i}"
-                    if virgin:
+                    if virgin and not _in_replay:
                         pov "{i}(...... I hope it won't hurt too much.){/i}"
                     show c12 cj 37
                     with dissolvelong
@@ -21942,7 +22302,7 @@ label c12cj:
                     c "Oh... [pov]..."
                     pov "It feels good!"
                     pov "I've been waiting for this!"
-                    if virgin:
+                    if virgin and not _in_replay:
                         pov "{i}(Even though it's my first time...){/i}"
                         pov "{i}(It only hurt a little bit.){/i}"
                         pov "{i}(Maybe it hurts less when you're on top...?){/i}"
@@ -22114,6 +22474,10 @@ label c12cj:
                             show c12 cj voyeur 4
                             with dissolvelong
                             "The pure and innocent girl her friends used to know, had seemed to change into someone much more lewd than they ever imagined."
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             "......"
                             $virgin=False
                             call first_partner("CJ")
@@ -22149,7 +22513,7 @@ label c12cj:
                             show c12 cj outside 2
                             with fadeholdlong
                             pov "You guys..."
-                            if c9connorfirst or c9joshfirst:
+                            if c9connorfirst or c9joshfirst or _in_replay:
                                 pov "Your dicks are so good."
                             else:
                                 pov "You should have told me your dicks were this good."
@@ -22179,6 +22543,10 @@ label c12cj:
                             show c12 cj voyeur 4
                             with dissolvelong
                             "The pure and innocent girl her friends used to know, had seemed to change into someone much more lewd than they ever imagined."
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             "......"
                             $virgin=False
                             call first_partner("CJ")
@@ -22321,8 +22689,12 @@ label c12waterpark:
                 wom "But I'm glad to hear it."
                 wom "You caught my eye ever since I first saw you."
                 "......"
+                label gal_c12ritagirl:
                 show c12 waterpark girl 6
-                with fadeholdlong
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with fadeholdlong
                 play music "audio/low.mp3" fadein 2.0 loop
                 pov "Hmm..."
                 pov "I really hope nobody can see us."
@@ -22345,7 +22717,7 @@ label c12waterpark:
                 wom "What a beautiful vagina."
                 wom "I'm going to have a taste, if you don't mind."
                 pov "...... Okay."
-                if virgin:
+                if virgin and not _in_replay:
                     pov "{i}(My first time...){/i}"
                 show c12 waterpark girl 10
                 with pixellate
@@ -22412,6 +22784,10 @@ label c12waterpark:
                 pov "Yeah."
                 pov "{i}(I did it with a complete stranger...){/i}"
                 pov "{i}(And in public, too.){/i}"
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 if virgin:
                     pov "{i}(It was my first time, but it was incredible.){/i}"
                 "......"
@@ -22513,8 +22889,12 @@ label c12waterpark:
             man "When there's a girl as hot as you, a guy's gotta."
             pov "{i}(Not sure I follow that line of reasoning, but, well... whatever.){/i}"
             "......"
+            label gal_c12ritaguy:
             show c12 waterpark male 6
-            with fadeholdlong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with fadeholdlong
             play music "audio/low.mp3" fadein 2.0 loop
             pov "You sure nobody is going to see us?"
             pov "Maybe you're fine with being caught, but I'm not..."
@@ -22539,7 +22919,7 @@ label c12waterpark:
             man "Oh, wow..."
             pov "{i}*lick*{/i}"
             pov "{i}(He's twitching a little bit... I guess his dick is sensitive right now.){/i}"
-            if bjcount<=0:
+            if bjcount<=0 and not _in_replay:
                 pov "{i}(It's my first time giving a blowjob...){/i}"
                 pov "{i}(I hope I can do it well.){/i}"
             show c12 waterpark male 10
@@ -22613,6 +22993,10 @@ label c12waterpark:
             pov "{i}(But...){/i}"
             pov "{i}(The fear of getting caught...){/i}"
             pov "{i}(I enjoyed it a lot more than I expected.){/i}"
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
             $bjcount+=1
             $sexexp+=1
@@ -24009,8 +24393,12 @@ label c13haruka:
             else:
                 pov "{i}(And although I can't go all the way tonight...){/i}"
             pov "{i}(There's still a lot of fun we can have.){/i}"
+            label gal_c13ritaconnor:
             show c13 connor 12
-            with dissolvelong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolvelong
             pov "Say, Connor..."
             c "Huh?"
             pov "Do you want to fool around for a bit?"
@@ -24022,7 +24410,7 @@ label c13haruka:
             with dissolve
             pov "Oh, Connor... you can be so dense sometimes."
             pov "After all the things we've done lately, it's obvious what I meant."
-            if c12cjsex:
+            if c12cjsex and not _in_replay:
                 pov "Heck, just last week, we even had sex!"
                 c "H-Hey..."
                 c "No need to make things awkward by bringing that up..."
@@ -24149,17 +24537,18 @@ label c13haruka:
                     with dissolve
                     pov "It doesn't hurt, right?"
                     pov "Let me know if I'm squeezing too hard."
-                    if c6joshfj:
-                        pov "This is only my second time doing this, after all."
-                        c "S-Second?!"
-                        pov "I-I mean... second time after practicing at home..."
-                        pov "{i}(I probably shouldn't tell him I did this with Josh once before...){/i}"
-                        pov "{i}(At least... not yet.){/i}"
-                    else:
-                        pov "This is actually my first time doing something like this."
-                        pov "I've seen some videos online, and... well..."
-                        pov "I know that some guys like this."
-                        pov "But I don't have any experience with... until now, that is."
+                    if not _in_replay:
+                        if c6joshfj:
+                            pov "This is only my second time doing this, after all."
+                            c "S-Second?!"
+                            pov "I-I mean... second time after practicing at home..."
+                            pov "{i}(I probably shouldn't tell him I did this with Josh once before...){/i}"
+                            pov "{i}(At least... not yet.){/i}"
+                        else:
+                            pov "This is actually my first time doing something like this."
+                            pov "I've seen some videos online, and... well..."
+                            pov "I know that some guys like this."
+                            pov "But I don't have any experience with... until now, that is."
                     show c13 connor fj 1
                     with dissolve
                     c "Ah..."
@@ -24234,6 +24623,10 @@ label c13haruka:
                     pov "No, no. It's fine."
                     pov "As long as you enjoyed it."
                     pov "...... I did, too."
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     show c13 connor fj 11
                     with dissolvelong
                     c "Mmm..."
@@ -24275,15 +24668,20 @@ label c13haruka:
                     with dissolve
                     pov "Is this any good?"
                     pov "I'm not really experienced with this..."
-                    if c8josh:
-                        pov "Actually, this is still only my second time."
-                        c "S-Second?!"
-                        pov "I-I mean... second time after practicing at home..."
-                        pov "{i}(I probably shouldn't tell him I did this with Josh once before...){/i}"
-                        pov "{i}(At least... not yet.){/i}"
+                    if not _in_replay:
+                        if c8josh:
+                            pov "Actually, this is still only my second time."
+                            c "S-Second?!"
+                            pov "I-I mean... second time after practicing at home..."
+                            pov "{i}(I probably shouldn't tell him I did this with Josh once before...){/i}"
+                            pov "{i}(At least... not yet.){/i}"
+                        else:
+                            pov "Actually, this is my first time doing something like this."
+                            c "R-Really?"
+                            c "You're incredible at it, though."
+                            pov "Thanks."
+                            pov "As long as you're enjoying it, I'm happy!"
                     else:
-                        pov "Actually, this is my first time doing something like this."
-                        c "R-Really?"
                         c "You're incredible at it, though."
                         pov "Thanks."
                         pov "As long as you're enjoying it, I'm happy!"
@@ -24316,6 +24714,10 @@ label c13haruka:
                     pov "No, no. It's fine."
                     pov "As long as you enjoyed it."
                     pov "...... I did, too."
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     show c13 connor tj 8
                     with dissolvelong
                     c "Mmm..."
@@ -24481,21 +24883,25 @@ label c13viotalk:
             pov "{i}(We're still kinda in the same age group.){/i}"
             pov "{i}(And a single guy still in his twenties...){/i}"
             pov "{i}(He must have sexual desire like anyone else, right?){/i}"
+            label gal_c13ritalucas:
             show c13 lucas 9
-            with dissolvelong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolvelong
             pov "Oh, well..."
             pov "You can stay."
             luc "Huh?"
             pov "I mean, you don't have to leave the room while I change."
             pov "I'm not [vio], so you don't have to worry about your butt getting kicked. {i}*giggles*{/i}"
-            if c11lucastease:
+            if c11lucastease and not _in_replay:
                 pov "Plus, it's not like this is the first time or anything."
             show c13 lucas 10
             with dissolve
             luc "Err... well, even if you aren't joking..."
             luc "I really shouldn't be here."
             luc "I'm sure it's against one or two rules for the manager to be here."
-            if c11lucastease:
+            if c11lucastease and not _in_replay:
                 luc "Although... you're right that I've already done it before..."
             else:
                 luc "Haha... you really were joking after all, right?"
@@ -24531,7 +24937,7 @@ label c13viotalk:
             show c13 lucas hj 3
             with dissolvelong
             pov "Wow... already so big."
-            if hjcount==0:
+            if hjcount==0 and not _in_replay:
                 pov "{i}(So this is what a dick feels like, huh...){/i}"
                 pov "{i}(It's a lot harder than I imagined.){/i}"
             luc "[pov], this is bad..."
@@ -24548,11 +24954,12 @@ label c13viotalk:
             pov "I'm not sure what's comfortable for guys."
             show c13 lucas hj 4
             with dissolve
-            if hjcount==0:
-                pov "To be honest, this is actually my first time doing this."
-                pov "I hope it's not too bad..."
-            if hjcount>=7:
-                pov "I have a little bit of experience, but I'm still no expert."
+            if not _in_replay:
+                if hjcount==0:
+                    pov "To be honest, this is actually my first time doing this."
+                    pov "I hope it's not too bad..."
+                if hjcount>=7:
+                    pov "I have a little bit of experience, but I'm still no expert."
             show c13 lucas hj 6
             with dissolve
             pov "Hmm..."
@@ -24617,6 +25024,10 @@ label c13viotalk:
             pov "Has it been a long time since you last did it?"
             luc "Err... I think last week some time?"
             pov "Hmm..."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             show c13 lucas hj 14
             with dissolvelong
             pov "Well, I'm definitely going to need to wipe this off."
@@ -24907,8 +25318,12 @@ label c13aftercafe:
             stop music fadeout 2.5
             pov "{i}(Yeah, I can't help it.){/i}"
             pov "{i}(Luna is so cute... I just want to be right next to her.){/i}"
+            label gal_c13ritaluna:
             show c13 lunahome 16
-            with dissolvelong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolvelong
             play music "audio/chill2.mp3" fadein 2.5 loop
             luna "[pov]...?"
             luna "Is something wrong?"
@@ -24920,23 +25335,24 @@ label c13aftercafe:
             luna "U-Umm... yes, of course."
             luna "I like sitting next to you, too, [pov]."
             pov "{i}(Something inside me... I just feel like I want her all to myself.){/i}"
-            show c13 lunahome 18
-            with dissolve
-            call check_partner("Luna")
-            if _return:
-                luna "It's been a while since we were so close to each other..."
-                luna "Since, umm... well..."
-                pov "That was a special night, huh?"
-                pov "I enjoyed it a lot."
-                pov "I've actually thought about it a lot since."
-                luna "R-Really?"
-                luna "Well, me too...."
-            else:
-                luna "I'm not used to being so close to someone..."
-                luna "...... Even with my friends from school."
-                pov "Really? Well... I'm not too experienced with these sorts of things, either."
-                pov "But I'm happy to hear that, Luna."
-                pov "I wish we could experience even more together."
+            if not _in_replay:
+                show c13 lunahome 18
+                with dissolve
+                call check_partner("Luna")
+                if _return:
+                    luna "It's been a while since we were so close to each other..."
+                    luna "Since, umm... well..."
+                    pov "That was a special night, huh?"
+                    pov "I enjoyed it a lot."
+                    pov "I've actually thought about it a lot since."
+                    luna "R-Really?"
+                    luna "Well, me too...."
+                else:
+                    luna "I'm not used to being so close to someone..."
+                    luna "...... Even with my friends from school."
+                    pov "Really? Well... I'm not too experienced with these sorts of things, either."
+                    pov "But I'm happy to hear that, Luna."
+                    pov "I wish we could experience even more together."
             show c13 lunahome 19
             with dissolvelong
             pov "Hey..."
@@ -24981,12 +25397,18 @@ label c13aftercafe:
             pov "{i}(Hmm...){/i}"
             pov "{i}(Since we both seem to be in the mood right now...){/i}"
             pov "{i}(I could take this a bit further, in a different direction.){/i}"
+            if _in_replay:
+                if persistent.c13lunasex:
+                    jump c13lunasex
+                else:
+                    jump c13lunanosex
             pov "{i}(Or... we could just continue to kiss for a while longer.){/i}"
             pov "{i}(Do I want to have sex with Luna? Or do I just want this romantic moment to continue?){/i}"
             if virgin:
                 pov "{i}(It would be my first time doing it, though...){/i}"
             menu:
                 "Make love to Luna.":
+                    label c13lunasex:
                     pov "{i}(Yeah... I want to do it.){/i}"
                     pov "{i}(Kissing Luna has just made me want her even more.){/i}"
                     pov "{i}(I want to feel her... taste her private places... as long as she's okay with it.){/i}"
@@ -25001,20 +25423,24 @@ label c13aftercafe:
                     pov "Are you fine with taking your dress off?"
                     luna "Umm... yes..."
                     luna "It's just... I'm a bit nervous."
-                    pov "No problem."
-                    call check_partner("Luna")
-                    if _return:
-                        pov "We've done it once before, but this is all still new to me as well."
+                    if not _in_replay:
+                        pov "No problem."
+                        call check_partner("Luna")
+                        if _return:
+                            pov "We've done it once before, but this is all still new to me as well."
+                        else:
+                            pov "We haven't done this with each other before, so I'm a bit nervous, too."
                     else:
-                        pov "We haven't done this with each other before, so I'm a bit nervous, too."
+                        pov "No problem. I'm a bit nervous, too."
                     pov "Whenever you're ready. We can take this at your pace."
                     show c13 lunahome 26
                     with dissolvelong
-                    call check_partner("Luna")
-                    if _return:
-                        pov "{i}(Wow... Luna is even more beautiful than the last time.){/i}"
-                    else:
-                        pov "{i}(Wow... Luna is even more beautiful than I expected.){/i}"
+                    if not _in_replay:
+                        call check_partner("Luna")
+                        if _return:
+                            pov "{i}(Wow... Luna is even more beautiful than the last time.){/i}"
+                        else:
+                            pov "{i}(Wow... Luna is even more beautiful than I expected.){/i}"
                     luna "U-Umm... is this fine?"
                     luna "I'm a little embarrassed, since... well..."
                     luna "Mine are a bit small, right...?"
@@ -25034,14 +25460,15 @@ label c13aftercafe:
                     with dissolve
                     pov "Alright... here goes."
                     pov "Try to relax as much as possible."
-                    if virgin:
-                        pov "{i}(Although I'm the one taking the lead...){/i}"
-                        pov "{i}(The reality is, I've never done anything like this before.){/i}"
-                        pov "{i}(I'm still a virgin, so... I hope I don't do this wrong.){/i}"
-                    else:
-                        pov "{i}(It's not the first time I've done something like this, but...){/i}"
-                        pov "{i}(The reality is, I'm still very inexperienced.){/i}"
-                        pov "{i}(I think I know what to do, but... I hope I do it right.){/i}"
+                    if not _in_replay:
+                        if virgin:
+                            pov "{i}(Although I'm the one taking the lead...){/i}"
+                            pov "{i}(The reality is, I've never done anything like this before.){/i}"
+                            pov "{i}(I'm still a virgin, so... I hope I don't do this wrong.){/i}"
+                        else:
+                            pov "{i}(It's not the first time I've done something like this, but...){/i}"
+                            pov "{i}(The reality is, I'm still very inexperienced.){/i}"
+                            pov "{i}(I think I know what to do, but... I hope I do it right.){/i}"
                     show c13 lunahome 29
                     with pixellate
                     pov "Mmm..."
@@ -25069,16 +25496,17 @@ label c13aftercafe:
                     pov "Just let me know if I'm being too rough."
                     luna "N-No... it's fine..."
                     luna "It just... it feels a bit strange."
-                    call check_partner("Luna")
-                    if _return:
-                        pov "{i}(It sounds like she's still not used to her vagina being touched.){/i}"
-                        pov "{i}(Judging by the last time we had sex...){/i}"
-                        pov "{i}(It didn't seem like she masturbates at all, so I guess that's to be expected.){/i}"
-                    else:
-                        pov "{i}(It sounds like she's a virgin.){/i}"
-                        pov "{i}(I'm glad... I want to be her first.){/i}"
-                        if virgin:
-                            pov "{i}(Little does she know, it's also my first time...){/i}"
+                    if not _in_replay:
+                        call check_partner("Luna")
+                        if _return:
+                            pov "{i}(It sounds like she's still not used to her vagina being touched.){/i}"
+                            pov "{i}(Judging by the last time we had sex...){/i}"
+                            pov "{i}(It didn't seem like she masturbates at all, so I guess that's to be expected.){/i}"
+                        else:
+                            pov "{i}(It sounds like she's a virgin.){/i}"
+                            pov "{i}(I'm glad... I want to be her first.){/i}"
+                            if virgin:
+                                pov "{i}(Little does she know, it's also my first time...){/i}"
                     show c13 lunahome 32
                     with dissolvelong
                     voice "audio/effects/lewd/slosh1.wav"
@@ -25099,15 +25527,16 @@ label c13aftercafe:
                     pov "And you smell wonderful, too."
                     luna "T-Thank you."
                     pov "I'm going to make you feel even better now."
-                    if virgin:
-                        pov "{i}(It's my first time...){/i}"
-                        pov "{i}(I'm pretty nervous, after all.){/i}"
-                        pov "{i}(But I'm equally excited.){/i}"
-                    call check_partner("Luna")
-                    if _return:
-                        pov "{i}(Ever since the last time we did this...){/i}"
-                        pov "{i}(I couldn't stop thinking about doing it again with Luna.){/i}"
-                        pov "{i}(And now... I finally can.){/i}"
+                    if not _in_replay:
+                        if virgin:
+                            pov "{i}(It's my first time...){/i}"
+                            pov "{i}(I'm pretty nervous, after all.){/i}"
+                            pov "{i}(But I'm equally excited.){/i}"
+                        call check_partner("Luna")
+                        if _return:
+                            pov "{i}(Ever since the last time we did this...){/i}"
+                            pov "{i}(I couldn't stop thinking about doing it again with Luna.){/i}"
+                            pov "{i}(And now... I finally can.){/i}"
                     show c13 lunahome 34
                     with dissolvelong
                     voice "audio/effects/lewd/wet1.wav"
@@ -25115,7 +25544,7 @@ label c13aftercafe:
                     pov "Mmm?"
                     luna "Ah... ohh..."
                     luna "[pov]..."
-                    if virgin:
+                    if virgin and not _in_replay:
                         pov "{i}(This is what a vagina tastes like, huh...){/i}"
                         pov "{i}(I like it... I think I could get used to this.){/i}"
                     pov "{i}(I'll try speeding up a bit more now.){/i}"
@@ -25184,6 +25613,10 @@ label c13aftercafe:
                     pov "Oh, no, it's fine for today."
                     pov "But... well..."
                     pov "If you're ever up for it, I'd like you to try it on me, too."
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     pov "I know you're not used to sexual stuff like this, so I didn't want to rush or force anything."
                     show c13 luna sexend 3
                     with dissolve
@@ -25213,6 +25646,7 @@ label c13aftercafe:
                     pov "{i}(I wonder if it'd be too risky to shower together...?){/i}"
                     "......"
                     $c13lunasex=True
+                    $persistent.c13lunasex=True
                     $virgin=False
                     call first_partner("Luna")
                     call add_partner("Luna")
@@ -25221,6 +25655,7 @@ label c13aftercafe:
                     $les+=1
                     jump c13beforespa
                 "I just want to kiss.":
+                    label c13lunanosex:
                     pov "{i}(Hmm... I don't think it'd be right to go that far.){/i}"
                     pov "{i}(I just want to kiss her even more.){/i}"
                     show c13 luna kissend 1
@@ -25236,6 +25671,10 @@ label c13aftercafe:
                     pov "Luna..."
                     stop music fadeout 2.5
                     "And so, the two continued kissing, until the sun had finally set."
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     "Was this the start of something more?"
                     "In the coming days, this would be a question they'd ponder to themselves."
                     "......"
@@ -26952,8 +27391,12 @@ label c14mixedbeach:
             pov "{i}(Yeah... especially on the beach like this, I think it could be really exciting.){/i}"
             pov "{i}(And even if they're strangers to me, well...){/i}"
             pov "{i}(It's not as though I'm the same girl I was a few months ago.){/i}"
+            label gal_c14ritaguys:
             show c14 beachnude 12m
-            with dissolvelong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolvelong
             pov "Hey, if you'd like..."
             pov "Wanna come with me and have some {i}fun{/i}?"
             pov "It's just us here, after all, right?"
@@ -26982,15 +27425,18 @@ label c14mixedbeach:
             with dissolve
             man1 "Oh, that's good."
             man1 "Pretty used to this, I take it?"
-            if hjcount==0 and bjcount==0:
-                pov "No... it's actually my first time..."
-                man1 "F-First time?!"
-                pov "Yeah... holding a penis, I mean..."
-                man2 "Maybe this is going too far...?"
-                pov "No, it's okay. I wanted to try it."
-            if hjcount>=1:
-                pov "Well, it's not my first time, but..."
-                pov "I wouldn't say I'm that experienced."
+            if not _in_replay:
+                if hjcount==0 and bjcount==0:
+                    pov "No... it's actually my first time..."
+                    man1 "F-First time?!"
+                    pov "Yeah... holding a penis, I mean..."
+                    man2 "Maybe this is going too far...?"
+                    pov "No, it's okay. I wanted to try it."
+                if hjcount>=1:
+                    pov "Well, it's not my first time, but..."
+                    pov "I wouldn't say I'm that experienced."
+            else:
+                pov "Well, I wouldn't say I'm that experienced."
             show c14 beachsex male 4
             with dissolve
             man2 "Ah..."
@@ -27066,7 +27512,7 @@ label c14mixedbeach:
             pov "{i}(At this rate, it might lead into full sex.){/i}"
             pov "{i}(And it'd be hard to stop them at that point.){/i}"
             pov "{i}(I just don't know if I prepared myself to go quite that far...){/i}"
-            if virgin:
+            if virgin and not _in_replay:
                 pov "{i}(Especially when I'm still a virgin.){/i}"
             show c14 beachsex male 14
             with dissolve
@@ -27115,6 +27561,10 @@ label c14mixedbeach:
             pov "I like it..."
             pov "{i}(The smell of semen is pretty strong, but...){/i}"
             pov "{i}(It's not a smell I dislike.){/i}"
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
             show c14 beachsex male 21
             with fadeholdlong
@@ -27322,8 +27772,12 @@ label c14femalebeach:
             pov "{i}(Yeah... especially on the beach like this, I think it could be really exciting.){/i}"
             pov "{i}(And even if they're strangers to me, well...){/i}"
             pov "{i}(It's not as though I'm the same girl I was a few months ago.){/i}"
+            label gal_c14ritagirls:
             show c14 beachnude 12f
-            with dissolvelong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolvelong
             pov "Hey, if you'd like..."
             pov "Wanna come with me and have some {i}fun{/i}?"
             pov "It's just us here, after all, right?"
@@ -27380,13 +27834,17 @@ label c14femalebeach:
             show c14 beachsex female 6
             with dissolve
             pov "{i}(It's... an intense sensation.){/i}"
-            if virgin:
-                pov "{i}(I've never done anything like this with a girl before, but...){/i}"
-                pov "{i}(Despite it being my first time, I'm doing it with two girls at once!){/i}"
-                pov "{i}(I'm such a pervert!){/i}"
+            if not _in_replay:
+                if virgin:
+                    pov "{i}(I've never done anything like this with a girl before, but...){/i}"
+                    pov "{i}(Despite it being my first time, I'm doing it with two girls at once!){/i}"
+                    pov "{i}(I'm such a pervert!){/i}"
+                else:
+                    pov "{i}(This is far better than anything else I've experienced!){/i}"
+                    pov "{i}(I can't even think straight!){/i}"
             else:
-                pov "{i}(This is far better than anything else I've experienced!){/i}"
-                pov "{i}(I can't even think straight!){/i}"
+                pov "{i}(I'm doing it with two girls at once!){/i}"
+                pov "{i}(I'm such a pervert!){/i}"
             show c14 beachsex female 7
             with dissolve
             wom1 "Mmm... you taste wonderful."
@@ -27435,7 +27893,7 @@ label c14femalebeach:
             pov "That was... just..."
             pov "That was absolutely incredible."
             pov "I've never felt like that before."
-            if virgin:
+            if virgin and not _in_replay:
                 "{i}(So this is what sex feels like, huh...){/i}"
                 "{i}(I could get addicted to this.){/i}"
             wom1 "Well, I'm just glad you enjoyed it!"
@@ -27456,10 +27914,11 @@ label c14femalebeach:
             show c14 beachsex female 17
             with dissolve
             pov "{i}(Well, I can't blame them...){/i}"
-            pov "{i}(After how good that made me feel... it being my first threesome...){/i}"
-            call check_partner("Connor")
-            if _return:
-                pov "{i}(Well, first threesome with two other girls, I mean...){/i}"
+            if not _in_replay:
+                pov "{i}(After how good that made me feel... it being my first threesome...){/i}"
+                call check_partner("Connor")
+                if _return:
+                    pov "{i}(Well, first threesome with two other girls, I mean...){/i}"
             pov "{i}(I'd need some time to recover and catch my breath, anyway, before I could return the favour.){/i}"
             wom1 "Ah, yes!!"
             wom2 "I'm about to cum!"
@@ -27470,6 +27929,10 @@ label c14femalebeach:
             wom1 "Phew! That was so much fun!"
             wom2 "Yes, I enjoyed that a lot."
             pov "T-That's good... I did, too."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             show c14 beachsex female 19
             with dissolvelong
             wom1 "Oh, right!"
@@ -27822,8 +28285,12 @@ label c14busafter:
         "Make love to [fr].":
             pov "{i}(Yeah... I don't think I can hold myself back right now.){/i}"
             pov "{i}([fr] wouldn't be opposed, right...?){/i}"
+            label gal_c14ritaharuka:
             show c14 haruka home 11
-            with dissolvelong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolvelong
             stop music fadeout 2.5
             pov "[fr]..."
             fr "W-Woah!"
@@ -27996,6 +28463,10 @@ label c14busafter:
             fr "Oh my goodness..."
             fr "That was... that was out of this world..."
             fr "This is the first time I've ever felt so good."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             pov "[fr]..."
             show c14 haruka sex after 2
             with dissolve
@@ -28302,8 +28773,12 @@ label c14cjhome:
             else:
                 pov "{i}(Yeah... I want to.){/i}"
                 pov "{i}(I'm feeling really horny right now...){/i}"
+            label gal_c14ritacj:
             show c14 cj home 5
-            with dissolvelong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolvelong
             pov "Hey, umm..."
             pov "Instead of TV or games, I have a better idea."
             pov "You wannna... do it?"
@@ -28343,10 +28818,11 @@ label c14cjhome:
             with dissolve
             j "Err... so..."
             j "How should we start?"
-            call check_partner("Connor")
-            if _return:
-                pov "Oh, please... it's not like this is the first time we've done this."
-                pov "I already took your virginities!"
+            if not _in_replay:
+                call check_partner("Connor")
+                if _return:
+                    pov "Oh, please... it's not like this is the first time we've done this."
+                    pov "I already took your virginities!"
             show c14 cj sex 4
             with dissolve
             pov "Come on the bed with me."
@@ -28370,9 +28846,10 @@ label c14cjhome:
             show c14 cj sex 7
             with dissolve
             pov "Ah..."
-            call check_partner("Connor")
-            if _return:
-                j "Wow... your tits are even bigger than I remember."
+            if _in_replay:
+                call check_partner("Connor")
+                if _return:
+                    j "Wow... your tits are even bigger than I remember."
             j "You really have one smoking body, [pov]..."
             pov "Mmm... really?"
             pov "Well, as long as it pleases you two, I'm happy."
@@ -28400,7 +28877,7 @@ label c14cjhome:
             pov "...... Okay."
             show c14 cj sex 11
             with dissolve
-            if virgin:
+            if virgin and not _in_replay:
                 pov "Just... be careful, okay?"
                 pov "It's my first time, after all..."
                 c "W-Wait, you were a virgin?!"
@@ -28416,12 +28893,12 @@ label c14cjhome:
             with dissolve
             j "I'm putting it in now... okay?"
             pov "Yes... please..."
-            if virgin:
+            if virgin and not _in_replay:
                 pov "Both of you, make me a woman..."
             show c14 cj sex 13
             with dissolve
             pov "Ah——!"
-            if virgin:
+            if virgin and not _in_replay:
                 with vpunch
                 pov "Ow..."
                 pov "{i}(It hurts a little bit, but...){/i}"
@@ -28484,7 +28961,7 @@ label c14cjhome:
             pov "Ah..."
             pov "A-Anal?"
             pov "No, I haven't..."
-            if c13analyes:
+            if c13analyes and not _in_replay:
                 pov "But... I've tried using a toy before."
             show c14 cj sex 18
             with dissolve
@@ -28493,15 +28970,25 @@ label c14cjhome:
             pov "Ummm..."
             show c14 cj sex 19
             with dissolve
+            if _in_replay and not persistent.c14dp and not persistent.c14nodp:
+                jump c14nodp
+            if _in_replay and persistent.c14dp and not persistent.c14nodp:
+                jump c14dp
+            if _in_replay and not persistent.c14dp and persistent.c14nodp:
+                jump c14nodp
             pov "{i}(What should I say...?){/i}"
-            if c13analno:
-                pov "{i}(It might hurt, and I'm not sure that it'd even feel good...){/i}"
-            if c13analyes:
-                pov "{i}(I'll admit I'm interested, and the toy did feel good.){/i}"
-                pov "{i}(But a dick...){/i}"
+            if not _in_replay:
+                if c13analno:
+                    pov "{i}(It might hurt, and I'm not sure that it'd even feel good...){/i}"
+                if c13analyes:
+                    pov "{i}(I'll admit I'm interested, and the toy did feel good.){/i}"
+                    pov "{i}(But a dick...){/i}"
             pov "......"
             menu:
                 "Try double penetration.":
+                    label c14dp:
+                    if not _in_replay:
+                        $persistent.c14dp=True
                     pov "...... OK."
                     pov "But you'll have to be {i}very{/i} gentle."
                     pov "And... Connor should go first, since he hasn't put it in yet."
@@ -28543,7 +29030,7 @@ label c14cjhome:
                     pov "It hurt more at the start, when you tried pushing in..."
                     c "I'll try moving slowly."
                     pov "Ah... okay..."
-                    if virgin:
+                    if virgin and not _in_replay:
                         pov "{i}(I can't believe it...){/i}"
                         pov "{i}(Even though I was just a virgin a few minutes ago...){/i}"
                         pov "{i}(I have both of them inside me now, in my pussy and butt...){/i}"
@@ -28674,6 +29161,10 @@ label c14cjhome:
                             pov "{i}(These sheets definitely need to be cleaned, too...){/i}"
                             pov "{i}(I'll need some time to relax after this.){/i}"
                             pov "{i}(...... Just when did I become so slutty?){/i}"
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             "......."
                             $c14cjsex=True
                             $cjhadsex=True
@@ -28740,6 +29231,10 @@ label c14cjhome:
                             pov "{i}(These sheets definitely need to be cleaned, too...){/i}"
                             pov "{i}(I'll need some time to relax after this.){/i}"
                             pov "{i}(...... Just when did I become so slutty?){/i}"
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             "......."
                             $c14cjsex=True
                             $cjhadsex=True
@@ -28755,6 +29250,9 @@ label c14cjhome:
                             call add_partner("Josh")
                             jump c14ending
                 "I only want to use my pussy.":
+                    label c14nodp:
+                    if not _in_replay:
+                        $persistent.c14nodp=True
                     pov "No... sorry..."
                     pov "It's too sudden for something like that."
                     pov "And what if it hurts?"
@@ -28840,6 +29338,10 @@ label c14cjhome:
                             pov "{i}(I should probably go take a quick shower.){/i}"
                             pov "{i}(These sheets definitely need to be cleaned, too...){/i}"
                             pov "{i}(...... Just when did I become so slutty?){/i}"
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             "......."
                             $c14cjsex=True
                             $cjhadsex=True
@@ -28901,6 +29403,10 @@ label c14cjhome:
                             pov "{i}(I should probably go take a quick shower.){/i}"
                             pov "{i}(These sheets definitely need to be cleaned, too...){/i}"
                             pov "{i}(...... Just when did I become so slutty?){/i}"
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             "......."
                             $c14cjsex=True
                             $cjhadsex=True
@@ -29022,8 +29528,12 @@ label c14vio:
             call check_partner(vioname)
             if _return:
                 pov "{i}(Plus, we've already done it before, anyway...){/i}"
+            label gal_c14ritavio:
             show c14 vio 12
-            with dissolvelong
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolvelong
             stop music fadeout 3.0
             pov "Say, [vio]..."
             vio "Hmm?"
@@ -29055,8 +29565,17 @@ label c14vio:
             vio "Or is anything fine?"
             vio "I'm guessing you were prepared, since you invited me to your place and all, so..."
             pov "Oh... right."
+            if _in_replay and not persistent.c14vagtoy and not persistent.c14analtoy:
+                jump c14vagtoy
+            if _in_replay and persistent.c14vagtoy and not persistent.c14analtoy:
+                jump c14vagtoy
+            if _in_replay and not persistent.c14vagtoy and persistent.c14analtoy:
+                jump c14analtoy
             menu:
                 "Vaginal toys.":
+                    label c14vagtoy:
+                    if not _in_replay:
+                        $persistent.c14vagtoy=True
                     show c14 vio 16
                     with dissolvelong
                     pov "Should be here..."
@@ -29113,7 +29632,7 @@ label c14vio:
                     with dissolve
                     pov "I'm ready."
                     pov "Please, [vio]..."
-                    if virgin:
+                    if virgin and not _in_replay:
                         pov "{i}(It's my first time being penetrated there...){/i}"
                         pov "{i}(I hope it doesn't hurt too much...){/i}"
                     show c14 vio vag 9
@@ -29121,7 +29640,7 @@ label c14vio:
                     pov "Ahh——!"
                     pov "Oh my god..."
                     vio "Does it hurt?"
-                    if virgin:
+                    if virgin and not _in_replay:
                         pov "A-A little bit..."
                         vio "It's not your first time, is it?"
                         pov "...... It is."
@@ -29198,6 +29717,10 @@ label c14vio:
                     pov "I'm happy you were willing to do this for me."
                     pov "I'll pay you back next time!"
                     vio "Haha, okay."
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     vio "So... wanna watch another movie?"
                     vio "There should still be enough time."
                     pov "Sure. I'd like that!"
@@ -29210,6 +29733,9 @@ label c14vio:
                     $sexexp+=1
                     jump c14ending
                 "I want to try anal.":
+                    label c14analtoy:
+                    if not _in_replay:
+                        $persistent.c14analtoy=True
                     pov "{i}(Yeah... I've been curious about anal lately.){/i}"
                     pov "{i}(And if there's anyone who could show me the ropes, it'd probably be [vio].){/i}"
                     show c14 vio 16
@@ -29350,6 +29876,10 @@ label c14vio:
                     with dissolvelong
                     pov "I'll pay you back next time, I promise!"
                     vio "Haha, alright."
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     stop music fadeout 2.5
                     vio "So... if you're not too exhausted..."
                     vio "Wanna watch another movie?"
@@ -29785,6 +30315,10 @@ label c15walkhomenight:
     with dissolve
     pov "Mmm..."
     if c14cjsex:
+        label gal_c15ritacj:
+        if _in_replay:
+            show c15 walkhome 3
+            with fadegalstart
         pov "I'm not sure why, but I've been feeling a lot hornier than usual lately."
         pov "Is it because of what happened with me, Josh, and Connor a few days ago?"
         pov "It's pretty hard to forget an experience like that."
@@ -29837,6 +30371,10 @@ label c15walkhomenight:
         pov "It's like we're sex friends, but... it goes deeper than that, I think."
         pov "There's more to it than just sex."
         pov "Although I quite enjoy the sex part..."
+        if _in_replay:
+            show black
+            with fadegalend
+        $ renpy.end_replay()
         pov "......"
         show c15 walkhome 4
         with dissolve
@@ -30498,10 +31036,14 @@ label c15saradate:
                 man "Oh, wow. Good question."
                 man "Maybe some beer to start?"
                 "......"
+                label gal_c15vioguys:
                 show c15 viosex male 1
-                with fadeholdlong
-                voice "audio/effects/lewd/smack1.wav"
-                "A few hours later..."
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with fadeholdlong
+                    voice "audio/effects/lewd/smack1.wav"
+                    "A few hours later..."
                 "While initially turned off by his proposal, [vio] would soon find herself in bed with her latest companion."
                 vio "Ah... wow..."
                 show c15 viosex male 2
@@ -30602,6 +31144,10 @@ label c15saradate:
                 with dissolve
                 voice "audio/effects/lewd/cum2.mp3"
                 "Until there was only one left, to cover her body white."
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 "......"
                 $c15viomale=True
                 jump c15girlsnight
@@ -30668,9 +31214,13 @@ label c15saradate:
                             wom "Haha. Glad you asked."
                             wom "Let's see... maybe some rum and coke to start?"
                             "......"
+                            label gal_c15viogirl:
                             show c15 viosex girl 1
-                            with fadeholdlong
-                            "A few hours later..."
+                            if _in_replay:
+                                with fadegalstart
+                            else:
+                                with fadeholdlong
+                                "A few hours later..."
                             "While initially reluctant, [vio] would soon find herself in bed with her latest companion."
                             vio "Ah..."
                             show c15 viosex girl 2
@@ -30775,6 +31325,10 @@ label c15saradate:
                             wom "I'm happy we're on the same page."
                             wom "No way I'd let you go after just one time."
                             "And so, the two would continue a while longer, until the first break of dawn..."
+                            if _in_replay:
+                                show black
+                                with fadegalend
+                            $ renpy.end_replay()
                             "......"
                             $c15violes=True
                             jump c15girlsnight
@@ -31112,8 +31666,12 @@ label c15girlsnight:
             pov "Haha, okay, okay."
             pov "I'm well aware that I'm a geek."
             pov "But, that aside..."
+            label gal_c15ritagirls:
             show c15 girlsroom 6
-            with dissolve
+            if _in_replay:
+                with fadegalstart
+            else:
+                with dissolve
             stop music fadeout 5.0
             pov "Wanna re-enact {i}that{/i} scene from the movie?"
             pov "They only showed part of what happened, so I was curious what would happen next..."
@@ -31135,7 +31693,8 @@ label c15girlsnight:
             pov "First..."
             menu:
                 "Luna first.":
-                    $lunalove+=1
+                    if not _in_replay:
+                        $lunalove+=1
                     pov "Luna, come here."
                     luna "O-Okay..."
                     show c15 girlsroom 9l
@@ -31168,7 +31727,8 @@ label c15girlsnight:
                     pov "{i}(It's time for the next step.){/i}"
                     pov "{i}(I hope they're as ready as I am.){/i}"
                 "[fr] first.":
-                    $harukalove+=1
+                    if not _in_replay:
+                        $harukalove+=1
                     pov "[fr], come here."
                     fr "Yes..."
                     show c15 girlsroom 9h
@@ -31413,6 +31973,10 @@ label c15girlsnight:
                 pov "{i}(Either way, that's a topic for another day.){/i}"
                 pov "{i}(For now, I just want to spend the next few minutes relaxing with them in bed.){/i}"
                 pov "{i}(I'll be lonely when they have to go back after...){/i}"
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 $sexexp+=1
                 $lesexp+=1
                 $virgin=False
@@ -31592,6 +32156,10 @@ label c15massage:
             menu:
                 "Ask for a more 'hands-on' massage.":
                     $sexexp+=1
+                    label gal_c15ritaspaguy:
+                    if _in_replay:
+                        show c15 spa 18m
+                        with fadegalstart
                     pov "Hey, umm..."
                     man "Yes?"
                     pov "If I gave you a tip, would you be willing to do something different for me?"
@@ -31717,6 +32285,10 @@ label c15massage:
                     pov "{i}(I would have asked for this the first time I came here.){/i}"
                     pov "{i}(...... If I came here again some time...){/i}"
                     pov "{i}(I wonder just how far they'd be willing to go?){/i}"
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     "......"
                     jump c15delivery
                 "No. That's absurd.":
@@ -31846,6 +32418,10 @@ label c15massage:
                 menu:
                     "Ask for a more 'hands-on' massage.":
                         $sexexp+=1
+                        label gal_c15ritaspagirl:
+                        if _in_replay:
+                            show c15 spa 18f
+                            with fadegalstart
                         pov "Hey, umm..."
                         wom "Yes?"
                         pov "If I gave you a tip, would you be willing to do something different for me?"
@@ -31973,6 +32549,10 @@ label c15massage:
                         pov "{i}(I would have asked for this the first time I came here.){/i}"
                         pov "{i}(...... If I came here again some time...){/i}"
                         pov "{i}(I wonder just how far she'd be willing to go?){/i}"
+                        if _in_replay:
+                            show black
+                            with fadegalend
+                        $ renpy.end_replay()
                         "......"
                         jump c15delivery
                     "No. That's absurd.":
@@ -33482,6 +34062,10 @@ label c16hotsprings:
         menu:
             "Give him a blowjob.":
                 pov "{i}(Well... I did come here for a reason.){/i}"
+                label gal_c16hotsprings:
+                if _in_replay:
+                    show c16 hotsprings 11m
+                    with fadegalstart
                 pov "I wouldn't mind spending some time together."
                 pov "But it'd have to be quick. I wouldn't want to get caught."
                 show c16 hotsprings 12m
@@ -33500,12 +34084,13 @@ label c16hotsprings:
                 man "No way. I read a post on Bllurb, but to think I'd actually..."
                 pov "That makes two of us, then."
                 pov "I'll have a taste now."
-                if bjcount<=0:
+                if bjcount<=0 and not _in_replay:
                     pov "{i}(Hopefully I can do it well.){/i}"
                     pov "{i}(I've never given a blowjob before, so...){/i}"
                 show c16 hotsprings male oral 3
                 with pixellate
-                $bjcount+=1
+                if not _in_replay:
+                    $bjcount+=1
                 voice "audio/effects/lewd/slosh1.wav"
                 pov "Mmm..."
                 man "Woah..."
@@ -33565,11 +34150,18 @@ label c16hotsprings:
                 pov "......"
                 pov "{i}(Well, I'd like to feel good too, but...){/i}"
                 pov "{i}(Is this really okay?){/i}"
+                if _in_replay and not persistent.c16mixedvag and not persistent.c16mixedanal:
+                    jump c16mixedbjonly
+                if _in_replay and persistent.c16mixedvag and not persistent.c16mixedanal:
+                    jump c16mixedvag
+                if _in_replay and not persistent.c16mixedvag and persistent.c16mixedanal:
+                    jump c16mixedanal
                 if virgin:
                     pov "{i}(I'm still a virgin, and doing it like this would be...){/i}"
                 menu:
                     "Fuck him {b}(Vaginal){/b}":
-                        if virgin:
+                        label c16mixedvag:
+                        if virgin and not _in_replay:
                             pov "{i}(I guess it wouldn't be so bad to lose my virginity here...){/i}"
                             pov "{i}(He's a stranger, so even if it went poorly... I wouldn't need to ever see him again.){/i}"
                             pov "{i}(And I've wanting to try sex for a while now, anyway.){/i}"
@@ -33588,7 +34180,7 @@ label c16hotsprings:
                         show c16 hotsprings male sex 2v
                         with dissolve
                         pov "Mmm... ahh..."
-                        if virgin:
+                        if virgin and not _in_replay:
                             pov "{i}(It hurt a little bit at first, but...){/i}"
                             pov "{i}(It's fine now.){/i}"
                             pov "{i}(I think the water made it go in easier.){/i}"
@@ -33654,7 +34246,8 @@ label c16hotsprings:
                                 pov "Hah..."
                                 pov "There's so much inside..."
                                 pov "And this is the second time for you, too..."
-                                $creampiecount+=1
+                                if not _in_replay:
+                                    $creampiecount+=1
                             "Outside!":
                                 show c16 hotsprings male sex 9v
                                 with dissolve
@@ -33687,6 +34280,10 @@ label c16hotsprings:
                         stop music fadeout 3.0
                         pov "Haha... you do that..."
                         pov "{i}(I can't believe I just had sex in public like this...){/i}"
+                        if _in_replay:
+                            show black
+                            with fadegalend
+                        $ renpy.end_replay()
                         if virgin:
                             pov "{i}(And for my first time, too...){/i}"
                         pov "......"
@@ -33698,14 +34295,17 @@ label c16hotsprings:
                         call add_partner("Hotsprings man")
                         $scount+=1
                         $c16mixedvag = True
+                        $persistent.c16mixedvag = True
                         jump c16cafe
                     "Fuck him {b}(Anal){/b}":
-                        if analvirgin:
-                            pov "{i}(I've never done anal, but...){/i}"
-                            pov "{i}(Now might not be a bad opportunity.){/i}"
-                        else:
-                            pov "{i}(I've had anal sex before, so...){/i}"
-                            pov "{i}(I guess doing it here could be fun.){/i}"
+                        label c16mixedanal:
+                        if not _in_replay:
+                            if analvirgin:
+                                pov "{i}(I've never done anal, but...){/i}"
+                                pov "{i}(Now might not be a bad opportunity.){/i}"
+                            else:
+                                pov "{i}(I've had anal sex before, so...){/i}"
+                                pov "{i}(I guess doing it here could be fun.){/i}"
                         pov "Okay..."
                         show c16 hotsprings male beforesex 4
                         with dissolve
@@ -33722,7 +34322,7 @@ label c16hotsprings:
                         show c16 hotsprings male sex 2a
                         with dissolve
                         pov "Mmm... ahh..."
-                        if analvirgin:
+                        if analvirgin and not _in_replay:
                             pov "{i}(It hurt a little bit at first, but...){/i}"
                             pov "{i}(Somehow it managed to fit in.){/i}"
                             pov "{i}(The water must have been enough lubricant.){/i}"
@@ -33819,6 +34419,10 @@ label c16hotsprings:
                         stop music fadeout 3.0
                         pov "Haha... you do that..."
                         pov "{i}(I can't believe I just had sex in public like this...){/i}"
+                        if _in_replay:
+                            show black
+                            with fadegalend
+                        $ renpy.end_replay()
                         if analvirgin:
                             pov "{i}(That was my first time trying anal, too...){/i}"
                             pov "{i}(It didn't hurt as much as I expected.){/i}"
@@ -33832,8 +34436,10 @@ label c16hotsprings:
                         call add_partner("Hotsprings man")
                         $scount+=1
                         $c16mixedanal = True
+                        $persistent.c16mixedanal = True
                         jump c16cafe
-                    "Stop here.":
+                    "Stop here." if not _in_replay:
+                        label c16mixedbjonly:
                         pov "{i}(No way!){/i}"
                         show c16 hotsprings male beforesex 4
                         with dissolve
@@ -33862,9 +34468,14 @@ label c16hotsprings:
                         pov "{i}(It was fun, and we didn't get caught, so I can't complain too much.){/i}"
                         pov "{i}(I should clean up and get going soon.){/i}"
                         pov "{i}(There's still some of his cum in the back of my throat...){/i}"
+                        if _in_replay:
+                            show black
+                            with fadegalend
+                        $ renpy.end_replay()
                         "......"
                         $sexexp+=1
                         $c16mixedbjonly = True
+                        $persistent.c16mixedbjonly = True
                         jump c16cafe
             "I'm just here to relax.":
                 pov "{i}(No... this is way too sudden.){/i}"
@@ -34733,8 +35344,12 @@ label c16endchapter:
                 jump c17day2start
 
 label c17spafemalescene:
+    label gal_c17ritaspagirl:
     show c17 spa 9f
-    with dissolvelong
+    if _in_replay:
+        with fadegalstart
+    else:
+        with dissolvelong
     wom "Oh, I'm very sorry..."
     wom "I did not know you were still changing."
     show c17 spa 10f
@@ -34866,11 +35481,6 @@ label c17spafemalescene:
     pov "Yes, very..."
     pov "You ever thought of starting your own business...?"
     "......"
-    $virgin=False
-    call first_partner("Masseuse")
-    call add_partner("Masseuse")
-    $lesexp+=1
-    $sexexp+=1
     show c17 spasexafter 1
     with fadeholdlong
     pov "{i}(That was quite an experience.){/i}"
@@ -34892,12 +35502,25 @@ label c17spafemalescene:
     pov "{i}(You know, part of this feels kinda dirty, though...){/i}"
     pov "{i}(Like I just went to a brothel of some sort, as a customer...){/i}"
     pov "{i}(A fantastic brothel, if it was one...){/i}"
+    if _in_replay:
+        show black
+        with fadegalend
+    $ renpy.end_replay()
     "......"
+    $virgin=False
+    call first_partner("Masseuse")
+    call add_partner("Masseuse")
+    $lesexp+=1
+    $sexexp+=1
     jump c17day2start
 
 label c17spamalescene:
+    label gal_c17ritaspaguy:
     show c17 spa 9m
-    with dissolvelong
+    if _in_replay:
+        with fadegalstart
+    else:
+        with dissolvelong
     man "Oh, I'm very sorry..."
     man "I should have double checked to make sure you were not still changing..."
     show c17 spa 10m
@@ -34969,7 +35592,7 @@ label c17spamalescene:
     pov "{i}(He's really about to put it in?){/i}"
     pov "{i}(The lack of foreplay has me a bit worried, but...){/i}"
     pov "{i}(I'm guessing the lotion he's poured will help with that.){/i}"
-    if virgin:
+    if virgin and not _in_replay:
         pov "By the way... umm..."
         pov "It's my first time doing this, actually, so..."
         man "R-Really?"
@@ -34983,7 +35606,7 @@ label c17spamalescene:
     show c17 spasex 10m
     with dissolve
     pov "Ahh..."
-    if virgin:
+    if virgin and not _in_replay:
         pov "{i}(It's in already...?){/i}"
         pov "{i}(That wasn't nearly as painful as I'd have thought.){/i}"
         pov "{i}(Huh. Could it have been the lotion?){/i}"
@@ -35073,12 +35696,8 @@ label c17spamalescene:
             pov "Yes..."
             pov "Very much so..."
             pov "{i}(I can feel the warmth inside me...){/i}"
-            $virgin=False
-            call first_partner("Masseur")
-            call add_partner("Masseur")
-            $creampiecount+=1
-            $sexexp+=1
-            $scount+=1
+            if not _in_replay:
+                $creampiecount+=1
         "Cum outside.":
             pov "Outside, please..."
             man "Okay."
@@ -35091,11 +35710,6 @@ label c17spamalescene:
             pov "W-Woah..."
             pov "That's a lot, isn't it..."
             pov "It's all over my butt, and even on the blanket..."
-            $virgin=False
-            call first_partner("Masseur")
-            call add_partner("Masseur")
-            $sexexp+=1
-            $scount+=1
     show c17 spasexafter 1
     with fadeholdlong
     pov "{i}(That was... quite an experience.){/i}"
@@ -35117,7 +35731,16 @@ label c17spamalescene:
     pov "{i}(You know, part of this feels kinda dirty, though...){/i}"
     pov "{i}(Like I just went to a brothel of some sort, as a customer...){/i}"
     pov "{i}(A fantastic brothel, if it was one...){/i}"
+    if _in_replay:
+        show black
+        with fadegalend
+    $ renpy.end_replay()
     "......"
+    $virgin=False
+    call first_partner("Masseur")
+    call add_partner("Masseur")
+    $sexexp+=1
+    $scount+=1
     jump c17day2start
 
 label c17day2start:
@@ -35490,9 +36113,17 @@ label c17hotsprings:
     pov "{i}(What should I do?){/i}"
     menu:
         "Have 'fun' with her and [vio].":
+            label gal_c17hotsprings:
+            if _in_replay:
+                show c17 hotsprings 13
+                with fadegalstart
+                wom "Nobody to bother us now, though."
+                wom "At least not for a little while."
+                wom "You two wanna have some fun?"
+                show c17 hotsprings 14
+                with dissolve
             pov "{i}(I came all this way for a reason...){/i}"
             "......"
-            $c17hotspringsthreesome=True
             show c17 hotsprings sex 1
             with fadeholdlong
             pov "Are you ready?"
@@ -35613,7 +36244,12 @@ label c17hotsprings:
             pov "{i}(If an old lady or someone walked in on us, we'd be in big trouble.){/i}"
             pov "{i}(But, well...){/i}"
             pov "{i}(That thrill is exactly what makes this so hot to me.){/i}"
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
+            $c17hotspringsthreesome=True
             $virgin=False
             call first_partner("Hotsprings girl")
             $les+=1
@@ -35662,6 +36298,7 @@ label c17hotsprings:
                 jump c17endingnopoker
 
 label c17pokermale:
+    $c17pokersexboys=True
     scene c17 poker boys 1
     with fadeholdlong
     show oct 9 with dissolvelong
@@ -35777,8 +36414,12 @@ label c17pokermale:
     with dissolve
     pov "{i}(And the loser... no other than yours truly.){/i}"
     pov "Aw, geez..."
+    label gal_c17pokerguys:
     show c17 pokerafter 1 rita sclothes
-    with dissolvelong
+    if _in_replay:
+        with fadegalstart
+    else:
+        with dissolvelong
     pov "That was a lot of fun."
     pov "But... you were all trying to get me naked, weren't you?"
     show c17 pokerafter 2 rita sclothes
@@ -35821,7 +36462,6 @@ label c17pokermale:
     ev "......"
     show c17 pokersex boys 1
     with fadeholdlong
-    $c17pokersexboys=True
     play music "audio/chill2.mp3" fadein 2.5 loop
     pov "Ah..."
     pov "H-Hey, not so fast..."
@@ -35843,7 +36483,7 @@ label c17pokermale:
     with dissolve
     ced "Yup."
     ced "They told me they had a hot friend, but I didn't know you were {i}this{/i} hot!"
-    if c16threeboystease:
+    if c16threeboystease and not _in_replay:
         ced "When you came over to Josh's place before, and gave us that show, I had a boner then, too."
         pov "Woah, okay. Too much information..."
     show c17 pokersex boys 4
@@ -35868,7 +36508,7 @@ label c17pokermale:
     with dissolve
     pov "Shh. You'll both get your turn, too."
     pov "...... Are you ready?"
-    if virgin:
+    if virgin and not _in_replay:
         pov "It's my first time, so don't be too rough..."
         ced "W-Wait, really?"
         ced "You guys haven't already plowed her before? Pshh."
@@ -35878,7 +36518,7 @@ label c17pokermale:
     show c17 pokersex boys 10
     with dissolve
     pov "{i}(Here it comes...){/i}"
-    if virgin:
+    if virgin and not _in_replay:
         pov "{i}(I hope it doesn't hurt too much.){/i}"
     show c17 pokersex boys 11
     with dissolve
@@ -35890,7 +36530,7 @@ label c17pokermale:
     with pixellate
     pov "Ah?!"
     pov "{i}(I-It's in...){/}"
-    if virgin:
+    if virgin and not _in_replay:
         pov "{i}(I'm not a virgin anymore now, huh...){/i}"
     ced "W-Woah!"
     ced "Your pussy is sucking me in."
@@ -35936,8 +36576,15 @@ label c17pokermale:
     show c17 pokersex boys 18
     with dissolve
     pov "T-That's..."
+    if _in_replay and not persistent.c17dp and not persistent.c17nodp:
+        jump c17nodp
+    if _in_replay and persistent.c17dp and not persistent.c17nodp:
+        jump c17dp
+    if _in_replay and not persistent.c17dp and persistent.c17nodp:
+        jump c17nodp
     menu:
         "Use all holes.":
+            label c17dp:
             pov "S-Sure..."
             show c17 pokersex boys 19
             with dissolve
@@ -35952,10 +36599,11 @@ label c17pokermale:
             show c17 pokersex boys 21
             with dissolve
             pov "O-Okay."
-            if analvirgin:
-                pov "It's my first time doing anal, so I'm trusting you..."
-            else:
-                pov "It's not my first time, but I'm still not used to doing anal..."
+            if not _in_replay:
+                if analvirgin:
+                    pov "It's my first time doing anal, so I'm trusting you..."
+                else:
+                    pov "It's not my first time, but I'm still not used to doing anal..."
             show c17 pokersex boys 22
             with dissolvelong
             pov "Ahh——!"
@@ -36014,57 +36662,9 @@ label c17pokermale:
                     pov "You came so much..."
                     pov "My pussy, my ass, even my mouth..."
                     pov "They all feel so warm."
-                    $virgin=False
-                    call first_partner("CJ & Cedrick")
-                    call add_partner("Connor")
-                    call add_partner("Josh")
-                    call add_partner("Cedrick")
-                    $scount+=3
-                    $sexexp+=3
-                    $ascount+=2
-                    $bjcount+=3
-                    $hjcount+=3
-                    $creampiecount+=2
-                    $analvirgin=False
-                    $ascount+=1
-                    show c17 pokersex boys 30
-                    with fadeholdlong
-                    pov "Hah..."
-                    pov "You three sure didn't hold back at all..."
-                    show c17 pokersex boys 31
-                    with dissolve
-                    ced "You're too hot for us to play gentle!"
-                    show c17 pokersex boys 32
-                    with dissolve
-                    pov "And to think, you were a virgin just a few minutes ago..."
-                    pov "Boys can really be animals sometimes..."
-                    pov "Not that I mind, though."
-                    pov "I enjoyed it a lot too..."
-                    "......"
-                    show c17 ending 1
-                    with fadeholdlong
-                    pov "Whew..."
-                    pov "That was a good shower."
-                    pov "After everything that just happened, I definitely needed one."
-                    pov "Today was... quite a day."
-                    pov "I was expecting things to get raunchy, but that was definitely on a different level..."
-                    show c17 ending 2
-                    with dissolve
-                    stop music fadeout 3.0
-                    pov "...... Hmm."
-                    pov "You know, this apartment is starting to seem a little big for one person."
-                    pov "I could ask for a roommate, but..."
-                    show c17 ending 3
-                    with dissolve
-                    pov "If I was going to live with another person, I'd like it to be someone I was in a relationship with."
-                    show c17 ending 4
-                    with dissolve
-                    pov "A relationship, though..."
-                    show c17 ending 5
-                    with dissolve
-                    pov "Is that something I'm even prepared for?"
-                    "......"
-                    jump c17endchapter
+                    if not _in_replay:
+                        $creampiecount+=2
+                        $ascount+=1
                 "Cum outside.":
                     pov "O-Outside, please."
                     pov "Just to be safe."
@@ -36083,56 +36683,62 @@ label c17pokermale:
                     with vpunch
                     pov "Ohh——!"
                     "......"
-                    $virgin=False
-                    call first_partner("CJ & Cedrick")
-                    call add_partner("Connor")
-                    call add_partner("Josh")
-                    call add_partner("Cedrick")
-                    $scount+=3
-                    $sexexp+=3
-                    $ascount+=2
-                    $bjcount+=3
-                    $hjcount+=3
-                    $analvirgin=False
-                    show c17 pokersex boys 30
-                    with fadeholdlong
-                    pov "Hah..."
-                    pov "You three sure didn't hold back at all..."
-                    show c17 pokersex boys 31
-                    with dissolve
-                    ced "You're too hot for us to play gentle!"
-                    show c17 pokersex boys 32
-                    with dissolve
-                    pov "And to think, you were a virgin just a few minutes ago..."
-                    pov "Boys can really be animals sometimes..."
-                    pov "Not that I mind, though."
-                    pov "I enjoyed it a lot too..."
-                    "......"
-                    show c17 ending 1
-                    with fadeholdlong
-                    pov "Whew..."
-                    pov "That was a good shower."
-                    pov "After everything that just happened, I definitely needed one."
-                    pov "Today was... quite a day."
-                    pov "I was expecting things to get raunchy, but that was definitely on a different level..."
-                    show c17 ending 2
-                    with dissolve
-                    stop music fadeout 3.0
-                    pov "...... Hmm."
-                    pov "You know, this apartment is starting to seem a little big for one person."
-                    pov "I could ask for a roommate, but..."
-                    show c17 ending 3
-                    with dissolve
-                    pov "If I was going to live with another person, I'd like it to be someone I was in a relationship with."
-                    show c17 ending 4
-                    with dissolve
-                    pov "A relationship, though..."
-                    show c17 ending 5
-                    with dissolve
-                    pov "Is that something I'm even prepared for?"
-                    "......"
-                    jump c17endchapter
+            show c17 pokersex boys 30
+            with fadeholdlong
+            pov "Hah..."
+            pov "You three sure didn't hold back at all..."
+            show c17 pokersex boys 31
+            with dissolve
+            ced "You're too hot for us to play gentle!"
+            show c17 pokersex boys 32
+            with dissolve
+            pov "And to think, you were a virgin just a few minutes ago..."
+            pov "Boys can really be animals sometimes..."
+            pov "Not that I mind, though."
+            pov "I enjoyed it a lot too..."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
+            "......"
+            $persistent.c17dp=True
+            $virgin=False
+            $analvirgin=False
+            call first_partner("CJ & Cedrick")
+            call add_partner("Connor")
+            call add_partner("Josh")
+            call add_partner("Cedrick")
+            $scount+=3
+            $sexexp+=3
+            $ascount+=2
+            $bjcount+=3
+            $hjcount+=3
+            show c17 ending 1
+            with fadeholdlong
+            pov "Whew..."
+            pov "That was a good shower."
+            pov "After everything that just happened, I definitely needed one."
+            pov "Today was... quite a day."
+            pov "I was expecting things to get raunchy, but that was definitely on a different level..."
+            show c17 ending 2
+            with dissolve
+            stop music fadeout 3.0
+            pov "...... Hmm."
+            pov "You know, this apartment is starting to seem a little big for one person."
+            pov "I could ask for a roommate, but..."
+            show c17 ending 3
+            with dissolve
+            pov "If I was going to live with another person, I'd like it to be someone I was in a relationship with."
+            show c17 ending 4
+            with dissolve
+            pov "A relationship, though..."
+            show c17 ending 5
+            with dissolve
+            pov "Is that something I'm even prepared for?"
+            "......"
+            jump c17endchapter
         "Vaginal only.":
+            label c17nodp:
             pov "N-No... I don't want to."
             show c17 pokersex boys 19
             with dissolve
@@ -36166,16 +36772,8 @@ label c17pokermale:
                     with vpunch
                     pov "?!"
                     "......"
-                    $virgin=False
-                    call first_partner("CJ & Cedrick")
-                    call add_partner("Connor")
-                    call add_partner("Josh")
-                    call add_partner("Cedrick")
-                    $scount+=3
-                    $sexexp+=3
-                    $bjcount+=3
-                    $hjcount+=3
-                    $creampiecount+=2
+                    if not _in_replay:
+                        $creampiecount+=2
                 "Cum outside.":
                     pov "O-Outside, please..."
                     pov "Just to be safe."
@@ -36196,15 +36794,6 @@ label c17pokermale:
                     with vpunch
                     pov "?!"
                     "......"
-                    $virgin=False
-                    call first_partner("CJ & Cedrick")
-                    call add_partner("Connor")
-                    call add_partner("Josh")
-                    call add_partner("Cedrick")
-                    $scount+=3
-                    $sexexp+=3
-                    $bjcount+=3
-                    $hjcount+=3
             show c17 pokersex boys 30
             with fadeholdlong
             pov "Hah..."
@@ -36218,7 +36807,21 @@ label c17pokermale:
             pov "Boys can really be animals sometimes..."
             pov "Not that I mind, though."
             pov "I enjoyed it a lot too..."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
+            $persistent.c17nodp=True
+            $virgin=False
+            call first_partner("CJ & Cedrick")
+            call add_partner("Connor")
+            call add_partner("Josh")
+            call add_partner("Cedrick")
+            $scount+=3
+            $sexexp+=3
+            $bjcount+=3
+            $hjcount+=3
             show c17 ending 1
             with fadeholdlong
             pov "Whew..."
@@ -36245,6 +36848,7 @@ label c17pokermale:
             jump c17endchapter
 
 label c17pokergirls:
+    $c17pokersexgirls=True
     scene c17 poker girls 1
     with fadeholdlong
     play music "<from 1.6>audio/absurd.mp3" fadein 0.5 loop
@@ -36381,8 +36985,12 @@ label c17pokergirls:
     with dissolve
     pov "{i}(And the loser... no other than yours truly.){/i}"
     pov "Aw, geez..."
+    label gal_c17pokergirls:
     show c17 pokerafter 1 rita nclothes
-    with dissolvelong
+    if _in_replay:
+        with fadegalstart
+    else:
+        with dissolvelong
     pov "That was a lot of fun."
     pov "But... you were all trying to get me naked, weren't you?"
     show c17 pokerafter 2 rita nclothes
@@ -36424,7 +37032,6 @@ label c17pokergirls:
     ev "......"
     show c17 pokersex girls 1
     with fadeholdlong
-    $c17pokersexgirls=True
     play music "audio/chill2.mp3" fadein 2.5 loop
     pov "Mmm..."
     fr "Ah, [pov]..."
@@ -36492,12 +37099,6 @@ label c17pokergirls:
     pov "{i}(I've experienced many, many orgasms over the years, but what I felt in that moment...){/i}"
     pov "{i}(It surpassed anything I could have ever imagined.){/i}"
     "......"
-    $virgin=False
-    call first_partner(frname)
-    call add_partner(frname)
-    call add_partner(vioname)
-    $lesexp+=2
-    $sexexp+=2
     show c17 pokersex girls 15
     with fadeholdlong
     pov "{i}(That... that was quite something.){/i}"
@@ -36516,7 +37117,17 @@ label c17pokergirls:
     show c17 pokersex girls 16
     with dissolve
     fr "Yeah, I'd like that..."
+    if _in_replay:
+        show black
+        with fadegalend
+    $ renpy.end_replay()
     "......"
+    $virgin=False
+    call first_partner(frname)
+    call add_partner(frname)
+    call add_partner(vioname)
+    $lesexp+=2
+    $sexexp+=2
     show c17 ending 1
     with fadeholdlong
     pov "Whew..."
@@ -36542,6 +37153,7 @@ label c17pokergirls:
     jump c17endchapter
 
 label c17pokervio:
+    $c17pokersexvio=True
     scene c17 poker violet 1
     with fadeholdlong
     play music "<from 1.6>audio/absurd.mp3" fadein 0.5 loop
@@ -36649,8 +37261,12 @@ label c17pokervio:
     with dissolve
     pov "{i}(And the loser... no other than yours truly.){/i}"
     pov "Aw, geez..."
+    label gal_c17pokervio:
     show c17 pokerafter 1 rita sclothes
-    with dissolvelong
+    if _in_replay:
+        with fadegalstart
+    else:
+        with dissolvelong
     pov "That was a lot of fun."
     pov "But... you were all trying to get me naked, weren't you?"
     show c17 pokerafter 2 rita sclothes
@@ -36693,7 +37309,6 @@ label c17pokervio:
     ev "......"
     show c17 pokersex violet 1
     with fadeholdlong
-    $c17pokersexvio=True
     play music "audio/chill2.mp3" fadein 2.5 loop
     pov "Mmmm..."
     ni "Your tits are pretty big, huh."
@@ -36748,7 +37363,7 @@ label c17pokervio:
     ni "I'm gonna put it in now."
     ni "You fine with that?"
     pov "Y-Yeah..."
-    if virgin:
+    if virgin and not _in_replay:
         pov "{i}(It's my first time, but I can't really back out at this point...){/i}"
         pov "{i}(Besides, I've always wanted to try having sex, so this as good an opportunity as any.){/i}"
     else:
@@ -36760,7 +37375,7 @@ label c17pokervio:
     show c17 pokersex violet 12
     with dissolve
     ni "It's sliding in."
-    if virgin:
+    if virgin and not _in_replay:
         pov "O-Ow..."
     else:
         pov "Ah..."
@@ -36865,6 +37480,10 @@ label c17pokervio:
     pov "{i}(Well, the three of them have a lot of stamina, I'll give them that.){/i}"
     pov "{i}(More than me, as it's clear right now...){/i}"
     pov "{i}(Tonight was definitely a wild night...){/i}"
+    if _in_replay:
+        show black
+        with fadegalend
+    $ renpy.end_replay()
     $virgin=False
     call first_partner("Nick")
     call add_partner("Nick")
@@ -36897,6 +37516,7 @@ label c17pokervio:
     jump c17endchapter
 
 label c17pokerharuka:
+    $c17pokersexhar=True
     scene c17 poker haruka 1
     with fadeholdlong
     play music "<from 1.6>audio/absurd.mp3" fadein 0.5 loop
@@ -37040,8 +37660,12 @@ label c17pokerharuka:
     with dissolve
     pov "{i}(And the loser... no other than yours truly.){/i}"
     pov "Aw, geez..."
+    label gal_c17pokerharuka:
     show c17 pokerafter 1 rita nclothes
-    with dissolvelong
+    if _in_replay:
+        with fadegalstart
+    else:
+        with dissolvelong
     pov "That was a lot of fun."
     pov "But... you were all trying to get me naked, weren't you?"
     show c17 pokerafter 2 rita nclothes
@@ -37084,7 +37708,6 @@ label c17pokerharuka:
     ev "......"
     show c17 pokersex haruka 1
     with fadeholdlong
-    $c17pokersexhar=True
     play music "audio/chill2.mp3" fadein 2.5 loop
     pov "Ah..."
     pov "H-Hey, not so fast..."
@@ -37199,7 +37822,7 @@ label c17pokerharuka:
     with dissolvelong
     pov "Ahh——!"
     j "You're squeezing me in, [pov]."
-    if virgin:
+    if virgin and not _in_replay:
         pov "O-Ow..."
         pov "It's my first time, too."
         j "S-Sorry."
@@ -37286,7 +37909,8 @@ label c17pokerharuka:
             pov "...... You let out so much inside me."
             pov "{i}(I think I could get addicted to creampies...){/i}"
             "......"
-            $creampiecount+=1
+            if not _in_replay:
+                $creampiecount+=1
         "Cum outside.":
             pov "O-Outside!"
             pov "{i}(I don't know what [fr] would think of me if I allowed a creampie...){/i}"
@@ -37348,6 +37972,10 @@ label c17pokerharuka:
     fr "Hehe... really?"
     fr "I'm happy to hear that."
     pov "{i}(Tonight was definitely an... unusual experience...){/i}"
+    if _in_replay:
+        show black
+        with fadegalend
+    $ renpy.end_replay()
     "......"
     $virgin=False
     call first_partner("Josh")
@@ -37865,10 +38493,14 @@ label c18lunamale:
     jacob "......"
     luna "Hmm?"
     luna "Is something wrong?"
+    label gal_c18lunaguy:
     show c18 luna male 5
-    with dissolve
-    jacob "O-Oh, nothing at all."
-    jacob "Sorry. Just lost my train of thought for a second."
+    if _in_replay:
+        with fadegalstart
+    else:
+        with dissolve
+        jacob "O-Oh, nothing at all."
+        jacob "Sorry. Just lost my train of thought for a second."
     jacob "Are you planning to stay around for long today?"
     show c18 luna male 6
     with dissolve
@@ -38019,9 +38651,15 @@ label c18lunamale:
     luna "{i}(He's taking off his underwear...){/i}"
     luna "{i}(I knew it... he was thinking something perverted all along.){/i}"
     luna "{i}(T-This is...){/i}"
+    if _in_replay:
+        if persistent.c18lunasexmale:
+            jump c18lunasexmale
+        else:
+            jump c18lunanosexmale
     luna "{i}(What should I do...){/i}"
     menu:
         "Let him continue.":
+            label c18lunasexmale:
             show c18 luna male 30
             with dissolvelong
             jacob "Well, Luna? Can you help me out?"
@@ -38130,10 +38768,16 @@ label c18lunamale:
             luna "{i}(Is it really okay for me to do this with a boy I'm not dating...?){/i}"
             luna "{i}(Mom would get so mad at me if she found out!){/i}"
             luna "{i}(Sorry, mom... but I'll need to keep a secret just this once..."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
             $c18lunasexmale=True
+            $persistent.c18lunasexmale=True
             jump c18cafe
         "Ask to stop.":
+            label c18lunanosexmale:
             show c18 luna male cancel 1
             with dissolvesemilong
             luna "{i}(N-No way!){/i}"
@@ -38152,6 +38796,10 @@ label c18lunamale:
             luna "{i}(I'm not that naughty...){/i}"
             luna "{i}(......){/i}"
             luna "{i}(R-Right...?){/i}"
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             jump c18cafe
 
 label c18lunafemale:
@@ -38172,13 +38820,17 @@ label c18lunafemale:
     luna "I was scared they were avoiding me or something..."
     lily "Aww, no, nothing like that."
     lily "Actually, they've only been saying positive things about you."
+    label gal_c18lunagirl:
     show c18 luna female 4
-    with dissolve
-    lily "......"
-    luna "Hmm?"
-    luna "Is something wrong?"
-    lily "O-Oh, nothing at all."
-    lily "Sorry... just lost my train of thought for a second."
+    if _in_replay:
+        with fadegalstart
+    else:
+        with dissolve
+        lily "......"
+        luna "Hmm?"
+        luna "Is something wrong?"
+        lily "O-Oh, nothing at all."
+        lily "Sorry... just lost my train of thought for a second."
     lily "Are you planning to stay around for long today?"
     show c18 luna female 5
     with dissolve
@@ -38257,12 +38909,13 @@ label c18lunafemale:
     show c18 luna female 16
     with dissolve
     lily "Luna, did anyone ever tell you that you have a beautiful body?"
-    call check_partner("Luna")
-    if _return:
-        luna "U-Umm... one girl did..."
-        luna "{i}([pov]...){/i}"
-    else:
-        luna "U-Umm... not really..."
+    if not _in_replay:
+        call check_partner("Luna")
+        if _return:
+            luna "U-Umm... one girl did..."
+            luna "{i}([pov]...){/i}"
+        else:
+            luna "U-Umm... not really..."
     show c18 luna female 17
     with dissolve
     lily "{i}*cough*{/i}"
@@ -38293,9 +38946,10 @@ label c18lunafemale:
     lily "You have a nice butt... or, I should say..."
     luna "R-Really?"
     luna "There's a lot of girls who are so much bigger than me, though..."
-    call check_partner("Luna")
-    if _return:
-        luna "... Like my friend, [pov]..."
+    if not _in_replay:
+        call check_partner("Luna")
+        if _return:
+            luna "... Like my friend, [pov]..."
     show c18 luna female 21
     with dissolve
     lily "Maybe, but it... it depends on the girl."
@@ -38334,9 +38988,15 @@ label c18lunafemale:
     luna "{i}(She's taking off her bra...){/i}"
     luna "{i}(I knew it... she was thinking something perverted all along.){/i}"
     luna "{i}(T-This is...){/i}"
+    if _in_replay:
+        if persistent.c18lunasexfemale:
+            jump c18lunasexfemale
+        else:
+            jump c18lunanosexfemale
     luna "{i}(What should I do...){/i}"
     menu:
         "Let her continue.":
+            label c18lunasexfemale:
             show c18 luna female 29
             with dissolvelong
             lily "Well, Luna? Can I be more... direct?"
@@ -38371,18 +39031,24 @@ label c18lunafemale:
             lily "Shh, Luna. You'll find out soon enough."
             lily "It'll feel good for you. I promise."
             lily "But if it doesn't... just let me know. I'll stop right away."
-            call check_partner("Luna")
-            if _return:
-                luna "Okay... I understand."
+            if not _in_replay:
+                call check_partner("Luna")
+                if _return:
+                    luna "Okay... I understand."
+                else:
+                    luna "O-Okay...?"
             else:
                 luna "O-Okay...?"
             show c18 luna female 35
             with dissolvesemilong
             lily "Mmm... {i}*lick*{/i}"
             luna "Ahh——?!"
-            call check_partner("Luna")
-            if _return:
-                luna "Ah, that's my..."
+            if not _in_replay:
+                call check_partner("Luna")
+                if _return:
+                    luna "Ah, that's my..."
+                else:
+                    luna "Wait, Lily, that's my..."
             else:
                 luna "Wait, Lily, that's my..."
             lily "Mmmm... mhmm..."
@@ -38392,9 +39058,12 @@ label c18lunafemale:
             luna "{i}(Another girl is licking my most private spot...){/i}"
             luna "{i}(But...){/i}"
             luna "{i}(It feels so good.){/i}"
-            call check_partner("Luna")
-            if _return:
-                luna "{i}(... Not as good as when I was with [pov], but it's close...){/i}"
+            if not _in_replay:
+                call check_partner("Luna")
+                if _return:
+                    luna "{i}(... Not as good as when I was with [pov], but it's close...){/i}"
+                else:
+                    luna "{i}(I wonder if it's normal to be this sensitive...?){/i}"
             else:
                 luna "{i}(I wonder if it's normal to be this sensitive...?){/i}"
             show c18 luna female 37
@@ -38405,12 +39074,18 @@ label c18lunafemale:
             luna "C-Close...? Well..."
             show c18 luna female 38
             with dissolvesemilong
-            call check_partner("Luna")
-            if _return:
-                luna "I-I think I might be getting there..."
-                luna "I-Is that okay?"
-                lily "Of course."
-                lily "Whenever you're ready, Luna."
+            if not _in_replay:
+                call check_partner("Luna")
+                if _return:
+                    luna "I-I think I might be getting there..."
+                    luna "I-Is that okay?"
+                    lily "Of course."
+                    lily "Whenever you're ready, Luna."
+                else:
+                    luna "I-I feel like something is about to explode..."
+                    luna "I-Is that what you mean?"
+                    lily "Mmm... perhaps..."
+                    lily "Not all girls have the same type of orgasm, but... that's most likely it."
             else:
                 luna "I-I feel like something is about to explode..."
                 luna "I-Is that what you mean?"
@@ -38445,10 +39120,16 @@ label c18lunafemale:
             luna "{i}(Is it really okay for me to do this with someone I'm not dating...?){/i}"
             luna "{i}(Mom would get so mad at me if she found out.){/i}"
             luna "{i}(Sorry, mom... but I'll need to keep a secret just this once..."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
             $c18lunasexfemale=True
+            $persistent.c18lunasexfemale=True
             jump c18cafe
         "Ask to stop.":
+            label c18lunanosexfemale:
             show c18 luna female cancel 1
             with dissolvesemilong
             luna "{i}(N-No way!){/i}"
@@ -38468,6 +39149,10 @@ label c18lunafemale:
             luna "{i}(... I'm not that naughty.){/i}"
             luna "{i}(......){/i}"
             luna "{i}(R-Right...?){/i}"
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             jump c18cafe
 
 label c18cafe:
@@ -38697,9 +39382,13 @@ label c18cafe:
                 pov "Come on over here, and tell us about yourselves."
                 pov "Perhaps we could get along quite nicely..."
                 "......"
+                label gal_c18stripgirls:
                 show c18 stripclubsex female 1
-                with fadeholdlong
-                with Pause(1)
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with fadeholdlong
+                    with Pause(1)
                 play music "audio/blues.ogg" fadein 4.0 loop
                 "A little while later... in the back of a certain seedy stripclub..."
                 "With a couple more drinks, [vio] and one of her new friends had disappeared into the bathroom together."
@@ -38776,6 +39465,10 @@ label c18cafe:
                 "The carnal pleasure, combined with the thrill of doing it in public, had made this an experience [pov] was unlikely to ever forget."
                 "That is, until the next opportunity..."
                 "... 'Perhaps being a slut isn't so bad', she had thought."
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 "......"
                 $c18stripclubsexfemale=True
                 $virgin=False
@@ -38832,9 +39525,13 @@ label c18cafe:
                 pov "E-Err... that's not it..."
                 pov "You see, there was actually someone else I was thinking about instead..."
                 vio "... Oh? And who might that be?"
+                label gal_c18stripvio:
                 show c18 stripclubsex female violet 1
-                with fadeholdlong
-                with Pause(1)
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with fadeholdlong
+                    with Pause(1)
                 play music "audio/blues.ogg" fadein 4.0 loop
                 "A little while later... in the back of a certain seedy stripclub..."
                 "With a couple more drinks, [vio] and [pov] decided to have raunchy fun together."
@@ -38914,6 +39611,10 @@ label c18cafe:
                 "The carnal pleasure, combined with the thrill of doing it in public with her friend, had made this an experience [pov] was unlikely to ever forget."
                 "That is, until the next opportunity..."
                 "... 'Perhaps being a slut isn't so bad', she had thought."
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 "......"
                 $c18stripclubsexvio=True
                 $virgin=False
@@ -38971,9 +39672,13 @@ label c18cafe:
                 pov "Come on over here, and tell us about yourselves."
                 pov "Perhaps we could get along quite nicely..."
                 "......"
+                label gal_c18stripguys:
                 show c18 stripclubsex male 1
-                with fadeholdlong
-                with Pause(1)
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with fadeholdlong
+                    with Pause(1)
                 play music "audio/blues.ogg" fadein 4.0 loop
                 "A little while later... in the back of a certain seedy stripclub..."
                 "With a couple more drinks, [pov] and [vio] could no longer hold themselves back."
@@ -39007,7 +39712,7 @@ label c18cafe:
                 pov "Y-Yeah... you're so big..."
                 show c18 stripclubsex male 7
                 with dissolve
-                if virgin:
+                if virgin and not _in_replay:
                     "Although she had protected her virginity for so long..."
                     "Our dear [pov] had given her chastity to a stranger, in the middle of a public establishment..."
                 else:
@@ -39032,7 +39737,14 @@ label c18cafe:
                 man "I'm just gonna walk away from here and pretend I never heard anything."
                 man "Fuckin' like rabbits down here..."
                 voice "audio/effects/lewd/smack1.wav"
+                if _in_replay:
+                    menu:
+                        "Vaginal":
+                            jump c18ritavag
+                        "Anal":
+                            jump c18ritaanal
                 if analvirgin:
+                    label c18ritavag:
                     show c18 stripclubsex male 11v
                     with dissolveverylong
                     "After [vio] had requested a break, the other man would take it upon himself to join his friend in double-teaming [pov]."
@@ -39050,6 +39762,7 @@ label c18cafe:
                     pov "Mmm..."
                     voice "audio/effects/lewd/smack1.wav"
                 else:
+                    label c18ritaanal:
                     show c18 stripclubsex male 11
                     with dissolveverylong
                     "After [vio] had requested a break, the other man would take it upon himself to join his friend in double-teaming [pov]."
@@ -39064,7 +39777,8 @@ label c18cafe:
                     pov "I can feel both dicks throbbing inside me..."
                     pov "That's good..."
                     voice "audio/effects/lewd/smack1.wav"
-                    $ascount+=1
+                    if not _in_replay:
+                        $ascount+=1
                 show c18 stripclubsex male 13
                 with dissolveverylong
                 "Likewise..."
@@ -39090,6 +39804,10 @@ label c18cafe:
                 "The carnal pleasure, combined with the thrill of doing it in public, had made this an experience [pov] was unlikely to ever forget."
                 "That is, until the next opportunity..."
                 "... 'Perhaps being a slut isn't so bad', she had thought."
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 "......"
                 $c18stripclubsexmale=True
                 $virgin=False
@@ -39130,6 +39848,7 @@ label c18cafe:
                     $inn+=1
                     jump c18stripclubafter
             "Fool around with [vioname] instead.":
+                $renpy.mark_label_seen("gal_c18stripvio")
                 stop music fadeout 5
                 pov "{i}(I appreciate the offer, but...){/i}"
                 pov "{i}(There's someone else I'd much rather have fun with instead.){/i}"
@@ -39555,8 +40274,12 @@ label act3start:
     with Pause (1.0)
     if not lesonly and les<=16:
         play music "<from 20.5>audio/heartbit.mp3" fadein 1.5 loop
+        label gal_c19ritadreamguys:
         scene c19 dream male 1
-        with fadeholdlong
+        if _in_replay:
+            with fadegalstart
+        else:
+            with fadeholdlong
         "In the depths of [pov]'s subconscious..."
         "A sexy - and somehow familiar dream appears to her..."
         scene c19 dream male 2
@@ -39617,8 +40340,12 @@ label act3start:
         pov "{i}(Wait... what was I doing here again?){/i}"
     if lesonly or les>=17:
         play music "<from 20.5>audio/heartbit.mp3" fadein 1.5 loop
+        label gal_c19ritadreamgirls:
         scene c19 dream female 1
-        with fadeholdlong
+        if _in_replay:
+            with fadegalstart
+        else:
+            with fadeholdlong
         "In the depths of [pov]'s subconscious..."
         "A sexy - and somehow familiar dream appears to her..."
         scene c19 dream female 2
@@ -39668,6 +40395,10 @@ label act3start:
         pov "......"
         pov "{i}(W-Wait...){/i}"
         pov "{i}(... Why was I here again?){/i}"
+    if _in_replay:
+        show black
+        with fadegalend
+    $ renpy.end_replay()
     scene c19 bed 1
     with fadeholdlong
     pov "Ah..."
@@ -39813,8 +40544,12 @@ label act3start:
             pov "Just one second!"
             if lesonly:
                 $c19deliveryles=True
+                label gal_c19ritagirl:
                 show c19 delivery 4f
-                with dissolvelong
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with dissolvelong
                 wom "H-Hello..."
                 wom "Here's your order."
                 show c19 delivery 5f
@@ -39947,6 +40682,10 @@ label act3start:
                 wom "Thanks!"
                 pov "No problem. Any time!"
                 pov "{i}(Well... when I'm in the mood for it, that is.){/i}"
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 stop music fadeout 3
                 show c19 delivery femalesex 14
                 with dissolvesemilong
@@ -39964,8 +40703,12 @@ label act3start:
                 jump c19lunauni
             else:
                 $c19deliverymale=True
+                label gal_c19ritaguy:
                 show c19 delivery 4m
-                with dissolvelong
+                if _in_replay:
+                    with fadegalstart
+                else:
+                    with dissolvelong
                 man "H-Hi..."
                 man "Here's your order..."
                 show c19 delivery 5m
@@ -40103,6 +40846,10 @@ label act3start:
                 man "Thanks..."
                 pov "No problem. Any time!"
                 pov "{i}(Well... when I'm in the mood for it, that is.){/i}"
+                if _in_replay:
+                    show black
+                    with fadegalend
+                $ renpy.end_replay()
                 stop music fadeout 5
                 show c19 delivery malesex 15
                 with dissolvesemilong
@@ -40593,8 +41340,12 @@ label c19ritaoutside:
                     show c19 photoshoot 17m
                     with dissolve
                     ja "Is something the matter?"
+                    label gal_c19ritajason:
                     show c19 photoshoot 16m
-                    with dissolve
+                    if _in_replay:
+                        with fadegalstart
+                    else:
+                        with dissolve
                     pov "Say, Jason..."
                     pov "Could I come with you to your office for a few minutes?"
                     pov "There's something private I want to talk to you about."
@@ -40747,6 +41498,10 @@ label c19ritaoutside:
                     pov "{i}(I must be crazy.){/i}"
                     pov "{i}(But the taboo of something like this...){/i}"
                     pov "{i}(Well, I've realized... it really turns me on.){/i}"
+                    if _in_replay:
+                        show black
+                        with fadegalend
+                    $ renpy.end_replay()
                     "......"
                     $bjcount+=1
                     $sexexp+=1
@@ -41203,6 +41958,10 @@ label c19viodate:
                 $ritaviorelationship = True
             if wantopenrelationship:
                 $ritavioopenrelationship = True
+            label gal_c19ritavio:
+            if _in_replay:
+                show c19 viohome 12
+                with fadegalstart
             pov "... [vioname]."
             pov "I want you to be my girlfriend, if that's OK with you."
             show c19 viohome 13
@@ -41219,7 +41978,7 @@ label c19viodate:
             vio "I'm so happy to hear that."
             vio "I... I didn't believe you would actually say yes."
             vio "...... Of course I'll be your girlfriend."
-            if wantopenrelationship:
+            if wantopenrelationship and not _in_replay:
                 show c19 viohome 14
                 with dissolve
                 pov "{i}(I'd like to ask about keeping our relationship open, but...){/i}"
@@ -41372,6 +42131,10 @@ label c19viodate:
             vio "Same here."
             vio "... Wanna cuddle in bed?"
             pov "... Yeah."
+            if _in_replay:
+                show black
+                with fadegalend
+            $ renpy.end_replay()
             "......"
             call first_partner(vioname)
             $virgin=False
