@@ -2671,7 +2671,10 @@ label c2hottub:
             "......"
 
 label c2laundry:
-    scene c2 laundry 1
+    if lesonly:
+        scene c2 laundry 1-les
+    else:
+        scene c2 laundry 1
     with fadeholdlong
     play music "audio/city.mp3" fadein 2.0 loop
     "A couple days later."
