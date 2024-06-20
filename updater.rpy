@@ -119,3 +119,44 @@ label after_load:
         $ renpy.notify("Save updated")
         $ renpy.block_rollback()
     return
+
+#Check the "persistent" file for the images seen and open the gallery
+
+label check_persistent_to_open_gallery:
+    python:
+        for i in galleries:
+            if renpy.seen_image(i[1]):
+                renpy.mark_label_seen(i[0])
+
+    if renpy.seen_image("c9 threesome 41-c"):
+        $ persistent.c9connorfirst=True
+    if renpy.seen_image("c9 threesome 41-j"):
+        $ persistent.c9joshfirst=True
+    if renpy.seen_image("c10 pool 20"):
+        $ persistent.c10poolsex=True
+    if renpy.seen_image("c11 pizzaboy 31"):
+        $ persistent.c11pizzasex=True
+    if renpy.seen_image("c13 lunahome 25"):
+        $ persistent.c13lunasex=True
+    if renpy.seen_image("c14 cj sex dp 1"):
+        $ persistent.c14dp=True
+    if renpy.seen_image("c14 cj sex 20"):
+        $ persistent.c14nodp=True
+    if renpy.seen_image("c14 vio vag 1"):
+        $ persistent.c14vagtoy=True
+    if renpy.seen_image("c14 vio anal 1"):
+        $ persistent.c14analtoy=True
+    if renpy.seen_image("c16 hotsprings male sex 2v"):
+        $ persistent.c16mixedvag = True
+    if renpy.seen_image("c16 hotsprings male sex 2a"):
+        $ persistent.c16mixedanal = True
+    if renpy.seen_image("c17 pokersex boys 20"):
+        $ persistent.c17dp=True
+    if renpy.seen_image("c17 pokersex boys vagend 1"):
+        $ persistent.c17nodp=True
+    if renpy.seen_image("c18 luna male 30"):
+        $ persistent.c18lunasexmale=True
+    if renpy.seen_image("c18 luna female 29"):
+        $ persistent.c18lunasexfemale=True
+
+    return

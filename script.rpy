@@ -7,6 +7,7 @@ scene black
 show text "This game is only intended for access by adults {b}{color=EE5454}over the age of 18{/color}{/b}. The creator holds no responsibility for minors launching the program without parental approval. All characters portrayed are above the age of 18, and thus abides by Canada and US law." with dissolve
 with Pause(6)
 hide text with dissolve
+call check_persistent_to_open_gallery
 return
 
 ############# DEFINITIONS #################################################
@@ -34475,7 +34476,6 @@ label c16hotsprings:
                         "......"
                         $sexexp+=1
                         $c16mixedbjonly = True
-                        $persistent.c16mixedbjonly = True
                         jump c16cafe
             "I'm just here to relax.":
                 pov "{i}(No... this is way too sudden.){/i}"
