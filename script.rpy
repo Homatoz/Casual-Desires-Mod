@@ -18019,7 +18019,6 @@ label act2start:
         "Go for a walk to the park.":
             label c10mia:
                 $c10mia = True
-                $rita_met_mia = True
                 show c10 vioafter 4
                 with dissolve
                 stop music fadeout 2.5
@@ -18080,6 +18079,7 @@ label act2start:
                     with dissolve
                     pov "Sure. Lead the way!"
                     label c10miatrail:
+                        $rita_met_mia = True
                         show c10 mia 8
                         with fadeholdlong
                         play music "<from 5.0>audio/forestwalk.mp3" fadein 2.0 loop
@@ -23483,6 +23483,9 @@ label c13luna:
     luna "Maybe it's time to check one of them out."
     luna "Mom also told me I should meet new people at school, so..."
     luna "Let's see..."
+    if lesonly:
+        luna "I'm interested in art."
+        jump c13lunaclubles
     luna "I'm interested in art, and there's a couple different ones."
     menu:
         "Art Society {b}(Male){/b}":
@@ -23623,6 +23626,7 @@ label c13luna:
                     $c13lunanoclub=True
                     jump c13beach
         "Art Association {b}(Female){/b}":
+            label c13lunaclubles:
             luna "Yeah, this one looks interesting!"
             luna "I'm not sure if I'll join yet, but..."
             luna "I'll drop by and say hello!"
