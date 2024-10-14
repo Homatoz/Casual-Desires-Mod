@@ -160,3 +160,40 @@ label check_persistent_to_open_gallery:
         $ persistent.c18lunasexfemale=True
 
     return
+
+label check_persistent_to_update_chapter_labels:
+    if renpy.seen_image("c3 title"):
+        $ renpy.mark_label_seen("chapter3")
+    if renpy.seen_image("c4 title"):
+        $ renpy.mark_label_seen("chapter4")
+    if renpy.seen_image("c5 title"):
+        $ renpy.mark_label_seen("chapter5")
+    if renpy.seen_image("c6 title"):
+        $ renpy.mark_label_seen("chapter6")
+    if renpy.seen_image("c7 title"):
+        $ renpy.mark_label_seen("chapter7")
+    if renpy.seen_image("c8 title"):
+        $ renpy.mark_label_seen("chapter8")
+    if renpy.seen_image("c9 parents 1"):
+        $ renpy.mark_label_seen("chapter9")
+    if renpy.seen_image("c10 intro 1"):
+        $ renpy.mark_label_seen("chapter10")
+    if renpy.seen_image("c11 intro 1"):
+        $ renpy.mark_label_seen("chapter11")
+    if renpy.seen_image("c12 luna 1"):
+        $ renpy.mark_label_seen("chapter12")
+    if renpy.seen_image("c13 intro 1"):
+        $ renpy.mark_label_seen("chapter13")
+    if renpy.seen_image("c14 intro 1"):
+        $ renpy.mark_label_seen("chapter14")
+    if renpy.seen_image("c15 hotsprings 1"):
+        $ renpy.mark_label_seen("chapter15")
+    if renpy.seen_image("c16 intro 1"):
+        $ renpy.mark_label_seen("chapter16")
+    if renpy.seen_image("c17 title"):
+        $ renpy.mark_label_seen("chapter17")
+    if renpy.seen_image("c18 lucy garden 1"):
+        $ renpy.mark_label_seen("chapter18")
+    if renpy.seen_image("c19 dream male 1") or renpy.seen_image("c19 dream female 1"):
+        $ renpy.mark_label_seen("chapter19")
+    return

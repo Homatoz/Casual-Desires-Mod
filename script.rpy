@@ -8,6 +8,7 @@ show text "This game is only intended for access by adults {b}{color=EE5454}over
 with Pause(6)
 hide text with dissolve
 call check_persistent_to_open_gallery
+call check_persistent_to_update_chapter_labels
 return
 
 ############# DEFINITIONS #################################################
@@ -238,6 +239,7 @@ define config.mouse = {"default":[ ("images/misc/cursor.png", 1, 1) ] }
 ############# CHARACTER DEFINITIONS #######################################
 define m = Character("Narrator", color="F28E3F")
 define ion = Character("ionDivvy", color="F28E3F")
+define homa = Character("Homatoz", color="3F48CC")
 define pov = Character("[povname]", color="C94AE2")
 default povname = "Rita"
 define vio = Character("[vioname]", color="#3F65F2")
@@ -1763,7 +1765,7 @@ label c1boysskip:
     ####################### CHAPTER 2 ##########################################
 
 label chapter2:
-    $ chaptercount +=1
+    $ chaptercount = 2
     play music "<from 10.8>audio/sparkle.mp3" fadein 2.0 loop
     scene c2 title
     with fadeholdlong
@@ -3075,8 +3077,8 @@ label c2home:
     ####################### END OF CHAPTER 2 ###################################
 
     ####################### CHAPTER 3 ##########################################
-
-    $ chaptercount +=1
+label chapter3:
+    $ chaptercount = 3
     play music "audio/city.mp3" fadein 2.0 loop
     show c3 title
     with fadeholdlong
@@ -4622,7 +4624,8 @@ label c3credits:
     ####################### END OF CHAPTER 3####################################
 
     ####################### CHAPTER 4 ##########################################
-    $ chaptercount +=1
+label chapter4:
+    $ chaptercount = 4
     play music "audio/cloudy.mp3" fadein 0.5 loop
     scene c4 title
     with fadeholdlong
@@ -6262,7 +6265,8 @@ label c4park:
     ####################### END OF CHAPTER 4####################################
 
     ####################### CHAPTER 5 ##########################################
-    $ chaptercount +=1
+label chapter5:
+    $ chaptercount = 5
     play music "audio/chill2.mp3" fadein 0.5 loop
     show c5 title
     with fadeholdlong
@@ -8363,7 +8367,8 @@ label c5photoafter:
     ####################### END OF CHAPTER 5####################################
 
     ####################### CHAPTER 6 ##########################################
-    $ chaptercount +=1
+label chapter6:
+    $ chaptercount = 6
     show c6 title
     with fadeholdlong
     play music "<from 5.0>audio/obento.mp3" fadein 2.0 loop
@@ -9888,7 +9893,8 @@ label c5photoafter:
     ####################### END OF CHAPTER 6####################################
 
     ####################### CHAPTER 7 ##########################################
-    $ chaptercount +=1
+label chapter7:
+    $ chaptercount = 7
     show c7 title
     with fadeholdlong
     play music "<from 5.0>audio/obento.mp3" fadein 2.0 loop
@@ -12459,7 +12465,8 @@ label c7ending:
     ####################### END OF CHAPTER 7####################################
 
     ####################### CHAPTER 8 ##########################################
-    $ chaptercount +=1
+label chapter8:
+    $ chaptercount = 8
     show c8 title
     with fadeholdlong
     play music "audio/funktastic.mp3" fadein 3.0 loop
@@ -14657,8 +14664,8 @@ label c7ending:
     ####################### END OF CHAPTER 8####################################
 
     ####################### CHAPTER 9 ##########################################
-    $ chaptercount +=1
-
+label chapter9:
+    $ chaptercount = 9
     show c9 parents 1
     with fadeholdlong
     play music "audio/city.mp3" fadein 2.0 loop
@@ -17301,8 +17308,9 @@ label c9jason:
     ########################## ACT 2 ############################################
 
     ####################### CHAPTER 10 ##########################################
+label chapter10:
     $ persistent.act1clear = True
-    $ chaptercount +=1
+    $ chaptercount = 10
 label act2start:
     window hide
     scene black with fadehold
@@ -19328,7 +19336,8 @@ label c10complete:
     ####################### END OF CHAPTER 10 ###################################
 
     ####################### CHAPTER 11 ##########################################
-    $ chaptercount +=1
+label chapter11:
+    $ chaptercount = 11
     show c11 intro 1
     with fadeholdlong
     "A few days later."
@@ -21057,8 +21066,8 @@ label c11end:
     ####################### END OF CHAPTER 11 ###################################
 
     ####################### CHAPTER 12 ##########################################
-    $ chaptercount +=1
-
+label chapter12:
+    $ chaptercount = 12
     show c12 luna 1
     with fadeholdlong
     play music "audio/fallenleaves.mp3" fadein 2.5 loop
@@ -23113,8 +23122,8 @@ label c12end:
     ####################### END OF CHAPTER 12 ###################################
 
     ####################### CHAPTER 13 ##########################################
-    $ chaptercount +=1
-
+label chapter13:
+    $ chaptercount = 13
     scene c13 intro 1
     with fadeholdlong
     play music "audio/chill.mp3" fadein 2.0 loop
@@ -26556,7 +26565,8 @@ label c13ending:
     ####################### END OF CHAPTER 13 ###################################
 
     ####################### CHAPTER 14 ##########################################
-    $ chaptercount +=1
+label chapter14:
+    $ chaptercount = 14
     scene c14 intro 1
     with fadeholdlong
     play music "audio/cloudy.mp3" fadein 0.5 loop
@@ -29919,7 +29929,8 @@ label c14ending:
     ####################### END OF CHAPTER 14 ###################################
 
     ####################### CHAPTER 15 ##########################################
-    $ chaptercount +=1
+label chapter15:
+    $ chaptercount = 15
     scene c15 hotsprings 1
     with fadeholdlong
     play music "audio/youasked.mp3" fadein 2.0 loop
@@ -32834,7 +32845,8 @@ label c15ending:
     ####################### END OF CHAPTER 15 ###################################
 
     ####################### CHAPTER 16 ##########################################
-    $ chaptercount +=1
+label chapter16:
+    $ chaptercount = 16
     scene c16 intro 1
     with fadeholdlong
     play music "audio/chill.mp3" fadein 2.0 loop
@@ -35147,7 +35159,8 @@ label c16endchapter:
     ####################### END OF CHAPTER 16 ###################################
 
     ####################### CHAPTER 17 ##########################################
-    $ chaptercount +=1
+label chapter17:
+    $ chaptercount = 17
     scene c17 title
     with fadeholdlong
     play music "audio/upbeat.mp3" fadein 2.5 loop
@@ -38044,8 +38057,8 @@ label c17endchapter:
     ####################### END OF CHAPTER 17 ###################################
 
     ####################### CHAPTER 18 ##########################################
-    $ chaptercount +=1
-
+label chapter18:
+    $ chaptercount = 18
     scene c18 lucy garden 1
     with fadeholdlong
     play music "audio/springfield.mp3" fadein 2.5 loop
@@ -40263,8 +40276,9 @@ label c18endchapter:
     ########################## ACT 3 ###########################################
 
     ####################### CHAPTER 19 ##########################################
+label chapter19:
     $ persistent.act2clear = True
-    $ chaptercount+=1
+    $ chaptercount = 19
 label act3start:
     window hide
     scene black with fadehold
@@ -42177,7 +42191,7 @@ label c19end:
     scene intro bg 1
     with wiperight
     "{b}Chapter 19: Complete{/b}"
-    $ chaptercount +=1
+    $ chaptercount = 20
 
     ion "Hello there!"
     ion "I hope you've enjoyed your time thus far."
