@@ -188,7 +188,7 @@ label skipper_main:
             else:
                 $ exh +=1
                 $ sexexp +=1
-        else
+        else:
             $ inn +=1
 
         # Rita's dream about sex
@@ -333,7 +333,7 @@ label skipper_main:
                 "[vio] accepts their proposal.":
                     if lesonly:
                         $ c5viomff = True
-                    else
+                    else:
                         $ c5viommf = True
                 "[vio] politely declines.":
                     pass
@@ -1224,6 +1224,7 @@ label skipper_main:
                             "Cum inside.":
                                 $ creampiecount+=1
                             "Cum outside.":
+                                pass
                         $ virgin=False
                         call first_partner("Masseur")
                         call add_partner("Masseur")
