@@ -424,9 +424,11 @@ label introstart:
     ion "Thank you for showing interest in {i}Casual Desires{/i}. I hope you will enjoy it as much as I've enjoyed developing it!"
     ion "If you would like to track {color=C94AE2}[pov]'s statistics{/color}, feel free to click the button on the top right. It is continually updated based on your choices."
     ion "While {i}Casual Desires{/i} has an equal amount of straight and lesbian content, players who wish to avoid straight scenes can turn {color=C94AE2}Lesbian Mode{/color} on, through the settings menu."
-    ion "...... And now, I shall let our story begin."
+    ion "...... And now, {size=-10}I shall {size=-10}let our {size=-10}story {size=-10}begin."
+    jump advanced_skipper
 
 label prologue:
+    ion "{size=-30}...... And now, {size=+10}I shall {size=+10}let our {size=+10}story begin."
     stop music fadeout 1.0
     if lesonly:
         scene titleshow with fadeholdlong
@@ -891,63 +893,12 @@ label prologueend:
     with wiperight
     "......"
     "{b}Prologue: Complete{/b}"
-    ion "Congratulations on clearing the Prologue!"
-    ion "From here, you can choose to continue to Act 1, or skip to Act 2."
-    ion "Due to the slow-burn nature of Act 1, players with limited time may prefer starting at Act 2 instead."
-    ion "However, Act 1 contains numerous sex scenes, and is for most players the intended experience."
-    ion "How would you like to continue?"
-    menu:
-        "Proceed normally ({b}Act 1{/b})":
-            ion "Understood!"
-            jump chapter1
-        "Skip ahead ({b}Act 2{/b})":
-            ion "Very well!"
-            scene a2skip1 with dissolvelong
-            "Over the coming weeks, [pov] takes a second part-time job at a downtown cafe."
-            scene a2skip2 with dissolvelong
-            "Alongside [vio], she meets Luna, a kind-hearted girl who will soon be starting her degree at university."
-            scene a2skip3 with dissolvelong
-            "Through their time together at the cafe, [pov], [vio], and Luna become close friends."
-            scene a2skip4 with dissolvelong
-            "[pov] also meets [fr], her old friend from Japan, who recently moved to Vancouver as an exchange student."
-            scene a2skip5 with dissolvelong
-            "At the same time... [pov]'s exhibitionism fetish leads her down an ever-escalating road of perversion."
-            scene a2skip6 with dissolvelong
-            "Though she stops short of having sex, she is open to potentially doing it soon..."
-            scene a2skip7 with dissolvelong
-            "Meanwhile, [vio] is asked by her boyfriend if she would be interested in swinging."
-            "... How did [vio] respond?"
-            menu:
-                "She accepted.":
-                    $c5viomff = True
-                    if lesonly:
-                        scene a2skip8 with dissolvelong
-                    else:
-                        scene a2skip9 with dissolvelong
-                    "[vio] agreed to try it, and found she enjoyed swinging more than expected."
-                    "......"
-                    "And so, time moves forward..."
-                    $sexexp+=5
-                    $exh+=5
-                    $chaptercount = 10
-                    jump act2start
-                "She said no.":
-                    scene a2skip10 with dissolvelong
-                    "[vio] declined, and decided to continue a relatively normal relationship."
-                    "However, she was still open-minded about being with another girl, and [pov] had recently caught her attention..."
-                    "......"
-                    "And so, time moves forward..."
-                    $sexexp+=5
-                    $exh+=5
-                    $chaptercount = 10
-                    jump act2start
     ####################### END OF PROLOGUE ####################################
 
     ########################## ACT 1 ###########################################
 
     ####################### CHAPTER 1 ##########################################
 label chapter1:
-    $ persistent.pskip = True
     window hide
     scene black with fadehold
     show text "{size=+100}ACT I{/size}" with dissolve
@@ -17309,9 +17260,7 @@ label c9jason:
 
     ####################### CHAPTER 10 ##########################################
 label chapter10:
-    $ persistent.act1clear = True
     $ chaptercount = 10
-label act2start:
     window hide
     scene black with fadehold
     show text "{size=+100}ACT II{/size}" with dissolve
@@ -40277,9 +40226,7 @@ label c18endchapter:
 
     ####################### CHAPTER 19 ##########################################
 label chapter19:
-    $ persistent.act2clear = True
     $ chaptercount = 19
-label act3start:
     window hide
     scene black with fadehold
     show text "{size=+100}ACT III{/size}" with dissolve

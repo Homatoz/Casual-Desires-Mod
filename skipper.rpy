@@ -1,4 +1,5 @@
 label advanced_skipper:
+    homa "[ion], sorry for this muting."
     homa "Hello! I'm Homatoz, the creator of the mod for this wonderful game."
     homa "First of all, I want to apologize for my Google Translate English. I hope you understand me."
     menu:
@@ -1316,5 +1317,6 @@ label skipper_main:
         pass
     if skip_to_chapter >= 25:
         pass
-    jump expression "chapter" + str(skip_to_chapter)
 
+    homa "We've skipped everything you wanted, and now we can continue."
+    jump expression "chapter" + str(skip_to_chapter)
