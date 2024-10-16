@@ -212,7 +212,7 @@ label skipper_main:
             else:
                 $ inn +=1
 
-        # Rita spies on Violetta and Nick having sex
+        # Rita spies on Violet and Nick having sex
         if depravity_mode and not lesonly:
             $ c2see = True
 
@@ -351,7 +351,7 @@ label skipper_main:
         # Violet and Nick meeting another couple
         if c4viosharing:
             menu:
-                "(Chapter 5) Violetta and Nick meet another couple for a swinger party."
+                "(Chapter 5) [vio] and Nick meet another couple for a swinger party."
                 "[vio] accepts their proposal.":
                     if lesonly:
                         $ c5viomff = True
@@ -371,7 +371,7 @@ label skipper_main:
     if skip_to_chapter >= 7:
         # Rita takes a photo in a suit
         menu:
-            "(Chapter 6) Who will Rita send a photo in a suit to?"
+            "(Chapter 6) Who will [pov] send a photo in a suit to?"
             "Send it to [fr].":
                 $ c6frpic = True
             "Send it to Luna.":
@@ -512,7 +512,7 @@ label skipper_main:
             $ c9sexflag=True
             if lesonly:
                 menu:
-                    "(Chapter 9) Who will Rita have sex with in the nearest future?"
+                    "(Chapter 9) Who will [pov] have sex with in the nearest future?"
                     "Luna.":
                         $ c9lunasex=True
                     "[vio].":
@@ -555,7 +555,7 @@ label skipper_main:
             $ sexexp+=1
             $ cjhadsex=True
             menu:
-                "(Chapter 9) Who will fuck Rita first, Connor or Josh?"
+                "(Chapter 9) Who will fuck [pov] first, Connor or Josh?"
                 "Pick Connor.":
                     $ c9connorfirst=True
                 "Pick Josh.":
@@ -759,7 +759,7 @@ label skipper_main:
         if depravity_mode:
             $ exh+=1
             menu:
-                "(Chapter 13) What costume does Rita plan to wear for the fansite photo?"
+                "(Chapter 13) What costume does [pov] plan to wear for the fansite photo?"
                 "Lingerie.":
                     $ c13lingerie=True
                 "School cosplay.":
@@ -802,7 +802,7 @@ label skipper_main:
                 $ c13connorseduce=True
                 $ sexexp+=1
                 menu:
-                    "(Chapter 13) How will Rita jerk off Connor?"
+                    "(Chapter 13) How will [pov] jerk off Connor?"
                     "Give Connor a footjob.":
                         $ fjcount+=1
                     "Use my boobs.":
@@ -894,7 +894,7 @@ label skipper_main:
         if depravity_mode:
             if lesonly:
                 menu:
-                    "(Chapter 14) What will Rita choose for sex with Violet?"
+                    "(Chapter 14) What will [pov] choose for sex with [vio]?"
                     "Vaginal toys.":
                         $ c14viosexvag=True
                         $ virgin=False
@@ -944,7 +944,7 @@ label skipper_main:
         if depravity_mode:
             $ exh+=1
             menu:
-                "(Chapter 15) What did Rita wear for a walk at night?"
+                "(Chapter 15) What did [pov] wear for a walk at night?"
                 "Garter and stockings.":
                     $ c15parkgarter=True
                 "Stickers and thong.":
@@ -958,7 +958,7 @@ label skipper_main:
         # Violet in a night club
         if c5viommf or c5viomff:
             menu:
-                "(Chapter 15) Who will Violet leave the club with?"
+                "(Chapter 15) Who will [vio] leave the club with?"
                 "With man" if not lesonly:
                     $ c15viomale=True
                 "With woman":
@@ -970,7 +970,7 @@ label skipper_main:
         if depravity_mode:
             $ les+=1
             menu:
-                "(Chapter 15) Who will Rita kiss first?"
+                "(Chapter 15) Who will [pov] kiss first?"
                 "Luna first.":
                     $ lunalove+=1
                 "[fr] first.":
@@ -1016,7 +1016,7 @@ label skipper_main:
 
         # Rita sends a photo
         menu:
-            "(Chapter 16) Who will Rita send a photo of herself in her new suit to?"
+            "(Chapter 16) Who will [pov] send a photo of herself in her new suit to?"
             "Luna.":
                 $ c16textluna=True
             "[vio].":
@@ -1042,7 +1042,7 @@ label skipper_main:
             if depravity_mode:
                 $ bjcount+=1
                 menu:
-                    "(Chapter 16) What hole will Rita give to a man at the hot springs?"
+                    "(Chapter 16) What hole will [pov] give to a man at the hot springs?"
                     "Fuck him {b}(Vaginal){/b}":
                         if cum_inside:
                             $ creampiecount+=1
@@ -1075,7 +1075,7 @@ label skipper_main:
                 $ c16pokergirls=True
             else:
                 menu:
-                    "(Chapter 16) Who will Rita invite to play poker?"
+                    "(Chapter 16) Who will [pov] invite to play poker?"
                     "Invite girls only.":
                         $ c16pokergirls=True
                     "Invite guys only.":
@@ -1107,7 +1107,7 @@ label skipper_main:
         # Who will Rita invite to a poker game?
         if c16pokermix:
             menu:
-                "(Chapter 17) Who will Rita invite to play poker?"
+                "(Chapter 17) Who will [pov] invite to play poker?"
                 "[vio]":
                     $ c17pokermixedvio=True
                 "[fr]":
@@ -1206,7 +1206,7 @@ label skipper_main:
         if depravity_mode:
             if lesonly:
                 menu:
-                    "(Chapter 18) Who will Rita go and have fun with in the strip club toilet?"
+                    "(Chapter 18) Who will [pov] go and have fun with in the strip club toilet?"
                     "Fool around with girls.":
                         $ c18stripclubsexfemale=True
                         $ virgin=False
@@ -1240,7 +1240,7 @@ label skipper_main:
 
         # Rita is thinking about what kind of relationship she wants
         menu:
-            "(Chapter 18) What kind of relationship does Rita want?"
+            "(Chapter 18) What kind of relationship does [pov] want?"
             "I want a romantic relationship.":
                 $ wantromance=True
             "I want an open-relationship.":
