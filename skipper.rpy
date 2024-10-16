@@ -1,5 +1,38 @@
 label advanced_skipper:
     homa "Hello! I'm Homatoz, the creator of the mod for this wonderful game."
+    homa "First of all, I want to apologize for my Google Translate English. I hope you understand me."
+    menu:
+        homa "I would like to introduce you to an advanced skipper. Do you need a short instruction, or we will skip that too?"
+        "Read":
+            homa "The advanced skipper, unlike the original, allows you to go not only to the next act, but also to any chapter you have already read."
+            homa "In doing so, he calculates all the sexual activity that we would have received if we had not skipped but read the chapter. Of course, with some limitations."
+            homa "The calculations are influenced by the chosen path and the work of the lesbian mod."
+            homa "Path of depravity - all characters will automatically choose the option for maximum sexual activity."
+            homa "Path of innocence - [pov] will avoid sexual activity, other characters will be given a choice."
+            homa "If the lesbian mod is enabled, scenes with girls will be selected, even if there is no sexual content."
+            homa "If the lesbian mod is disabled, then preference will be given to heterosexual scenes, even if scenes with girls are more sexual."
+            homa "I'm thinking about a more interactive skipper, but that's a lot more work."
+            homa "Well, we're ready to skip chapters!"
+        "Skip":
+            pass
+label skipper_check_new_game:
+    if renpy.seen_label("chapter1"):
+        jump skipper_yes_no
+    else:
+        jump skipper_unlocker
+label skipper_unlocker:
+    homa "It seems that this is your first time reading this novel. Then I recommend starting from the beginning and not skipping anything."
+    homa "But maybe you erased your saves. Then I can help you and unlock all chapters."
+    menu:
+        homa "Anyway, just be honest with yourself."
+        "I want to start from the beginning.":
+            jump prologue
+        "I want unlock all chapters":
+            $ unlocked_chapter = 1
+            while renpy.has_label("chapter"+str(unlocked_chapter)):
+                $ renpy.mark_label_seen("chapter"+str(unlocked_chapter))
+                $ unlocked_chapter += 1
+            jump skipper_chapter_page_1
 label skipper_yes_no:
     menu:
         homa "I noticed that you've already played this game. Want to skip what you've already read?"
@@ -97,9 +130,6 @@ label skipper_chapter_page_5:
             jump skipper_chapter_page_1
     jump skipper_path
 label skipper_path:       
-    homa "Now you must choose the path of depravity or innocence."
-    homa "Path of depravity - all characters will automatically choose the option for maximum sexual interaction."
-    homa "Path of innocence - [pov] will avoid sexual interaction, other characters will be given a choice."
     menu:
         homa "Which path do you want to choose - depravity or innocence?"
         "Depravity":
