@@ -131,18 +131,26 @@ label skipper_chapter_page_5:
     jump skipper_path
 label skipper_path:       
     menu:
-        homa "Which path do you want to choose - depravity or innocence?"
+        homa "Which path do you want to choose?"
         "Depravity":
             $ depravity_mode = True
         "Innocence":
             $ depravity_mode = False
 label skipper_lesbian:
     menu:
-        homa "And finally, do you want to turn on the lesbian mode?"
+        homa "Do you want to turn on the lesbian mode?"
         "Turn off":
             $ lesonly = False
         "Turn on":
             $ lesonly = True
+label skipper_cum:
+    if not lesonly:
+        menu:
+            homa "And finally, where will you cum?"
+            "Cum inside":
+                $ cum_inside = True
+            "Cum outside":
+                $ cum_inside = False
 label skipper_main:
     if skip_to_chapter >= 1:
         # Rita teases the guys
@@ -184,11 +192,10 @@ label skipper_main:
     if skip_to_chapter >= 3:
         # Rita talks to a stranger on the street
         if depravity_mode:
+            $ sexexp +=1
             if lesonly:
-                $ sexexp +=1
                 $ c2girl_sed +=2
             else:
-                $ sexexp +=1
                 $ c2boy_sed +=2
         else:
             $ inn +=1
@@ -211,13 +218,10 @@ label skipper_main:
 
         # Rita undresses in the laundry room
         if depravity_mode:
+            $ exh +=1
+            $ sexexp +=1
             if lesonly:
-                $ exh +=1
-                $ sexexp +=1
                 $ les+=1
-            else:
-                $ exh +=1
-                $ sexexp +=1
         else:
             $ inn +=1
 
@@ -238,11 +242,9 @@ label skipper_main:
 
         # Rita goes to work
         if lesonly or inn >=2:
+            $ sexexp+=1
             if depravity_mode:
                 $ les+=1
-                $ sexexp+=1
-            else:
-                $ sexexp+=1
         else:
             if depravity_mode:
                 $ sexexp+=1
@@ -284,11 +286,9 @@ label skipper_main:
             $ inn+=1
 
         # Rita orders pizza
+        $ sexexp+=1
         if lesonly:
             $ les+=1
-            $ sexexp+=1
-        else:
-            $ sexexp +=1
 
         # Violet and Nick in a nightclub
         if lesonly or not depravity_mode:
@@ -324,37 +324,29 @@ label skipper_main:
 
     if skip_to_chapter >= 6:
         # Rita is walking after work
-        menu:
-            "(Chapter 5) Rita walks around the city or goes to the pool?"
-            "Take a detour downtown.":
-                $ c5outside = True
-                if depravity_mode and not lesonly:
-                    $ sexexp+=1
-                    $ c5touch = True
-            "Go swimming at the local pool.":
-                $ c5pool = True
-                if depravity_mode:
-                    $ les+=1
-                    $ sexexp+=1
-                    $ c5leslocker = True
+        if lesonly:
+            $ c5pool = True
+            if depravity_mode:
+                $ les+=1
+                $ sexexp+=1
+                $ c5leslocker = True
+        else:
+            $ c5outside = True
+            if depravity_mode:
+                $ sexexp+=1
+                $ c5touch = True
 
         # Rita orders pizza again
         if lesonly:
             $ c5pizzagirl = True
             $ les+=1
         else:
-            menu:
-                "(Chapter 5) Rita orders pizza."
-                "Delivery guy.":
-                    $ c5pizzaboy = True
-                    if depravity_mode:
-                        $ c5handjob = True
-                        $ rita_held_dick = True
-                        $ hjcount+=1
-                        $ sexexp+=1
-                "Delivery girl.":
-                    $ c5pizzagirl = True
-                    $ les+=1
+            $ c5pizzaboy = True
+            if depravity_mode:
+                $ c5handjob = True
+                $ rita_held_dick = True
+                $ hjcount+=1
+                $ sexexp+=1
 
         # Violet and Nick meeting another couple
         if c4viosharing:
@@ -390,17 +382,11 @@ label skipper_main:
             $ c6parkgirl = True
             $ rita_met_mia = True
         else:
-            menu:
-                "(Chapter 6) What does Rita plan to do?"
-                "Soak in her pool at home.":
-                    if depravity_mode:
-                        $ c6poolhj = True
-                        $ rita_held_dick = True
-                        $ hjcount+=1
-                        $ sexexp +=1
-                "Go for a stroll in the park.":
-                    $ c6parkgirl = True
-                    $ rita_met_mia = True
+            if depravity_mode:
+                $ c6poolhj = True
+                $ rita_held_dick = True
+                $ hjcount+=1
+                $ sexexp +=1
 
         # Rita and CJ go to the cinema
         if not lesonly:
@@ -441,25 +427,14 @@ label skipper_main:
                 $ inn+=1
                 $ c7lockertalk = True
         else:
-            menu:
-                "(Chapter 7) Which pool will Rita go to?"
-                "Go to the public pool's locker room.":
-                    if depravity_mode:
-                        $ les+=1
-                        $ sexexp+=1
-                        $ c7lockerles = True
-                    else:
-                        $ inn+=1
-                        $ c7lockertalk = True
-                "Cool down in her backyard pool.":
-                    if depravity_mode:
-                        $ bjcount+=1
-                        $ sexexp+=1
-                        $ c7poolbj = True
-                        $ rita_held_dick = True
-                    else:
-                        $ inn+=1
-                        $ c7poolinnocent = True
+            if depravity_mode:
+                $ bjcount+=1
+                $ sexexp+=1
+                $ c7poolbj = True
+                $ rita_held_dick = True
+            else:
+                $ inn+=1
+                $ c7poolinnocent = True
 
         # Changing clothes after work
         if lesonly:
@@ -489,27 +464,14 @@ label skipper_main:
             $ rita_met_mia = True
             $ les+=1
         else:
-            menu:
-                "(Chapter 8) What does Rita plan to do?"
-                "Invite Josh over.":
-                    if depravity_mode:
-                        menu:
-                            "(Chapter 8) How will this interesting pastime end?"
-                            "Blowjob climax.":
-                                $ bjcount+=1
-                                $ hjcount+=1
-                                $ tjcount+=1
-                                $ sexexp+=1
-                            "Titty climax.":
-                                $ tjcount+=1
-                                $ sexexp+=1
-                        $ c8josh = True
-                    else:
-                        $ inn+=1
-                "Go for a walk.":
-                    $ c8mia = True
-                    $ rita_met_mia = True
-                    $ les+=1
+            if depravity_mode:
+                $ bjcount+=1
+                $ hjcount+=1
+                $ tjcount+=1
+                $ sexexp+=1
+                $ c8josh = True
+            else:
+                $ inn+=1
 
         # And again Rita orders pizza
         if lesonly:
@@ -521,16 +483,9 @@ label skipper_main:
                 $ inn+=1
         else:
             if depravity_mode:
-                menu:
-                    "(Chapter 8) Who will Rita call for delivery?"
-                    "Request a male delivery driver.":
-                        $ bjcount+=1
-                        $ sexexp+=1
-                        $ c8pizzaboy = True
-                    "Request a female delivery driver.":
-                        $ les+=1
-                        $ sexexp+=1
-                        $ c8pizzagirl = True
+                $ bjcount+=1
+                $ sexexp+=1
+                $ c8pizzaboy = True
             else:
                 $ inn+=1
 
@@ -555,16 +510,17 @@ label skipper_main:
         # Rita decides whether to have sex in the near future
         if depravity_mode:
             $ c9sexflag=True
-            menu:
-                "(Chapter 9) Who will Rita have sex with in the nearest future?"
-                "Josh & Connor." if not lesonly:
-                    $ c9cjflag=True
-                "Luna.":
-                    $ c9lunasex=True
-                "[vio].":
-                    $ c9viosex=True
-                "[fr].":
-                    $ c9harukasex=True
+            if lesonly:
+                menu:
+                    "(Chapter 9) Who will Rita have sex with in the nearest future?"
+                    "Luna.":
+                        $ c9lunasex=True
+                    "[vio].":
+                        $ c9viosex=True
+                    "[fr].":
+                        $ c9harukasex=True
+            else:
+                $ c9cjflag=True
         else:
             $ c9nosex=True
             $ inn+=1
@@ -589,30 +545,21 @@ label skipper_main:
 
         # Rita fucks CJ
         if c9cjflag and c9hadsex:
+            $ virgin=False
+            call first_partner("CJ")
+            call add_partner("Connor")
+            call add_partner("Josh")
+            $ scount+=2
+            $ bjcount+=2
+            $ hjcount+=2
+            $ sexexp+=1
+            $ cjhadsex=True
             menu:
                 "(Chapter 9) Who will fuck Rita first, Connor or Josh?"
                 "Pick Connor.":
                     $ c9connorfirst=True
-                    $ virgin=False
-                    call first_partner("CJ")
-                    call add_partner("Connor")
-                    call add_partner("Josh")
-                    $ scount+=2
-                    $ bjcount+=2
-                    $ hjcount+=2
-                    $ sexexp+=1
-                    $ cjhadsex=True
                 "Pick Josh.":
                     $ c9joshfirst=True
-                    $ virgin=False
-                    call first_partner("CJ")
-                    call add_partner("Connor")
-                    call add_partner("Josh")
-                    $ scount+=2
-                    $ bjcount+=2
-                    $ hjcount+=2
-                    $ sexexp+=1
-                    $ cjhadsex=True
 
         # Rita fucks Luna
         if c9lunasex and c9hadsex:
@@ -646,40 +593,23 @@ label skipper_main:
         if lesonly:
             $ c10mia = True
             $ rita_met_mia = True
-            menu:
-                "(Chapter 10) Will Rita go on a camping with Mia?"
-                "Go camping with Mia.":
-                    $ c10miacamp=True
-                    $ les+=1
-                "Maybe another time.":
-                    $ les+=1
+            if depravity_mode:
+                $ c10miacamp=True
+                $ les+=1
+            else:
+                $ les+=1
         else:
-            menu:
-                "(Chapter 10) What does Rita plan to do in the evening?"
-                "Spend some time in my pool.":
-                    if depravity_mode:
-                        $ c10pool=True
-                        $ virgin=False
-                        call first_partner("Pool pervert")
-                        call add_partner("Pool pervert")
-                        $ sexexp+=1
-                        $ scount+=1
-                        $ hjcount+=1
-                        $ c10poolsex=True
-                    else:
-                        $ inn+=1
-                "Go for a walk to the park.":
-                    $ c10mia = True
-                    $ rita_met_mia = True
-                    menu:
-                        "(Chapter 10) Will Rita go on a camping with Mia?"
-                        "Go camping with Mia.":
-                            $ c10miacamp=True
-                            $ les+=1
-                        "Maybe another time.":
-                            $ les+=1
-                "Stay home.":
-                    pass
+            if depravity_mode:
+                $ c10pool=True
+                $ virgin=False
+                call first_partner("Pool pervert")
+                call add_partner("Pool pervert")
+                $ sexexp+=1
+                $ scount+=1
+                $ hjcount+=1
+                $ c10poolsex=True
+            else:
+                $ inn+=1
 
         # Rita teases Jason after photo shoot
         if not lesonly:
@@ -705,33 +635,29 @@ label skipper_main:
 
     if skip_to_chapter >= 12:
         # Rita decides what to do on her day off
-        menu:
-            "(Chapter 11) What does Rita plan to do on her day off?"
-            "Relax and order pizza." if not lesonly:
-                if depravity_mode:
-                    $ c11pizzasex=True
-                    $ virgin=False
-                    call first_partner("Pizza boy")
-                    call add_partner("Pizza boy")
-                    $ sexexp+=1
-                    $ bjcount+=1
-                    $ hjcount+=1
-                    $ scount+=1
-                else:
-                    $ inn+=1
-            "Go for a walk downtown.":
-                if depravity_mode:
-                    $ c11les=True
-                    $ virgin=False
-                    call first_partner("Female stranger")
-                    $ lesexp+=1
-                    $ les+=1
-                    $ sexexp+=1
-                    call add_partner("Female stranger from the street")
-                else:
-                    $ inn+=1
-            "Play games at home.":
-                pass
+        if lesonly:
+            if depravity_mode:
+                $ c11les=True
+                $ virgin=False
+                call first_partner("Female stranger")
+                $ lesexp+=1
+                $ les+=1
+                $ sexexp+=1
+                call add_partner("Female stranger from the street")
+            else:
+                $ inn+=1
+        else:
+            if depravity_mode:
+                $ c11pizzasex=True
+                $ virgin=False
+                call first_partner("Pizza boy")
+                call add_partner("Pizza boy")
+                $ sexexp+=1
+                $ bjcount+=1
+                $ hjcount+=1
+                $ scount+=1
+            else:
+                $ inn+=1
 
         # Violet and Nick are having a fun evening
         if c5viomff or c5viommf:
@@ -793,29 +719,17 @@ label skipper_main:
                     $ hjcount+=1
                     $ sexexp+=1
                     $ c12cjsex=True
-                    menu:
-                        "(Chapter 12) Will Rita let Josh cum inside her?"
-                        "Let Josh cum inside.":
-                            $ virgin=False
-                            call first_partner("CJ")
-                            call add_partner("Connor")
-                            call add_partner("Josh")
-                            $ sexexp+=1
-                            $ scount+=2
-                            $ hjcount+=2
-                            $ bjcount+=1
-                            $ creampiecount+=1
-                            $ cjhadsex=True
-                        "Make him cum outside.":
-                            $ virgin=False
-                            call first_partner("CJ")
-                            call add_partner("Connor")
-                            call add_partner("Josh")
-                            $ sexexp+=1
-                            $ scount+=2
-                            $ hjcount+=2
-                            $ bjcount+=1
-                            $ cjhadsex=True
+                    $ virgin=False
+                    call first_partner("CJ")
+                    call add_partner("Connor")
+                    call add_partner("Josh")
+                    $ sexexp+=1
+                    $ scount+=2
+                    $ hjcount+=2
+                    $ bjcount+=1
+                    $ cjhadsex=True
+                    if cum_inside:
+                        $ creampiecount+=1
                 else:
                     $ inn+=1
 
@@ -865,7 +779,7 @@ label skipper_main:
         # Luna decides which club to join
         menu:
             "(Chapter 13) Will Luna join the club?"
-            "Join the Art Society {b}(Male){/b}":
+            "Join the Art Society {b}(Male){/b}" if not lesonly:
                 $ c13lunamaleclub=True
             "Join the Art Association {b}(Female){/b}":
                 $ c13lunafemaleclub=True
@@ -873,37 +787,26 @@ label skipper_main:
                 $ c13lunanoclub=True
 
         # Rita is relaxing on the beach
-        if lesonly:
-            if depravity_mode:
+        if depravity_mode:
+            $ exh+=1
+            if lesonly:
                 $ c13femalebeach=True
-                $ exh+=1
             else:
-                $ inn+=1
+                $ c13mixedbeach=True
         else:
-            if depravity_mode:
-                menu:
-                    "(Chapter 13) Which beach will Rita go to?"
-                    "Go to the mixed nudist beach.":
-                        $ c13mixedbeach=True
-                        $ exh+=1
-                    "Go to the female-only nudist beach.":
-                        $ c13femalebeach=True
-                        $ exh+=1
-            else:
-                $ inn+=1
+            $ inn+=1
 
         # Rita invites Connor
         if not lesonly:
             if depravity_mode:
                 $ c13connorseduce=True
+                $ sexexp+=1
                 menu:
                     "(Chapter 13) How will Rita jerk off Connor?"
                     "Give Connor a footjob.":
                         $ fjcount+=1
-                        $ sexexp+=1
                     "Use my boobs.":
                         $ tjcount+=1
-                        $ sexexp+=1
 
         # Rita goes to change clothes after her shift
         if not lesonly:
@@ -930,14 +833,8 @@ label skipper_main:
         if lesonly:
             $ c13spafemale=True
         else:
-            menu:
-                "(Chapter 13) Who will give Rita a massage?"
-                "Male employee.":
-                    $ het+=1
-                    $ c13spamale=True
-                "Female employee.":
-                    $ les+=1
-                    $ c13spafemale=True
+            $ het+=1
+            $ c13spamale=True
 
         # Rita's new toys
         if c13analyes:
@@ -1012,54 +909,21 @@ label skipper_main:
                         $ lesexp+=1
                         $ sexexp+=1
             else:
-                menu:
-                    "(Chapter 14) How will Rita spend her day off?"
-                    "Invite Josh & Connor.":
-                        $ boys_horny +=1
-                        $ c14cjsex=True
-                        $ cjhadsex=True
-                        $ sexexp+=1
-                        $ bjcount+=2
-                        $ hjcount+=2
-                        $ scount+=2
-                        $ virgin=False
-                        call first_partner("CJ")
-                        call add_partner("Connor")
-                        call add_partner("Josh")
-                        menu:
-                            "(Chapter 14) What holes will Rita allow to be used?"
-                            "Try double penetration.":
-                                $ ascount+=2
-                                $ analvirgin=False
-                                menu:
-                                    "(Chapter 14) Where will Rita allow cum?"
-                                    "Double creampie.":
-                                        $ creampiecount+=2
-                                    "Cum outside.":
-                                        pass
-                            "I only want to use my pussy.":
-                                menu:
-                                    "(Chapter 14) Where will Rita allow cum?"
-                                    "You can cum inside.":
-                                        $ creampiecount+=1
-                                    "Cum outside, please.":
-                                        pass
-                    "Invite [vio].":
-                        menu:
-                            "(Chapter 14) What will Rita choose for sex with Violet?"
-                            "Vaginal toys.":
-                                $ c14viosexvag=True
-                                $ virgin=False
-                                call first_partner(vioname)
-                                call add_partner(vioname)
-                                $ lesexp+=1
-                                $ sexexp+=1
-                            "I want to try anal.":
-                                $ c14viosexanal=True
-                                $ analvirgin=False
-                                $ ascount+=1
-                                $ lesexp+=1
-                                $ sexexp+=1
+                $ boys_horny +=1
+                $ c14cjsex=True
+                $ cjhadsex=True
+                $ sexexp+=1
+                $ bjcount+=2
+                $ hjcount+=2
+                $ scount+=2
+                $ virgin=False
+                call first_partner("CJ")
+                call add_partner("Connor")
+                call add_partner("Josh")
+                $ ascount+=2
+                $ analvirgin=False
+                if cum_inside:
+                    $ creampiecount+=2
         else:
             $ inn+=1
 
@@ -1068,12 +932,7 @@ label skipper_main:
         if lesonly:
             $ c15hotspringsles=True
         else:
-            menu:
-                "(Chapter 15) Which hot springs area did Rita come to?"
-                "Yeah, I did. {i}(Girls-Only){/i}":
-                    $ c15hotspringsles=True
-                "I can't remember. {i}(Mixed){/i}":
-                    $ c15hotspringsmixed=True
+            $ c15hotspringsmixed=True
 
         # Rita chats with Jason after the photo shoot
         if not lesonly:
@@ -1133,12 +992,7 @@ label skipper_main:
             else:
                 $ inn+=1
         else:
-            menu:
-                "(Chapter 15) Who will give Rita a massage?"
-                "Male staff.":
-                    $ het+=1
-                "Female staff.":
-                    $ les+=1
+            $ het+=1
             if depravity_mode:
                 $ sexexp+=1
             else:
@@ -1190,12 +1044,8 @@ label skipper_main:
                 menu:
                     "(Chapter 16) What hole will Rita give to a man at the hot springs?"
                     "Fuck him {b}(Vaginal){/b}":
-                        menu:
-                            "Will Rita let cum inside?"
-                            "Inside!":
-                                $ creampiecount+=1
-                            "Outside!":
-                                pass
+                        if cum_inside:
+                            $ creampiecount+=1
                         $ virgin=False
                         call first_partner("Hotsprings man")
                         $ sexexp+=1
@@ -1245,28 +1095,14 @@ label skipper_main:
                 $ lesexp+=1
                 $ sexexp+=1
             else:
-                menu:
-                    "(Chapter 17) Who will give Rita a massage?"
-                    "Male.":
-                        $ c17spamale=True
-                        menu:
-                            "(chapter 17) Where will Rita allow the masseur to cum?"
-                            "Cum inside.":
-                                $ creampiecount+=1
-                            "Cum outside.":
-                                pass
-                        $ virgin=False
-                        call first_partner("Masseur")
-                        call add_partner("Masseur")
-                        $ sexexp+=1
-                        $ scount+=1
-                    "Female.":
-                        $ c17spafemale=True
-                        $ virgin=False
-                        call first_partner("Masseuse")
-                        call add_partner("Masseuse")
-                        $ lesexp+=1
-                        $ sexexp+=1
+                $ c17spamale=True
+                if cum_inside:
+                    $ creampiecount+=1
+                $ virgin=False
+                call first_partner("Masseur")
+                call add_partner("Masseur")
+                $ sexexp+=1
+                $ scount+=1
 
         # Who will Rita invite to a poker game?
         if c16pokermix:
@@ -1302,25 +1138,11 @@ label skipper_main:
             $ sexexp+=3
             $ bjcount+=3
             $ hjcount+=3
-            menu:
-                "(Chapter 17) What holes will Rita allow to be used?"
-                "Use all holes.":
-                    menu:
-                        "(Chapter 17) Where will Rita allow cum?"
-                        "Cum inside.":
-                            $ creampiecount+=2
-                            $ ascount+=1
-                        "Cum outside.":
-                            pass
-                    $ analvirgin=False
-                    $ ascount+=2
-                "Vaginal only.":
-                    menu:
-                        "(Chapter 17) Where will Rita allow cum?"
-                        "Cum inside.":
-                            $ creampiecount+=2
-                        "Cum outside.":
-                            pass
+            if cum_inside:
+                $ creampiecount+=2
+                $ ascount+=1
+            $ analvirgin=False
+            $ ascount+=2
 
         # Poker with girls
         if c16pokergirls:
@@ -1346,12 +1168,8 @@ label skipper_main:
         # Poker with guys and Haruka
         if c17pokermixedharuka:
             $ c17pokersexhar=True
-            menu:
-                "(Chapter 17) Where will Rita allow cum?"
-                "Creampie.":
-                    $ creampiecount+=1
-                "Cum outside.":
-                    pass
+            if cum_inside:
+                $ creampiecount+=1
             $ virgin=False
             call first_partner("Josh")
             call add_partner("Josh")
@@ -1386,33 +1204,33 @@ label skipper_main:
 
         # Rita and Violet in a strip club
         if depravity_mode:
-            menu:
-                "(Chapter 18) Who will Rita go and have fun with in the strip club toilet?"
-                "Fool around with guys." if not lesonly:
-                    if not analvirgin:
-                        $ ascount+=1
-                    $ c18stripclubsexmale=True
-                    $ virgin=False
-                    call first_partner("Stripclub strangers")
-                    call add_partner("Male stranger 1 from the stripclub")
-                    call add_partner("Male stranger 2 from the stripclub")
-                    $ bjcount+=1
-                    $ scount+=2
-                    $ sexexp+=1
-                "Fool around with girls." if lesonly:
-                    $ c18stripclubsexfemale=True
-                    $ virgin=False
-                    call first_partner("Stripclub girl")
-                    call add_partner("Stripclub girl")
-                    $ lesexp+=1
-                    $ sexexp+=1
-                "Fool around with [vioname] instead.":
-                    $ c18stripclubsexvio=True
-                    $ virgin=False
-                    call first_partner(vioname)
-                    call add_partner(vioname)
-                    $ lesexp+=1
-                    $ sexexp+=1
+            if lesonly:
+                menu:
+                    "(Chapter 18) Who will Rita go and have fun with in the strip club toilet?"
+                    "Fool around with girls.":
+                        $ c18stripclubsexfemale=True
+                        $ virgin=False
+                        call first_partner("Stripclub girl")
+                        call add_partner("Stripclub girl")
+                        $ lesexp+=1
+                        $ sexexp+=1
+                    "Fool around with [vioname] instead.":
+                        $ c18stripclubsexvio=True
+                        $ virgin=False
+                        call first_partner(vioname)
+                        call add_partner(vioname)
+                        $ lesexp+=1
+                        $ sexexp+=1
+            else:
+                $ ascount+=1
+                $ c18stripclubsexmale=True
+                $ virgin=False
+                call first_partner("Stripclub strangers")
+                call add_partner("Male stranger 1 from the stripclub")
+                call add_partner("Male stranger 2 from the stripclub")
+                $ bjcount+=1
+                $ scount+=2
+                $ sexexp+=1
         else:
             $ inn+=1
 
