@@ -351,15 +351,21 @@ label skipper_main:
 
         # Violet and Nick meeting another couple
         if c4viosharing:
-            menu:
-                "(Chapter 5) [vio] and Nick meet another couple for a swinger party."
-                "[vio] accepts their proposal.":
-                    if lesonly:
-                        $ c5viomff = True
-                    else:
-                        $ c5viommf = True
-                "[vio] politely declines.":
-                    pass
+            if depravity_mode:
+                if lesonly:
+                    $ c5viomff = True
+                else:
+                    $ c5viommf = True
+            else:
+                menu:
+                    "(Chapter 5) [vio] and Nick meet another couple, who invite them to a swinger party."
+                    "[vio] accepts their proposal.":
+                        if lesonly:
+                            $ c5viomff = True
+                        else:
+                            $ c5viommf = True
+                    "[vio] politely declines.":
+                        pass
 
         # Rita takes a picture of her breasts
         if not lesonly:
@@ -556,10 +562,10 @@ label skipper_main:
             $ sexexp+=1
             $ cjhadsex=True
             menu:
-                "(Chapter 9) Who will fuck [pov] first, Connor or Josh?"
-                "Pick Connor.":
+                "(Chapter 9) Who will fuck [pov] first?"
+                "Connor.":
                     $ c9connorfirst=True
-                "Pick Josh.":
+                "Josh.":
                     $ c9joshfirst=True
 
         # Rita fucks Luna
@@ -778,14 +784,20 @@ label skipper_main:
             $ c13analno=True
 
         # Luna decides which club to join
-        menu:
-            "(Chapter 13) Will Luna join the club?"
-            "Join the Art Society {b}(Male){/b}" if not lesonly:
-                $ c13lunamaleclub=True
-            "Join the Art Association {b}(Female){/b}":
+        if depravity_mode:
+            if lesonly:
                 $ c13lunafemaleclub=True
-            "I'm not interested in joining right now.":
-                $ c13lunanoclub=True
+            else:
+                $ c13lunamaleclub=True
+        else:
+            menu:
+                "(Chapter 13) Will Luna join the club?"
+                "Luna will join the Art Society {b}(Male){/b}" if not lesonly:
+                    $ c13lunamaleclub=True
+                "Luna will join the Art Association {b}(Female){/b}":
+                    $ c13lunafemaleclub=True
+                "Luna is not interested in joining right now.":
+                    $ c13lunanoclub=True
 
         # Rita is relaxing on the beach
         if depravity_mode:
@@ -806,7 +818,7 @@ label skipper_main:
                     "(Chapter 13) How will [pov] jerk off Connor?"
                     "Give Connor a footjob.":
                         $ fjcount+=1
-                    "Use my boobs.":
+                    "Use boobs.":
                         $ tjcount+=1
 
         # Rita goes to change clothes after her shift
@@ -849,19 +861,25 @@ label skipper_main:
 
     if skip_to_chapter >= 15:
         # Luna in the club
-        if c13lunamaleclub or c13lunafemaleclub:
-            menu:
-                "(Chapter 14) Will Luna pose in her underwear?"
-                "Model in underwear":
-                    if c13lunamaleclub:
-                        $ c14lunamodelm=True
-                    if c13lunafemaleclub:
-                        $ c14lunamodelf=True
-                "I can't do that!":
-                    if c13lunamaleclub:
-                        $ c14lunamodelcancelm=True
-                    if c13lunafemaleclub:
-                        $ c14lunamodelcancelf=True
+        if depravity_mode:
+            if c13lunamaleclub:
+                $ c14lunamodelm=True
+            if c13lunafemaleclub:
+                $ c14lunamodelf=True
+        else:
+            if c13lunamaleclub or c13lunafemaleclub:
+                menu:
+                    "(Chapter 14) Will Luna pose in her underwear?"
+                    "Luna will pose.":
+                        if c13lunamaleclub:
+                            $ c14lunamodelm=True
+                        if c13lunafemaleclub:
+                            $ c14lunamodelf=True
+                    "Luna will refuse.":
+                        if c13lunamaleclub:
+                            $ c14lunamodelcancelm=True
+                        if c13lunafemaleclub:
+                            $ c14lunamodelcancelf=True
 
         # Rita goes to the beach
         # In depravity mode, Rita was already on some nudist beach
@@ -903,7 +921,7 @@ label skipper_main:
                         call add_partner(vioname)
                         $ lesexp+=1
                         $ sexexp+=1
-                    "I want to try anal.":
+                    "Try anal.":
                         $ c14viosexanal=True
                         $ analvirgin=False
                         $ ascount+=1
@@ -957,24 +975,30 @@ label skipper_main:
             $ inn+=1
 
         # Violet in a night club
-        if c5viommf or c5viomff:
-            menu:
-                "(Chapter 15) Who will [vio] leave the club with?"
-                "With man" if not lesonly:
-                    $ c15viomale=True
-                "With woman":
-                    $ c15violes=True
-                "Go home early":
-                    pass
+        if depravity_mode:
+            if lesonly:
+                $ c15violes=True
+            else:
+                $ c15viomale=True
+        else:
+            if c5viommf or c5viomff:
+                menu:
+                    "(Chapter 15) Who will [vio] leave the club with?"
+                    "With man." if not lesonly:
+                        $ c15viomale=True
+                    "With woman.":
+                        $ c15violes=True
+                    "Just go home.":
+                        pass
 
         # Rita invites Luna and Haruka to watch a movie
         if depravity_mode:
             $ les+=1
             menu:
                 "(Chapter 15) Who will [pov] kiss first?"
-                "Luna first.":
+                "Luna.":
                     $ lunalove+=1
-                "[fr] first.":
+                "[fr].":
                     $ harukalove+=1
             $ sexexp+=1
             $ lesexp+=1
@@ -1001,19 +1025,25 @@ label skipper_main:
 
     if skip_to_chapter >= 17:
         # Luna in the club
-        if c14lunamodelm or c14lunamodelf:
-            menu:
-                "(Chapter 16) Will Luna offer to pose naked?"
-                "Offer to pose nude.":
-                    if c14lunamodelm:
-                        $ c16lunamalemodel=True
-                    if c14lunamodelf:
-                        $ c16lunafemmodel=True
-                "Stay silent.":
-                    if c14lunamodelm:
-                        $ c16lunamalecancel=True
-                    if c14lunamodelf:
-                        $ c16lunafemcancel=True
+        if depravity_mode:
+            if c14lunamodelm:
+                $ c16lunamalemodel=True
+            if c14lunamodelf:
+                $ c16lunafemmodel=True
+        else:
+            if c14lunamodelm or c14lunamodelf:
+                menu:
+                    "(Chapter 16) Will Luna offer to pose naked?"
+                    "Luna will offer to pose nude.":
+                        if c14lunamodelm:
+                            $ c16lunamalemodel=True
+                        if c14lunamodelf:
+                            $ c16lunafemmodel=True
+                    "Luna will stand silently.":
+                        if c14lunamodelm:
+                            $ c16lunamalecancel=True
+                        if c14lunamodelf:
+                            $ c16lunafemcancel=True
 
         # Rita sends a photo
         menu:
@@ -1043,8 +1073,8 @@ label skipper_main:
             if depravity_mode:
                 $ bjcount+=1
                 menu:
-                    "(Chapter 16) What hole will [pov] give to a man at the hot springs?"
-                    "Fuck him {b}(Vaginal){/b}":
+                    "(Chapter 16) What kind of sex would [pov] prefer with a man at the hot springs?"
+                    "Vaginal":
                         if cum_inside:
                             $ creampiecount+=1
                         $ virgin=False
@@ -1053,7 +1083,7 @@ label skipper_main:
                         call add_partner("Hotsprings man")
                         $ scount+=1
                         $ c16mixedvag = True
-                    "Fuck him {b}(Anal){/b}":
+                    "Anal":
                         $ analvirgin=False
                         $ ascount+=1
                         $ sexexp+=1
@@ -1188,16 +1218,22 @@ label skipper_main:
             $ inn+=1
 
         # Luna in the club
-        if c16lunamalemodel or c16lunafemmodel:
-            menu:
-                "(Chapter 18) Will Luna have sex with a fellow club member?"
-                "Let's continue.":
-                    if c16lunamalemodel:
-                        $ c18lunasexmale=True
-                    if c16lunafemmodel:
-                        $ c18lunasexfemale=True
-                "Ask to stop.":
-                    pass
+        if depravity_mode:
+            if c16lunamalemodel:
+                $ c18lunasexmale=True
+            if c16lunafemmodel:
+                $ c18lunasexfemale=True
+        else:
+            if c16lunamalemodel or c16lunafemmodel:
+                menu:
+                    "(Chapter 18) Will Luna have sex with a fellow club member?"
+                    "Luna will agree.":
+                        if c16lunamalemodel:
+                            $ c18lunasexmale=True
+                        if c16lunafemmodel:
+                            $ c18lunasexfemale=True
+                    "Luna will ask to stop.":
+                        pass
 
         # Rita and Violet talk about striptease
         if depravity_mode:
@@ -1215,7 +1251,7 @@ label skipper_main:
                         call add_partner("Stripclub girl")
                         $ lesexp+=1
                         $ sexexp+=1
-                    "Fool around with [vioname] instead.":
+                    "Fool around with [vioname].":
                         $ c18stripclubsexvio=True
                         $ virgin=False
                         call first_partner(vioname)
@@ -1242,11 +1278,11 @@ label skipper_main:
         # Rita is thinking about what kind of relationship she wants
         menu:
             "(Chapter 18) What kind of relationship does [pov] want?"
-            "I want a romantic relationship.":
+            "[pov] wants a romantic relationship.":
                 $ wantromance=True
-            "I want an open-relationship.":
+            "[pov] wants an open-relationship.":
                 $ wantopenrelationship=True
-            "I want to stay single.":
+            "[pov] wants to stay single.":
                 $ wantsingle=True
 
     if skip_to_chapter >= 20:
@@ -1264,12 +1300,15 @@ label skipper_main:
             $ inn+=1
 
         # A subway passenger looks at the Luna's spread legs
-        menu:
-            "(Chapter 19) What does Luna feel when a subway passenger looks at her spread legs?"
-            "I enjoyed her looking.":
-                $ lunaexh+=1
-            "That made me uncomfortable.":
-                $ lunainn+=1
+        if depravity_mode:
+            $ lunaexh+=1
+        else:
+            menu:
+                "(Chapter 19) What does Luna feel when a subway passenger looks at her spread legs?"
+                "Luna liked being looked at.":
+                    $ lunaexh+=1
+                "Luna became uncomfortable.":
+                    $ lunainn+=1
 
         # Rita after the photo shoot
         if not lesonly:
