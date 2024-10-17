@@ -27,6 +27,9 @@ define dissolveverylong = Dissolve(5.0)
 define fadegalstart = Fade(1.0, 0.0, 2.0)
 define fadegalend = Fade(2.0, 0.0, 0.0)
 
+#MOD VERSION CONTROL
+default mod_version_control = 0
+default mod_current_version = 4
 
 #VISIBLE STATS
 default virgin = True
@@ -344,6 +347,7 @@ screen stat_box():
 ######### GAME START #######################################################
 
 label start:
+    $ mod_version_control = mod_current_version
     show screen control()
     scene intro bg 1
     with pixellate
