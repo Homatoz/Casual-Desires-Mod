@@ -1607,3 +1607,23 @@ style slider_pref_vbox:
 style slider_pref_slider:
     variant "small"
     xsize 900
+
+#CUSTOM SCREENS
+screen modal_info(message):
+    modal True
+    zorder 200
+    style_prefix "confirm"
+    add "gui/overlay/confirm.png"
+    frame:
+        vbox:
+            xalign .5
+            yalign .5
+            spacing 45
+            label _(message):
+                style "confirm_prompt"
+                xalign 0.5
+            hbox:
+                xalign 0.5
+                spacing 150
+                textbutton _("Close") action Return()
+    key "game_menu" action Return()

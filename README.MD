@@ -38,10 +38,10 @@ Only the important points for players are described here. Technical details can 
 - **v2** - Fixed a big pack of bugs found in version 0.19b.
 - **v3** - Gallery added.
 - **v3.1** - Added data collection from the save file to open viewed scenes in the gallery.
+- **v4** - Added advanced skipper.
 
 ## Plans for development
 
-- **Advanced skipper** - Provides the ability to start reading from any previously read chapter with the calculation of statistics for the selected behavior.
 - **Interactive skipper** - Provides the ability to choose for each of the scenes, as well as the ability to start reading from any of the scenes for previously read chapters.
 - **Recalculation of statistics** - Makes interaction counting more realistic.
 - **Bug fixing** - Just bug fixing
